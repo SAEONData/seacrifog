@@ -9,6 +9,8 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
+    - name: Setup Git submodules
+      uses: textbook/git-checkout-submodule-action@master
     - name: Run a one-line script
       run: echo Hello, world! > test.log
     - name: Run a multi-line script
