@@ -18,7 +18,7 @@ jobs:
 
     - name: Configure the API
       run: |
-        echo "PORT=test" > ./seacrifog-api/.env
+        echo "PORT=${{ secrets.API_PORT }}" > ./seacrifog-api/.env
         # echo "ALLOWED_ORIGINS=$ALLOWED_ORIGINS" >> ./seacrifog-api/.env
         # echo "POSTGRES_HOST=$POSTGRES_HOST" >> ./seacrifog-api/.env
         # echo "POSTGRES_USER=$POSTGRES_USER" >> ./seacrifog-api/.env
