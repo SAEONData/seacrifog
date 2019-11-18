@@ -3,6 +3,7 @@
 ## Setup your VM to use a webserver (i.e. Nginx), that provides two proxies:
 - TODO
 - TODO
+- TODO
 
 ## Setup your VM to use a local Actions Runner
 - Add a user to your VM `adduser actions-runner`
