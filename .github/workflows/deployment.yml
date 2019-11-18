@@ -1,0 +1,17 @@
+name: DEPLOYMENT
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: Run a one-line script
+      run: echo Hello, world! > test.log
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
