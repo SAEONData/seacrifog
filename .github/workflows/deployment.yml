@@ -19,12 +19,12 @@ jobs:
     - name: Configure the API
       run: |
         echo "PORT=${{ secrets.API_PORT }}" > ./seacrifog-api/.env
-        # echo "ALLOWED_ORIGINS=$ALLOWED_ORIGINS" >> ./seacrifog-api/.env
-        # echo "POSTGRES_HOST=$POSTGRES_HOST" >> ./seacrifog-api/.env
-        # echo "POSTGRES_USER=$POSTGRES_USER" >> ./seacrifog-api/.env
-        # echo "POSTGRES_DATABASE=$POSTGRES_DATABASE" >> ./seacrifog-api/.env
-        # echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> ./seacrifog-api/.env
-        # echo "POSTGRES_PORT=$POSTGRES_PORT" >> ./seacrifog-api/.env        
+        echo "ALLOWED_ORIGINS=${{ secrets.API_ALLOWED_ORIGINS }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_DATABASE=${{ secrets.POSTGRES_DATABASE }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env        
 
     - name: Deploy the API, Client, and PostGIS DB
       run: echo TODO
