@@ -35,4 +35,4 @@ jobs:
     - name: Deploy the API, Client, and PostGIS DB
       run: |
         echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" > ./.env
-        docker-compose up -d --force-recreate --build
+        /usr/local/bin/docker-compose up -d --force-recreate --build
