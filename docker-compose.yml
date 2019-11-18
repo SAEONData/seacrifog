@@ -1,0 +1,30 @@
+version: '3.7'
+
+volumes:
+  postgres:
+
+services:
+  postgres:
+    image: mdillon/postgis
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  seacrifog-api:
+    container_name: seacrifog-api
+    restart: always
+    build: ./seacrifog-api
+    ports:
+      - 3000:3000
+
+  seacrifog-client:
+    container_name: seacrifog-client
+    restart: always
+    build: ./seacrifog-client
+    ports:
+      - 3001:80

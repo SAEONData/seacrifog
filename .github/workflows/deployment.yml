@@ -9,14 +9,22 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
+    
     - uses: actions/checkout@master
       with:
         ref: master
         token: ${{ secrets.ACCESS_TOKEN }}
         submodules: recursive
-    - name: Run a one-line script
-      run: docker --help > test.log
-    - name: Run a multi-line script
+
+    - name: Configure the API
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        echo "PORT=test" > ./seacrifog-api/.env
+        # echo "ALLOWED_ORIGINS=$ALLOWED_ORIGINS" >> ./seacrifog-api/.env
+        # echo "POSTGRES_HOST=$POSTGRES_HOST" >> ./seacrifog-api/.env
+        # echo "POSTGRES_USER=$POSTGRES_USER" >> ./seacrifog-api/.env
+        # echo "POSTGRES_DATABASE=$POSTGRES_DATABASE" >> ./seacrifog-api/.env
+        # echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> ./seacrifog-api/.env
+        # echo "POSTGRES_PORT=$POSTGRES_PORT" >> ./seacrifog-api/.env        
+
+    - name: Deploy the API, Client, and PostGIS DB
+      run: echo TODO
