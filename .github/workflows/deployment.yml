@@ -13,9 +13,13 @@ jobs:
     #   with:
     #     ref: master
     #     submodules: recursive
-    - name: Configure submodules
+    - name: Configure Git
       run: |
-        echo $GITHUB_PAT
+        git config --global credential.helper ""
+        git config --global --add credential.helper store
+        echo "https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com" >> ~/.git-credentials
+        git config --global url."https://github.com/".insteadof git@github.com:
+        echo hi
     - name: Run a one-line script
       run: echo Hello, world! > test.log
     - name: Run a multi-line script
