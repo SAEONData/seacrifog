@@ -15,6 +15,7 @@ jobs:
         ls -a
     - name: Setup Git submodules
       run: |
+        pwd
         git submodule sync --recursive
         git submodule update --init --remote --recursive
     - name: Run a one-line script
