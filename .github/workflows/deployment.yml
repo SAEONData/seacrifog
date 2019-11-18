@@ -27,4 +27,6 @@ jobs:
         echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env        
 
     - name: Deploy the API, Client, and PostGIS DB
-      run: echo TODO
+      run: |
+        echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" > ./.env
+        docker-compose up -d --force-recreate --build
