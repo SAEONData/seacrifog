@@ -9,6 +9,9 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
+    - name: Setup deployment
+      run: pwd
+      run: ls -a
     - name: Setup Git submodules
       run: |
         git submodule sync --recursive
