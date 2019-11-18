@@ -4,6 +4,7 @@
 - TODO
 - TODO
 - TODO
+- TODO: Mention how to add docker-compose to path
 
 ## Setup your VM to use a local Actions Runner
 - Add a user to your VM `adduser actions-runner`
