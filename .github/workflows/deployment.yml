@@ -9,14 +9,13 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@master
-      with:
-        ref: master
-        submodules: recursive
+    # - uses: actions/checkout@master
+    #   with:
+    #     ref: master
+    #     submodules: recursive
     - name: Configure submodules
       run: |
-        pwd
-        ls -a
+        echo $GITHUB_PAT
     - name: Run a one-line script
       run: echo Hello, world! > test.log
     - name: Run a multi-line script
