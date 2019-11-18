@@ -9,15 +9,10 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-    - name: Configure Git
-      run: |
-        git config --global credential.helper ""
-        git config --global --add credential.helper store
-        echo "https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com" > ~/.git-credentials
-        git config --global url."https://github.com/".insteadof git@github.com:
     - uses: actions/checkout@master
       with:
         ref: master
+        token: ${{ secrets.ACCESS_TOKEN }}
         submodules: recursive
     - name: Run a one-line script
       run: echo Hello, world! > test.log
