@@ -10,7 +10,9 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Setup Git submodules
-      uses: textbook/git-checkout-submodule-action@master
+      run: |
+        git submodule sync --recursive
+        git submodule update --init --remote --recursive
     - name: Run a one-line script
       run: echo Hello, world! > test.log
     - name: Run a multi-line script
