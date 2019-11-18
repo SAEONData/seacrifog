@@ -9,15 +9,14 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-    - name: Setup deployment
+    - uses: actions/checkout@master
+      with:
+        ref: master
+        submodules: recursive
+    - name: Configure submodules
       run: |
         pwd
         ls -a
-    - name: Setup Git submodules
-      run: |
-        pwd
-        git submodule sync --recursive
-        git submodule update --init --remote --recursive
     - name: Run a one-line script
       run: echo Hello, world! > test.log
     - name: Run a multi-line script
