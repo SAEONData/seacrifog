@@ -1,6 +1,8 @@
 # seacrifog-deploy
 
-## Setup your VM to use a webserver (i.e. Nginx), that provides two proxies:
+## Setup a VM
+This deployment assumes a Linux virtual server running Nginx, Docker (with docker-compose), and Git ()
+
 - TODO
 - TODO
 - TODO
