@@ -26,6 +26,13 @@ jobs:
         echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ./seacrifog-api/.env
         echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env
         echo "FORCE_DB_RESET=true" >> ./seacrifog-api/.env
+
+    - name: Configure the client
+      run: |
+        echo "PORT=${{ secrets.REACT_APP_PORT }}" > ./seacrifog-client/.env.production
+        echo "REACT_APP_GQL_ENDPOINT=${{ secrets.GQL_ENDPOINT }}" >> ./seacrifog-client/.env.production
+        echo "REACT_APP_HTTP_ENDPOINT=${{ secrets.HTTP_ENDPOINT }}" >> ./seacrifog-client/.env.production
+        echo "REACT_APP_DOWNLOADS_ENDPOINT=${{ secrets.DOWNLOADS_ENDPOINT }}" >> ./seacrifog-client/.env.production
     
     - name: Configure the server
       run: |
@@ -33,7 +40,7 @@ jobs:
         sudo /opt/copy-nginx-vhosts.sh # This script contains this command: cp ./nginx/vhosts/* /etc/nginx/conf.d/
         sudo /opt/restart-nginx.sh # This script contains this command: service nginx restart
 
-    - name: Deploy the API, Client, and PostGIS DB
+    - name: Deploy the API, client, and PostGIS
       run: |
         echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" > ./.env
         /usr/local/bin/docker-compose up -d --force-recreate --build
