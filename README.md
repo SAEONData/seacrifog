@@ -2,6 +2,7 @@
 
 ## Setup a VM
 This deployment assumes a Linux virtual server running Nginx, Docker (with docker-compose), and Git (...)
+TODO
 
 - TODO
 - TODO
