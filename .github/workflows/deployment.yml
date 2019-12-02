@@ -27,7 +27,7 @@ jobs:
         echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env
         echo "FORCE_DB_RESET=true" >> ./seacrifog-api/.env
     
-    - name: 'Configure the server'
+    - name: Configure the server
       run: |
         sudo /opt/copy-main-nginx-conf.sh # This script contains this command: cp ./nginx/nginx.conf /etc/nginx/nginx.conf
         sudo /opt/copy-nginx-vhosts.sh # This script contains this command: cp ./nginx/vhosts/* /etc/nginx/conf.d/
