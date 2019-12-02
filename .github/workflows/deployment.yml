@@ -17,7 +17,7 @@ jobs:
         submodules: recursive
     
     - name: Setup submodules branchs at master
-      run: git submodule foreach --recursive 'git checkout master & git fetch --all & git reset --hard origin/master'
+      run: git submodule foreach --recursive 'git reset --hard origin/master & git pull'
 
     - name: Configure the API
       run: |
