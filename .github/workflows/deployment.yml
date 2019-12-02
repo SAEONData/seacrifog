@@ -15,9 +15,6 @@ jobs:
         ref: master
         token: ${{ secrets.ACCESS_TOKEN }}
         submodules: recursive
-    
-    - name: Setup submodules branchs at master
-      run: git submodule foreach --recursive 'git reset --hard origin/master & git pull origin master'
 
     - name: Configure the API
       run: |
