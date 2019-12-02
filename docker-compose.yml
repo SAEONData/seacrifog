@@ -15,14 +15,14 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
 
-  seacrifog-api:
+  seacrifog-api-dev:
     container_name: seacrifog-api-dev
     restart: always
     build: ./seacrifog-api
     ports:
       - 4000:3000
 
-  seacrifog-client:
+  seacrifog-client-dev:
     container_name: seacrifog-client-dev
     restart: always
     build: ./seacrifog-client
