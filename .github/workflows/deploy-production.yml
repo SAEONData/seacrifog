@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  deploy:
+  deploy-production:
     runs-on: self-hosted
     steps:
     
