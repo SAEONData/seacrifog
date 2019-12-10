@@ -29,8 +29,7 @@ jobs:
 
     - name: Configure the client
       run: |
-        echo "PUBLIC_PATH=${{ secrets.CLIENT_PUBLIC_PATH }}" > ./seacrifog-client/.env
-        echo "GQL_ENDPOINT=${{ secrets.GQL_ENDPOINT_DEV }}" >> ./seacrifog-client/.env
+        echo "GQL_ENDPOINT=${{ secrets.GQL_ENDPOINT_DEV }}" > ./seacrifog-client/.env
         echo "HTTP_ENDPOINT=${{ secrets.HTTP_ENDPOINT_DEV }}" >> ./seacrifog-client/.env
         echo "DOWNLOADS_ENDPOINT=${{ secrets.DOWNLOADS_ENDPOINT_DEV }}" >> ./seacrifog-client/.env
     
