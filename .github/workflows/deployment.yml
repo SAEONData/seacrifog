@@ -25,7 +25,7 @@ jobs:
         echo "POSTGRES_DATABASE=${{ secrets.POSTGRES_DATABASE_DEV }}" >> ./seacrifog-api/.env
         echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ./seacrifog-api/.env
         echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env
-        echo "FORCE_DB_RESET=true" >> ./seacrifog-api/.env
+        echo "FORCE_DB_RESET=false" >> ./seacrifog-api/.env
 
     - name: Configure the client
       run: |
