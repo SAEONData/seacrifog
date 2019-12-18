@@ -1,0 +1,45 @@
+name: RELEASE
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    
+    - uses: actions/checkout@v1
+      with:
+        ref: release
+        token: ${{ secrets.ACCESS_TOKEN }}
+        submodules: recursive
+
+    - name: Configure the API
+      run: |
+        echo "PORT=${{ secrets.API_PORT }}" > ./seacrifog-api/.env
+        echo "ALLOWED_ORIGINS=${{ secrets.API_ALLOWED_ORIGINS }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_DATABASE=${{ secrets.POSTGRES_DATABASE }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ./seacrifog-api/.env
+        echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env
+        echo "FORCE_DB_RESET=false" >> ./seacrifog-api/.env
+
+    - name: Configure the client
+      run: |
+        echo "GQL_ENDPOINT=${{ secrets.GQL_ENDPOINT }}" >> ./seacrifog-client/.env
+        echo "HTTP_ENDPOINT=${{ secrets.HTTP_ENDPOINT }}" >> ./seacrifog-client/.env
+        echo "DOWNLOADS_ENDPOINT=${{ secrets.DOWNLOADS_ENDPOINT }}" >> ./seacrifog-client/.env
+    
+    - name: Configure the server
+      run: |
+        sudo /opt/copy-main-nginx-conf.sh # This script contains this command: cp ./nginx/nginx.conf /etc/nginx/nginx.conf
+        sudo /opt/copy-nginx-vhosts.sh # This script contains this command: cp ./nginx/vhosts/* /etc/nginx/conf.d/
+        sudo /opt/restart-nginx.sh # This script contains this command: service nginx restart
+
+    - name: Deploy the API, client, and PostGIS
+      run: |
+        echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" > ./.env
+        /usr/local/bin/docker-compose up -d --force-recreate --build
