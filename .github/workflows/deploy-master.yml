@@ -26,6 +26,8 @@ jobs:
         echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ./seacrifog-api/.env
         echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> ./seacrifog-api/.env
         echo "FORCE_DB_RESET=true" >> ./seacrifog-api/.env
+        echo "INITIAL_CRON_WAIT=20000" >> ./seacrifog-api/.env
+        echo "ICOS_INTEGRATION_SCHEDULE=* * * * *" >>./seacrifog-api/.env
 
     - name: Configure the client
       run: |
