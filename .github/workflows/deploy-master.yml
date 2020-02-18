@@ -38,7 +38,7 @@ jobs:
     - name: Configure the server
       run: |
         sudo /opt/copy-nginx-vhosts.sh # This script contains this command: cp ./nginx/vhosts/* /etc/nginx/conf.d/
-        sudo /opt/restart-nginx.sh # This script contains this command: service nginx restart
+        sudo /opt/reload-nginx.sh # This script contains this command: service nginx reload
 
     - name: Deploy the API, client, and PostGIS
       run: |
