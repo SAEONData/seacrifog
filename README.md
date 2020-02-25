@@ -35,7 +35,7 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 # Client
 - [Current deployment](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Workpackage 5.4 deliverable deployment on SAEON's infrastructure")
 
-The client is an SPA - architected ...
+The client is an SPA - architected conceptually of 'pages', each page comprising one or more 'modules'.
 
 
 # Deployment
