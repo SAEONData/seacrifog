@@ -59,10 +59,8 @@ State is managed in three ways across the application:
 
 A single global state module is used to keep track of user interactions across the app (selecting/deselecting of items). As entities are toggled a background search is performed for all currently selected search critera - the results are stored in client memory.
 
-
 ### Atlas
-
-### Item page logic
+The map is provided by OpenLayers 6, utilizing an API provided by a thin React.js wrapper library - [@saeon/ol-react](https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library") - authored by SAEON (at the time of writing there are no well-maintained OpenLayers 6 React.js wrapping libraries) and made available as MIT-licensed open source code. OpenLayers in the context of a JavaScript application is just a single object `olMap`. This object keeps it's own internal state and handles interactions internally. The `@saeon/ol-react` wrapper layer essentially provides the means of mapping React state to `olMap` internal state. This is achieved via using the [ECMAScript Proxy objects API]([https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Note that this is incompatible with Internet Explorer, and not possible to polyfill. This tool as it currently exists should, however, work on Internet Explorer 11 and upwwards only because no advanced layer management is used. This will obviously not be the case with further development. In addition to the layer proxy, the Atlas module provides a means of selecting/deselecting map features, and also for specifying layers.
 
 ### Searchable, sortable, selectable table
 
@@ -72,8 +70,6 @@ A single global state module is used to keep track of user interactions across t
 
 ## Page Types
 ### `/sites` page
-The map is provided by OpenLayers 6, utilizing an API provided by a thin React.js wrapper library - [@saeon/ol-react](https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library") - authored by SAEON (at the time of writing there are no well-maintained OpenLayers 6 React.js wrapping libraries) and made available as MIT-licensed open source code.
-
 The map is interactive in that it allows for assessing which variables are measured at which sites (or groups of sites) - this is achieved by clicking features on the atlas, that will both add selected sites to the metadata filter, and trigger charts (provided by `eCharts`) to display.
 
 ### List/explorer pages (`/networks`, `/variables`, `/protocols`)
