@@ -25,7 +25,7 @@ The browser client is tightly coupled with the API logic. The API, however, can 
   - React-MD (MIT licensed Material Design component library implementation)
 
 # Data model
-![alt text](images/data-model.jpeg "Simplified ERD diagram showing the entities used in the search logic")
+![alt text](images/data-model.png "Simplified ERD diagram showing the entities used in the search logic")
 
 # API
 
