@@ -33,13 +33,13 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 - [GraphQL endpoint](http://api.seacrifog.saeon.ac.za/graphql "API Endpoint")
 
 # Client
+- [Current deployment](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Workpackage 5.4 deliverable deployment on SAEON's infrastructure")
 
 # Deployment
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)
 - API: Docker container (refer to the Dockerfile in the source code)
 - Browser client: Docker container (refer to the Dockerfile in the source code)
 - Server: Single CentOS 7 virtual machine (2 cores, 2GB RAM, 60GB)
-
 
 # Developer Documentation
 TODO
