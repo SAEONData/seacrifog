@@ -50,7 +50,15 @@ The client currently deployed at [seacrifog.saeon.ac.za](http://seacrifog.saeon.
 ## Modules
 Several modules are used on multiple pages. These include:
 
-### Global state managment 
+### Global state managment & Search module
+State is managed in three ways across the application:
+
+- Locally: state that is localized to individual components is achieved via stateful component ([class components](https://reactjs.org/docs/state-and-lifecycle.html)) or by using the newer[React Hooks API](https://reactjs.org/docs/hooks-state.html)
+- Explicity: Stateful contexts are typically provided across groups of components via well-known React architectural patterns including [explicitly passing props down component trees](https://reactjs.org/docs/composition-vs-inheritance.html), or the [render props pattern](https://reactjs.org/docs/render-props.html)
+- Globally via the [context API](https://reactjs.org/docs/context.html)
+
+A single global state module is used to keep track of user interactions across the app (selecting/deselecting of items). As entities are toggled a background search is performed for all currently selected search critera - the results are stored in client memory.
+
 
 ### Atlas
 
@@ -62,15 +70,13 @@ Several modules are used on multiple pages. These include:
 
 ### Side filter component
 
-
-## `/sites` page
+## Page Types
+### `/sites` page
 The map is provided by OpenLayers 6, utilizing an API provided by a thin React.js wrapper library - [@saeon/ol-react](https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library") - authored by SAEON (at the time of writing there are no well-maintained OpenLayers 6 React.js wrapping libraries) and made available as MIT-licensed open source code.
 
 The map is interactive in that it allows for assessing which variables are measured at which sites (or groups of sites) - this is achieved by clicking features on the atlas, that will both add selected sites to the metadata filter, and trigger charts (provided by `eCharts`) to display.
 
-## List/explorer pages (`/networks`, `/variables`, `/protocols`)
-
-
+### List/explorer pages (`/networks`, `/variables`, `/protocols`)
 
 # Current deployment (25-02-2020)
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)
