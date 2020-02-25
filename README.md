@@ -35,7 +35,22 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 # Client
 - [Current deployment](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Workpackage 5.4 deliverable deployment on SAEON's infrastructure")
 
-The client is an SPA - architected conceptually of 'pages', each page comprising one or more 'modules'.
+The client is an SPA - architected conceptually of 'pages', each page comprising one or more 'modules'. Observational infrastructure is organized according to entity 'class'. For each entity class there is a page that lists all entities of that type, and an overview page that allows for seeing and editing a single entity. For example, all the entities of type `Variable` can be found on the HTTP path `/variables`, listed and searcheable. A single variable can be viewed and edited on the `/variable/:id` path. There is an exception - the `/sites` route displays a map of sites, along with proof-of-concept visualization charts. Individual sites can be edited on the `/networks/:id` path (sites of a particular network can be edited). Below is a representation of the site map:
+
+```
+.
+├── /sites
+├── /networks
+│   └── /networks/:id
+├── /variables
+│   └── /variables/:id
+├── /protocols
+│   └── /protocols/:id
+└── /search-results
+```
+
+
+
 
 
 # Deployment
