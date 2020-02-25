@@ -31,6 +31,7 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 - [API documentation](https://api.saeon.ac.za "API Documentation")
 - [Interactive API Explorer](https://api.saeon.ac.za/graphiql "GraphiQL")
 - [GraphQL endpoint](http://api.saeon.ac.za/graphql "API Endpoint")
+- <a href="http://api.seacrifog.saeon.ac.za" target="_blank">API documentation</a>
 
 # Client
 
