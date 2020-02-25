@@ -1,15 +1,11 @@
-# SEACRIFOG API
-This is an Express.js application. The Express.js webserver is defined in `/src/bin/index.js`, tucked out the way. The web-server loads and serves the Express.js application - the application root is `./src/app.js`
+# API
 
-# Quickstart (local dev environment)
-You need to have Docker and Node.js installed on your machine, then run the following commands / do the following steps:
+## Quickstart (local dev environment)
 
 ### Start a PostGIS server
 ```sh
 docker run -p 5432:5432 --name postgis -v postgres11:/var/lib/postgresql/data -e POSTGRES_PASSWORD=password -d mdillon/postgis
 ```
-
-(And sometimes you need to restart the container on computer start up - use this command `docker container start postgis`)
 
 ### Setup the DB
 (This is easiest to do with DBeaver, but any PostgreSQL client should work)
