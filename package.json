@@ -5,7 +5,7 @@
   "scripts": {},
   "husky": {
     "hooks": {
-      "pre-commit": "npm --prefix client/ run oncommit"
+      "pre-commit": "npm --prefix api/ run oncommit && npm --prefix client/ run oncommit"
     }
   },
   "repository": {
