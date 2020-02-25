@@ -35,6 +35,9 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 # Client
 - [Current deployment](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Workpackage 5.4 deliverable deployment on SAEON's infrastructure")
 
+The client is an SPA - architected ...
+
+
 # Deployment
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)
 - API: Docker container (refer to the Dockerfile in the source code)
