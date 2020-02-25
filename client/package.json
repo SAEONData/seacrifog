@@ -37,7 +37,7 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "oncommit": "echo hiiiiiiii",
+    "oncommit": "npm-run-all -s prettier lint",
     "onchange": "onchange \"./client/**/*.@(js|jsx|css|scss)\" -- prettier --write {{changed}}",
     "start": "npm-run-all clean:dist copy:public start:dev",
     "start:dev": "npm-run-all -p onchange serve:dev",
