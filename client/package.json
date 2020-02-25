@@ -37,6 +37,7 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
+    "oncommit": "echo hiiiiiiii",
     "onchange": "onchange \"./client/**/*.@(js|jsx|css|scss)\" -- prettier --write {{changed}}",
     "start": "npm-run-all clean:dist copy:public start:dev",
     "start:dev": "npm-run-all -p onchange serve:dev",
@@ -48,11 +49,6 @@
     "pre-commit": "npm-run-all prettier lint",
     "prettier": "prettier --write \"src/**/*.@(js|jsx|css|scss)\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all -s prettier lint"
-    }
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
