@@ -1,0 +1,55 @@
+Obs_Nr,Observatory,Implementation,fk_IsoCode,Province,District,Locality,FarmName,RainfallSeas,Latitude,Longitude,Altitude,Biome
+S75,Bicuar National Park,Dec-15,AO,Huíla,NULL,NULL,NULL,Summer,-15.17198471,14.91947577,1220,Woodland Savanna
+S76,Cameia National Park,May-16,AO,Moxico,Cameia,NULL,NULL,Summer,-11.5269772,20.91333872,1132,Western Zambezian Grasslands
+S73,Candelela,Mar-13,AO,Cuando-Cubango,Municipality of Caiundo,Candeleia,NULL,Summer,-16.475659,17.804708,1133,Woodland Savanna
+S74,Cusseque,Mar-13,AO,NULL,Chitembo,NULL,NULL,Summer,-13.6772,17.077056,1572,Miombo Woodlands
+S71,Espinheira,NULL,AO,NULL,NULL,NULL,NULL,NULL,-16.764426,12.342549,NULL,Desert
+S72,Tundavala,NULL,AO,Huíla,NULL,Tundavala,NULL,Summer,-14.79542,13.4019,2250,Afroalpine
+S38,Claratal,2004,NA,Khomas,Windhoek,Windhoek,Claratal 18,Summer,-22.779382,16.774852,1865,Thornbush Savanna
+A01,Dieprivier,NULL,NA,NULL,NULL,NULL,NULL,NULL,-24.1296,15.8947,NULL,Desert
+S40,Duruchaus,2004,NA,Khomas,Windhoek,near Rehoboth,Duruchaus,Summer,-23.133184,16.899996,1614,Nama Karoo
+A04,Featherlion,NULL,NA,NULL,NULL,NULL,NULL,NULL,-17.602536,12.603007,NULL,Desert
+S36,Ganab,2004,NA,Erongo,Swakopmund,Sossusvlei,Ganab,Summer,-23.12182,15.53844,995,Desert
+S10,Gellap Ost,2001,NA,Karas,Keetmanshoop,Keetmanshoop,Gellap Ost 3,Summer,-26.401195,18.004842,1099,Nama Karoo
+A03,Giribes Leopard Rock,NULL,NA,NULL,NULL,NULL,NULL,NULL,-19.095725,13.326129,NULL,Desert
+A02,Giribesvlakte,NULL,NA,NULL,NULL,NULL,NULL,NULL,-19.089626,13.326485,NULL,Desert
+S35,Gobabeb,2004,NA,Erongo,Swakopmund,Wlotzkasbaken,Gobabeb,Summer,-23.532409,15.04689,419,Desert
+A07,Haribes,NULL,NA,NULL,NULL,NULL,NULL,NULL,-24.6225,17.55,NULL,Nama Karoo
+A06,Hartmann plains,NULL,NA,NULL,NULL,NULL,NULL,NULL,-17.6434595,12.1535856,NULL,Desert
+S12,Karios,2001,NA,Karas,Karas,Karasburg,Karios ,Summer,-27.676516,17.803958,909,Nama Karoo
+S34,Kleinberg,2004,NA,Erongo,Walvis Bay,Walvis Bay,Kleinberg,Summer,-22.989838,14.725183,188,Desert/ Succulent Karoo
+A05,Marienfluss Valley,NULL,NA,NULL,NULL,NULL,NULL,NULL,-17.598527,12.598259,NULL,Desert
+S01,Mile 46,2001,NA,Kavango,Rundu,near Cove,Alex Muranda LDC,Summer,-18.301826,19.247311,1180,Woodland Savanna
+S02,Mutompo,2001,NA,Kavango,Rundu,near Cove,Mutompo,Summer,-18.301782,19.258331,1180,Woodland Savanna
+S11,Nabaos,2001,NA,Karas,Keetmanshoop,Keetmanshoop,Nabaos 7,Summer,-26.390643,17.995478,1045,Nama Karoo
+S39,Narais,2004,NA,Khomas,Windhoek,near Rehoboth,Narais,Summer,-23.12038,16.896578,1624,Nama Karoo
+S08,Niko North,2001,NA,Hardap,Mariental,near Gibeon,Niko 377,Summer,-25.342506,17.839093,1070,Nama Karoo
+S09,Niko South,2001,NA,Hardap,Mariental,near Gibeon,Niko 377,Summer,-25.333413,17.848966,1076,Nama Karoo
+S42,Ogongo,2007,NA,Omusati,Uutapi,Ogongo,Ogongo,Summer,-17.697198,15.305209,1103,Woodland Savanna
+S06,Okamboro,2001,NA,Otjozondjupa,Okahandja,Okamboro,Ovitoto 55,Summer,-22.019179,17.06248,1490,Thornbush Savanna
+S43,Omano go Ndjamba,2007,NA,Omusati,Uutapi,Ogongo,Omano go Ndjamba,Summer,-17.708034,15.264798,1100,Woodland Savanna
+S05,Otjiamongombe,2001,NA,Otjozondjupa,Okahandja,Erichsfelde,Otjiamongombe West 44,Summer,-21.596834,16.935106,1495,Thornbush Savanna
+S37,Rooisand,2004,NA,Khomas,Windhoek,Rooisand Desert Ranch,Chausib 27,Summer,-23.294542,16.104978,1160,Thornbush Savanna
+S41,Sandveld,2004,NA,Omaheke,Gobabis,near Drimiopsis,Dipcadi 389,Summer,-22.043351,19.133903,1523,Thornbush Savanna
+S03,Sonop,2001,NA,Otjozondjupa,Grootfontein,near Maroelaboom,Sonop 903,Summer,-19.073818,18.903897,1236,Woodland Savanna
+S04,Toggekry,2001,NA,Otjozondjupa,Okahandja,Ovitoto,Omatako Ranch 305,Summer,-21.501438,16.729326,1519,Thornbush Savanna
+S16,Wlotzkasbaken,2001,NA,Erongo,Swakopmund,Swakopmund,Wlotzkasbaken - Mile 14,Summer,-22.315003,14.45948,73,Desert/ Succulent Karoo
+S17,Alpha,2001,ZA,Northern Cape,Siyanda,Askham,Alpha,Summer,-26.760917,20.614021,896,Thornbush Savanna
+S33,Cape of Good Hope,2001,ZA,Western Cape,City of Cape Town,Table Mountain National Park,Olifantsbos,Winter,-34.260204,18.392285,83,Fynbos 
+A08,Eksteenfontein,NULL,ZA,Northern Cape,NULL,NULL,NULL,NULL,-28.82889,17.26833,NULL,Succulent Karoo
+S32,Elandsberg,2001,ZA,Western Cape,Cape Winelands,Wellington,Elandsberg,Winter,-33.41416,19.03111,95,Fynbos 
+S26,Goedehoop,2001,ZA,Western Cape,West Coast,Van Rhynsdorp,Flaminkvlakte 111,Winter,-31.276713,18.591521,245,Succulent Karoo
+S18,Koeroegap Vlakte,2001,ZA,Northern Cape,Namakwa,Sendelingsdrif,Koeroegap Vlakte,Winter,-28.226646,17.025668,635,Succulent Karoo
+S28,Moedverloren,2001,ZA,Western Cape,West Coast,Vredendal,Moedverloren 208,Winter,-31.460932,18.439058,140,Succulent Karoo
+S45,Nieuwoudtville,2007,ZA,Northern Cape,Namakwa,Nieuwoudtville,Glenlyon,Winter,-31.390019,19.128797,722,Fynbos 
+S20,Numees,2001,ZA,Northern Cape,Namakwa,Sendelingsdrif,Numees,Winter,-28.293087,16.953805,362,Succulent Karoo
+S24,Paulshoek,2001,ZA,Northern Cape,Namakwa,Leliefontein,Leliefontein 624,Winter,-30.38568,18.27579,1048,Succulent Karoo
+S27,Ratelgat,2001,ZA,Western Cape,West Coast,Van Rhynsdorp,Luiperskop 211,Winter,-31.285881,18.600308,239,Succulent Karoo
+S25,Remhoogte,2001,ZA,Northern Cape,Namakwa,Leliefontein,Remhoogte 416,Winter,-30.395364,18.275695,1027,Succulent Karoo
+S31,Riverlands,2001,ZA,Western Cape,West Coast,Malmesbury,Riverlands,Winter,-33.489343,18.580119,140,Fynbos 
+S29,Rocherpan,2001,ZA,Western Cape,West Coast,Piquetberg,Rocherpan,Winter,-32.600848,18.3056,35,Fynbos 
+S22,Soebatsfontein,2001,ZA,Northern Cape,Namakwa,Soebatsfontein,Soebatsfontein Commonage,Winter,-30.186502,17.543373,392,Succulent Karoo
+S21,Yellow Dune - Grootderm,2001,ZA,Northern Cape,Namakwa,Alexander Bay,Groot Derm,Winter,-28.61234,16.654331,193,Succulent Karoo
+S52,Dongwe,2014,ZM,NULL,Lukulu,Dongwe Local Forest,NULL,Summer,-14.09577,24.0153,1066,Miombo Woodlands
+S53,Kafue National Park (KNP),2014,ZM,NULL,Kaoma,Kafue National Park,NULL,Summer,-14.8983,25.43676,1210,Miombo Woodlands
+S51,Luampa,2014,ZM,NULL,Luampa,Mbuyu Forest Reserve,NULL,Summer,-15.13791,24.49613,1148,Miombo Woodlands

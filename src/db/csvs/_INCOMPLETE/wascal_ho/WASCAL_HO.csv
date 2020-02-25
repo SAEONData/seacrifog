@@ -1,0 +1,15 @@
+ID,Name,Type,Longitude,Latitude,Elevation,Date_Start,Date_End,Status2,Country
+1,Bongo Soe,AWS,-0.7827,10.9731,258,25/09/2012,,Operational,Ghana
+2,Gwosi,AWS,-1.64832,10.47788,290,30/11/2013,,Operational,Ghana
+3,Bnabugubulle,AWS,-1.86879,10.70298,334,19/07/2013,,Operational,Ghana
+4,Nebou,AWS,-1.87991,11.30545,310,06/06/2013,,Operational,Burkina Faso
+5,Oualem,AWS,-1.30985,11.20477,295,06/06/2013,,Operational,Burkina Faso
+6,Tabou,AWS,-2.16895,11.36651,312,07/06/2013,,Operational,Burkina Faso
+7,Doninga,AWS,-1.42024,10.61716,171,23/09/2013,,Operational,Ghana
+8,Bongo Atampisi,AWS,-0.82647,10.91501,212,08/09/2014,,Operational,Ghana
+9,Manyoro,AWS,-0.99589,10.98143,196,09/09/2014,,Operational,Ghana
+10,Aniabiisi,AgroMet Station,-0.91218,10.84571,185,04/06/2014,,Operational,Ghana
+11,Sumbrungu,EC Flux Tower,-0.9174,10.8466,200,09/10/2012,01/05/2017,Not operational,Ghana
+12,Kayoro,EC Flux Tower,-1.3209,10.9181,282,16/10/2012,,Operational,Ghana
+13,Nazinga,EC Flux Tower,-1.5857,11.15156,297,23/01/2013,,Operational,Burkina Faso
+14,Gorigo,EC Flux Tower,-0.82645,10.94016,220,01/05/2017,,Operational,Ghana

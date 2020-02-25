@@ -1,0 +1,422 @@
+scalar Date
+scalar JSON
+
+input VariableInput {
+  id: Int!
+  name: String
+  class: String
+  domain: String
+  set: String
+  description: String
+  method: String
+  uri: String
+  rftype: String
+  score: Int
+  rating: Int
+  relevance: Float
+  feasibility: Float
+  cost: Float
+  updated_by: String
+  updated_at: Date
+  frequency_value: Float
+  frequency_unit: String
+  frequency_comment: String
+  res_value: Float
+  res_unit: String
+  res_comment: String
+  unc_val: Float
+  unc_unit: String
+  unc_comment: String
+  req_source: String
+  req_uri: String
+  technology_type: String
+
+  # For updating mappings
+  addDataproducts: [Int!]
+  removeDataproducts: [Int!]
+
+  addDirectlyRelatedProtocols: [Int!]
+  addIndirectlyRelatedProtocols: [Int!]
+  removeProtocols: [Int!]
+
+  addRForcings: [Int!]
+  removeRForcings: [Int!]
+}
+
+input ProtocolInput {
+  id: Int!
+  doi: String
+  author: String
+  publisher: String
+  title: String
+  publish_date: String
+  publish_year: String
+  coverage_type: String
+  category: String
+  domain: String
+  purpose: String
+  abstract: String
+  license: String
+  language: String
+  format: String
+  sustainability: String
+  version: String
+  resolution: String
+  cost: String
+  source: String
+  created_by: String
+  created_at: Date
+  edited_by: String
+  updated_at: Date
+
+  # For updating mappings
+  addDirectlyRelatedVariables: [Int!]
+  addIndirectlyRelatedVariables: [Int!]
+  removeVariables: [Int!]
+}
+
+input DataproductInput {
+  id: Int!
+  title: String
+  publish_year: Int
+  publish_date: Date
+  keywords: String
+  abstract: String
+  provider: String
+  author: String
+  contact: String
+  coverage_temp_start: Date
+  coverage_temp_end: Date
+  res_spatial: Float
+  res_spatial_unit: String
+  res_temperature: Float
+  res_temperature_unit: String
+  uncertainty: Float
+  uncertainty_unit: String
+  doi: String
+  license: String
+  url_download: String
+  file_format: String
+  file_size: Float
+  file_size_unit: String
+  url_info: String
+  created_by: String
+  created_at: Date
+  modified_by: String
+  modified_at: Date
+  present: String
+
+  # For updating mappings
+  addVariables: [Int!]
+  removeVariables: [Int!]
+}
+
+# coverage spatial should be JSON?
+input NetworkInput {
+  id: Int!
+  title: String
+  acronym: String
+  type: String
+  status: String
+  start_year: Int
+  end_year: Int
+  url_info_id: Int
+  url_data_id: Int
+  abstract: String
+  coverage_spatial: String
+  url_sites_id: Int
+  parent_id: Int
+  created_by: String
+  created_at: Date
+  modified_by: String
+  modified_at: Date
+
+  # For updating mappings
+  addVariables: [Int!]
+  removeVariables: [Int!]
+  addSites: [Int!]
+  removeSites: [Int!]
+}
+
+type Mutation {
+  # CRUD operations
+  updateDataproducts(input: [DataproductInput!]!): [Dataproduct!]!
+  updateVariables(input: [VariableInput!]!): [Variable!]!
+  updateProtocols(input: [ProtocolInput!]!): [Protocol!]!
+  updateNetworks(input: [NetworkInput!]!): [Network!]!
+
+  # Integrations
+  integrateIcos: IntegrationResult!
+}
+
+type IntegrationResult {
+  name: String!
+  success: Boolean!
+  msg: String
+}
+
+type Metadata {
+  i: Int
+  target: String
+  result: JSON
+  error: String
+}
+
+type Query {
+  variable(id: Int!): Variable
+  variables: [Variable]!
+
+  protocol(id: Int!): Protocol
+  protocols: [Protocol]!
+
+  dataproduct(id: Int!): Dataproduct
+  dataproducts: [Dataproduct!]!
+
+  searchMetadata(
+    limit: Int
+    offset: Int
+    bySites: [Int!]
+    byNetworks: [Int!]
+    byVariables: [Int!]
+    byProtocols: [Int!]
+  ): [Metadata!]!
+
+  dataproductsSummary: DataproductsSummary!
+
+  site(id: Int!): Site
+  sites(ids: [Int!]): [Site]!
+
+  # Aggregations
+  sitesAggregation(ids: [Int!]): [SitesAggregation]!
+  networksTypes(ids: [Int!]): [NetworksTypes]!
+  protocolsCoverages(ids: [Int!]): [ProtocolsCoverages]!
+  protocolsCoverageTypes(ids: [Int!]): [ProtocolsCoverageTypes]!
+  protocolsDomains(ids: [Int!]): [ProtocolsDomains]!
+  protocolsVariables(ids: [Int!]): [ProtocolsVariables]!
+  variablesDomains(ids: [Int!]): [VariablesDomains]!
+  variablesRfTypes(ids: [Int!]): [VariablesRfTypes]!
+  variablesProtocols(ids: [Int!]): [VariablesProtocols]!
+  variablesRforcingCompounds(ids: [Int!]): [VariablesRforcingCompounds]!
+
+  network(id: Int!): Network
+  networks: [Network!]!
+
+  radiativeForcings: [RadiativeForcing!]!
+
+  xrefSitesNetworks: [XrefSiteNetwork!]!
+  xrefNetworksVariables: [XrefNetworkVariable!]!
+  xrefProtocolsVariables: [XrefProtocolVariable!]!
+  xrefDataproductsVariables: [XrefDataproductVariable!]!
+}
+
+type DataproductsSummary {
+  count: Int!
+}
+
+type XrefSiteNetwork {
+  id: Int!
+  site_id: Int!
+  network_id: Int!
+}
+
+type XrefNetworkVariable {
+  id: Int!
+  network_id: Int!
+  variable_id: Int!
+}
+
+type XrefDataproductVariable {
+  id: Int
+  dataproduct_id: Int
+  variable_id: Int
+}
+
+type XrefProtocolVariable {
+  id: Int
+  protocol_id: Int
+  variable_id: Int
+  relationship_type: String
+}
+
+type Site {
+  id: Int
+  name: String
+  xyz: JSON
+  networks: [Network]
+}
+
+type RadiativeForcing {
+  id: Int
+  category: String
+  compound: String
+  min: Float
+  best: Float
+  max: Float
+  variables: [Variable!]!
+}
+
+type Network {
+  id: Int
+  title: String
+  acronym: String
+  type: String
+  status: String
+  start_year: Int
+  end_year: Int
+  url_info_id: Int
+  url_data_id: Int
+  abstract: String
+  coverage_spatial: String
+  url_sites_id: Int
+  parent_id: Int
+  created_by: String
+  created_at: Date
+  modified_by: String
+  modified_at: Date
+  variables: [Variable]!
+  sites: [Site]!
+}
+
+type Variable {
+  id: Int
+  name: String
+  class: String
+  domain: String
+  set: String
+  description: String
+  method: String
+  uri: String
+  rftype: String
+  score: Int
+  rating: Int
+  relevance: Float
+  feasibility: Float
+  cost: Float
+  updated_by: String
+  updated_at: Date
+  frequency_value: Float
+  frequency_unit: String
+  frequency_comment: String
+  res_value: Float
+  res_unit: String
+  res_comment: String
+  unc_val: Float
+  unc_unit: String
+  unc_comment: String
+  req_source: String
+  req_uri: String
+  technology_type: String
+  directly_related_protocols: [Protocol!]!
+  indirectly_related_protocols: [Protocol!]!
+  dataproducts: [Dataproduct!]!
+  rforcings: [RadiativeForcing!]!
+}
+
+type Protocol {
+  id: Int
+  doi: String
+  author: String
+  publisher: String
+  title: String
+  publish_date: String
+  publish_year: String
+  coverage_type: String
+  category: String
+  domain: String
+  purpose: String
+  abstract: String
+  license: String
+  language: String
+  format: String
+  sustainability: String
+  version: String
+  resolution: String
+  cost: String
+  source: String
+  created_by: String
+  created_at: Date
+  edited_by: String
+  updated_at: Date
+  directly_related_variables: [Variable!]!
+  indirectly_related_variables: [Variable!]!
+}
+
+type Dataproduct {
+  id: Int
+  title: String
+  publish_year: Int
+  publish_date: Date
+  keywords: String
+  abstract: String
+  provider: String
+  author: String
+  contact: String
+  coverage_spatial: JSON
+  coverage_temp_start: Date
+  coverage_temp_end: Date
+  res_spatial: Float
+  res_spatial_unit: String
+  res_temperature: Float
+  res_temperature_unit: String
+  uncertainty: Float
+  uncertainty_unit: String
+  doi: String
+  license: String
+  url_download: String
+  file_format: String
+  file_size: Float
+  file_size_unit: String
+  url_info: String
+  created_by: String
+  created_at: Date
+  modified_by: String
+  modified_at: Date
+  present: String
+  variables: [Variable!]!
+}
+
+#Aggregations
+type SitesAggregation {
+  network_id: Int
+  acronym: String
+  site_count: Int
+}
+type NetworksTypes {
+  network_count: Int
+  type: String
+}
+type ProtocolsCoverages {
+  coverage: String
+  protocol_count: Int
+}
+type ProtocolsCoverageTypes {
+  coverage_type: String
+  protocol_count: Int
+}
+type ProtocolsDomains {
+  domain: String
+  protocol_count: Int
+}
+type ProtocolsVariables {
+  protocol_id: Int
+  protocol_title: String
+  variable_count: Int
+}
+type VariablesDomains {
+  domain: String
+  variable_count: Int
+}
+type VariablesRfTypes {
+  rftype: String
+  variable_count: Int
+}
+type VariablesProtocols {
+  id: Int
+  variable_name: String
+  protocol_count: Int
+}
+type VariablesRforcingCompounds {
+  variable_id: Int
+  variable_name: String
+  rforcing_count: Int
+}

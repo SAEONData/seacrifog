@@ -1,0 +1,58 @@
+WMO Region,Country,Station,Latitude,Longitude,Elevation,WMO Index,GAW station designation,Operating status,Status2
+Africa,Cameroon,Zoétélé,3.25,11.88333,720,0-20008-0-ZTL,GAW Contributing networks,Non-reporting,Not operational
+Africa,Côte d'Ivoire,Lamto,6.224444389,-5.027777672,155,0-20008-0-LTO,GAW Regional,Operational,Operational
+Africa,Egypt,Siwa,29.25,25.14999962,3,0-20008-0-SIW,GAW Regional,Closed,Not operational
+Africa,Egypt,Hurghada,27.41666603,33.75,7,0-20008-0-HUR,GAW Regional,Operational,Operational
+Africa,Egypt,Cairo,30.08333397,31.28333282,35,0-20008-0-CAI,GAW Regional,Operational,Operational
+Africa,Nigeria,Ilorin,8.529999733,4.566999912,350,0-20008-0-ILO,GAW Other elements,Non-reporting,Not operational
+Africa,Egypt,Marsa Matrûh,31.32999992,27.21999931,35,0-20008-0-MRS,GAW Regional,Operational,Operational
+Africa,France,Port-aux-Français (Iles Kerguélen),-49.34999847,70.27999878,29,0-20008-0-KER,GAW Regional,Operational,Operational
+Africa,Kenya,Nairobi,-1.299999952,36.75,1795,0-20008-0-NRB,GAW Regional,Operational,Operational
+Africa,Mali,Katibougou,12.93333,7.533333,290,0-20008-0-KBG,GAW Contributing networks,Non-reporting,Not operational
+Africa,Morocco,Casablanca,33.56666565,-7.199999809,56,0-20008-0-CAB,GAW Regional,Operational,Operational
+Africa,Senegal,Bambey,14.69999981,-16.46666908,17,0-20008-0-BBY,GAW Regional,Closed,Not operational
+Africa,South Africa,Springbok,-29.66666603,17.89999962,1006,0-20008-0-SPK,GAW Regional,Non-reporting,Not operational
+Africa,Spain,Izaña (Tenerife),28.30900002,-16.49939919,2373,0-20008-0-IZO,GAW Global,Operational,Operational
+Africa,Algeria,Columb-Béchar,31.62999916,-2.25,806,0-20008-0-BEC,GAW Regional,Closed,Not operational
+Africa,France,Amsterdam Island,-37.7983017,77.53780365,70,0-20008-0-AMS,GAW Global,Partly operational,Not operational
+Africa,Namibia,Etosha Pan,-19.20000076,15.89999962,1100,0-20008-0-ETP,GAW Regional,Closed,Not operational
+Africa,Niger,Banizoumbou,13.51667,2.633333,220,0-20008-0-BNZ,GAW Contributing networks,Non-reporting,Not operational
+Africa,South Africa,De Aar,-30.66472244,23.99250031,1287,0-20008-0-DAA,GAW Regional,Non-reporting,Not operational
+Africa,South Africa,Pretoria,-25.73333359,28.18333244,1369,0-20008-0-PRT,GAW Regional,Closed,Not operational
+Africa,Botswana,Maun,-19.97559929,23.42720032,928,0-20008-0-DMS,GAW Regional,Non-reporting,Not operational
+Africa,Egypt,Sidi-Barrani,31.45000076,25.14999962,24,0-20008-0-SDB,GAW Regional,Operational,Operational
+Africa,Kenya,Mt. Kenya,-0.062199999,37.29719925,3678,0-20008-0-MKN,GAW Global,Operational,Operational
+Africa,Morocco,Ifrane,33.5,-5.166666508,1665,0-20008-0-IFR,GAW Regional,Non-reporting,Not operational
+Africa,Portugal,Funchal (Madeira),32.65000153,-16.88333321,58,0-20008-0-FUN,GAW Regional,Non-reporting,Not operational
+Africa,Seychelles,Mahé,-4.670000076,55.16999817,3,0-20008-0-SEY,GAW Regional,Operational,Operational
+Africa,Tunisia,Thala,36.54999924,8.683333397,1091,0-20008-0-THA,GAW Regional,Non-reporting,Not operational
+Africa,Algeria,Assekrem,23.26666641,5.633333206,2710,0-20008-0-ASK,GAW Global,Operational,Operational
+Africa,Congo,Bomassa,2.2,16.33333,350,0-20008-0-BMS,GAW Contributing networks,Non-reporting,Not operational
+Africa,Congo (Democratic Republic of the),Bunia,1.5,30.21999931,1239,0-20008-0-BNI,GAW Regional,Closed,Not operational
+Africa,Morocco,Beni Mellal,32.36666489,-6.400000095,468,0-20008-0-BML,GAW Regional,Non-reporting,Not operational
+Africa,South Africa,Skukuza,-24.99306,31.58389,0,0-20008-0-SKK,GAW Contributing networks,Non-reporting,Not operational
+Africa,United Kingdom (the),St. Helena,-15.93000031,-5.650000095,460,0-20008-0-SNH,GAW Regional,Closed,Not operational
+Africa,United Kingdom (the),Ascension Island,-7.96999979,-14.39999962,91,0-20008-0-ASC,GAW Regional,Operational,Operational
+Africa,Egypt,Aswan,23.96666718,32.78333282,194,0-20008-0-ASW,GAW Regional,Operational,Operational
+Africa,Mozambique,Nampula,-15.10000038,39.27999878,440,0-20008-0-NMP,GAW Regional,Closed,Not operational
+Africa,South Africa,Louis Trichardt,-22.98611,30.0225,1465,0-20008-0-LTR,GAW Contributing networks,Non-reporting,Not operational
+Africa,South Africa,Cape Point,-34.35348129,18.48968315,230,0-20008-0-CPT,GAW Global,Operational,Operational
+Africa,Cabo Verde,Cape Verde Atmospheric Observatory,16.864025,-24.867519,10,0-20008-0-CVO,GAW Global,Operational,Operational
+Africa,Congo (Democratic Republic of the),Leopoldville/Kinshasa,-4.300000191,15.55000019,450,0-20008-0-LEO,GAW Regional,Closed,Not operational
+Africa,Egypt,Farafra,27.05811691,27.9901638,92,0-20008-0-FRF,GAW Regional,Operational,Operational
+Africa,France,La Réunion,-21.0796,55.3841,2160,0-20008-0-RUN,GAW Regional,Operational,Operational
+Africa,France,Crozet,-46.43333817,51.83358002,120,0-20008-0-CRZ,GAW Regional,Operational,Operational
+Africa,Malawi,Lilongwe,-13.78332996,33.78333282,1228,0-20008-0-LIL,GAW Regional,Closed,Not operational
+Africa,Nigeria,Lagos,6.599999905,3.299999952,10,0-20008-0-LAG,GAW Regional,Non-reporting,Not operational
+Africa,Algeria,Tamanrasset,22.78333282,5.516666889,1377,0-20008-0-TAM,GAW Global,Partly operational,Not operational
+Africa,Benin,Djougou,9.65,1.733333,430,0-20008-0-DJG,GAW Contributing networks,Non-reporting,Not operational
+Africa,Benin,Cotonou,6.210000038,2.230000019,10,0-20008-0-COT,GAW Regional,Closed,Not operational
+Africa,Congo,Brazzaville,-4.28000021,15.25,314,0-20008-0-BZV,GAW Regional,Closed,Not operational
+Africa,Kenya,Malindi,-2.99000001,40.18999863,0,0-20008-0-MLD,GAW Regional,Closed,Not operational
+Africa,Mozambique,Maputo,-25.96999931,32.59999847,70,0-20008-0-MPT,GAW Regional,Closed,Not operational
+Africa,Namibia,Gobabeb,-23.56999969,15.02999973,408,0-20008-0-NMB,GAW Regional,Operational,Operational
+Africa,Nigeria,Oshogbo,7.800000191,4.5,300,0-20008-0-OSG,GAW Regional,Non-reporting,Not operational
+Africa,South Africa,Amersfoort,-27.07028,29.86722,1608,0-20008-0-AMF,GAW Contributing networks,Non-reporting,Not operational
+Africa,South Africa,Marion Island,-46.86999893,37.84999847,20,0-20008-0-MAR,GAW Regional,Closed,Not operational
+Africa,South Africa,Irene,-25.90999985,28.21666718,1524,0-20008-0-IRE,GAW Regional,Non-reporting,Not operational
+Africa,Spain,Santa Cruz (Tenerife),28.47253037,-16.24736023,52,0-20008-0-SCO,GAW Regional,Operational,Operational

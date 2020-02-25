@@ -1,0 +1,155 @@
+Name,Country,Latitude,Longitude,Altitude,Type,WMO,Transmission,Air temperature,Soil temperature,Wind,Rain,Relative humidity,Barometric pressure,Solar irradiance,Leaf wetness,Fog precipitation,Soil moisture,Sunshine duration,Dew point,Wet bulb,First data,Status/Last data,Status2
+Acucareira,Angola,-8.59100,13.60400,14,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,11/1/2017,active,Operational
+Alto Dondo,Angola,-9.68333,14.46667,185,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,4/14/2014,undetermined,Unknown
+Barragem das Neves,Angola,-14.95200,13.36300,2074,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/19/2014,active,Operational
+Benfica,Angola,-9.00000,13.09100,70,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,10/10/2009,active,Operational
+Bentiaba,Angola,-14.25700,12.38700,11,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/27/2014,active,Operational
+Bibala,Angola,-14.80800,13.34100,1061,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/21/2014,active,Operational
+Cacuso,Angola,-9.42808,15.74621,1064,INOVA,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/15/2014,09.03.2016 (1),Not operational
+Caiundo,Angola,-16.41440,17.82000,1204,Adcon/OTT,,GPRS,No,No,No,No,No,No,No,No,No,No,No,No,No,-,(1),Not operational
+Campus ISPT,Angola,-14.95800,13.44500,2047,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/17/2014,active,Operational
+Caope,Angola,-8.75500,13.42300,21,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,1/1/2016,active,Operational
+Capangombe,Angola,-15.09600,13.13800,535,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/22/2014,active,Operational
+Caraculo,Angola,-15.01900,12.65800,470,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/24/2014,active,Operational
+Chianga (Huambo),Angola,-12.74349,15.82923,1695,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,4/13/2014,undetermined,Unknown
+Cuito Cuanavale,Angola,-15.18150,19.17833,1214,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,8/15/2014,undetermined,Unknown
+Cusseque,Angola,-13.71000,17.10000,1529,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,3/27/2015,inactive,Not operational
+Damba,Angola,-6.68333,14.13333,602,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,4/28/2014,inactive,Not operational
+Espinheira,Angola,-16.77577,12.34777,448,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,10/20/2015,active,Operational
+Fazenda Pongo-Andongo 2,Angola,-9.64400,15.49100,1072,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,6/20/2011,inactive,Not operational
+Flamingos Bay,Angola,-15.56784,12.02124,13,Adcon/OTT,,MAN,Yes,No,No,Yes,Yes,No,No,No,Yes,No,No,No,No,10/13/2017,active,Operational
+Gambos,Angola,-15.65000,14.06667,1318,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,4/11/2014,undetermined,Unknown
+Ganda,Angola,-12.95000,14.63333,1412,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,4/8/2014,undetermined,Unknown
+Gove,Angola,-13.45500,15.85900,1741,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,6/18/2012,active,Operational
+Great Welwitschia,Angola,-15.56800,12.14000,98,Adcon/OTT,,GPRS,Yes,No,No,Yes,Yes,No,No,No,Yes,No,No,No,No,10/26/2015,active,Operational
+Humpata,Angola,-15.06900,13.35100,1880,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/17/2014,active,Operational
+IMA - Huambo,Angola,-12.81500,15.64100,1736,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,1/1/2014,inactive,Not operational
+Iona Costal,Angola,-16.80562,11.88445,187,Adcon/OTT,,MAN,No,No,No,No,No,No,No,No,No,No,No,No,No,1/15/2017,active,Operational
+ISPKS - Sumbe,Angola,-11.28500,13.89600,275,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,2/2/2016,active,Operational
+Kessua,Angola,-9.46400,16.28500,1115,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,11/24/2014,active,Operational
+Kibala (Catofe),Angola,-10.73597,14.98446,1272,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,4/14/2014,undetermined,Unknown
+Matala,Angola,-14.88700,15.08300,1204,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/8/2013,active,Operational
+Muconda,Angola,-10.58769,21.31772,1096,INOVA,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,No,7/5/2014,undetermined,Unknown
+Mukongo,Angola,-14.74900,12.50500,390,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/26/2014,active,Operational
+Munhino,Angola,-14.95655,12.97733,402,Adcon/OTT,,MAN,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/23/2016,active,Operational
+Namacunde,Angola,-17.31200,15.85300,1112,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,4/1/2015,inactive,Not operational
+Namibe,Angola,-15.15900,12.17800,11,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,10/30/2014,active,Operational
+Onjiva,Angola,-16.97600,15.61500,1119,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,4/1/2015,active,Operational
+PN Bicuar,Angola,-15.10000,14.83330,1243,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,3/21/2015,active,Operational
+Projecto Terra do Futuro (PTF),Angola,-10.46700,15.71100,1602,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/3/2015,inactive,Not operational
+Quibaxi,Angola,-8.51300,14.59000,872,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,5/11/2012,active,Operational
+Tchivinguiro,Angola,-15.16900,13.29900,1662,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/2/2015,active,Operational
+Tundavala,Angola,-14.84500,13.40700,2060,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/18/2014,17.04.2016 (2),Not operational
+Tundavala Observatory,Angola,-14.79990,13.40750,2300,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,3/18/2015,active,Operational
+UJES-Huambo,Angola,-12.86300,15.73100,1664,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/2/2013,inactive,Not operational
+Wako-Kungo,Angola,-11.41100,15.12900,1331,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,6/2/2012,active,Operational
+Xangongo,Angola,-16.71900,14.98200,1123,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,5/20/2015,active,Operational
+Baines Drift,Botswana,-22.48983,28.69675,709,CTS,68088,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,Yes,3/17/2015,active,Operational
+Ghanzi,Botswana,-21.71508,21.65317,1137,CTS,68024,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/13/2014,active,Operational
+Goodhope,Botswana,-25.46025,25.42678,1275,CTS,68325,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/1/2014,active,Operational
+Lephepe,Botswana,-23.36564,25.84719,1024,CTS,68151,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/6/2014,active,Operational
+Lotlhakane East,Botswana,-25.08000,25.43000,1216,Cimel,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,No,8/25/2015,active,Operational
+Mababe,Botswana,-19.01800,23.96669,931,CTS,68028,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,3/30/2015,active,Operational
+Mahalapye,Botswana,-23.11253,26.85922,1015,CTS,68148,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/7/2014,active,Operational
+Malopowabojang,Botswana,-25.20000,25.57000,1224,Cimel,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,No,8/27/2015,active,Operational
+Mogobane,Botswana,-24.98000,25.70000,1076,Cimel,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,No,8/25/2015,active,Operational
+Ngwatle,Botswana,-23.71239,21.07972,1176,CTS,68218,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,Yes,8/25/2015,active,Operational
+Pandamatenga,Botswana,-18.54463,25.63583,1074,CTS,68030,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/21/2014,active,Operational
+Ramotswa,Botswana,-24.88000,25.88000,1040,Cimel,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,No,8/25/2015,active,Operational
+Ranaka,Botswana,-24.90000,25.45000,1224,Cimel,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,No,8/25/2015,active,Operational
+Shakawe,Botswana,-18.36856,21.83931,1002,CTS,68026,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/12/2014,active,Operational
+Sowa,Botswana,-20.54742,26.07842,911,CTS,68038,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/22/2014,active,Operational
+Tsabong,Botswana,-26.03136,22.40086,960,CTS,68328,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/14/2014,active,Operational
+Tshane,Botswana,-24.01928,21.86856,1125,CTS,68226,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/14/2014,active,Operational
+Tubu (Okavango Delta),Botswana,-19.35786,22.28400,967,CTS,68027,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,Yes,3/26/2015,active,Operational
+Werda,Botswana,-25.26800,23.25919,1030,CTS,68320,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,2/7/2014,active,Operational
+Xade,Botswana,-22.34072,23.02983,1004,CTS,68084,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes,Yes,8/22/2015,active,Operational
+Alex Muranda Livestock Development Centre,Namibia,-18.36430,19.25620,1166,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,10/7/2010,active,Operational
+Aussinanis,Namibia,-23.44354,15.04594,405,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,8/7/2014,active,Operational
+Bagani,Namibia,-18.09464,21.55997,1008,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/19/2013,active,Operational
+Claratal,Namibia,-22.78760,16.81440,1950,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,11/24/2010,active,Operational
+Coastal Met,Namibia,-23.05631,14.62595,94,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,9/7/2014,active,Operational
+Conception Water,Namibia,-24.01533,14.55038,9,Gobabeb,,SAT,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,1/1/2017,active,Operational
+Dieprivier (Namib Desert Lodge),Namibia,-24.12960,15.89470,1056,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,6/7/2011,active,Operational
+Erichsfelde,Namibia,-21.59860,16.90120,1499,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,11/26/2010,inactive,Not operational
+Ganab,Namibia,-23.12180,15.53830,1002,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,6/9/2011,active,Operational
+Garnet Koppie,Namibia,-23.11539,15.30504,733,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,8/14/2014,active,Operational
+Gellap Ost,Namibia,-26.40110,18.00720,1080,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/24/2011,active,Operational
+Giribisvlakte,Namibia,-19.09570,13.32611,630,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,6/27/2015,active,Operational
+Gobabeb Met,Namibia,-23.56044,15.04100,406,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,No,No,10/4/2014,active,Operational
+Hamoye,Namibia,-18.23475,19.73231,1122,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,2/18/2013,active,Operational
+John Pandeni,Namibia,-19.70778,18.03528,1434,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,11/24/2012,active,Operational
+Kalahari,Namibia,-24.16283,18.47672,1229,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,10/12/2012,inactive,Not operational
+Kalimbeza,Namibia,-17.54472,24.52669,939,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,7/17/2013,active,Operational
+Kanovlei,Namibia,-19.33269,19.48108,1217,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/12/2016,active,Operational
+Kaoko Otavi,Namibia,-18.30023,13.65983,1427,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,4/17/2016,active,Operational
+Karios (Gondwana Canyon Lodge),Namibia,-27.67450,17.81950,893,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/23/2011,active,Operational
+Khorixas,Namibia,-20.37892,14.96952,967,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/27/2016,active,Operational
+Kleinberg,Namibia,-22.98950,14.72817,185,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,3/24/2011,active,Operational
+Kleinberg-FN,Namibia,-22.98928,14.72793,184,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,8/7/2014,active,Operational
+Koichab Pan,Namibia,-26.20761,15.86300,525,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,10/19/2015,active,Operational
+Konop Pos,Namibia,-20.16800,14.96456,1073,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,11/29/2016,active,Operational
+Mahenene,Namibia,-17.44433,14.78481,1114,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,2/24/2012,active,Operational
+Mannheim,Namibia,-19.16861,17.76306,1222,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,12/6/2012,active,Operational
+Marble Koppie,Namibia,-22.96948,14.98968,421,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,8/7/2014,active,Operational
+Marienflusstal,Namibia,-17.60886,12.60181,572,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,6/30/2015,07.05.2017 (1),Not operational
+Mashare,Namibia,-17.89460,20.20850,1066,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/17/2012,inactive,Not operational
+Mopanie Pos 6,Namibia,-20.25674,15.06718,1097,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,11/26/2016,active,Operational
+Narais - Duruchaus,Namibia,-23.12125,16.90061,1627,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,11/25/2010,active,Operational
+Ngoma,Namibia,-17.89950,24.70794,938,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,7/16/2013,inactive,Not operational
+Nico,Namibia,-25.31275,17.83458,1058,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,4/2/2010,active,Operational
+Ogongo,Namibia,-17.67853,15.29481,1111,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/25/2012,active,Operational
+Okahandja (NRFC),Namibia,-22.00564,16.91797,1321,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,8/23/2012,active,Operational
+Okamboro,Namibia,-22.00949,17.04139,1461,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,3/24/2011,active,Operational
+Okangwati,Namibia,-17.43025,13.27810,1081,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,4/15/2016,active,Operational
+Okapya,Namibia,-18.47250,17.33908,1138,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,2/24/2012,active,Operational
+Okashana,Namibia,-18.41111,16.63853,1106,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,2/25/2012,active,Operational
+Okomumbonde,Namibia,-20.48327,17.34317,1389,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,11/21/2012,active,Operational
+Omatako Ranch,Namibia,-21.50940,16.72910,1496,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,12/8/2010,active,Operational
+Omatjenne,Namibia,-20.44278,16.49333,1376,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,2/3/2012,active,Operational
+Oshaambelo,Namibia,-17.84286,14.77008,1114,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,2/24/2012,active,Operational
+Rooisand,Namibia,-23.29453,16.11467,1176,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,3/24/2011,active,Operational
+Sachinga,Namibia,-17.67367,24.03189,982,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,7/17/2013,active,Operational
+Salt Works,Namibia,-23.02352,14.46317,5,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,11/20/2017,active,Operational
+Sandveld,Namibia,-22.04450,19.13210,1527,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,1/11/2011,active,Operational
+Sonop Research Station,Namibia,-19.01010,18.90390,1218,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,10/9/2010,inactive,Not operational
+Sophies Hoogte,Namibia,-23.00681,14.89087,334,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,8/7/2014,active,Operational
+Station 8,Namibia,-23.26530,15.05627,487,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,No,No,8/7/2014,active,Operational
+Tsumis,Namibia,-23.72978,17.19386,1376,MCS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,5/25/2012,active,Operational
+Tsumkwe Breeding Station,Namibia,-19.61560,20.44200,1153,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,8/5/2011,active,Operational
+Vogelfederberg,Namibia,-23.09797,15.02903,501,Gobabeb,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,8/11/2014,active,Operational
+Waterberg,Namibia,-20.39710,17.35290,1575,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,9/9/2011,active,Operational
+Windhoek (NBRI),Namibia,-22.57070,17.09570,1700,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,10/1/2010,active,Operational
+Windhoek (Satellite),Namibia,-22.57238,17.09481,1737,CTS,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,7/9/2014,active,Operational
+Wlotzkasbaken,Namibia,-22.31490,14.46210,55,CTS,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,6/10/2011,active,Operational
+Alexanderbay Lichen Field,South Africa,-28.62496,16.50674,80,Adcon/OTT,,GPRS,Yes,No,Yes,Yes,Yes,No,No,No,Yes,No,No,No,No,10/1/2015,active,Operational
+Alpha,South Africa,-26.76178,20.62504,872,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/3/2015,active,Operational
+Eksteenfontein,South Africa,-28.83653,17.29039,606,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/5/2015,active,Operational
+Koeroegabvlakte,South Africa,-28.23590,17.02557,641,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,3/8/2015,active,Operational
+Moedverloor,South Africa,-31.47273,18.44542,147,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,10/6/2016,active,Operational
+Numees,South Africa,-28.31426,16.96585,391,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,3/6/2015,active,Operational
+Paulshoek,South Africa,-30.39500,18.28118,996,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,10/11/2015,active,Operational
+Ratelgat,South Africa,-31.28616,18.60281,209,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,10/10/2015,inactive,Not operational
+Soebatsfontein,South Africa,-30.18294,17.55062,244,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,10/11/2015,active,Operational
+Vandersterrberg,South Africa,-28.47126,17.11159,1063,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,3/7/2015,active,Operational
+Verlorenvlei,South Africa,-32.59810,18.68285,53,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,9/24/2015,active,Operational
+Yellow Dune,South Africa,-28.61105,16.65436,161,Adcon/OTT,,GPRS,No,No,No,No,No,No,No,No,No,No,No,No,No,3/9/2015,active,Operational
+Chadiza,Zambia,-14.06000,32.43200,1056,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,6/29/2015,active,Operational
+Copperbelt University,Zambia,-12.80610,28.23740,1220,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/10/2015,active,Operational
+Dongwe,Zambia,-14.01259,24.02188,1071,Adcon/OTT,,SAT,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,5/14/2015,inactive,Not operational
+Kabwe Mulungushi,Zambia,-14.29257,28.56632,1142,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/8/2013,active,Operational
+Kafue National Park-Tatayoyo,Zambia,-14.90153,24.43200,1231,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/6/2015,inactive,Not operational
+Kalabo,Zambia,-14.98895,22.68175,1018,Adcon/OTT,67625,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,12/2/2013,active,Operational
+Kalomo,Zambia,-16.96000,26.47500,1274,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,2/24/2015,inactive,Not operational
+Kasempa,Zambia,-13.45696,25.83370,1227,Adcon/OTT,67541,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,11/26/2013,active,Operational
+Luampa,Zambia,-15.14233,24.49237,1130,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,4/5/2015,inactive,Not operational
+Lusaka Int. Airport,Zambia,-15.31929,28.44050,1149,Adcon/OTT,67665,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/8/2013,active,Operational
+Lusaka University of Zambia,Zambia,-15.39117,28.33204,1260,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/10/2013,active,Operational
+Mpulungu,Zambia,-8.77300,31.11700,801,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,5/20/2015,active,Operational
+Mwinilunga,Zambia,-11.73998,24.43100,1360,Adcon/OTT,67441,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,12/4/2013,active,Operational
+Namwala,Zambia,-15.75000,26.43300,998,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,2/22/2015,active,Operational
+Nangweshi,Zambia,-16.24592,23.23711,1014,Adcon/OTT,,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,2/23/2015,inactive,Not operational
+Samfya,Zambia,-11.37119,29.56057,1194,Adcon/OTT,67469,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/6/2013,active,Operational
+Serenje,Zambia,-13.22670,30.21508,1395,Adcon/OTT,67571,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,10/7/2013,active,Operational
+Sesheke,Zambia,-17.47110,24.30130,944,Adcon/OTT,67741,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,11/22/2013,active,Operational
+Zambezi,Zambia,-13.53365,23.10790,1066,Adcon/OTT,67531,GPRS,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,11/27/2013,active,Operational

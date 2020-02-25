@@ -1,0 +1,4 @@
+Site,URL,Est_,Latitude,Longitude,Elevation,PI,Inst__Type,Detectors,Acq,Sample__kH,LPF__kHz_,AP,Pins,Scan_Mode,Anthrome,Biome,Ecosystem
+"Izana, Tenerife",https://tccon-wiki.caltech.edu/Sites/Izana,7-May,28.3,-16.5,2370,Blumenstock, 125HR*," xInGaAs, InSb, HgCdTe",1,40,0,0,1,"DC since Jun-08, F&R averages (3)",,,Canary Islands dry woodlands and forests
+Reunion Island,https://tccon-wiki.caltech.edu/Sites/Reunion_Island,5-Sep-11,-20.901,55.485,87,Maziere,125HR,"xInGaAs, Si, InSb, MCT",2,10,10,0,0,"DC, F&R single scans",52: Populated woodlands,Tropical and Subtropical Moist Broadleaf Forests,Mascarene forests
+Ascension Island,https://tccon-wiki.caltech.edu/Sites/Ascension_Island,12-May,-7.9165,-14.3325,10,Feist, 125HR,"xInGaAs, Si",2,10,40,0,0,"DC,F&R single scans",,"Tropical and subtropical grasslands, savannas, and shrublands",Ascension scrub and grasslands

@@ -1,0 +1,29 @@
+Code,Name,URL,Latitude,Longitude,Altitude,WMO No.,Status
+ALC,"Alice Springs, Australia",https://www.gruan.org/network/sites/alice-springs,-23.70,133.87,546 m,94326,to be certified
+BAR,"Barrow, AK, USA",https://www.gruan.org/network/sites/barrow,71.32,-156.61,8 m,70027,to be certified
+BEL,"Beltsville, MD, USA",https://www.gruan.org/network/sites/beltsville,39.05,-76.88,53 m,,certified
+BOU,"Boulder, CO, USA",https://www.gruan.org/network/sites/boulder,39.95,-105.20,1743 m,72471,certified
+CAB,"Cabauw, Netherlands",https://www.gruan.org/network/sites/cabauw,51.97,4.92,1 m,6260,certified
+DAR,"Darwin, Australia",https://www.gruan.org/network/sites/darwin,-12.43,130.89,30 m,94120,to be certified
+DVS,"Davis, Australia",https://www.gruan.org/network/sites/davis,-68.58,77.97,18 m,89571,to be certified
+DLG,"Dolgoprudny, Russia",https://www.gruan.org/network/sites/dolgoprudny,55.75,37.62,185 m,27612,to be certified
+GRA,"Graciosa, Portugal",https://www.gruan.org/network/sites/graciosa,39.09,28.03,30 m,,to be certified
+LAU,"Lauder, New Zealand",https://www.gruan.org/network/sites/lauder,-45.05,169.68,370 m,93817,certified
+LIN,"Lindenberg, Germany",https://www.gruan.org/network/sites/lindenberg,52.21,14.12,98 m,10393,certified
+MAQ,"Macquarie Island, Australia",https://www.gruan.org/network/sites/macquarie-island,-54.62,158.85,6 m,94998,to be certified
+MAN,"Manus, Papua New Guinea",https://www.gruan.org/network/sites/inactive/manus,-2.06,147.42,6 m,,inactive
+MEL,"Melbourne, Australia",https://www.gruan.org/network/sites/melbourne,-37.81,144.96,113 m,94866,to be certified
+,"Minamitorishima, Japan",https://www.gruan.org/network/sites/minamitorishima,24.29,153.98,9 m,,to be certified
+NAU,"Nauru, Nauru",https://www.gruan.org/network/sites/inactive/nauru,-0.52,166.92,7 m,,inactive
+NYA,"Ny-Ålesund, Norway",https://www.gruan.org/network/sites/ny-aalesund,78.92,11.92,5 m,1004,certified
+PAY,"Payerne, Switzerland",https://www.gruan.org/network/sites/payerne,46.81,6.95,491 m,6610,certified
+POT,"Potenza, Italy",https://www.gruan.org/network/sites/potenza,40.60,15.72,720 m,,certified
+REU,"La Réunion, France",https://www.gruan.org/network/sites/la-reunion,-21.08,55.38,2200 m,,to be certified
+SGP,"Lamont, OK, USA",https://www.gruan.org/network/sites/lamont,36.60,-97.49,320 m,74646,to be certified
+SIR,"Paris, France",https://www.gruan.org/network/sites/paris,48.70,2.20,156 m,7151,to be certified
+SNG,"Singapore, Singapore",https://www.gruan.org/network/sites/singapore,1.30,103.80,21 m,48698,to be certified
+SOD,"Sodankylä, Finland",https://www.gruan.org/network/sites/sodankylae,67.37,26.63,179 m,2836,certified
+,"Syowa, Japan",https://www.gruan.org/network/sites/syowa,-69.00,39.58,18 m,,to be certified
+TAT,"Tateno, Japan",https://www.gruan.org/network/sites/tateno,36.06,140.13,25 m,47646,to be certified
+TEN,"Tenerife, Spain",https://www.gruan.org/network/sites/tenerife,28.32,-16.38,115 m,60018,to be certified
+XIL,"Xilin Hot, China",https://www.gruan.org/network/sites/xilinhot,43.95,116.12,1013 m,54102,to be certified

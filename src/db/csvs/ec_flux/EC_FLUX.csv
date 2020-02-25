@@ -1,0 +1,69 @@
+Complete.info,Site.Code,Site.Name,Country,Site.Responsible,EFDC,FLUXNET,Active,Status2,Source..active.or.not.,Latitude,Longitude,IGBP.Cde,Vegetion.type,Projects,Fluxes,Contacts,Time.coverage,Date_Start,Date_End
+1,BF-Bon,Bontioli,Burkina Faso,"Ulrike Falk, Christian Bruemmer, Nicolas Brueggemann",1,0,0,Not operational,Christian Bruemmer,10.865556,-3.072778,SAV,"Natural park, semi-arid savanna, 70% grasses","VH-VI-001, KIT IMK-IFU Helmholtz","CO2-E|H-E|LE-E plus chamber fluxes of CO2, CH4 and N2O",christian.bruemmer@thuenen.de,Oct 2004 to Oct 2006,01/10/2004,01/10/2006
+0,BF-Btd,Boudtenga,Burkina Faso,Ulrike Falk,1,0,,Unknown,,12.46,-1.25,CRO,,,,,,,
+1,,Nazinga,Burkina Faso,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",0,0,1,Operational,Antonio Bombelli,11.15162,-1.58565,,"natural forest, no agriculture or land burning/clearing (national park)",WASCAL KIT IMK-IFU,,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",23/01/2013 to 16/06/2016,23/01/2013,
+1,BJ-Nan,Nangatchori,Benin,Laurent Kergoat,1,0,0,Not operational,Antonio Bombelli,9.646983333,1.740883333,CRO,Crop (Fallows),CarboAfrica,,--,2007-2009 app.,01/01/2007,01/01/2009
+1,BW-GhG,Ghanzi Grass Site,Bostwana,Christopher Williams,1,0,0,Not operational,Christopher Williams,-21.51,21.74,GRA,,,,CWilliams@clarku.edu,5 March-8 April 2002,05/03/2002,08/04/2002
+1,BW-GhM,Ghanzi Mixed Site,Bostwana,Christopher Williams,1,0,0,Not operational,Christopher Williams,-21.2,21.75,SAV,,,,CWilliams@clarku.edu,5 March-8 April 2002,05/03/2002,08/04/2002
+0,BW-Ghz,Ghanzi/Okwa River Crossing,Bostwana,Almut Arneth,1,0,,Unknown,,-22.40916667,21.71305556,OSH,,,,almut.arneth@kit.edu,,,
+1,BW-Ma1,Maun,Bostwana,Almut Arneth| Elmar Veenendaal,1,0,0,Not operational,Antonio Bombelli,-19.9165,23.56033333,SAV,Savanna (Mopane),CarboAfrica,,almut.arneth@kit.edu,2007-2009 app.,01/01/2007,01/01/2009
+0,BW-Mkt,Maun - Kalahari Transect,Bostwana,Almut Arneth,1,0,,Unknown,,-19.923,23.594,SAV,,,,almut.arneth@kit.edu,,,
+1,CG-Hin,Hinda,Republic of Congo,Yann Nouvellon,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,-4.68111111,12.0036111,EBF,Forest,CarboAfrica,,standre@cirad.fr,2007-2009 app.,01/01/2007,01/01/2009
+1,CG-Kis,Kissoko,Republic of Congo,Yann Nouvellon,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,-4.791388889,11.98222222,EBF,"Forest (Eucalyptus, Natural Hybrid)",CarboAfrica,,standre@cirad.fr,2007-2009 app.,01/01/2007,01/01/2009
+1,CG-Tch,Tchizalamou,Republic of Congo,Blandine Caquet,1,1,0,Not operational,Olivier Roupsard & Antonio Bombelli,-4.289166667,11.65641667,SAV,Savanna,CarboAfrica,,standre@cirad.fr,2007-2009 app.,01/01/2007,01/01/2009
+1,,Yangambi,DR Congo,Hans Verbeeck & Pascal Boeckx,0,0,planned,Planned,Hans Verbeeck & Pascal Boeckx,0.33333,24.5,,Mixed Rainforest,ERC project Treeclimbers,,Hans.Verbeeck@UGent.be,,,
+1,,Yangambi,DR Congo,Hans Verbeeck & Pascal Boeckx,0,0,planned,Planned,Hans Verbeeck & Pascal Boeckx,0.33333,24.5,,Young fallow,ERC project Treeclimbers,,Hans.Verbeeck@UGent.be,,,
+1,GH-Ank,Ankasa,Ghana,Riccardo Valentini,1,1,0,Not operational,Antonio Bombelli ,5.26854275,-2.69420592,EBF,Forest (Tropical evergreen),CarboAfrica,CH4-E|CH4-C|CO2-E|H-E|LE-E,antonio.bombelli@cmcc.it,CO2 fluxes for the period 2011-2014 (and some spot periods). Currently not working ,,
+1,,Sumbrungu,Ghana,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",0,0,0,Not operational,Antonio Bombelli,10.84632,-0.91737,,"grazing ground for cattle, grassland",WASCAL KIT IMK-IFU,,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",09/10/2012 to 13/03/2016 and 23/09/16 to 24/11/16,09/10/2012,01/11/2016
+1,,Kayoro,Ghana,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",0,0,1,Operational,Antonio Bombelli,10.91806,-1.32088,,"agriculturally heavily used since 2014 (ground nuts), beforehand partially used cropland",WASCAL KIT IMK-IFU,,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",10/10/2012 to 28/09/2016,10/10/2012,
+1,,Mpala,Kenya,"Mpala Research Station, Kelly Caylor (USCB)",0,0,1,Operational,John Gitonga & Kelly Caylor ,0.4856,36.8701,SAV,"dominant grass species such as cyanodon, the dominant trees are the Acacia Mellifera, Etbiaca, a few  of Tortilis, brevisca,  Boschia, Croton, all growing into thick bushes.",Mpala Research Station,CO2-E|H-E|LE-E,rajonny@ymail.com; caylor@ucsb.edu,"from 2008/2009 to half 2017 (interruptions), recently restablished ",01/01/2009,01/07/2017
+1,,Mazingira,Kenya,Lutz Merbold & Martin Wooster (Kings College London ) ,0,0,planned,Planned,Lutz Merbold,1.61428,37.11422,SAV,rangeland (wildlife and livestock integrated),Mazingira Centre ILRI,,L.Merbold@cgiar.org,planned to install June 2018,,
+1,ML-AgG,Agoufou G,Mali,Laurent Kergoat| Franck Timouk,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,15.34322,-1.48067,GRA,Grassland,CarboAfrica,,"kergoat@cict.fr 
+franck.timouk@ird.fr
+",2007-2009 app.,01/01/2007,01/01/2009
+1,ML-AgS,Agoufou S,Mali,Laurent Kergoat,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,15.49961667,1.390083333,,Gravelly red soil,CarboAfrica,,"kergoat@cict.fr 
+franck.timouk@ird.fr
+",2007-2009 app.,01/01/2007,01/01/2009
+1,ML-Bam,Bamba,Mali,Laurent Kergoat,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,17.09838,1.4011655,,Desert,CarboAfrica,,"kergoat@cict.fr 
+franck.timouk@ird.fr
+",2007-2009 app.,01/01/2007,01/01/2009
+1,ML-Kem,Kelma,Mali,Laurent Kergoat| Franck Timouk,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,15.2237,-1.5662,DBF,Forest (Acacia),CarboAfrica,,"kergoat@cict.fr 
+franck.timouk@ird.fr
+",2007-2009 app.,01/01/2007,01/01/2009
+1,NE-WaD,Wankama Degraded Fallow,Niger,Bernard Cappelaere,1,0,0,Not operational,Olivier Roupsard,13.6463167,2.64301667,CRO,,,,,,,
+1,NE-WaF,Wankama Fallow,Niger,Bernard Cappelaere,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,13.64758138,2.63368891,CRO,Cropland,CarboAfrica,,"ramier@ird.ne cappelaere@herault.msem.univ-montp2.fr
+
+",2007-2009 app.,01/01/2007,01/01/2009
+1,NE-WaM,Wankama Millet,Niger,Bernard Cappelaere,1,0,0,Not operational,Olivier Roupsard & Antonio Bombelli,13.644017,2.62984816,CRO,Cropland,CarboAfrica,,"ramier@ird.ne cappelaere@herault.msem.univ-montp2.fr
+
+",2007-2009 app.,01/01/2007,01/01/2009
+1,SD-Dem,Demokeya,Sudan,Jonas Ardo| Eltahir Bashir,1,1,0,Not operational,Antonio Bombelli,13.2829,30.4783,SAV,Savanna/Grassland,CarboAfrica,,jonas.ardo@nateko.lu.se,2007-2009 app.,01/01/2007,01/01/2009
+1,SN-Niakhar,Niakhar,Senegal,Olivier Roupsard,0,0,1,Operational,Olivier Roupsard (recently installed),14.494817,-16.452128,,,,,,,,
+1,SN-Dhr,Dahra,Senegal,Torbern Tagesson,1,1,1,Operational,Olivier Roupsard,15.40278,-15.43222,SAV,,,CO2-E|H-E|LE-E,,,,
+1,UG-Jin,Jinja,Uganda,Matthew Saunders ,1,0,0,Not operational,Matthew Saunders ,0.4,33.18333333,WET,Papyrus wetland,"EU 5th Framework project: TCD
+Makerere University (Uganda)
+University of York (UK)
+UNESCO-IHE (NL)
+Kenyan Institute for public policy research and analysis 
+MWLE PQA Department (Uganda)
+University of Siena (IT - Project lead)",CO2-E|H-E|LE-E,Matthew Saunders,June 2003 to March 2004,01/06/2003,01/03/2004
+1,,Nakivubo,Uganda,Matthew Saunders ,0,0,0,Not operational,Matthew Saunders ,0.28333,32.65,WET,Former papyrus wetland converted to cocoyam,"EU 5th Framework project: TCD
+Makerere University (Uganda)
+University of York (UK)
+UNESCO-IHE (NL)
+Kenyan Institute for public policy research and analysis 
+MWLE PQA Department (Uganda)
+University of Siena (IT - Project lead)",CO2-E|H-E|LE-E,Matthew Saunders,June to November 2004,01/06/2004,01/11/2004
+1,ZA-Kru,Skukuza,South Africa,Azwitamisi Mudau,1,1,1,Operational,Christian Bruemmer & Antonio Bombelli,-25.0197,31.4969,SAV,Savanna (Fineleaf/broadleaf),CarboAfrica & ARS AfricaE & CSIR,CO2-E|H-E|LE-E,Bob.Scholes@wits.ac.za,"the site was established in 2001, there is from 2001 up (Feig et al. 2017 say from 2000) to today (with some interim gaps)",01/01/2001,
+1,ZA-Map,Malopeni,South Africa,Azwitamisi Mudau,1,0,1,Operational,Christian Bruemmer & Antonio Bombelli,-23.83254,31.21436,SAV,Savanna,CarboAfrica & ARS AfricaE & CSIR,CO2-E|H-E|LE-E,Bob.Scholes@wits.ac.za,2008-now,01/01/2008,
+1,ZA-Wgn,Welgegund,South Africa,Lauri Laakso,1,0,1,Operational,Lauri Laakso,-26.56944444,26.93916667,GRA,grazed grassland savannah with scattered acacia trees,"Uhelsinki, Finnish Meteorological Institute, North West University",CO2-E|H-E|LE-E|NO2|SO2,lauri.laakso@fmi.fi,september 2010-now,01/09/2010,
+1,ZM-Mon,Mongu,Zambia,"Werner Kutsch, Lutz Merbold",1,1,0,Not operational,Antonio Bombelli,-15.43777778,23.25277778,DBF,Miombo Woodland,CarboAfrica,,werner.kutsch@icos-ri.eu; L.Merbold@cgiar.org,2007-2009 app.,01/01/2007,01/01/2009
+1,"[ZA-Vuw], not official yet, but suggested",Vuwani,South Africa,Christian Bruemmer,0,0,1,Operational,Christian Bruemmer,-23.13008,30.42431,Urban and built-up,"Communal land, moderate building/housing density",ARS AfricaE,CO2-E|H-E|LE-E,christian.bruemmer@thuenen.de,July 2016 ongoing,01/07/2016,
+1,"[ZA-BuR], not official yet, but suggested",Bushbuck Ridge,South Africa,Azwitamisi Mudau,0,0,1,Operational,Christian Bruemmer,-24.82,31.21,Urban and built-up,Savanna in communal area,ARS AfricaE,CO2-E|H-E|LE-E,AMudau@csir.co.za,2016 ongoing,01/01/2016,
+1,"[ZA-KaR], not official yet, but suggested",Karoo 1,South Africa,Christian Bruemmer,0,0,1,Operational,Christian Bruemmer,-31.4253,25.0294,Open shrubland,"Open shrubland, dwarf shrubs, moderate grazing",ARS AfricaE,CO2-E|H-E|LE-E,christian.bruemmer@thuenen.de,Oct 2015 ongoing,01/10/2015,
+1,"[ZA-KaG], not official yet, but suggested",Karoo 2 ,South Africa,Christian Bruemmer,0,0,1,Operational,Christian Bruemmer,-31.4302,25.0161,Open shrubland,"Open shrubland, dwarf shrubs, intensive grazing",ARS AfricaE,CO2-E|H-E|LE-E,christian.bruemmer@thuenen.de,Oct 2015 ongoing,01/10/2015,
+1,,Cathedral Peak,South Africa,SAEON,0,0,1,Operational,Christian Bruemmer & Bob Scholes,-28.9755,29.2359,GRA,,SAEON,,,2012-now,01/01/2012,
+1,,Nxaraga,Botswana,"Dr Carole Helfter, Centre for Ecology and Hydrology, Penicuik, EH26 0QB, Scotland, UK",0,0,1,Operational,"Dr Carole Helfter, Centre for Ecology and Hydrology, Penicuik, EH26 0QB, Scotland, UK",-19.54806,23.17917,seasonal floodplain,seasonal floodplain,,"Fluxes of CO2, LE, H (IRGASON) and CH4 (LI-7700) + PAR, total solar and met (Tair, Pair, RH)",caro2:ceh.ac.uk,since 2017-09,01/09/2017,
+1,,Guma Lagoon,Botswana,"Dr Carole Helfter, Centre for Ecology and Hydrology, Penicuik, EH26 0QB, Scotland, UK",0,0,1,Operational,"Dr Carole Helfter, Centre for Ecology and Hydrology, Penicuik, EH26 0QB, Scotland, UK",-18.96472,22.37117,seasonal floodplain,seasonal floodplain,,"Fluxes of CO2, LE, H (IRGASON) and CH4 (LI-7700) + PAR, total solar and met (Tair, Pair, RH)",caro2:ceh.ac.uk,since 2017-09,01/09/2017,
+1,,Chobe Forest Reserve,Botswana,Peter Eliasson,0,0,planned,Planned,Peter Eliasson,-18.10757,24.63703,,woodland dominated by�Baikiaea plurijuga,,"Fluxes of CO2, CH4, PAR, total solar and met (Tair, Pair, RH)",eliassonp@biust.ac.bw,2019,,
+,,Gorigo,Ghana,"WASCAL Bolgatanga Office, Vea Watershed (Aaron Aduna, Samuel Guug)",0,0,1,Operational,Jan Bliefernicht,10.94016,-0.82645,,degraded rangeland,WASCAL KIT IMK-IFU,,,,01/05/2017,

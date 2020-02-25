@@ -1,0 +1,23 @@
+WMO Region,Country,Station,Latitude,Longitude,Elevation,WMO Index,URL
+Africa,Algeria,TAMANRASSET,22.8,5.433333333,1377,0-20000-0-60680,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8251
+Africa,Côte d'Ivoire,ABIDJAN,5.25,-3.933333333,7,0-20000-0-65578,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/14080
+Africa,Cameroon,DOUALA R.S.,4.016666667,9.7,10,0-20001-0-64910,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8902
+Africa,Egypt,ASSWAN,23.96444444,32.82,201.78,0-20000-0-62414,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8471
+Africa,Ethiopia,ADDIS ABABA-BOLE,9.033333333,38.75,0,0-20000-0-63450,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8571
+Africa,France,PORT-AUX-FRANCAIS (ILES KERGUELEN),-49.35222222,70.24333333,29,0-20000-0-61998,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8413
+Africa,France,SAINT-DENIS/GILLOT (REUNION),-20.8925,55.52861111,20,0-20000-0-61980,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8404
+Africa,Kenya,DAGORETTI CORNER,-1.303611111,36.75972222,1798.32,0-20000-0-63741,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8614
+Africa,Madagascar,ANTANANARIVO/IVATO,-18.8,47.48333333,1279,0-20000-0-67083,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8959
+Africa,Mauritius,VACOAS (MAURITIUS),-20.2975,57.49472222,423,0-20000-0-61995,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8410
+Africa,Namibia,WINDHOEK,-22.56666667,17.1,1725,0-20000-0-68110,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/9141
+Africa,Niger,NIAMEY-AERO,13.48333333,2.166666667,223,0-20000-0-61052,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8298
+Africa,Senegal,DAKAR/YOFF,14.73,-17.5,24.49,0-20000-0-61641,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8346
+Africa,Seychelles,SEYCHELLES INTER. AIRPORT (RAWINSONDE STATION),-4.683333333,55.51666667,4,0-20000-0-63985,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8647
+Africa,South Africa,MARION ISLAND,-46.8767,37.8587,24,0-20000-0-68994,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/9361
+Africa,South Africa,KING SHAKA INT'L AIRPORT,-29.6018,31.1239,105,0-20000-0-68592,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/9287
+Africa,South Africa,GOUGH ISLAND,-40.3495,-9.8804,54,0-20000-0-68906,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/9342
+Africa,Spain,TENERIFE-GUIMAR,28.31833333,-16.38222222,105,0-20000-0-60018,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8099
+Africa,Sudan,KHARTOUM,15.6,32.55,382,0-20000-0-62721,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8509
+Africa,"Tanzania, United Republic of",DAR ES SALAAM INT,-6.866666667,39.2,55,0-20000-0-63894,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8638
+Africa,United States (the),ST. HELENA IS.,-15.94194444,-5.667222222,435,0-20000-0-61901,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/8390
+Africa,Zimbabwe,HARARE (BELVEDERE),-17.83333333,31.01666667,1471,0-20000-0-67774,https://oscar.wmo.int/surface/index.html#/search/station/stationReportDetails/9071
