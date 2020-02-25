@@ -1,30 +1,50 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# This is unique per local deployment
+*.lcov
+*.log
+*.pid
+*.pid.lock
+*.seed
+*.tgz
+*.tsbuildinfo
+.cache
+.DS_Store
+.dynamodb/
 .env
 .env.development
-.env.production
-
-dist
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
 .env.development.local
-.env.test.local
+.env.local
+.env.production
 .env.production.local
-
+.env.test
+.env.test.local
+.eslintcache
+.fusebox/
+.grunt
+.lock-wscript
+.next
+.node_repl_history
+.npm
+.nuxt
+.nyc_output
+.pnp.js
+.serverless/
+.vuepress/dist
+.yarn-integrity
+/.pnp
+/build
+/coverage
+/dist
+/node_modules
+bower_components
+build/Release
+coverage
+dist
+jspm_packages/
+lerna-debug.log*
+lib-cov
+logs
+node_modules/
 npm-debug.log*
+pids
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+typings/
 yarn-debug.log*
-yarn-error.log*
