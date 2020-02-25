@@ -1,7 +1,3 @@
-[submodule "seacrifog-api"]
-	path = seacrifog-api
-	url = git@github.com:SAEONData/seacrifog-api.git
-	branch = master
 [submodule "seacrifog-client"]
 	path = seacrifog-client
 	url = git@github.com:SAEONData/seacrifog-client.git
