@@ -11,7 +11,6 @@ The prototype consists of a pair of software applications:
 The browser client is tightly coupled with the API logic. The API, however, can stand as a useful publicly available service in it’s own right.
 
 # Tech stack
-
 - Database
   - PostGIS
 - API
@@ -24,6 +23,14 @@ The browser client is tightly coupled with the API logic. The API, however, can 
   - React
   - Apollo Client (GraphQL provider)
   - React-MD (MIT licensed Material Design component library implementation)
+
+# Data model
+- Main entitites
+  - Sites
+  - Networks
+  - Variables
+  - Protocols
+  - Metadata search results (data products)
 
 # API
 
