@@ -28,10 +28,9 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 ![alt text](images/data-model.png "Simplified ERD diagram showing the entities used in the search logic")
 
 # API
-- [API documentation](https://api.saeon.ac.za "API Documentation")
-- [Interactive API Explorer](https://api.saeon.ac.za/graphiql "GraphiQL")
-- [GraphQL endpoint](http://api.saeon.ac.za/graphql "API Endpoint")
-- <a href="http://api.seacrifog.saeon.ac.za" target="_blank">API documentation</a>
+- [API documentation](http://api.seacrifog.saeon.ac.za "API Documentation")
+- [Interactive API Explorer](https://api.seacrifog.saeon.ac.za/graphiql "GraphiQL")
+- [GraphQL endpoint](http://api.seacrifog.saeon.ac.za/graphql "API Endpoint")
 
 # Client
 
