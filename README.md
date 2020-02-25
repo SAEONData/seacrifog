@@ -28,13 +28,13 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 ![alt text](images/data-model.png "Simplified ERD diagram showing the entities used in the search logic")
 
 # API
-
+- [API documentation](https://api.saeon.ac.za "API Documentation")
+- [Interactive API Explorer](https://api.saeon.ac.za/graphiql "GraphiQL")
+- [GraphQL endpoint](http://api.saeon.ac.za/graphql "API Endpoint")
 
 # Client
 
 # Deployment
-As of 25 February 2020:
-
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)
 - API: Docker container (refer to the Dockerfile in the source code)
 - Browser client: Docker container (refer to the Dockerfile in the source code)
