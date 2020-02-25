@@ -33,9 +33,7 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 - [GraphQL endpoint](http://api.seacrifog.saeon.ac.za/graphql "API Endpoint")
 
 # Client
-- [Current deployment](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Workpackage 5.4 deliverable deployment on SAEON's infrastructure")
-
-The client is an SPA - architected conceptually of 'pages', each page comprising one or more 'modules'. Observational infrastructure is organized according to entity 'class'. For each entity class there is a page that lists all entities of that type, and an overview page that allows for seeing and editing a single entity. For example, all the entities of type `Variable` can be found on the HTTP path `/variables`, listed and searcheable. A single variable can be viewed and edited on the `/variable/:id` path. There is an exception - the `/sites` route displays a map of sites, along with proof-of-concept visualization charts. Individual sites can be edited on the `/networks/:id` path (sites of a particular network can be edited). Below is a representation of the site map:
+The client currently deployed at [seacrifog.saeon.ac.za](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Work package 5.4 deliverable deployment on SAEON's infrastructure") as an SPA (Single Page Application), such is typical of React.js client apps. Architecturally, the client is organized conceptually of 'pages', each page comprising one or more 'modules'. Observational infrastructure is organized according to entity 'class'. For each entity class there is a page that lists all entities of that type (a list/explorer page), and an overview page that allows for seeing and editing a single entity. For example, all the entities of type `Variable` can be found on the HTTP path `/variables`, listed and searcheable in a table. A single variable can be viewed and edited on the `/variable/:id` path. There is an exception - the `/sites` route displays a map of sites, along with proof-of-concept visualization charts. Individual sites can be edited on the `/networks/:id` path (sites of a particular network can be edited). Below is a representation of the site map:
 
 ```
 .
@@ -49,11 +47,32 @@ The client is an SPA - architected conceptually of 'pages', each page comprising
 └── /search-results
 ```
 
+## Modules
+Several modules are used on multiple pages. These include:
+
+### Global state managment 
+
+### Atlas
+
+### Item page logic
+
+### Searchable, sortable, selectable table
+
+### Edit form
+
+### Side filter component
+
+
+## `/sites` page
+The map is provided by OpenLayers 6, utilizing an API provided by a thin React.js wrapper library - [@saeon/ol-react](https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library") - authored by SAEON (at the time of writing there are no well-maintained OpenLayers 6 React.js wrapping libraries) and made available as MIT-licensed open source code.
+
+The map is interactive in that it allows for assessing which variables are measured at which sites (or groups of sites) - this is achieved by clicking features on the atlas, that will both add selected sites to the metadata filter, and trigger charts (provided by `eCharts`) to display.
+
+## List/explorer pages (`/networks`, `/variables`, `/protocols`)
 
 
 
-
-# Deployment
+# Current deployment (25-02-2020)
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)
 - API: Docker container (refer to the Dockerfile in the source code)
 - Browser client: Docker container (refer to the Dockerfile in the source code)
