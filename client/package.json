@@ -66,7 +66,6 @@
     "file-loader": "^5.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^4.2.3",
     "node-sass": "^4.13.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.1.0",
