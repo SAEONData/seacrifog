@@ -1,5 +1,5 @@
 # Build environment
-FROM node:13-alpine as build
+FROM node:13 as build
 WORKDIR /app
 COPY . .
 RUN npm ci
