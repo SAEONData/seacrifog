@@ -1,7 +1,4 @@
 # SEACRIFOG
-SEACRIFOG documentation and source code.
-
-## Overview
 This is a tool for exploring the inventory of carbon-related observation infrastructure. There are numerous metadata repositories describing, and linking to, datasets related to carbon measurement in some way or another. These datasets are rich, but not easily discovered by existing search tools such as Google Search. 
 
 The prototype (currently available at https://seacrifog.saeon.ac.za) is aimed at providing an interactive overview of the infrastructure that supports carbon measurements. Users can select/deselect various elements of the carbon observation infrastructure, which serves the dual purpose of providing detailed information on individual, selected components of the system, and also constraining search criteria that can be applied against various organizations’ metadata repositories across the world (providing these organizations make their repositories electronically searchable, which many do).
@@ -13,22 +10,27 @@ The prototype consists of a pair of software applications:
 
 The browser client is tightly coupled with the API logic. The API, however, can stand as a useful publicly available service in it’s own right.
 
-## Tech stack
+# Tech stack
 
-- DB
+- Database
   - PostGIS
 - API
   - Node.js (server-side JavaScript framework)
   - Express (web application framework)
   - GraphQL (express-graphql)
-  - node-postgres (database adapter)
+  - Node Postgres (database adapter)
 - Browser client
   - ESNext (Babel, Webpack precompilation and bundling)
   - React
   - Apollo Client (GraphQL provider)
-  - react-md (MIT licensed Material Design component library implementation)
+  - React-MD (MIT licensed Material Design component library implementation)
 
-## Deployment
+# API
+
+
+# Client
+
+# Deployment
 As of 25 February 2020:
 
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)
@@ -38,3 +40,4 @@ As of 25 February 2020:
 
 
 # Developer Documentation
+TODO
