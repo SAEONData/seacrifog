@@ -1,0 +1,19 @@
+{
+  "name": "seacrifog",
+  "version": "0.0.1",
+  "description": "Source code for the the SEACRIFOG component deliverable by SAEON - Workpackage 5.4",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git-as-saeon:SAEONData/seacrifog-deploy.git"
+  },
+  "keywords": [
+    "seacrfiog",
+    "node.js",
+    "react.js",
+    "graphql"
+  ],
+  "author": "zach@saeon.ac.za",
+  "license": "MIT"
+}
