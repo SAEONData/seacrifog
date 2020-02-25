@@ -60,13 +60,36 @@ State is managed in three ways across the application:
 A single global state module is used to keep track of user interactions across the app (selecting/deselecting of items). As entities are toggled a background search is performed for all currently selected search critera - the results are stored in client memory.
 
 ### Atlas
-The map is provided by OpenLayers 6, utilizing an API provided by a thin React.js wrapper library - [@saeon/ol-react](https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library") - authored by SAEON (at the time of writing there are no well-maintained OpenLayers 6 React.js wrapping libraries) and made available as MIT-licensed open source code. OpenLayers in the context of a JavaScript application is just a single object `olMap`. This object keeps it's own internal state and handles interactions internally. The `@saeon/ol-react` wrapper layer essentially provides the means of mapping React state to `olMap` internal state. This is achieved via using the [ECMAScript Proxy objects API]([https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Note that this is incompatible with Internet Explorer, and not possible to polyfill. This tool as it currently exists should, however, work on Internet Explorer 11 and upwwards only because no advanced layer management is used. This will obviously not be the case with further development. In addition to the layer proxy, the Atlas module provides a means of selecting/deselecting map features, and also for specifying layers.
+The map is provided by OpenLayers 6, utilizing an API provided by a thin React.js wrapper library - [@saeon/ol-react](https://www.npmjs.com/package/@saeon/ol-react "React OL Wrapper library") - authored by SAEON (at the time of writing there are no well-maintained OpenLayers 6 React.js wrapping libraries) and made available as MIT-licensed open source code. OpenLayers in the context of a JavaScript application is just a single object `olMap`. This object keeps it's own internal state and handles interactions internally. The `@saeon/ol-react` wrapper layer essentially provides the means of mapping React state to `olMap` internal state. This is achieved via using the [ECMAScript Proxy objects API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Note that this is incompatible with Internet Explorer, and not possible to polyfill. This tool as it currently exists should, however, work on Internet Explorer 11 and upwwards only because no advanced layer management is used. This will obviously not be the case with further development. In addition to the layer proxy, the Atlas module provides a means of selecting/deselecting map features, and also for specifying layers.
 
-### Searchable, sortable, selectable table
+### Reuseable components
+For the most part, components are used directly as provided by the React-MD library - already a significant amount of work in terms of crafting reuseable components! However there are a few cases in this UI that 'grouped element trees' are reused in multiple places throughout the application. These include
+
+#### A Table
+Tables are required on all the list/explorer pages, and some of the item/edit pages. A reuseable table that supportes searching, sorting, and selecting is provided as generalized [React-MD-based component](client/src/modules/shared-components/_table.jsx) with a simple signature to faciliate reuse: 
+
+```jsx
+<Table
+  actions={[...]}
+  searchbar={true}
+  defaultPaginationRows={5}
+  selectedIds={[...]}
+  dataDefinitions={{...}}
+  data={[...]}
+  toggleSelect={callback}
+/>
+```
+
+Other reuseable components
 
 ### Edit form
+Typically web forms are binded to some model - often referred to as 'form model binding'. This conceptually allows for representation of some table/object state as an appropriate input field. Similarly, this concept is utilized in SEACRIFOG. All the edit pages make use of UI logic to draw editble forms from JavaScript object (and provide a means of saving them to the database via GraphQL mutations). code for files that together comprise this module can be found [here](client/src/modules/editor-page/)
 
-### Side filter component
+### DropdownSelect
+A simple component to show a filterable list of items that can be selected/deselcted. Lists are ideally rendered via 'virtualized windows' in React when there are lots of items, as can happen in this case. The component is available [here](client/src/modules/shared-components/_dropdown-select.jsx).
+
+### Side filter module
+A module that combines many instances of the `DropdownSelect` reuseable componet, along with controlling callbacks to update the global state module. Found [here](client/src/modules/shared-components/_side-menu-filter.jsx). This component is used on most pages - it provides direct access to the the current global state in terms of what is being filtered.
 
 ## Page Types
 ### `/sites` page
