@@ -1,7 +1,6 @@
 import reactLogo from './svgs/react-logo.svg'
 import googleLogo from './svgs/google-logo.svg'
 import githubLogo from './svgs/github-logo.svg'
-import githubLogo2 from './svgs/github-logo-2.svg'
 
 const avatarStyle = { fontSize: '11px' }
 
@@ -65,16 +64,10 @@ export default [
     primaryText: 'References'
   },
   {
-    keyval: 'source-code-api',
-    href: 'https://github.com/SAEONData/seacrifog-api',
+    keyval: 'source-code',
+    href: 'https://github.com/SAEONData/seacrifog',
     avatar: { src: githubLogo, alt: 'GitHub Logo' },
-    label: 'API Source'
-  },
-  {
-    keyval: 'source-code-client',
-    href: 'https://github.com/SAEONData/seacrifog-client',
-    avatar: { src: githubLogo2, alt: 'GitHub Logo' },
-    label: 'Client Source'
+    label: 'Source Code'
   },
   {
     keyval: 'react-logo',
