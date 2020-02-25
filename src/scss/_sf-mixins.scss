@@ -1,0 +1,6 @@
+/* mixins : usage example: @include sf-box-shadow(2px, $y-axis, 7px, #000)*/
+@mixin sf-box-shadow($x-axis: 0px, $y-axis: 2px, $blur: 13px, $spread: 0px, $color: $sf-shadow-color) {
+  -webkit-box-shadow: $x-axis $y-axis $blur $spread $color;
+  -moz-box-shadow: $x-axis $y-axis $blur $spread $color;
+  box-shadow: $x-axis $y-axis $blur $spread $color;
+}

@@ -1,0 +1,61 @@
+.sf-layout-header {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sf-layout-drawer,
+.sf-layout-drawer-mini {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+}
+
+.page-content {
+  position: relative;
+}
+
+// This is the notifications bar above the table
+// .sf-content-header {}
+
+.sf-content-header {
+  .close-button {
+    i {
+      color: $md-primary-color;
+    }
+  }
+}
+
+.sf-container {
+  padding: 36px 0;
+  background-color: $md-primary-color;
+  &.primary {
+    background-color: $md-secondary-color;
+    padding: 22px 0;
+  }
+  &.secondary {
+    background-color: $md-white-base;
+    padding: 48px 0;
+  }
+  &.inverse {
+    background-color: $md-data-table-hover-color;
+  }
+  .sf-wrapper {
+    margin: auto;
+    max-width: 80%;
+    display: block;
+    .sf-content {
+      text-align: center;
+    }
+  }
+}
+
+.white {
+  color: $md-data-table-hover-color;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.add-on-hover-white:hover {
+  background-color: $md-data-table-selected-color;
+}

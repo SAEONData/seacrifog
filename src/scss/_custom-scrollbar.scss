@@ -1,0 +1,19 @@
+/* Custom scroll bar style - class specific for now - think * might cause user confusion on page scroll*/
+::-webkit-scrollbar-track {
+  background-color: #dadada;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #999999;
+}
+
+//scrollbar variant that is thicker
+.thick-scrollbar::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+  background-color: #f5f5f5;
+}

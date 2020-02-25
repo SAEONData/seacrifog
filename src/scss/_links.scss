@@ -1,0 +1,12 @@
+.link {
+  color: $md-primary-color;
+  display: inline-block;
+  text-decoration: none;
+  transition: color $md-transition-time;
+  cursor: pointer;
+
+  &:hover {
+    color: get-color('text', $md-light-theme);
+    text-decoration: underline;
+  }
+}

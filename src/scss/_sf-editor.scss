@@ -1,0 +1,26 @@
+.sf-editor-wrapper {
+  padding: 10px !important;
+
+  .sf-editor-wrapper-outer {
+    .sf-editor-wrapper-inner {
+      overflow: auto;
+      padding: 10px;
+      max-height: 100%;
+      .sf-editor-field {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  @media (min-width: $md-grid-tablet-breakpoint) {
+    padding: inherit;
+
+    .sf-editor-wrapper-outer {
+      .sf-editor-wrapper-inner {
+        max-height: 1000px;
+        min-height: 1000px;
+        padding: 36px;
+      }
+    }
+  }
+}

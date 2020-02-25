@@ -1,0 +1,71 @@
+@import '~react-md/src/scss/react-md';
+
+// Theme builder: https://react-md.mlaursen.com/customization/theme-builder
+$md-font-family: 'Open Sans';
+
+$md-light-theme: true;
+$md-primary-color: $md-teal-700;
+$md-secondary-color: $md-blue-grey-500;
+
+@include react-md-everything;
+
+/**
+ * Overrides
+ * Styles that target react-md classes
+ */
+
+.md-data-table {
+  position: relative;
+}
+
+/**
+ * The tables have a selectable column that
+ * includes a toggle select/unselect all that
+ * should be hidden
+ */
+#protocols-table-toggle-all + label,
+#dataproducts-table-toggle-all + label,
+#variables-table-toggle-all + label,
+#networks-table-toggle-all + label {
+  display: none;
+}
+
+/**
+ * Fixes table pagination, otherwise
+ * buttons overflow the page
+ */
+.md-table-pagination--controls {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
+/**
+ * This adjusts the appearance of selected/unselected tabs
+ * via overwrites
+ */
+.md-tab--active {
+  background-color: $md-data-table-hover-color;
+}
+
+.md-tab--inactive {
+  background-color: $md-data-table-selected-color;
+}
+
+.md-tabs-content {
+  > div {
+    > div {
+      background-color: $md-data-table-hover-color;
+      overflow: hidden !important;
+    }
+  }
+}
+
+// The default of not wrapping is silly
+.md-display-3,
+.md-display-4,
+h3,
+.md-title {
+  white-space: unset;
+  overflow: hidden;
+}
