@@ -23,7 +23,7 @@ npm --prefix client/ start
 3. This will create a folder `client/dist` containing the client resources, with a typical `index.html` entry point. Serve via preferred HTTP server (Apache, Nginx, Node.js, etc.)
 
 #### Some helpful Notes
-The Dockerfile at `client/Dockerfile` encapsulates the above steps and should be useable in any deployment environment as is. Use the Dockerfile via the following commands:
+The Dockerfile at `client/Dockerfile` encapsulates the above steps and should be usable in any deployment environment as is. Use the Dockerfile via the following commands:
 
 ```sh
 # Change context to the client directory

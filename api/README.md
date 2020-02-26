@@ -8,13 +8,13 @@ docker run -p 5432:5432 --name postgis -v postgres11:/var/lib/postgresql/data -e
 ```
 
 **Setup the DB**
-The .backup file is from an older version of PostgreSQL and some PostgreSQL clients don't read it as a result. Dbeaver - a decent, free DB IDE - has a PostgreSQL client that works by default, but any PostgreSQL client should work).
+The .backup file is from an older version of PostgreSQL and some PostgreSQL clients don't read it as a result. DBeaver - a decent, free DB IDE - has a PostgreSQL client that works by default, but any PostgreSQL client should work).
 
 1. Log into a running PostGIS server
 2. Create a DB called `seacrifog_old`
 3. Restore ([seacrifog-prototype.backup](api/src/db)) to this database. It's located in this repository at `api/src/db/`
 
-Once the `seacrifog_old` backup is restored, on application startup a new database will be initialized (`seacrifog`). The old data will be migrated to a new schema and the CSVs located in `api/src/db/csvs` will be imported as well. These are dummy data that are the result of work outputs prior to Workpackage 5.4.
+Once the `seacrifog_old` backup is restored, on application startup a new database will be initialized (`seacrifog`). The old data will be migrated to a new schema and the CSVs located in `api/src/db/csvs` will be imported as well. These are dummy data that are the result of work outputs prior to Work package 5.4.
 
 **Install Node.js dependencies**
 ```sh
