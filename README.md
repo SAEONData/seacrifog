@@ -104,6 +104,7 @@ The map is interactive in that it allows for assessing which variables are measu
 - Browser client: Docker container (refer to the Dockerfile in the source code)
 - Server: Single CentOS 7 virtual machine (2 cores, 2GB RAM, 60GB)
 
+
 # API Documentation
 
 ## Quickstart (local dev environment)

@@ -1,7 +1,7 @@
-# API Documentation
+# API DEVELOPER DOCUMENTATION
+API usage documentation is coming soon! Below are instructions on how how to contribute and deploy this software.
 
-## Quickstart (local dev environment)
-
+## Quickstart the API (local dev environment)
 **Start a PostGIS server**
 ```sh
 docker run -p 5432:5432 --name postgis -v postgres11:/var/lib/postgresql/data -e POSTGRES_PASSWORD=password -d mdillon/postgis
@@ -18,27 +18,27 @@ Once the `seacrifog_old` backup is restored, on application startup a new databa
 
 **Install Node.js dependencies**
 ```sh
-npm install
+npm --prefix api/ install
 ```
 
 **Configure the API to re-create the database on startup**
 This is false by default (for obvious reasons!)
 ```sh
-echo FORCE_DB_RESET=true > .env
+echo FORCE_DB_RESET=true > api/.env
 ```
 
 **Start the API**
 ```sh
-npm start
+npm --prefix api/ start
 ```
 The application should be listening for connections on `http://localhost:3000`. 
 
-## Setup production environment
+## Deploying API to production
 1. Configure a Postgis database server somewhere
-2. The application reads a `.env` file located at `api/.env` on startup. So to configure the API, as part of the deployment process create such a file and populate it with production-sensible values (refer to notes below on "Configuration")
-3. Start the app: `npm run start:prod`
+2. The application reads a `.env` file located at `api/.env` on startup. So to configure the API, as part of the deployment process create such a file and populate it with production-sensible values (refer to notes below on "API configuration")
+3. Start the app: `npm --prefix api/ run start:prod`
 
-## Configuration
+## API configuration
 This is a sample of the environment variables that the app requires to run - specifically in the context of a `.env` file (with the default values shown).
 
 **Example `.env` file with defaults**
