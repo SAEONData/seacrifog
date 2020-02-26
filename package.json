@@ -2,7 +2,9 @@
   "name": "seacrifog",
   "version": "0.0.1",
   "description": "Source code for the the SEACRIFOG component (Workpackage 5.4) deliverable by SAEON",
-  "scripts": {},
+  "scripts": {
+    "build-readme": "scripts/build-readme.sh"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm --prefix api/ run oncommit && npm --prefix client/ run oncommit"
