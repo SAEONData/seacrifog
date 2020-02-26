@@ -23,5 +23,5 @@ end_section
 # Final
 echo Completed build-readme.sh
 
-# Update git 
-git add .
+# Update git snapshot with new readme
+git add README.md
