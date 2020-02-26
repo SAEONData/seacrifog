@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import {GlobalState} from './modules/shared-components'
+import { GlobalState } from './modules/shared-components'
 import Navigation from './modules/layout'
 import Home from './pages/home'
 import SearchResults from './pages/search-results'
