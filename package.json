@@ -5,11 +5,12 @@
   "scripts": {
     "build-readme": "scripts/build-readme.sh",
     "api-oncommit": "npm --prefix api/ run oncommit",
-    "client-oncommit": "npm --prefix client/ run oncommit"
+    "client-oncommit": "npm --prefix client/ run oncommit",
+    "update-git-snapshot": "git add ."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all -s build-readme api-oncommit client-oncommit"
+      "pre-commit": "npm-run-all -s build-readme api-oncommit client-oncommit update-git-snapshot"
     }
   },
   "repository": {
