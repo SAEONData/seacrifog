@@ -29,9 +29,21 @@ The browser client is tightly coupled with the API logic. The API, however, can 
 ![alt text](images/data-model.png "Simplified ERD diagram showing the entities used in the search logic")
 
 # API
-- [API documentation](http://api.seacrifog.saeon.ac.za "API Documentation")
+The API provides HTTP endpoints, and a GraphQL interface. For the most part the HTTP endpoints are just stubs - they don't provide any real value at this point but as a proof of concept that a GraphQL and RESTful API can share the data access layer completely (so it's fairly straightforward to provide both).
+
+<!-- - [API documentation](http://api.seacrifog.saeon.ac.za "API Documentation") -->
 - [Interactive API Explorer](https://api.seacrifog.saeon.ac.za/graphiql "GraphiQL")
 - [GraphQL endpoint](http://api.seacrifog.saeon.ac.za/graphql "API Endpoint")
+- [HTTP endpoint - specifically /http/variables & /http/variables/:id](http://api.seacrifog.saeon.ac.za/http "HTTP Endpoint")
+
+#### [Integrations](api/src/resolvers/queries/search-metadata/)
+Integrations need to be specified by a user in two places. These are:
+
+1. Logic for polling network/site information from an endpoint - this is currently in the form of a JavaScript function that is executed on a scheduled interval. An example of the integration with ICOS is [included in the source code](api/src/cron/_icos-integration.js). Currently the source code of the API needs to be adjusted to include further integrations - but this is a straightforward change to make in the future.
+2. Search logic needs to be specified per organization as a JavaScript function - [executors](api/src/resolvers/queries/search-metadata/executors). An example of the function contract is included in the source code. These functions are executed as child processes to the main Node.js process. Currently only JavaScript executors are supported, but it would be fairly straightforward to allow for interoperability between the API and executors in a variety of programming languages. To add a new executor, add an appropriate function to the source code and then redeploy the application.
+
+#### [Data access layer](api/src/db/)
+Data access is directly via SQL using the [Node Postgres](https://node-postgres.com/) PostgreSQL client, with a [thin wrapper](api/src/db/_query.js) over the query functionality to handle connection pooling (hopefully) correctly. GraphQL APIs require request level batching optimization even from the very beginning - due to the logic of how GraphQL queries are resolved - this is implemented as is typically done via the [DataLoader](https://github.com/graphql/dataloader) library. All future work on the data access layer needs to implement database queries via this pattern - there are many references WRT to how to use DataLoader in the context of this project.
 
 # Client
 The client currently deployed at [seacrifog.saeon.ac.za](http://seacrifog.saeon.ac.za/graphql "SEACRIFOG Work package 5.4 deliverable deployment on SAEON's infrastructure") as an SPA (Single Page Application), such is typical of React.js client apps. Architecturally, the client is organized conceptually of 'pages', each page comprising one or more 'modules'. Observational infrastructure is organized according to entity 'class'. For each entity class there is a page that lists all entities of that type (a list/explorer page), and an overview page that allows for seeing and editing a single entity. For example, all the entities of type `Variable` can be found on the HTTP path `/variables`, listed and searcheable in a table. A single variable can be viewed and edited on the `/variable/:id` path. There is an exception - the `/sites` route displays a map of sites, along with proof-of-concept visualization charts. Individual sites can be edited on the `/networks/:id` path (sites of a particular network can be edited). Below is a representation of the site map:
@@ -140,6 +152,20 @@ Renderer objects comprise a variety of callbacks that are passed individual reco
 - API: Docker container (refer to the Dockerfile in the source code)
 - Browser client: Docker container (refer to the Dockerfile in the source code)
 - Server: Single CentOS 7 virtual machine (2 cores, 2GB RAM, 60GB)
+
+# DEVELOPER DOCUMENTATION
+This repository contains two separate applications - a client and and API. Dependencies are NOT shared between these projects. Setup the project after cloning this repository via the following steps:
+
+####Install project wide dependencies
+```sh
+npm install
+```
+
+####Install dependencies for the client and API (this is also mentioned below)
+```sh
+npm --prefix api/ install
+npm --prefix client/ install
+```
 
 
 # API DEVELOPER DOCUMENTATION
