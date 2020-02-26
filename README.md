@@ -105,10 +105,10 @@ The map is interactive in that it allows for assessing which variables are measu
 - Server: Single CentOS 7 virtual machine (2 cores, 2GB RAM, 60GB)
 
 
-# API Documentation
+# API DEVELOPER DOCUMENTATION
+API usage documentation is coming soon! Below are instructions on how how to contribute and deploy this software.
 
-## Quickstart (local dev environment)
-
+## Quickstart the API (local dev environment)
 **Start a PostGIS server**
 ```sh
 docker run -p 5432:5432 --name postgis -v postgres11:/var/lib/postgresql/data -e POSTGRES_PASSWORD=password -d mdillon/postgis
@@ -125,27 +125,27 @@ Once the `seacrifog_old` backup is restored, on application startup a new databa
 
 **Install Node.js dependencies**
 ```sh
-npm install
+npm --prefix api/ install
 ```
 
 **Configure the API to re-create the database on startup**
 This is false by default (for obvious reasons!)
 ```sh
-echo FORCE_DB_RESET=true > .env
+echo FORCE_DB_RESET=true > api/.env
 ```
 
 **Start the API**
 ```sh
-npm start
+npm --prefix api/ start
 ```
 The application should be listening for connections on `http://localhost:3000`. 
 
-## Setup production environment
+## Deploying API to production
 1. Configure a Postgis database server somewhere
-2. The application reads a `.env` file located at `api/.env` on startup. So to configure the API, as part of the deployment process create such a file and populate it with production-sensible values (refer to notes below on "Configuration")
-3. Start the app: `npm run start:prod`
+2. The application reads a `.env` file located at `api/.env` on startup. So to configure the API, as part of the deployment process create such a file and populate it with production-sensible values (refer to notes below on "API configuration")
+3. Start the app: `npm --prefix api/ run start:prod`
 
-## Configuration
+## API configuration
 This is a sample of the environment variables that the app requires to run - specifically in the context of a `.env` file (with the default values shown).
 
 **Example `.env` file with defaults**
@@ -162,25 +162,46 @@ INITIAL_CRON_WAIT=
 ICOS_INTEGRATION_SCHEDULE=
 ```
 
-# SEACRIFOG Client
-React.js browser client
+# CLIENT DEVELOPER DOCUMENTATION
 
-# Quickstart (local dev environment)
-You need to have Node.js installed on your machine, and you need to first setup the SEACRIFOG API. Once you have done this, just install project dependencies and then start the development server.
+## Quickstart the client (local dev environment)
+First setup the API, then
 
+**Install client dependencies**
+```sh
+npm --prefix client/ install
 ```
-npm install
-npm start
+
+**Start the client developer server**
+```sh
+npm --prefix client/ start
 ```
 
-## Notes
+**Some helpful Notes**
 1. Testing this on Windows (using `npm` via Powershell), I had to install `npm-run-all` globally. `npm install npm-run-all -g`
 2. Running `npm install`, some of the packages will install platform specific bindings. So if something isn't working try removing the `node_modules` directory and re-running `npm install`
 
+## Deploying Client to production
+1. The application reads a `.env` located at `client/.env` during the Webpack build process. So to configure the client, as part of the deployment process (and prior to the build step) create such a file and populate it with production-sensible values (refer to notes below on "Client configuration")
+2. Generate the build: `npm --prefix client/ run dist`
+3. This will create a folder `client/dist` containing the client resources, with a typical `index.html` entry point. Serve via preferred HTTP server (Apache, Nginx, Node.js, etc.)
+
+**Some helpful Notes**
+The Dockerfile at `client/Dockerfile` encapsulates the above steps and should be useable in any deployment environment as is. Use the Dockerfile via the following commands:
+
+```sh
+# Change context to the client directory
+cd client/
+
+# Create an image
+docker build -t seacrifog-client .
+
+# Run a container, exposing relevant ports
+docker run -p 80:80 seacrifog-client
+```
 
 ## Configuration
 ```
-PUBLIC_PATH=public
 HTTP_ENDPOINT=https://api.seacrifog.saeon.ac.za/http
 GQL_ENDPOINT=https://api.seacrifog.saeon.ac.za/graphql
 DOWNLOADS_ENDPOINT=https://api.seacrifog.saeon.ac.za/downloads
