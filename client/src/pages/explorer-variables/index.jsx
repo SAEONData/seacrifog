@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { GlobalStateContext } from '../../global-state'
 import DataQuery from '../../modules/data-query'
 import { VARIABLES_MIN, VARIABLE, EXPLORER_VARIABLE_CHARTS } from '../../graphql/queries'
 import {
@@ -22,9 +21,8 @@ import {
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem, DataTable, TableHeader, TableRow, TableColumn, TableBody } from 'react-md'
 import { mergeLeft } from 'ramda'
-import { Table } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
 import { variableCharts } from './variable-charts'
-import ShowChartState from '../../chart-state'
 
 const mappings = {
   rftype: 'Radiative Forcing',
@@ -60,7 +58,7 @@ export default props => {
         <GlobalStateContext.Consumer>
           {({ updateGlobalState, selectedVariables, currentVariable, selectedDataproducts, selectedProtocols }) => (
             <>
-              <ShowChartState>
+              <ChartState>
                 <ExplorerHeaderBar
                   selectedIds={selectedVariables}
                   resetFn={() => updateGlobalState({ selectedVariables: [] })}
@@ -74,7 +72,7 @@ export default props => {
                     ids: selectedVariables.length > 0 ? selectedVariables : variables.map(n => n.id)
                   }}
                 />
-              </ShowChartState>
+              </ChartState>
 
               <ExplorerLayout>
                 <ExplorerTableLayout>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { GlobalStateContext } from '../../global-state'
 import DataQuery from '../../modules/data-query'
 import { PROTOCOLS_MIN, PROTOCOL, EXPLORER_PROTOCOL_CHARTS } from '../../graphql/queries'
 import {
@@ -20,9 +19,8 @@ import {
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
 import { mergeLeft } from 'ramda'
-import { Table } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
 import { protocolCharts } from './protocol-charts'
-import ShowChartState from '../../chart-state'
 
 const protocolsDataDefinitions = {
   id: { order: 0, show: true, label: 'ID' },
@@ -44,7 +42,7 @@ export default props => {
         <GlobalStateContext.Consumer>
           {({ updateGlobalState, selectedProtocols, selectedVariables, currentProtocol }) => (
             <>
-              <ShowChartState>
+              <ChartState>
                 <ExplorerHeaderBar
                   selectedIds={selectedProtocols}
                   resetFn={() => updateGlobalState({ selectedProtocols: [] })}
@@ -58,7 +56,7 @@ export default props => {
                     ids: selectedProtocols.length > 0 ? selectedProtocols : protocols.map(n => n.id)
                   }}
                 />
-              </ShowChartState>
+              </ChartState>
 
               <ExplorerLayout>
                 <ExplorerTableLayout>

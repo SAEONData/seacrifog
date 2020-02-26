@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Collapse, Grid, TabsContainer, Tabs, Tab, Avatar } from 'react-md'
 import ExplorerHeaderChart from './_header-chart'
+import {ShowChartsState} from '../shared-components'
 import { ApolloConsumer } from '@apollo/react-hooks'
-import { ShowChartsState } from '../../chart-state'
 
 Number.prototype.mapFromInt = function(cb) {
   const result = []

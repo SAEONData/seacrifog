@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { GlobalStateContext } from '../../global-state'
 import DataQuery from '../../modules/data-query'
 import { NETWORKS_MIN, NETWORK, EXPLORER_NETWORK_CHARTS } from '../../graphql/queries'
 import {
@@ -20,9 +19,8 @@ import {
 } from '../../modules/explorer-page'
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
-import { Table } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
 import { networkCharts } from './network-charts'
-import ShowChartState from '../../chart-state'
 const mappings = {}
 
 const networksDataDefinitions = {
@@ -46,7 +44,7 @@ export default props => {
             {({ updateGlobalState, selectedNetworks, currentNetwork, selectedVariables }) => {
               return (
                 <>
-                  <ShowChartState>
+                  <ChartState>
                     <ExplorerHeaderBar
                       selectedIds={selectedNetworks}
                       resetFn={() => updateGlobalState({ selectedNetworks: [] })}
@@ -60,7 +58,7 @@ export default props => {
                         ids: selectedNetworks.length > 0 ? selectedNetworks : networks.map(n => n.id)
                       }}
                     />
-                  </ShowChartState>
+                  </ChartState>
 
                   <ExplorerLayout>
                     <ExplorerTableLayout>

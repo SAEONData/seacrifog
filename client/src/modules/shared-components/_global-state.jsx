@@ -4,7 +4,7 @@ import { ApolloConsumer } from 'react-apollo'
 
 export const GlobalStateContext = React.createContext()
 
-class GlobalState extends PureComponent {
+class State extends PureComponent {
   state = {
     // Lists of IDs
     selectedSites: [],
@@ -130,6 +130,6 @@ class GlobalState extends PureComponent {
   }
 }
 
-export default ({ children }) => (
-  <ApolloConsumer>{client => <GlobalState client={client}>{children}</GlobalState>}</ApolloConsumer>
+export const GlobalState = ({ children }) => (
+  <ApolloConsumer>{client => <State client={client}>{children}</State>}</ApolloConsumer>
 )

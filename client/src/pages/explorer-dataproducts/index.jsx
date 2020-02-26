@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { GlobalStateContext } from '../../global-state'
 import DataQuery from '../../modules/data-query'
 import { DATAPRODUCTS_MIN, DATAPRODUCT } from '../../graphql/queries'
 import {
@@ -20,8 +19,7 @@ import {
 
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
-import { Table } from '../../modules/shared-components'
-import ShowChartState from '../../chart-state'
+import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
 
 const mappings = []
 const dataproductsDataDefinitions = {
@@ -42,13 +40,13 @@ export default props => {
         <GlobalStateContext.Consumer>
           {({ updateGlobalState, selectedDataproducts, currentDataproduct, selectedVariables }) => (
             <>
-              <ShowChartState>
+              <ChartState>
                 <ExplorerHeaderBar
                   selectedIds={selectedDataproducts}
                   resetFn={() => updateGlobalState({ selectedDataproducts: [] })}
                   {...props}
                 />
-              </ShowChartState>
+              </ChartState>
               <ExplorerLayout>
                 <ExplorerTableLayout>
                   <Table

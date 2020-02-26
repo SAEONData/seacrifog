@@ -3,10 +3,8 @@ import { Toolbar, Button, LinearProgress, Badge } from 'react-md'
 import DataQuery from '../data-query'
 import { useHistory } from 'react-router-dom'
 import { ENTIRE_GRAPH } from '../../graphql/queries'
-import { SideMenuFilter } from '../shared-components'
+import { SideMenuFilter, GlobalStateContext, ShowChartsState } from '../shared-components'
 import { SideMenu } from '../shared-components/index'
-import { GlobalStateContext } from '../../global-state'
-import { ShowChartsState } from '../../chart-state'
 
 const getProgresStyle = loading => ({
   margin: 0,

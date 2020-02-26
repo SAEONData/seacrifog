@@ -1,6 +1,5 @@
 import React from 'react'
-import { DropdownSelect } from '.'
-import { GlobalStateContext } from '../../global-state'
+import { DropdownSelect, GlobalStateContext } from '.'
 
 const sideMenuContentStyle = { paddingLeft: '24px', paddingRight: '24px', color: 'black' }
 

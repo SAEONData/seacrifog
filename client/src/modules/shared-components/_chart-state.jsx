@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 
 export const ShowChartsState = React.createContext()
 
-export default class extends PureComponent {
+export class ChartState extends PureComponent {
   state = {
     showCharts: false
   }

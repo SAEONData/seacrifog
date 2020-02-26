@@ -37,6 +37,9 @@ docker run -p 80:80 seacrifog-client
 ```
 
 ## Configuration
+Configuration is looked for on Node's `process.env` environment configuration during build.
+
+**Example .env file with defaults**
 ```
 HTTP_ENDPOINT=https://api.seacrifog.saeon.ac.za/http
 GQL_ENDPOINT=https://api.seacrifog.saeon.ac.za/graphql
