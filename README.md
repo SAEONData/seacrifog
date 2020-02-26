@@ -92,11 +92,23 @@ For the most part, components are used directly as provided by the React-MD libr
 - ChartStateManagement - Interactive charts are shown as a proof of concept. The API currently  requires that management of state is done via context
 - A form component - simple to place anywhere in the component tree, and provides localized state management for all elements in the sub tree.
 
-## Page Types
-### `/sites` page
+## Pages
+TODO
+
+**/home (/)**
+TODO
+
+**`/sites`**
 The map is interactive in that it allows for assessing which variables are measured at which sites (or groups of sites) - this is achieved by clicking features on the atlas, that will both add selected sites to the metadata filter, and trigger charts (provided by `eCharts`) to display.
 
-### List/explorer pages (`/networks`, `/variables`, `/protocols`)
+**List/explorer (`/networks`, `/variables`, `/protocols`)**
+TODO
+
+**Edit/item (`/networks/:id`, `/variables/:id`, `/protocols/:id`)**
+TODO
+
+**`/search-results`**
+TODO
 
 # Current deployment (25-02-2020)
 - PostGIS: Served via a Docker container (mdillon/postgis Docker image)

@@ -9,7 +9,6 @@ export default ({ record, title, content, explorerUri, i, FormatContent }) => {
           <Button disabled={true} primary icon tooltipLabel="Dataset visualization" tooltipPosition="left">
             show_chart
           </Button>
-          ,
           <Button
             onClick={() => window.open(explorerUri(record), '_blank')}
             primary
