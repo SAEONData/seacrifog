@@ -22,3 +22,6 @@ end_section
 
 # Final
 echo Completed build-readme.sh
+
+# Update git 
+git add .
