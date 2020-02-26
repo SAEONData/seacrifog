@@ -156,12 +156,12 @@ Renderer objects comprise a variety of callbacks that are passed individual reco
 # DEVELOPER DOCUMENTATION
 This repository contains two separate applications - a client and and API. Dependencies are NOT shared between these projects. Setup the project after cloning this repository via the following steps:
 
-####Install project wide dependencies
+#### Install project wide dependencies
 ```sh
 npm install
 ```
 
-####Install dependencies for the client and API (this is also mentioned below)
+#### Install dependencies for the client and API (this is also mentioned below)
 ```sh
 npm --prefix api/ install
 npm --prefix client/ install
@@ -210,9 +210,8 @@ The application should be listening for connections on `http://localhost:3000`.
 
 ## API configuration
 This is a sample of the environment variables that the app requires to run - specifically in the context of a `.env` file (with the default values shown).
-
-**Example `.env` file with defaults**
 ```
+# Example .env file with defaults
 PORT=3000
 ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
 POSTGRES_HOST=localhost
@@ -221,26 +220,44 @@ POSTGRES_DATABASE=seacrifog
 POSTGRES_PASSWORD=password
 POSTGRES_PORT=5432
 FORCE_DB_RESET=false
-INITIAL_CRON_WAIT=
-ICOS_INTEGRATION_SCHEDULE=
+INITIAL_CRON_WAIT=1000
+ICOS_INTEGRATION_SCHEDULE=*/10 * * * *
 ```
+
+#### PORT
+The port on which the application listens for HTTP requests
+
+#### ALLOWED_ORIGINS
+Clients (that support CORS restrictions) from these addresses will be allowed to access the API resources
+
+#### POSTGRES_*
+PostgreSQL connection configuration parameters
+
+#### FORCE_DB_RESET
+When true, the database will be deleted and recreated on API startup
+
+#### INITIAL_CRON_WAIT
+It can take a number of seconds for the API to settle on startup (for example if the database is being created). The CRON scheduler will only start jobs after this delay
+
+#### ICOS_INTEGRATION_SCHEDULE
+Intervals between runs of the ICOS integration logic (this is to get station information from the ICOS database)
 
 # CLIENT DEVELOPER DOCUMENTATION
 
 ## Quickstart the client (local dev environment)
 First setup the API, then
 
-**Install client dependencies**
+#### Install client dependencies
 ```sh
 npm --prefix client/ install
 ```
 
-**Start the client developer server**
+#### Start the client developer server
 ```sh
 npm --prefix client/ start
 ```
 
-**Some helpful Notes**
+#### Some helpful Notes
 1. Testing this on Windows (using `npm` via Powershell), I had to install `npm-run-all` globally. `npm install npm-run-all -g`
 2. Running `npm install`, some of the packages will install platform specific bindings. So if something isn't working try removing the `node_modules` directory and re-running `npm install`
 
@@ -249,7 +266,7 @@ npm --prefix client/ start
 2. Generate the build: `npm --prefix client/ run dist`
 3. This will create a folder `client/dist` containing the client resources, with a typical `index.html` entry point. Serve via preferred HTTP server (Apache, Nginx, Node.js, etc.)
 
-**Some helpful Notes**
+#### Some helpful Notes
 The Dockerfile at `client/Dockerfile` encapsulates the above steps and should be useable in any deployment environment as is. Use the Dockerfile via the following commands:
 
 ```sh
@@ -264,10 +281,10 @@ docker run -p 80:80 seacrifog-client
 ```
 
 ## Configuration
-Configuration is looked for on Node's `process.env` environment configuration during build.
+Configuration is looked for on Node's `process.env` environment configuration during build. Client configuration specifies, at build time, the address that the client looks for the API on.
 
-**Example .env file with defaults**
 ```
+# Example .env file with defaults
 HTTP_ENDPOINT=https://api.seacrifog.saeon.ac.za/http
 GQL_ENDPOINT=https://api.seacrifog.saeon.ac.za/graphql
 DOWNLOADS_ENDPOINT=https://api.seacrifog.saeon.ac.za/downloads

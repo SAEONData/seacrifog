@@ -40,9 +40,8 @@ The application should be listening for connections on `http://localhost:3000`.
 
 ## API configuration
 This is a sample of the environment variables that the app requires to run - specifically in the context of a `.env` file (with the default values shown).
-
-**Example `.env` file with defaults**
 ```
+# Example .env file with defaults
 PORT=3000
 ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
 POSTGRES_HOST=localhost
@@ -51,6 +50,24 @@ POSTGRES_DATABASE=seacrifog
 POSTGRES_PASSWORD=password
 POSTGRES_PORT=5432
 FORCE_DB_RESET=false
-INITIAL_CRON_WAIT=
-ICOS_INTEGRATION_SCHEDULE=
+INITIAL_CRON_WAIT=1000
+ICOS_INTEGRATION_SCHEDULE=*/10 * * * *
 ```
+
+#### PORT
+The port on which the application listens for HTTP requests
+
+#### ALLOWED_ORIGINS
+Clients (that support CORS restrictions) from these addresses will be allowed to access the API resources
+
+#### POSTGRES_*
+PostgreSQL connection configuration parameters
+
+#### FORCE_DB_RESET
+When true, the database will be deleted and recreated on API startup
+
+#### INITIAL_CRON_WAIT
+It can take a number of seconds for the API to settle on startup (for example if the database is being created). The CRON scheduler will only start jobs after this delay
+
+#### ICOS_INTEGRATION_SCHEDULE
+Intervals between runs of the ICOS integration logic (this is to get station information from the ICOS database)
