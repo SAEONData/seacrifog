@@ -10,7 +10,7 @@ import RecordViewer from './metadata-record-view'
 import { Link } from 'react-router-dom'
 import Footer from '../../modules/layout/footer'
 
-const scrolltoRecord = (index, ref) => ref.current.scrollToItem(index)
+const scrolltoRecord = (index, ref) => ref?.current?.scrollToItem(index)
 
 const mainMenuIconStyle = (disabled, toggled) => ({
   color: disabled ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,1)',
