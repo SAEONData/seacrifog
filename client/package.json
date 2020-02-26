@@ -33,7 +33,7 @@
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
     "regenerator-runtime": "^0.13.3",
-    "sift": "^11.1.6",
+    "sift": "^11.1.8",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
@@ -56,7 +56,7 @@
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "copyfiles": "^2.2.0",
     "css-loader": "^3.4.2",
