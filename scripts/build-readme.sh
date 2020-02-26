@@ -1,7 +1,7 @@
 #!/bin/bash
 README=".README.md"
 README_API="api/README.md"
-README_CLIENT="src/README.md"
+README_CLIENT="client/README.md"
 
 end_section() {
     echo '' >> README.md
