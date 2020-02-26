@@ -13,6 +13,10 @@ class State extends PureComponent {
     selectedProtocols: [],
     selectedDataproducts: [],
 
+        //metadata pagination restrictions
+        from: 1,
+        limit: 100,
+
     // Single INDEX values. NOT IDs
     currentSite: 0,
     currentNetwork: 0,
@@ -36,7 +40,7 @@ class State extends PureComponent {
    */
   async componentDidUpdate(prevProps, prevState) {
     const { client } = this.props
-    const searchFields = ['selectedSites', 'selectedNetworks', 'selectedVariables', 'selectedProtocols']
+    const searchFields = ['selectedSites', 'selectedNetworks', 'selectedVariables', 'selectedProtocols','from','limit']
     let refresh = false
     for (const field of searchFields) {
       const oldF = prevState[field]
@@ -54,7 +58,9 @@ class State extends PureComponent {
         selectedSites: bySites,
         selectedNetworks: byNetworks,
         selectedVariables: byVariables,
-        selectedProtocols: byProtocols
+        selectedProtocols: byProtocols,
+        from: from,
+        limit: limit
       } = this.state
 
       this.setState({ loadingSearchResults: true }, async () => {
@@ -63,12 +69,14 @@ class State extends PureComponent {
         try {
           const response = await client.query({
             query: gql`
-              query search($bySites: [Int!], $byNetworks: [Int!], $byProtocols: [Int!], $byVariables: [Int!]) {
+              query search($bySites: [Int!], $byNetworks: [Int!], $byProtocols: [Int!], $byVariables: [Int!], $from: Int, $limit: Int) {
                 searchMetadata(
                   bySites: $bySites
                   byNetworks: $byNetworks
                   byVariables: $byVariables
                   byProtocols: $byProtocols
+                  from: $from
+                  limit: $limit
                 ) {
                   i
                   target
@@ -82,7 +90,9 @@ class State extends PureComponent {
               bySites,
               byNetworks,
               byVariables,
-              byProtocols
+              byProtocols,
+              from,
+              limit
             }
           })
           data = ((response || {}).data || {}).searchMetadata || []

@@ -24,7 +24,15 @@ const getProgresStyle = loading => ({
 })
 
 class View extends PureComponent {
-  state = { currentIndex: 0 }
+  state = {
+    currentIndex: 0,
+    limit: 100,
+    items: this.props.searchResults.map(sr => {
+      var organization = JSON.parse(JSON.stringify(sr))
+      organization.result.results = organization.result.results.slice(0, 5)
+      return organization
+    })
+  }
 
   vhToPx(value) {
     var w = window,
@@ -36,12 +44,30 @@ class View extends PureComponent {
     var result = (y * value) / 100
     return result
   }
-
   tabPanelHeight = this.vhToPx(100) - 72 - 64 - 64
 
   constructor(props) {
     super(props)
     this.searchRefs = props.searchResults.map(() => React.createRef())
+  }
+
+  loadMoreItems = increment => {
+    const { searchResults, updateGlobalState } = this.props
+    console.log('searchResults', searchResults)
+    const newLimit =
+      searchResults[0].result.results.length > searchResults[1].result.results.length
+        ? searchResults[0].result.results.length + increment
+        : searchResults[1].result.results.length + increment
+    updateGlobalState({ limit: newLimit })
+    const { currentIndex, items } = this.state
+    var newItems = JSON.parse(JSON.stringify(items))
+    newItems[currentIndex].result.results = this.props.searchResults[currentIndex].result.results.slice(
+      0,
+      items[currentIndex].result.results.length + increment
+    )
+    this.setState({
+      items: newItems
+    })
   }
 
   render() {
@@ -97,7 +123,8 @@ class View extends PureComponent {
         {/* Tabs header (list of orgs) */}
         <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>
           <Tabs tabId="metadata-search-tabs">
-            {searchResults.map(({ result, target }, i) => {
+            {/* {searchResults.map(({ result, target }, i) => { */}
+            {this.state.items.map(({ result, target }, i) => {
               const { results } = result
               const org = orgs[target]
 
@@ -114,23 +141,35 @@ class View extends PureComponent {
                       <AutoSizer id={`autosizer-${i}`}>
                         {({ height, width }) => {
                           return (
-                            <FixedSizeList
-                              height={height}
-                              width={width}
-                              itemCount={results.length}
-                              itemSize={300}
-                              ref={searchRefs[i]}
+                            <InfiniteLoader
+                              isItemLoaded={index => index < results.length}
+                              itemCount={searchResults[i].result.results.length}
+                              loadMoreItems={() => {
+                                this.loadMoreItems(100)
+                              }}
                             >
-                              {({ index, style }) => (
-                                <div id={index} style={style}>
-                                  {
-                                    results.map((result, j) => <RecordViewer i={j} key={j} record={result} {...org} />)[
-                                      index
-                                    ]
-                                  }
-                                </div>
+                              {({ onItemsRendered, ref }) => (
+                                <FixedSizeList
+                                  height={height}
+                                  width={width}
+                                  itemCount={results.length}
+                                  itemSize={300}
+                                  onItemsRendered={onItemsRendered}
+                                  // ref={ref}
+                                  ref={searchRefs[i]}
+                                >
+                                  {({ index, style }) => (
+                                    <div id={index} style={style}>
+                                      {
+                                        results.map((result, j) => (
+                                          <RecordViewer i={j} key={j} record={result} {...org} />
+                                        ))[index]
+                                      }
+                                    </div>
+                                  )}
+                                </FixedSizeList>
                               )}
-                            </FixedSizeList>
+                            </InfiniteLoader>
                           )
                         }}
                       </AutoSizer>
