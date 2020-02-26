@@ -7,7 +7,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build-readme && npm --prefix api/ run oncommit && npm --prefix client/ run oncommit"
+      "pre-commit": "npm-run-all build-readme"
     }
   },
   "repository": {
