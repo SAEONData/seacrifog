@@ -2,7 +2,7 @@
 
 ## Quickstart (local dev environment)
 
-**1 Start a PostGIS server**
+**Start a PostGIS server**
 ```sh
 docker run -p 5432:5432 --name postgis -v postgres11:/var/lib/postgresql/data -e POSTGRES_PASSWORD=password -d mdillon/postgis
 ```
