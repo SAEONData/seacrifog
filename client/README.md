@@ -3,14 +3,21 @@
 ## Quickstart the client (local dev environment)
 First setup the API, then
 
+#### Work in the context of the client package
+All the commands need to be run from the root of the client. Starting in the root of the seacrifog repository:
+
+```sh
+cd client
+```
+
 #### Install client dependencies
 ```sh
-npm --prefix client/ install
+npm install
 ```
 
 #### Start the client developer server
 ```sh
-npm --prefix client/ start
+npm start
 ```
 
 #### Some helpful Notes
@@ -19,7 +26,7 @@ npm --prefix client/ start
 
 ## Deploying Client to production
 1. The application reads a `.env` located at `client/.env` during the Webpack build process. So to configure the client, as part of the deployment process (and prior to the build step) create such a file and populate it with production-sensible values (refer to notes below on "Client configuration")
-2. Generate the build: `npm --prefix client/ run dist`
+2. Generate the build: `npm run dist` (from the root of the client package)
 3. This will create a folder `client/dist` containing the client resources, with a typical `index.html` entry point. Serve via preferred HTTP server (Apache, Nginx, Node.js, etc.)
 
 #### Some helpful Notes
