@@ -167,6 +167,13 @@ npm --prefix api/ install
 npm --prefix client/ install
 ```
 
+#### Start the API and client together
+This is a helpful script that will start the API and client in the same terminal window. Alternatively you can start the API and client from the root of their respective directories.
+
+```sh
+npm start
+```
+
 
 # API DEVELOPER DOCUMENTATION
 API usage documentation is coming soon! Below are instructions on how how to contribute and deploy this software.
