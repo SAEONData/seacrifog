@@ -162,6 +162,8 @@ npm install
 ```
 
 #### Install dependencies for the client and API (this is also mentioned below)
+NOTE: these projects also need configuration - refer to the documentation below.
+
 ```sh
 npm --prefix api/ install
 npm --prefix client/ install
