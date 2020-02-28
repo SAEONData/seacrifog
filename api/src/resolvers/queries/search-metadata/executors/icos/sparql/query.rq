@@ -2,24 +2,26 @@ prefix cpmeta: <http://meta.icos-cp.eu/ontologies/cpmeta/>
 prefix prov: <http://www.w3.org/ns/prov#>
 
 select
-?formatLabel
-?dataLevel
-?specLabel
-?datasetLabel
-?encodingLabel
-?dobj
-?stationId
-?fileName
-?size
-?submTime
-?timeStart
-?timeEnd
+# Dataset information
+(?formatLabel as ?DataFormat)
+(?dataLevel as ?DataLevel)
+(?specLabel as ?Specification)
+(?datasetLabel as ?Dataset)
+(?encodingLabel as ?DatasetEncoding)
+(?fileName as ?Filename)
+(?stationId as ?StationId)
+(?size as ?DatasetSize)
+(?submTime as ?DatasetSubmitted)
+(?timeStart as ?DatasetStart)
+(?timeEnd as ?DatasetEnd)
+
+# For machine context
+(?station as ?StationObjectRDF)
+(?dobj as ?DataObjectRDF)
+(?spec as ?SpecificationObjectRDF)
 
 where {
   ?dobj cpmeta:hasObjectSpec ?spec .
-
-  # TODO filter on stations
-  ?dobj cpmeta:wasAcquiredBy/prov:wasAssociatedWith ?stationId .
 
   ?dobj cpmeta:hasSizeInBytes ?size .
   ?dobj cpmeta:hasName ?fileName .
@@ -29,9 +31,11 @@ where {
   filter not exists {[] cpmeta:isNextVersionOf ?dobj}
 
   # Filter on stations
+  ?dobj cpmeta:wasAcquiredBy/prov:wasAssociatedWith ?station .
+  ?station cpmeta:hasStationId ?stationId
   {
     select distinct
-    ?uri
+    (?uri as ?station)
     ?label
     ?stationId
 
@@ -47,7 +51,6 @@ where {
             }
         }
         values ?stationId {'GAT'}
-        ?uri cpmeta:hasStationId ?stationId
     }
   }
 
@@ -85,4 +88,5 @@ where {
   }
 }
 
-limit 1000
+offset 0
+limit 10
