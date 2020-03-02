@@ -1,11 +1,17 @@
 import React, { PureComponent } from 'react'
 import debounce from '../../lib/debounce'
-import { TextField, FontIcon, DropdownMenu, ListItemControl, SelectionControl, List, ListItem } from 'react-md'
+import {
+  TextField,
+  FontIcon,
+  DropdownMenu,
+  ListItemControl,
+  SelectionControl,
+  ListItem,
+  Card,
+  CardText
+} from 'react-md'
+import { FixedSizeList } from 'react-window'
 import sift from 'sift'
-
-const listItemStyle = {
-  margin: '2px 0'
-}
 
 /**
  * Interface:
@@ -47,7 +53,7 @@ export default class extends PureComponent {
       })
       .splice(0, listSize)
 
-      const listElements = items
+    const listElements = items
       .filter(sift({ id: { $in: selectedItems } }))
       .sort((a, b) => {
         const aVal = a.value.toUpperCase()
@@ -144,7 +150,6 @@ export default class extends PureComponent {
             )
           }}
         </FixedSizeList>
-        
       </div>
     )
   }

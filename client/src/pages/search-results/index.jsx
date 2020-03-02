@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { FixedSizeList } from 'react-window'
+import InfiniteLoader from 'react-window-infinite-loader'
 import { TabsContainer, Tabs, Tab, Button, Toolbar, Grid, Cell, LinearProgress } from 'react-md'
 import DataQuery from '../../modules/data-query'
 import { ENTIRE_GRAPH } from '../../graphql/queries'
@@ -148,7 +149,7 @@ class View extends PureComponent {
                                 this.loadMoreItems(100)
                               }}
                             >
-                              {({ onItemsRendered, ref }) => (
+                              {({ onItemsRendered /*, ref*/ }) => (
                                 <FixedSizeList
                                   height={height}
                                   width={width}
