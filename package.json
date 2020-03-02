@@ -3,11 +3,17 @@
   "version": "0.0.1",
   "description": "Source code for the the SEACRIFOG component (Workpackage 5.4) deliverable by SAEON",
   "scripts": {
-    "build-readme": "scripts/build-readme.sh"
+    "start": "npm-run-all -p start:api start:client",
+    "start:api": "npm --prefix api/ start",
+    "start:client": "npm --prefix client/ start",
+    "build-readme": "scripts/build-readme.sh",
+    "api-oncommit": "npm --prefix api/ run oncommit",
+    "client-oncommit": "npm --prefix client/ run oncommit",
+    "update-git-snapshot": "git add ."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build-readme && npm --prefix api/ run oncommit && npm --prefix client/ run oncommit"
+      "pre-commit": "npm-run-all -s build-readme api-oncommit client-oncommit update-git-snapshot"
     }
   },
   "repository": {
