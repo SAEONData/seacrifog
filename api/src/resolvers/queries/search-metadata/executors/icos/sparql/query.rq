@@ -1,0 +1,92 @@
+prefix cpmeta: <http://meta.icos-cp.eu/ontologies/cpmeta/>
+prefix prov: <http://www.w3.org/ns/prov#>
+
+select
+# Dataset information
+(?formatLabel as ?DataFormat)
+(?dataLevel as ?DataLevel)
+(?specLabel as ?Specification)
+(?datasetLabel as ?Dataset)
+(?encodingLabel as ?DatasetEncoding)
+(?fileName as ?Filename)
+(?stationId as ?StationId)
+(?size as ?DatasetSize)
+(?submTime as ?DatasetSubmitted)
+(?timeStart as ?DatasetStart)
+(?timeEnd as ?DatasetEnd)
+
+# For machine context
+(?station as ?StationObjectRDF)
+(?dobj as ?DataObjectRDF)
+(?spec as ?SpecificationObjectRDF)
+
+where {
+  ?dobj cpmeta:hasObjectSpec ?spec .
+
+  ?dobj cpmeta:hasSizeInBytes ?size .
+  ?dobj cpmeta:hasName ?fileName .
+  ?dobj cpmeta:wasSubmittedBy/prov:endedAtTime ?submTime .
+  ?dobj cpmeta:hasStartTime | (cpmeta:wasAcquiredBy / prov:startedAtTime) ?timeStart .
+  ?dobj cpmeta:hasEndTime | (cpmeta:wasAcquiredBy / prov:endedAtTime) ?timeEnd .
+  filter not exists {[] cpmeta:isNextVersionOf ?dobj}
+
+  # Filter on stations
+  ?dobj cpmeta:wasAcquiredBy/prov:wasAssociatedWith ?station .
+  ?station cpmeta:hasStationId ?stationId
+  {
+    select distinct
+    (?uri as ?station)
+    ?label
+    ?stationId
+
+    where {
+        { ?uri rdfs:label ?label }
+        UNION
+        { ?uri cpmeta:hasName ?label }
+        UNION 
+        {
+            graph <http://meta.icos-cp.eu/resources/wdcgg/> {
+                ?uri a cpmeta:Station .
+                ?uri cpmeta:hasName ?label .
+            }
+        }
+        values ?stationId {'GAT'}
+    }
+  }
+
+  # Filter on specs
+  
+  # TODO - Theme is defined on client, pass through here
+  values ?theme { <http://meta.icos-cp.eu/resources/themes/atmosphere> }
+  ?spec cpmeta:hasDataTheme ?theme .  
+
+  ?spec cpmeta:hasDataLevel ?dataLevel .
+  ?spec cpmeta:containsDataset ?dataset .
+  ?dataset rdfs:label ?datasetLabel .
+  ?spec rdfs:label ?specLabel .
+  ?spec cpmeta:hasEncoding ?encoding .
+  ?encoding rdfs:label ?encodingLabel .
+  ?spec cpmeta:hasFormat ?format .
+  ?format rdfs:label ?formatLabel
+
+  {
+    select
+    ?spec
+
+    where {
+      values ?specType{ cpmeta:SimpleObjectSpec }
+      ?spec rdf:type ?specType .
+
+      values ?project { <http://meta.icos-cp.eu/resources/projects/icos> }
+      ?spec cpmeta:hasAssociatedProject ?project  .
+
+       filter exists {
+          ?dobj cpmeta:hasObjectSpec ?spec .
+          filter not exists {[] cpmeta:isNextVersionOf ?dobj}
+        }
+    }
+  }
+}
+
+offset 0
+limit 10
