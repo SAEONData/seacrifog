@@ -14,25 +14,25 @@ const seacrifogLogoStyle = {
   padding: '8px 16px'
 }
 
+const getCurrentPath = ({ location: { pathname } }) => {
+  return pathname
+    .substring(pathname.indexOf('/') + 1)
+    .split('/')
+    .map(p => p.capitalize())
+    .join('/')
+}
+
 class Navigation extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { currentPath: this.getCurrentPath(props) }
+    this.state = { currentPath: getCurrentPath(props) }
     this.navItems = props.navItems
   }
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      currentPath: this.getCurrentPath(nextProps)
+      currentPath: getCurrentPath(nextProps)
     }
-  }
-
-  getCurrentPath({ location: { pathname } }) {
-    return pathname
-      .substring(pathname.indexOf('/') + 1)
-      .split('/')
-      .map(p => p.capitalize())
-      .join('/')
   }
 
   render() {
