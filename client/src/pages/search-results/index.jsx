@@ -26,7 +26,7 @@ const getProgresStyle = loading => ({
 
 class View extends PureComponent {
   state = {
-    currentIndex: 0,
+    currentIndex: 0
   }
 
   constructor(props) {
@@ -36,11 +36,13 @@ class View extends PureComponent {
 
   loadMoreItems = increment => {
     const { searchResults, updateGlobalState } = this.props
-    
+
     var newLimit = 0
-    searchResults.forEach((organization)=>{
-    if(organization?.result?.results?.length && newLimit<organization.result.results.length) 
-    newLimit=organization.result.results.length+increment} //taking the biggest searchResult size between all organizations. Individual limits still to be added
+    searchResults.forEach(
+      organization => {
+        if (organization?.result?.results?.length && newLimit < organization.result.results.length)
+          newLimit = organization.result.results.length + increment
+      } //taking the biggest searchResult size between all organizations. Individual limits still to be added
     )
     updateGlobalState({ limit: newLimit })
   }
@@ -106,32 +108,29 @@ class View extends PureComponent {
                 <Tab
                   key={i}
                   label={
-                    <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>{(result?.results?.length || '0') + ' records'}</span>
+                    <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>
+                      {(result?.results?.length || '0') + '+ records'}
+                    </span>
                   }
                   icon={<img src={org.logo} style={{ height: '30px', marginBottom: 5 }} />}
                 >
                   <div style={{ padding: '20px' }}>
-                  
-                  <button onClick={() => {
-                  this.loadMoreItems(10)
-                }}>+10</button>
-
                     {results && results.length > 0 ? (
                       <AutoSizer id={`autosizer-${i}`} disableHeight>
                         {({ width }) => {
                           return (
                             <InfiniteLoader
-                              isItemLoaded={index => index < results.length-10}//test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}
+                              isItemLoaded={index => index < results.length - 10} //boolean test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}
                               itemCount={searchResults[i].result.results.length}
                               loadMoreItems={() => {
-                                this.loadMoreItems(20)
+                                this.loadMoreItems(200)
                               }}
-                              threshold={15} //Threshold at which to pre-fetch data. 15 is default
-                              minimumBatchSize={10} //Minimum number of rows to be loaded at a time. 10 is default
+                              threshold={100} //Threshold at which to pre-fetch data. default is 15
+                              // minimumBatchSize={10} //Minimum number of rows to be loaded at a time. default is 10. This should not be relevant
                             >
                               {({ onItemsRendered }) => (
                                 <FixedSizeList
-                                  height={700}
+                                  height={600}
                                   width={width}
                                   itemCount={results.length}
                                   itemSize={300}
