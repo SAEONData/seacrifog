@@ -10,6 +10,7 @@ import {
   Card,
   CardText
 } from 'react-md'
+import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
 import sift from 'sift'
 
@@ -135,21 +136,27 @@ export default class extends PureComponent {
             value={searchTerm}
           />
         </DropdownMenu>
-        <FixedSizeList
-          id="fixedSizeList"
-          height={selectedItems.length * 50 > 300 ? 300 : selectedItems.length * 50}
-          width={352}
-          itemCount={selectedItems.length}
-          itemSize={50}
-        >
-          {({ index, style }) => {
+        <AutoSizer id={'autosizer'} disableHeight>
+          {({ width }) => {
             return (
-              <div id={index} style={style}>
-                {listElements[index]}
-              </div>
+              <FixedSizeList
+                id="fixedSizeList"
+                height={selectedItems.length * 50 > 300 ? 300 : selectedItems.length * 50}
+                width={width}
+                itemCount={selectedItems.length}
+                itemSize={50}
+              >
+                {({ index, style }) => {
+                  return (
+                    <div id={index} style={style}>
+                      {listElements[index]}
+                    </div>
+                  )
+                }}
+              </FixedSizeList>
             )
           }}
-        </FixedSizeList>
+        </AutoSizer>
       </div>
     )
   }

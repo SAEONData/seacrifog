@@ -38,26 +38,5 @@ export const variableCharts = [
     dataFilter: data => {
       return data
     }
-  },
-  //DUMMY COPIED CHARTS TO BE DELETED
-  {
-    //Domains
-    title: 'Domain Groupings COPY',
-    datafield: 'variablesDomains',
-    entryName: 'domain',
-    entryValue: 'variable_count',
-    dataFilter: data => {
-      return data
-    }
-  },
-  {
-    //Rf Types
-    title: 'Radiative Forcing Types COPY',
-    datafield: 'variablesRfTypes',
-    entryName: 'rftype',
-    entryValue: 'variable_count',
-    dataFilter: data => {
-      return data
-    }
   }
 ]

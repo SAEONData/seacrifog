@@ -28,6 +28,8 @@ where {
   ?dobj cpmeta:wasSubmittedBy/prov:endedAtTime ?submTime .
   ?dobj cpmeta:hasStartTime | (cpmeta:wasAcquiredBy / prov:startedAtTime) ?timeStart .
   ?dobj cpmeta:hasEndTime | (cpmeta:wasAcquiredBy / prov:endedAtTime) ?timeEnd .
+
+  # Only want the move resent version
   filter not exists {[] cpmeta:isNextVersionOf ?dobj}
 
   # Filter on stations
