@@ -4,7 +4,6 @@ import DataQuery from '../../modules/data-query'
 import { NETWORKS_MIN, NETWORK, EXPLORER_NETWORK_CHARTS } from '../../graphql/queries'
 import {
   NoneMessage,
-  ExplorerFormattedObject,
   ExplorerHeaderBar,
   ExplorerLayout,
   ExplorerTableLayout,
@@ -19,7 +18,7 @@ import {
 } from '../../modules/explorer-page'
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
-import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
 import { networkCharts } from './network-charts'
 const mappings = {}
 
@@ -118,7 +117,7 @@ export default props => {
                                     title: 'Additional Information',
                                     subTitle: 'All available fields',
                                     component: (
-                                      <ExplorerFormattedObject
+                                      <FormattedObject
                                         object={formatAndFilterObjectKeys(network, mappings, ([key, val]) =>
                                           ['abstract', '__typename'].includes(key) || typeof val === 'object'
                                             ? false

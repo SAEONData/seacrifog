@@ -4,7 +4,6 @@ import DataQuery from '../../modules/data-query'
 import { VARIABLES_MIN, VARIABLE, EXPLORER_VARIABLE_CHARTS } from '../../graphql/queries'
 import {
   NoneMessage,
-  ExplorerFormattedObject,
   ExplorerHeaderBar,
   ExplorerLayout,
   ExplorerTableLayout,
@@ -21,7 +20,7 @@ import {
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem, DataTable, TableHeader, TableRow, TableColumn, TableBody } from 'react-md'
 import { mergeLeft } from 'ramda'
-import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
 import { variableCharts } from './variable-charts'
 
 const mappings = {
@@ -135,7 +134,7 @@ export default props => {
                                   title: 'Additional Information',
                                   subTitle: 'All available fields',
                                   component: (
-                                    <ExplorerFormattedObject
+                                    <FormattedObject
                                       object={formatAndFilterObjectKeys(variable, mappings, ([key, val]) =>
                                         ['description', '__typename'].includes(key) || typeof val === 'object'
                                           ? false
@@ -150,7 +149,7 @@ export default props => {
                                   title: 'Requirements',
                                   subTitle: 'For observation & data products',
                                   component: (
-                                    <ExplorerFormattedObject
+                                    <FormattedObject
                                       object={{
                                         'Observation Frequency': `${variable.frequency_value} ${variable.frequency_unit} (${variable.frequency_comment})`,
                                         'Spatial Resolution': `${variable.res_value} ${variable.res_unit} (${variable.res_comment})`,
@@ -175,7 +174,7 @@ export default props => {
                                         to radiative forcing on the African continent. Also shown are related RF
                                         components (Global Values)
                                       </p>
-                                      <ExplorerFormattedObject
+                                      <FormattedObject
                                         object={{
                                           'Variable Type': variable.rftype,
                                           'Total RF best est. (Wm-2)': Math.max.apply(

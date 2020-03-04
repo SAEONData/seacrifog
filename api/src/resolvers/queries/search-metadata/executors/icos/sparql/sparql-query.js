@@ -12,6 +12,7 @@ export default ({ themeIris, sites, limit, offset }) => `
   ?collectionDescription
 
   # Collection object info (parts)
+  ?dobj
   ?filename
   ?dataTheme
   ?spec
@@ -57,50 +58,49 @@ export default ({ themeIris, sites, limit, offset }) => `
     ] .
 
     # Collection's objects
-    ?collection purl:hasPart [
-
-      # Filename
-      cpmeta:hasName ?filename ;
-      cpmeta:hasSizeInBytes ?sizeInBytes ;
-      cpmeta:hasSha256sum ?checksum ;
+    ?collection purl:hasPart ?dobj .
+  
+    # Filename
+    ?dobj cpmeta:hasName ?filename .
+    ?dobj cpmeta:hasSizeInBytes ?sizeInBytes .
+    ?dobj cpmeta:hasSha256sum ?checksum .
+  
+    # Site
+    ?dobj cpmeta:wasAcquiredBy [
+      cpmeta:hasSamplingHeight ?samplingHeight ;
+      prov:startedAtTime ?from ;
+      prov:endedAtTime ?to ;
+  
+      # Station
+      prov:wasAssociatedWith [
+        cpmeta:hasName ?stationName ;
+        cpmeta:hasLongitude ?stationLongitude ;
+        cpmeta:hasLatitude ?stationLatitude ;
+        cpmeta:hasStationId ?stationId ;
+        cpmeta:countryCode ?stationCountryCode ;
+        cpmeta:hasElevation ?stationElevation ;
+        cpmeta:hasAtcId ?stationAtcId
+      ]
+    ] .
+  
+    # Spec
+    ?dobj cpmeta:hasObjectSpec [
+      rdf:type [] ;
+      rdfs:label ?spec ;
+  
+      # Theme
+      cpmeta:hasDataTheme ?theme ;
       
-      # Site
-      cpmeta:wasAcquiredBy [
-        cpmeta:hasSamplingHeight ?samplingHeight ;
-        prov:startedAtTime ?from ;
-        prov:endedAtTime ?to ;
-
-        # Station
-        prov:wasAssociatedWith [
-          cpmeta:hasName ?stationName ;
-          cpmeta:hasLongitude ?stationLongitude ;
-          cpmeta:hasLatitude ?stationLatitude ;
-          cpmeta:hasStationId ?stationId ;
-          cpmeta:countryCode ?stationCountryCode ;
-          cpmeta:hasElevation ?stationElevation ;
-          cpmeta:hasAtcId ?stationAtcId
-        ]
-      ] ;
-
-      # Spec
-      cpmeta:hasObjectSpec [
-        rdf:type [] ;
-        rdfs:label ?spec ;
-
-        # Theme
-        cpmeta:hasDataTheme ?theme ;
-        
-        # Project
-        cpmeta:hasAssociatedProject ?project ;
-
-        # Dataset
-        cpmeta:containsDataset [ rdfs:label ?dataset ] ;
-        cpmeta:hasDataLevel ?dataLevel ;
-        cpmeta:hasEncoding [ rdfs:label ?encoding ] ;
-        cpmeta:hasFormat [
-          rdfs:label ?format ;
-          rdfs:comment ?formatNote
-        ]
+      # Project
+      cpmeta:hasAssociatedProject ?project ;
+  
+      # Dataset
+      cpmeta:containsDataset [ rdfs:label ?dataset ] ;
+      cpmeta:hasDataLevel ?dataLevel ;
+      cpmeta:hasEncoding [ rdfs:label ?encoding ] ;
+      cpmeta:hasFormat [
+        rdfs:label ?format ;
+        rdfs:comment ?formatNote
       ]
     ] .
 
