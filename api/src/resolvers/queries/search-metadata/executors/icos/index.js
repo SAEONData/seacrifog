@@ -1,9 +1,6 @@
 import { parentPort, workerData } from 'worker_threads'
 import axios from 'axios'
 import sparqlQuery from './sparql/sparql-query'
-import getStations from './sparql/get-stations'
-import getDobjs from './sparql/get-dobjs'
-import getExtendedDobjs from './sparql/get-extended-dobjs'
 
 const themeMap = {
   Terrestrial: 'http://meta.icos-cp.eu/resources/themes/ecosystem',
@@ -42,7 +39,7 @@ const themeMap = {
         },
         data: sparqlQuery({ themeIris, sites, limit, offset })
       }).catch(error => console.error('Error searching metadata', error))) || {}
-    ).data.results.bindings.map(r => r.spec.value)
+    )?.data
   }
 
   response = response || {
@@ -53,8 +50,8 @@ const themeMap = {
 
   parentPort.postMessage({
     success: true,
-    result_length: response.results.bindings.length,
-    results: response.results.bindings
+    result_length: response?.results?.bindings?.length || 0,
+    results: response?.results?.bindings || []
   })
 })(workerData)
   .catch(error => {

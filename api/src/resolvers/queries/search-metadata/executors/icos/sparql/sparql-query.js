@@ -106,7 +106,7 @@ export default ({ themeIris, sites, limit, offset }) => `
 
     # Filters by IRIs
     values ?project { <http://meta.icos-cp.eu/resources/projects/icos> }
-    ${themeIris.length ? `values ?theme { ${themeUris.map(uri => `<${uri}>`).join(' ')} }` : ''}
+    ${themeIris.length ? `values ?theme { ${themeIris.map(uri => `<${uri}>`).join(' ')} }` : ''}
     ${
       sites.name.length
         ? `values ?stationId { ${sites.name.map(s => `'${s.replace("'", "''")}'`).join(' ')} }`
