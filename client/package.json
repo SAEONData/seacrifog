@@ -32,6 +32,7 @@
     "react-transition-group": "4.3.0",
     "react-virtualized-auto-sizer": "1.0.2",
     "react-window": "1.8.5",
+    "react-window-infinite-loader": "1.0.5",
     "regenerator-runtime": "0.13.3",
     "sift": "11.1.8",
     "webfontloader": "1.6.28"
