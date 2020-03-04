@@ -13,6 +13,10 @@ class State extends PureComponent {
     selectedProtocols: [],
     selectedDataproducts: [],
 
+    //metadata pagination restrictions
+    offset: 0,
+    limit: 200,
+
     // Single INDEX values. NOT IDs
     currentSite: 0,
     currentNetwork: 0,
@@ -27,7 +31,9 @@ class State extends PureComponent {
   }
 
   componentDidMount() {
-    // this.updateGlobalState({ selectedVariables: [1] })
+    this.updateGlobalState({
+      // selectedVariables: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+    })
   }
 
   /**
@@ -36,7 +42,14 @@ class State extends PureComponent {
    */
   async componentDidUpdate(prevProps, prevState) {
     const { client } = this.props
-    const searchFields = ['selectedSites', 'selectedNetworks', 'selectedVariables', 'selectedProtocols']
+    const searchFields = [
+      'selectedSites',
+      'selectedNetworks',
+      'selectedVariables',
+      'selectedProtocols',
+      'offset',
+      'limit'
+    ]
     let refresh = false
     for (const field of searchFields) {
       const oldF = prevState[field]
@@ -54,7 +67,9 @@ class State extends PureComponent {
         selectedSites: bySites,
         selectedNetworks: byNetworks,
         selectedVariables: byVariables,
-        selectedProtocols: byProtocols
+        selectedProtocols: byProtocols,
+        offset: offset,
+        limit: limit
       } = this.state
 
       this.setState({ loadingSearchResults: true }, async () => {
@@ -63,12 +78,21 @@ class State extends PureComponent {
         try {
           const response = await client.query({
             query: gql`
-              query search($bySites: [Int!], $byNetworks: [Int!], $byProtocols: [Int!], $byVariables: [Int!]) {
+              query search(
+                $bySites: [Int!]
+                $byNetworks: [Int!]
+                $byProtocols: [Int!]
+                $byVariables: [Int!]
+                $offset: Int
+                $limit: Int
+              ) {
                 searchMetadata(
                   bySites: $bySites
                   byNetworks: $byNetworks
                   byVariables: $byVariables
                   byProtocols: $byProtocols
+                  offset: $offset
+                  limit: $limit
                 ) {
                   i
                   target
@@ -82,7 +106,9 @@ class State extends PureComponent {
               bySites,
               byNetworks,
               byVariables,
-              byProtocols
+              byProtocols,
+              offset,
+              limit
             }
           })
           data = ((response || {}).data || {}).searchMetadata || []

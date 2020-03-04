@@ -195,7 +195,7 @@ docker run -p 5432:5432 --name postgis -v postgres11:/var/lib/postgresql/data -e
 ```
 
 **Setup the DB**
-The .backup file is from an older version of PostgreSQL and some PostgreSQL clients don't read it as a result. DBeaver - a decent, free DB IDE - has a PostgreSQL client that works by default, but any PostgreSQL client should work).
+The .backup file is from an older version of PostgreSQL and some PostgreSQL clients don't read it as a result. DBeaver - a decent, free DB IDE - has a PostgreSQL client that works by default (but any PostgreSQL client should work).
 
 1. Log into a running PostGIS server
 2. Create a DB called `seacrifog_old`
@@ -218,7 +218,7 @@ npm install
 #### Configure the API to re-create the database on startup
 This is false by default (for obvious reasons!)
 ```sh
-echo FORCE_DB_RESET=true > api/.env
+echo FORCE_DB_RESET=true > .env
 ```
 
 #### Start the API

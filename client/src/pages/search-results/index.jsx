@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { FixedSizeList } from 'react-window'
+import InfiniteLoader from 'react-window-infinite-loader'
 import { TabsContainer, Tabs, Tab, Button, Toolbar, Grid, Cell, LinearProgress } from 'react-md'
 import DataQuery from '../../modules/data-query'
 import { ENTIRE_GRAPH } from '../../graphql/queries'
@@ -24,28 +25,30 @@ const getProgresStyle = loading => ({
 })
 
 class View extends PureComponent {
-  state = { currentIndex: 0 }
-
-  vhToPx(value) {
-    var w = window,
-      d = document,
-      e = d.documentElement,
-      g = d.getElementsByTagName('body')[0],
-      y = w.innerHeight || e.clientHeight || g.clientHeight
-
-    var result = (y * value) / 100
-    return result
+  state = {
+    currentIndex: 0
   }
-
-  tabPanelHeight = this.vhToPx(100) - 72 - 64 - 64
 
   constructor(props) {
     super(props)
     this.searchRefs = props.searchResults.map(() => React.createRef())
   }
 
+  loadMoreItems = increment => {
+    const { searchResults, updateGlobalState } = this.props
+
+    var newLimit = 0
+    searchResults.forEach(
+      organization => {
+        if (organization?.result?.results?.length && newLimit < organization.result.results.length)
+          newLimit = organization.result.results.length + increment
+      } //taking the biggest searchResult size between all organizations. Individual limits still to be added
+    )
+    updateGlobalState({ limit: newLimit })
+  }
+
   render() {
-    const { searchRefs, props, state, tabPanelHeight } = this
+    const { searchRefs, props, state } = this
     const { loadingSearchResults, searchResults, sites, networks, variables, protocols } = props
     const { currentIndex } = state
     return (
@@ -105,32 +108,47 @@ class View extends PureComponent {
                 <Tab
                   key={i}
                   label={
-                    <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>{(result?.results?.length || '0') + ' records'}</span>
+                    <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>
+                      {(result?.results?.length || '0') + '+ records'}
+                    </span>
                   }
                   icon={<img src={org.logo} style={{ height: '30px', marginBottom: 5 }} />}
                 >
-                  <div style={{ height: tabPanelHeight - 60, padding: '20px' }}>
+                  <div style={{ padding: '20px' }}>
                     {results && results.length > 0 ? (
-                      <AutoSizer id={`autosizer-${i}`}>
-                        {({ height, width }) => {
+                      <AutoSizer id={`autosizer-${i}`} disableHeight>
+                        {({ width }) => {
                           return (
-                            <FixedSizeList
-                              height={height}
-                              width={width}
-                              itemCount={results.length}
-                              itemSize={300}
-                              ref={searchRefs[i]}
+                            <InfiniteLoader
+                              isItemLoaded={index => index < results.length - 10} //boolean test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}
+                              itemCount={searchResults[i].result.results.length}
+                              loadMoreItems={() => {
+                                this.loadMoreItems(200)
+                              }}
+                              threshold={100} //Threshold at which to pre-fetch data. default is 15
+                              // minimumBatchSize={10} //Minimum number of rows to be loaded at a time. default is 10. This should not be relevant
                             >
-                              {({ index, style }) => (
-                                <div id={index} style={style}>
-                                  {
-                                    results.map((result, j) => <RecordViewer i={j} key={j} record={result} {...org} />)[
-                                      index
-                                    ]
-                                  }
-                                </div>
+                              {({ onItemsRendered }) => (
+                                <FixedSizeList
+                                  height={600}
+                                  width={width}
+                                  itemCount={results.length}
+                                  itemSize={300}
+                                  onItemsRendered={onItemsRendered}
+                                  ref={searchRefs[i]}
+                                >
+                                  {({ index, style }) => (
+                                    <div id={index} style={style}>
+                                      {
+                                        results.map((result, j) => (
+                                          <RecordViewer i={j} key={j} record={result} {...org} />
+                                        ))[index]
+                                      }
+                                    </div>
+                                  )}
+                                </FixedSizeList>
                               )}
-                            </FixedSizeList>
+                            </InfiniteLoader>
                           )
                         }}
                       </AutoSizer>
@@ -151,7 +169,7 @@ class View extends PureComponent {
 
 export default () => (
   <GlobalStateContext.Consumer>
-    {({ searchResults, loadingSearchResults }) =>
+    {({ searchResults, loadingSearchResults, updateGlobalState }) =>
       searchResults.length ? (
         <DataQuery query={ENTIRE_GRAPH} variables={{}}>
           {({ sites, networks, variables, protocols }) => (
@@ -162,6 +180,7 @@ export default () => (
               protocols={protocols}
               searchResults={searchResults}
               loadingSearchResults={loadingSearchResults}
+              updateGlobalState={updateGlobalState}
             />
           )}
         </DataQuery>

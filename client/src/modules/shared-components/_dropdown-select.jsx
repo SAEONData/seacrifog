@@ -1,11 +1,18 @@
 import React, { PureComponent } from 'react'
 import debounce from '../../lib/debounce'
-import { TextField, FontIcon, DropdownMenu, ListItemControl, SelectionControl, List, ListItem } from 'react-md'
+import {
+  TextField,
+  FontIcon,
+  DropdownMenu,
+  ListItemControl,
+  SelectionControl,
+  ListItem,
+  Card,
+  CardText
+} from 'react-md'
+import AutoSizer from 'react-virtualized-auto-sizer'
+import { FixedSizeList } from 'react-window'
 import sift from 'sift'
-
-const listItemStyle = {
-  margin: '2px 0'
-}
 
 /**
  * Interface:
@@ -47,6 +54,27 @@ export default class extends PureComponent {
       })
       .splice(0, listSize)
 
+    const listElements = items
+      .filter(sift({ id: { $in: selectedItems } }))
+      .sort((a, b) => {
+        const aVal = a.value.toUpperCase()
+        const bVal = b.value.toUpperCase()
+        return aVal >= bVal ? 1 : -1
+      })
+      .map(item => (
+        <Card
+          key={item.id}
+          style={{ boxShadow: 'none' }}
+          className={'filter-menu-selected-item add-on-hover'}
+          onClick={() => toggleItemSelect(item)}
+        >
+          <CardText style={{ padding: '16px' }}>
+            {(item.value || '(UNKNOWN)').truncate(truncateLength || 25).toUpperCase()}
+
+            <FontIcon style={{ float: 'right', fontSize: 'x-large' }}>close</FontIcon>
+          </CardText>
+        </Card>
+      ))
     return (
       <div className={className}>
         <DropdownMenu
@@ -62,6 +90,8 @@ export default class extends PureComponent {
           }}
           position={DropdownMenu.Positions.BELOW}
           menuItems={(() => {
+            /*Menu Items is an array of elements. 
+            A different component to DropdownMenu might be needed if FixedSizeList / InfiniteLoader are to be the child */
             const result =
               filteredItems.length > 0
                 ? filteredItems.map(item => (
@@ -106,25 +136,27 @@ export default class extends PureComponent {
             value={searchTerm}
           />
         </DropdownMenu>
-        <List>
-          {items
-            .filter(sift({ id: { $in: selectedItems } }))
-            .sort((a, b) => {
-              const aVal = a.value.toUpperCase()
-              const bVal = b.value.toUpperCase()
-              return aVal >= bVal ? 1 : -1
-            })
-            .map(item => (
-              <ListItem
-                className={'filter-menu-selected-item add-on-hover'}
-                style={listItemStyle}
-                key={item.id}
-                onClick={() => toggleItemSelect(item)}
-                rightIcon={<FontIcon>close</FontIcon>}
-                primaryText={(item.value || '(UNKNOWN)').truncate(truncateLength || 25).toUpperCase()}
-              />
-            ))}
-        </List>
+        <AutoSizer id={'autosizer'} disableHeight>
+          {({ width }) => {
+            return (
+              <FixedSizeList
+                id="fixedSizeList"
+                height={selectedItems.length * 50 > 300 ? 300 : selectedItems.length * 50}
+                width={width}
+                itemCount={selectedItems.length}
+                itemSize={50}
+              >
+                {({ index, style }) => {
+                  return (
+                    <div id={index} style={style}>
+                      {listElements[index]}
+                    </div>
+                  )
+                }}
+              </FixedSizeList>
+            )
+          }}
+        </AutoSizer>
       </div>
     )
   }
