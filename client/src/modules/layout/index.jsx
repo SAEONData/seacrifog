@@ -21,8 +21,10 @@ class Navigation extends PureComponent {
     this.navItems = props.navItems
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ currentPath: this.getCurrentPath(nextProps) })
+  static getDerivedStateFromProps(nextProps) {
+    return {
+      currentPath: this.getCurrentPath(nextProps)
+    }
   }
 
   getCurrentPath({ location: { pathname } }) {
