@@ -1,15 +1,6 @@
 import React, { PureComponent } from 'react'
 import debounce from '../../lib/debounce'
-import {
-  TextField,
-  FontIcon,
-  DropdownMenu,
-  ListItemControl,
-  SelectionControl,
-  ListItem,
-  Card,
-  CardText
-} from 'react-md'
+import { TextField, FontIcon, ListItemControl, SelectionControl, ListItem, Card, CardText, List } from 'react-md'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
 import sift from 'sift'
@@ -64,7 +55,7 @@ export default class extends PureComponent {
       .map(item => (
         <Card
           key={item.id}
-          style={{ boxShadow: 'none', height: '48px' }}
+          style={{ boxShadow: 'none' }}
           className={'filter-menu-selected-item add-on-hover'}
           onClick={() => toggleItemSelect(item)}
         >
@@ -77,24 +68,26 @@ export default class extends PureComponent {
       ))
     return (
       <div className={className}>
-        <DropdownMenu
-          id={`filter-component-${label}-${id}`}
+        <TextField
+          id={`atlas-filter-${id}`}
+          key={id}
+          autoComplete="off"
           style={{ width: '100%' }}
-          listStyle={{ width: '100%' }}
-          defaultVisible={false}
-          visible={visible}
-          onVisibilityChange={() => this.setState({ visible: !visible })}
-          anchor={{
-            x: DropdownMenu.HorizontalAnchors.INNER_LEFT,
-            y: DropdownMenu.VerticalAnchors.BOTTOM
-          }}
-          position={DropdownMenu.Positions.BELOW}
-          menuItems={(() => {
-            /*Menu Items is an array of elements. 
-            A different component to DropdownMenu might be needed if FixedSizeList / InfiniteLoader are to be the child */
-            const result =
-              filteredItems.length > 0
-                ? filteredItems.map(item => (
+          leftIcon={<FontIcon>search</FontIcon>}
+          label={label}
+          onChange={debounce(val => updateSearchTerm(val))}
+          fullWidth={true}
+          value={searchTerm}
+          onFocus={() => this.setState({ visible: !visible })}
+          // onBlur={()=>{this.setState({ visible: !visible })}}
+          // onItemToggle={() => this.setState({ visible: !visible })}
+        />
+
+        <Card style={{ visibility: this.state.visible ? 'visible' : 'hidden', position: 'absolute', zIndex: 99 }}>
+          <List>
+            {filteredItems.length > 0
+              ? filteredItems.map(item => (
+                  <ListItem key={item.id}>
                     <ListItemControl
                       key={item.id}
                       className="add-on-hover"
@@ -110,32 +103,12 @@ export default class extends PureComponent {
                         />
                       }
                     />
-                  ))
-                : 'No search result'
+                  </ListItem>
+                ))
+              : 'No search result'}
+          </List>
+        </Card>
 
-            if (result.length >= 20)
-              result.push(
-                <ListItem
-                  key={'more-items'}
-                  onClick={() => this.setState({ listSize: listSize + 20, visible: false })}
-                  primaryText={'LOAD MORE...'}
-                />
-              )
-            return result
-          })()}
-        >
-          <TextField
-            id={`atlas-filter-${id}`}
-            key={id}
-            autoComplete="off"
-            style={{ width: '100%' }}
-            leftIcon={<FontIcon>search</FontIcon>}
-            label={label}
-            onChange={debounce(val => updateSearchTerm(val))}
-            fullWidth={true}
-            value={searchTerm}
-          />
-        </DropdownMenu>
         <AutoSizer id={'autosizer'} disableHeight>
           {({ width }) => {
             return (
