@@ -90,7 +90,7 @@ export default class extends PureComponent {
           position={DropdownMenu.Positions.BELOW}
           menuItems={(() => {
             /*Menu Items is an array of elements. 
-            A different component to DropdownMenu might be needed if FixedSizeList is to be the child */
+            A different component to DropdownMenu might be needed if FixedSizeList / InfiniteLoader are to be the child */
             const result =
               filteredItems.length > 0
                 ? filteredItems.map(item => (

@@ -27,25 +27,7 @@ const getProgresStyle = loading => ({
 class View extends PureComponent {
   state = {
     currentIndex: 0,
-    limit: 100,
-    items: this.props.searchResults.map(sr => {
-      var organization = JSON.parse(JSON.stringify(sr))
-      organization.result.results = organization.result.results.slice(0, 5)
-      return organization
-    })
   }
-
-  vhToPx(value) {
-    var w = window,
-      d = document,
-      e = d.documentElement,
-      g = d.getElementsByTagName('body')[0],
-      y = w.innerHeight || e.clientHeight || g.clientHeight
-
-    var result = (y * value) / 100
-    return result
-  }
-  tabPanelHeight = this.vhToPx(100) - 72 - 64 - 64
 
   constructor(props) {
     super(props)
@@ -54,25 +36,17 @@ class View extends PureComponent {
 
   loadMoreItems = increment => {
     const { searchResults, updateGlobalState } = this.props
-    console.log('searchResults', searchResults)
-    const newLimit =
-      searchResults[0].result.results.length > searchResults[1].result.results.length
-        ? searchResults[0].result.results.length + increment
-        : searchResults[1].result.results.length + increment
-    updateGlobalState({ limit: newLimit })
-    const { currentIndex, items } = this.state
-    var newItems = JSON.parse(JSON.stringify(items))
-    newItems[currentIndex].result.results = this.props.searchResults[currentIndex].result.results.slice(
-      0,
-      items[currentIndex].result.results.length + increment
+    
+    var newLimit = 0
+    searchResults.forEach((organization)=>{
+    if(organization?.result?.results?.length && newLimit<organization.result.results.length) 
+    newLimit=organization.result.results.length+increment} //taking the biggest searchResult size between all organizations. Individual limits still to be added
     )
-    this.setState({
-      items: newItems
-    })
+    updateGlobalState({ limit: newLimit })
   }
 
   render() {
-    const { searchRefs, props, state, tabPanelHeight } = this
+    const { searchRefs, props, state } = this
     const { loadingSearchResults, searchResults, sites, networks, variables, protocols } = props
     const { currentIndex } = state
     return (
@@ -124,8 +98,7 @@ class View extends PureComponent {
         {/* Tabs header (list of orgs) */}
         <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>
           <Tabs tabId="metadata-search-tabs">
-            {/* {searchResults.map(({ result, target }, i) => { */}
-            {this.state.items.map(({ result, target }, i) => {
+            {searchResults.map(({ result, target }, i) => {
               const { results } = result
               const org = orgs[target]
 
@@ -137,26 +110,32 @@ class View extends PureComponent {
                   }
                   icon={<img src={org.logo} style={{ height: '30px', marginBottom: 5 }} />}
                 >
-                  <div style={{ height: tabPanelHeight - 60, padding: '20px' }}>
+                  <div style={{ padding: '20px' }}>
+                  
+                  <button onClick={() => {
+                  this.loadMoreItems(10)
+                }}>+10</button>
+
                     {results && results.length > 0 ? (
-                      <AutoSizer id={`autosizer-${i}`}>
-                        {({ height, width }) => {
+                      <AutoSizer id={`autosizer-${i}`} disableHeight>
+                        {({ width }) => {
                           return (
                             <InfiniteLoader
-                              isItemLoaded={index => index < results.length}
+                              isItemLoaded={index => index < results.length-10}//test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}
                               itemCount={searchResults[i].result.results.length}
                               loadMoreItems={() => {
-                                this.loadMoreItems(100)
+                                this.loadMoreItems(20)
                               }}
+                              threshold={15} //Threshold at which to pre-fetch data. 15 is default
+                              minimumBatchSize={10} //Minimum number of rows to be loaded at a time. 10 is default
                             >
-                              {({ onItemsRendered /*, ref*/ }) => (
+                              {({ onItemsRendered }) => (
                                 <FixedSizeList
-                                  height={height}
+                                  height={700}
                                   width={width}
                                   itemCount={results.length}
                                   itemSize={300}
                                   onItemsRendered={onItemsRendered}
-                                  // ref={ref}
                                   ref={searchRefs[i]}
                                 >
                                   {({ index, style }) => (
@@ -191,7 +170,7 @@ class View extends PureComponent {
 
 export default () => (
   <GlobalStateContext.Consumer>
-    {({ searchResults, loadingSearchResults }) =>
+    {({ searchResults, loadingSearchResults, updateGlobalState }) =>
       searchResults.length ? (
         <DataQuery query={ENTIRE_GRAPH} variables={{}}>
           {({ sites, networks, variables, protocols }) => (
@@ -202,6 +181,7 @@ export default () => (
               protocols={protocols}
               searchResults={searchResults}
               loadingSearchResults={loadingSearchResults}
+              updateGlobalState={updateGlobalState}
             />
           )}
         </DataQuery>

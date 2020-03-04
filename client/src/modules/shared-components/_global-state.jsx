@@ -14,8 +14,8 @@ class State extends PureComponent {
     selectedDataproducts: [],
 
     //metadata pagination restrictions
-    from: 1,
-    limit: 100,
+    offset: 0,
+    limit: 10,
 
     // Single INDEX values. NOT IDs
     currentSite: 0,
@@ -45,7 +45,7 @@ class State extends PureComponent {
       'selectedNetworks',
       'selectedVariables',
       'selectedProtocols',
-      'from',
+      'offset',
       'limit'
     ]
     let refresh = false
@@ -66,7 +66,7 @@ class State extends PureComponent {
         selectedNetworks: byNetworks,
         selectedVariables: byVariables,
         selectedProtocols: byProtocols,
-        from: from,
+        offset: offset,
         limit: limit
       } = this.state
 
@@ -81,7 +81,7 @@ class State extends PureComponent {
                 $byNetworks: [Int!]
                 $byProtocols: [Int!]
                 $byVariables: [Int!]
-                $from: Int
+                $offset: Int
                 $limit: Int
               ) {
                 searchMetadata(
@@ -89,7 +89,7 @@ class State extends PureComponent {
                   byNetworks: $byNetworks
                   byVariables: $byVariables
                   byProtocols: $byProtocols
-                  from: $from
+                  offset: $offset
                   limit: $limit
                 ) {
                   i
@@ -105,7 +105,7 @@ class State extends PureComponent {
               byNetworks,
               byVariables,
               byProtocols,
-              from,
+              offset,
               limit
             }
           })
