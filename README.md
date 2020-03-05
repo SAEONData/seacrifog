@@ -319,5 +319,11 @@ Configuration is looked for on Node's `process.env` environment configuration du
 HTTP_ENDPOINT=https://api.seacrifog.saeon.ac.za/http
 GQL_ENDPOINT=https://api.seacrifog.saeon.ac.za/graphql
 DOWNLOADS_ENDPOINT=https://api.seacrifog.saeon.ac.za/downloads
+DEFAULT_SELECTED_SITES=
+DEFAULT_SELECTED_NETWORKS=
+DEFAULT_SELECTED_VARIABLES=
+DEFAULT_SELECTED_PROTOCOLS=
 ```
+
+The `DEFAULT_SELECTED_*` configuration options are helpful for development, as it allows to test the application in various search states on app start.
 

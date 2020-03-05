@@ -2,6 +2,17 @@ import React, { PureComponent } from 'react'
 import gql from 'graphql-tag'
 import { ApolloConsumer } from 'react-apollo'
 
+const config = config =>
+  config
+    ?.split(',')
+    ?.filter(_ => _)
+    ?.map(i => parseInt(i, 10)) || []
+
+const DEFAULT_SELECTED_SITES = config(process?.env?.DEFAULT_SELECTED_SITES)
+const DEFAULT_SELECTED_NETWORKS = config(process?.env?.DEFAULT_SELECTED_NETWORKS)
+const DEFAULT_SELECTED_VARIABLES = config(process?.env?.DEFAULT_SELECTED_VARIABLES)
+const DEFAULT_SELECTED_PROTOCOLS = config(process?.env?.DEFAULT_SELECTED_PROTOCOLS)
+
 export const GlobalStateContext = React.createContext()
 
 class State extends PureComponent {
@@ -32,7 +43,10 @@ class State extends PureComponent {
 
   componentDidMount() {
     this.updateGlobalState({
-      selectedVariables: []
+      selectedSites: DEFAULT_SELECTED_SITES,
+      selectedNetworks: DEFAULT_SELECTED_NETWORKS,
+      selectedVariables: DEFAULT_SELECTED_VARIABLES,
+      selectedProtocols: DEFAULT_SELECTED_PROTOCOLS
     })
   }
 

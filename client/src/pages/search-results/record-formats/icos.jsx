@@ -1,6 +1,6 @@
+import React from 'react'
 import { FormattedObject } from '../../../modules/shared-components'
 import formatAndFilterObjectKeys from '../../../lib/format-filter-obj-keys'
-import React from 'react'
 
 function formatBytes(bytes, decimals = 2) {
   if (bytes === 0) return '0 Bytes'

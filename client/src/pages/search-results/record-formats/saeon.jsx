@@ -5,58 +5,44 @@ export default ({ content }) => (
     {content.subject ? (
       <p>
         <b>Subjects: </b>
-        {content.subjects
-          .map(s => {
-            return s.subject
-          })
-          .join()}
+        {content.subjects.map(s => s.subject).join()}
       </p>
     ) : null}
 
     {content.descriptions ? (
       <p>
-        {content.descriptions.map((d, i) => {
-          return (
-            <span key={i}>
-              <b>{d.descriptionType}: </b>
-              {d.description}
-            </span>
-          )
-        })}
+        {content.descriptions.map((d, i) => (
+          <span key={i}>
+            <b>{d.descriptionType}: </b>
+            {d.description}
+          </span>
+        ))}
       </p>
     ) : null}
 
     {content.creators ? (
       <p>
         <b>Creators: </b>
-        {content.creators
-          .map(c => {
-            return c.name
-          })
-          .join()}
+        {content.creators.map(c => c.name).join()}
       </p>
     ) : null}
 
     {content.contributors
-      ? content.contributors.map((c, i) => {
-          return (
-            <p key={i}>
-              <b>{c.contributorType}: </b>
-              {c.name}
-            </p>
-          )
-        })
+      ? content.contributors.map((c, i) => (
+          <p key={i}>
+            <b>{c.contributorType}: </b>
+            {c.name}
+          </p>
+        ))
       : null}
 
     {content.dates
-      ? content.dates.map((d, i) => {
-          return (
-            <p key={i}>
-              <b>{d.dateType}: </b>
-              {d.date}
-            </p>
-          )
-        })
+      ? content.dates.map((d, i) => (
+          <p key={i}>
+            <b>{d.dateType}: </b>
+            {d.date}
+          </p>
+        ))
       : null}
 
     {content.publisher ? (
