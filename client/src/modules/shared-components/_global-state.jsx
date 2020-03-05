@@ -32,7 +32,7 @@ class State extends PureComponent {
 
   componentDidMount() {
     this.updateGlobalState({
-      selectedVariables: [21]
+      selectedVariables: []
     })
   }
 
