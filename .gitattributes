@@ -1,1 +1,5 @@
-# * text eol=lf
+* text eol=lf
+
+*.backup binary
+*.png binary
+*.jpg binary
