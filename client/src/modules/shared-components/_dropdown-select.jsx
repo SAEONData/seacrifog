@@ -7,8 +7,7 @@ import {
   ListItemControl,
   SelectionControl,
   ListItem,
-  Card,
-  CardText
+  List
 } from 'react-md'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
@@ -28,6 +27,9 @@ import sift from 'sift'
  * (1) Convert menuItems to use virtual list instead of splicing and 'clicking more'
  * (2) Convert the list of selected items to also be a virtualized list
  */
+
+const listStyle = { paddingRight: '5px' }
+
 export default class extends PureComponent {
   state = { searchTerm: '', filteredItems: [], visible: false, listSize: 20 }
 
@@ -62,19 +64,16 @@ export default class extends PureComponent {
         return aVal >= bVal ? 1 : -1
       })
       .map(item => (
-        <Card
-          key={item.id}
-          style={{ boxShadow: 'none', height: '48px' }}
+        <ListItem
           className={'filter-menu-selected-item add-on-hover'}
+          // style={listItemStyle}
+          key={item.id}
           onClick={() => toggleItemSelect(item)}
-        >
-          <CardText style={{ padding: '16px' }}>
-            {(item.value || '(UNKNOWN)').truncate(truncateLength || 25).toUpperCase()}
-
-            <FontIcon style={{ float: 'right', fontSize: 'x-large' }}>close</FontIcon>
-          </CardText>
-        </Card>
+          rightIcon={<FontIcon>close</FontIcon>}
+          primaryText={(item.value || '(UNKNOWN)').truncate(truncateLength || 25).toUpperCase()}
+        />
       ))
+
     return (
       <div className={className}>
         <DropdownMenu
@@ -140,6 +139,7 @@ export default class extends PureComponent {
           {({ width }) => {
             return (
               <FixedSizeList
+                className="thin-scrollbar"
                 id="fixedSizeList"
                 height={selectedItems.length * 50 > 300 ? 300 : selectedItems.length * 50}
                 width={width}
@@ -149,7 +149,7 @@ export default class extends PureComponent {
                 {({ index, style }) => {
                   return (
                     <div id={index} style={style}>
-                      {listElements[index]}
+                      <List style={listStyle}>{listElements[index]}</List>
                     </div>
                   )
                 }}

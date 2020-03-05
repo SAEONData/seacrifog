@@ -49,7 +49,7 @@ class View extends PureComponent {
 
   render() {
     const { searchRefs, props, state } = this
-    const { loadingSearchResults, searchResults, sites, networks, variables, protocols } = props
+    const { loadingSearchResults, searchResults, sites, networks, variables, protocols, limit } = props
     const { currentIndex } = state
     return (
       <div>
@@ -109,7 +109,11 @@ class View extends PureComponent {
                   key={i}
                   label={
                     <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>
-                      {(result?.results?.length || '0') + '+ records'}
+                      {results?.length
+                        ? results.length % limit !== 0
+                          ? results.length + ' records'
+                          : results.length + '+ records'
+                        : '0 records'}
                     </span>
                   }
                   icon={<img src={org.logo} style={{ height: '30px', marginBottom: 5 }} />}
@@ -120,13 +124,12 @@ class View extends PureComponent {
                         {({ width }) => {
                           return (
                             <InfiniteLoader
-                              isItemLoaded={index => index < results.length - 10} //boolean test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}
-                              itemCount={searchResults[i].result.results.length}
+                              isItemLoaded={index => index < results.length - 10} //boolean test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}. This may be buggy for lengths between 1-10
+                              itemCount={results.length}
                               loadMoreItems={() => {
                                 this.loadMoreItems(200)
                               }}
-                              threshold={100} //Threshold at which to pre-fetch data. default is 15
-                              // minimumBatchSize={10} //Minimum number of rows to be loaded at a time. default is 10. This should not be relevant
+                              threshold={100}
                             >
                               {({ onItemsRendered }) => (
                                 <FixedSizeList
@@ -169,7 +172,7 @@ class View extends PureComponent {
 
 export default () => (
   <GlobalStateContext.Consumer>
-    {({ searchResults, loadingSearchResults, updateGlobalState }) =>
+    {({ searchResults, loadingSearchResults, updateGlobalState, offset, limit }) =>
       searchResults.length ? (
         <DataQuery query={ENTIRE_GRAPH} variables={{}}>
           {({ sites, networks, variables, protocols }) => (
@@ -181,6 +184,8 @@ export default () => (
               searchResults={searchResults}
               loadingSearchResults={loadingSearchResults}
               updateGlobalState={updateGlobalState}
+              offset={offset}
+              limit={limit}
             />
           )}
         </DataQuery>

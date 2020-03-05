@@ -12,8 +12,8 @@
 }
 
 //scrollbar variant that is thicker
-.thick-scrollbar::-webkit-scrollbar {
-  width: 13px;
-  height: 13px;
+.thin-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
   background-color: #f5f5f5;
 }

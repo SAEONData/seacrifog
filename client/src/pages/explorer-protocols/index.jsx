@@ -4,7 +4,6 @@ import DataQuery from '../../modules/data-query'
 import { PROTOCOLS_MIN, PROTOCOL, EXPLORER_PROTOCOL_CHARTS } from '../../graphql/queries'
 import {
   NoneMessage,
-  ExplorerFormattedObject,
   ExplorerHeaderBar,
   ExplorerLayout,
   ExplorerTableLayout,
@@ -19,7 +18,7 @@ import {
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
 import { mergeLeft } from 'ramda'
-import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
 import { protocolCharts } from './protocol-charts'
 
 const protocolsDataDefinitions = {
@@ -116,7 +115,7 @@ export default props => {
                                 title: 'Additional Information',
                                 subTitle: 'All Available Fields',
                                 component: (
-                                  <ExplorerFormattedObject
+                                  <FormattedObject
                                     object={formatAndFilterObjectKeys(protocol, mappings, ([key, val]) =>
                                       ['abstract', '__typename'].includes(key) || typeof val === 'object' ? false : true
                                     )}

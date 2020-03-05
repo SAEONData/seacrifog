@@ -4,7 +4,6 @@ import DataQuery from '../../modules/data-query'
 import { DATAPRODUCTS_MIN, DATAPRODUCT } from '../../graphql/queries'
 import {
   NoneMessage,
-  ExplorerFormattedObject,
   ExplorerHeaderBar,
   ExplorerLayout,
   ExplorerTableLayout,
@@ -19,7 +18,7 @@ import {
 
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
-import { Table, GlobalStateContext, ChartState } from '../../modules/shared-components'
+import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
 
 const mappings = []
 const dataproductsDataDefinitions = {
@@ -107,7 +106,7 @@ export default props => {
                                 title: 'Additional Information',
                                 subTitle: 'All available fields',
                                 component: (
-                                  <ExplorerFormattedObject
+                                  <FormattedObject
                                     object={formatAndFilterObjectKeys(dataproduct, mappings, ([key, val]) =>
                                       ['abstract', '__typename'].includes(key) || typeof val === 'object' ? false : true
                                     )}
