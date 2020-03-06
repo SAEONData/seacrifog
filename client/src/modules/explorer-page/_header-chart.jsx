@@ -96,7 +96,6 @@ export default class extends Component {
                   theme={echartsTheme}
                   option={{
                     tooltip: { show: true },
-
                     xAxis: { name: '' },
                     yAxis: {
                       type: 'category',
