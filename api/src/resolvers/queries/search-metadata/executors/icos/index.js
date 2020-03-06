@@ -13,7 +13,7 @@ const themeMap = {
   const { variables, sites, networks, exeConfigs } = search
   const { offset, limit } = exeConfigs.filter(ec => ec.name === 'icos')[0] || {
     offset: 1,
-    limit: undefined
+    limit: 100
   }
   const { acronym } = networks
   const themeIris = variables.domain.map(v => themeMap[v])

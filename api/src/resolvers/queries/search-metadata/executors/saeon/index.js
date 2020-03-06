@@ -33,7 +33,7 @@ const getTitles = search => {
 
   const exeConfig = search.exeConfigs.filter(ec => ec.name === 'saeon')[0] || {
     offset: 1,
-    limit: undefined
+    limit: 100
   }
   const options = {
     baseURL: 'http://192.168.116.66:9210/search',
@@ -41,7 +41,7 @@ const getTitles = search => {
     headers: { 'Content-Type': 'application/json' },
     params: {
       index: 'saeon-odp-4-2',
-      start: exeConfig.offset, // || 1,
+      start: exeConfig.offset,
       size: exeConfig.limit,
       fields: 'metadata_json,record_id,organization'
     }

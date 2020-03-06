@@ -34,22 +34,20 @@ class View extends PureComponent {
     this.searchRefs = props.searchResults.map(() => React.createRef())
   }
 
-  loadMoreItems = increment => {
-    const { searchResults, updateGlobalState } = this.props
-
-    var newLimit = 0
-    searchResults.forEach(
-      organization => {
-        if (organization?.result?.results?.length && newLimit < organization.result.results.length)
-          newLimit = organization.result.results.length + increment
-      } //taking the biggest searchResult size between all organizations. Individual limits still to be added
-    )
-    updateGlobalState({ limit: newLimit })
+  loadMoreItems = (increment, org) => {
+    const { updateGlobalState, exeConfigs } = this.props
+    updateGlobalState({
+      exeConfigs: exeConfigs.map(config => {
+        if (config.name === org.exeKey)
+          return { offset: config.offset, limit: (config.limit || 0) + increment, name: org.exeKey }
+        else return config
+      })
+    })
   }
 
   render() {
     const { searchRefs, props, state } = this
-    const { loadingSearchResults, searchResults, sites, networks, variables, protocols /*limit*/ } = props
+    const { loadingSearchResults, searchResults, sites, networks, variables, protocols } = props
     const { currentIndex } = state
     return (
       <div>
@@ -101,19 +99,17 @@ class View extends PureComponent {
         <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>
           <Tabs tabId="metadata-search-tabs">
             {searchResults.map(({ result, target }, i) => {
-              const { results } = result
+              const { results, result_length } = result
               const org = orgs[target]
-
               return (
                 <Tab
                   key={i}
                   label={
                     <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>
-                      {console.log('result', result)}
-                      {results?.length
-                        ? results.length % 100 === 0
-                          ? results.length + '+ records'
-                          : results.length + ' records'
+                      {result_length && result_length !== 0
+                        ? result_length % 100 === 0 //This is an approximation to see if the final record has been loaded. A better method could be to flag when a dataquery returns the same result length after a limit increase
+                          ? result_length + '+ records'
+                          : result_length + ' records'
                         : '0 records'}
                     </span>
                   }
@@ -128,9 +124,9 @@ class View extends PureComponent {
                               isItemLoaded={index => index < results.length - 10} //boolean test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}. This may be buggy for lengths between 1-10
                               itemCount={results.length}
                               loadMoreItems={() => {
-                                this.loadMoreItems(200)
+                                this.loadMoreItems(300, org)
                               }}
-                              threshold={100}
+                              threshold={200}
                             >
                               {({ onItemsRendered }) => (
                                 <FixedSizeList
@@ -173,7 +169,7 @@ class View extends PureComponent {
 
 export default () => (
   <GlobalStateContext.Consumer>
-    {({ searchResults, loadingSearchResults, updateGlobalState, offset, limit }) =>
+    {({ searchResults, loadingSearchResults, updateGlobalState, exeConfigs }) =>
       searchResults.length ? (
         <DataQuery query={ENTIRE_GRAPH} variables={{}}>
           {({ sites, networks, variables, protocols }) => (
@@ -185,8 +181,7 @@ export default () => (
               searchResults={searchResults}
               loadingSearchResults={loadingSearchResults}
               updateGlobalState={updateGlobalState}
-              offset={offset}
-              limit={limit}
+              exeConfigs={exeConfigs}
             />
           )}
         </DataQuery>

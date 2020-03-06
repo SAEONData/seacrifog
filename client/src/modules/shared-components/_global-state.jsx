@@ -25,8 +25,10 @@ class State extends PureComponent {
     selectedDataproducts: [],
 
     //metadata pagination restrictions
-    offset: 0,
-    limit: 200,
+    exeConfigs: [
+      { offset: 1, limit: 300, name: 'icos' }, //execonfigs could be mapped from configuration.js exeKey instead to be less explicit
+      { offset: 1, limit: 300, name: 'saeon' }
+    ],
 
     // Single INDEX values. NOT IDs
     currentSite: 0,
@@ -56,14 +58,7 @@ class State extends PureComponent {
    */
   async componentDidUpdate(prevProps, prevState) {
     const { client } = this.props
-    const searchFields = [
-      'selectedSites',
-      'selectedNetworks',
-      'selectedVariables',
-      'selectedProtocols',
-      'offset',
-      'limit'
-    ]
+    const searchFields = ['selectedSites', 'selectedNetworks', 'selectedVariables', 'selectedProtocols', 'exeConfigs']
     let refresh = false
     for (const field of searchFields) {
       const oldF = prevState[field]
@@ -82,8 +77,7 @@ class State extends PureComponent {
         selectedNetworks: byNetworks,
         selectedVariables: byVariables,
         selectedProtocols: byProtocols,
-        offset: offset,
-        limit: limit
+        exeConfigs
       } = this.state
 
       this.setState({ loadingSearchResults: true }, async () => {
@@ -97,16 +91,14 @@ class State extends PureComponent {
                 $byNetworks: [Int!]
                 $byProtocols: [Int!]
                 $byVariables: [Int!]
-                $offset: Int
-                $limit: Int
+                $exeConfigs: [ExeConfig!]
               ) {
                 searchMetadata(
                   bySites: $bySites
                   byNetworks: $byNetworks
                   byVariables: $byVariables
                   byProtocols: $byProtocols
-                  offset: $offset
-                  limit: $limit
+                  exeConfigs: $exeConfigs
                 ) {
                   i
                   target
@@ -121,8 +113,7 @@ class State extends PureComponent {
               byNetworks,
               byVariables,
               byProtocols,
-              offset,
-              limit
+              exeConfigs
             }
           })
           data = ((response || {}).data || {}).searchMetadata || []
@@ -140,7 +131,7 @@ class State extends PureComponent {
     }
   }
 
-  updateGlobalState = (obj, { currentIndex = null, selectedIds = null } = {}, cb = null) =>
+  updateGlobalState = (obj, { currentIndex = null, selectedIds = null } = {}, cb = null) => {
     this.setState(obj, () => {
       if (currentIndex && selectedIds) {
         this.setState(
@@ -153,6 +144,7 @@ class State extends PureComponent {
         if (cb) cb()
       }
     })
+  }
 
   render() {
     const { updateGlobalState, state, props } = this

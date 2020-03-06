@@ -113,7 +113,7 @@ export default async (self, args, req) => {
   )
 
   search.exeConfigs = exeConfigs
-  console.log('\x1b[44m', '\n\n args\n\n', exeConfigs, '\n\n', '\x1b[0m')
+
   log(
     'Searching metadata',
     `${activeExecutors.length} endpoints registererd for ${JSON.stringify(activeExecutors)}`,
