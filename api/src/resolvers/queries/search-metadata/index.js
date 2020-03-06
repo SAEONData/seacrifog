@@ -22,13 +22,18 @@ const targets = {
 export default async (self, args, req) => {
   const { findNetworks, findVariables, findProtocols, findSites } = req.ctx.db.dataLoaders
   const {
-    limit = 100,
-    offset = 0,
     byNetworks = [],
     byVariables = [],
     byProtocols = [],
-    bySites = []
+    bySites = [],
+    exeConfigs = []
   } = args
+
+  /**
+   * Create an object that encapsulates the search logic
+   * Exexutors will use this object to define search logic
+   * against their respective endpoints
+   */
   const search = {}
 
   // Resolve IDs to networks, variables and protocols
@@ -37,6 +42,7 @@ export default async (self, args, req) => {
   const variables = await Promise.all(byVariables.map(async id => (await findVariables(id))[0]))
   const protocols = await Promise.all(byProtocols.map(async id => (await findProtocols(id))[0]))
 
+  // Sites search object
   search.sites = sites.reduce(
     (acc, s) => ({
       name: [...new Set([...acc.name, s?.name])].filter(_ => _),
@@ -106,16 +112,15 @@ export default async (self, args, req) => {
     }
   )
 
-  search.org = {
-    limit,
-    offset
-  }
-
+  search.exeConfigs = exeConfigs
+  console.log('\x1b[44m', '\n\n args\n\n', exeConfigs, '\n\n', '\x1b[0m')
   log(
     'Searching metadata',
     `${activeExecutors.length} endpoints registererd for ${JSON.stringify(activeExecutors)}`,
     JSON.stringify(search)
   )
+
+  // return []
 
   /**
    * An array or results that correspond to each executor

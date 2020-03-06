@@ -1,14 +1,6 @@
 import React, { PureComponent } from 'react'
 import debounce from '../../lib/debounce'
-import {
-  TextField,
-  FontIcon,
-  DropdownMenu,
-  ListItemControl,
-  SelectionControl,
-  ListItem,
-  List
-} from 'react-md'
+import { TextField, FontIcon, DropdownMenu, ListItemControl, SelectionControl, ListItem, List } from 'react-md'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
 import sift from 'sift'

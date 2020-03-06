@@ -10,8 +10,11 @@ const themeMap = {
 }
 
 ;(async search => {
-  const { variables, sites, networks, org } = search
-  const { limit, offset } = org
+  const { variables, sites, networks, exeConfigs } = search
+  const { offset, limit } = exeConfigs.filter(ec => ec.name === 'icos')[0] || {
+    offset: 1,
+    limit: undefined
+  }
   const { acronym } = networks
   const themeIris = variables.domain.map(v => themeMap[v])
 

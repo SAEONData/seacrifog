@@ -1,6 +1,11 @@
 scalar Date
 scalar JSON
 
+enum IntegrationName {
+  icos
+  saeon
+}
+
 input VariableInput {
   id: Int!
   name: String
@@ -138,6 +143,12 @@ input NetworkInput {
   removeSites: [Int!]
 }
 
+input ExeConfig {
+  limit: Int!
+  offset: Int!
+  name: IntegrationName!
+}
+
 type Mutation {
   # CRUD operations
   updateDataproducts(input: [DataproductInput!]!): [Dataproduct!]!
@@ -173,12 +184,11 @@ type Query {
   dataproducts: [Dataproduct!]!
 
   searchMetadata(
-    limit: Int
-    offset: Int
     bySites: [Int!]
     byNetworks: [Int!]
     byVariables: [Int!]
     byProtocols: [Int!]
+    exeConfigs: [ExeConfig!]
   ): [Metadata!]!
 
   dataproductsSummary: DataproductsSummary!

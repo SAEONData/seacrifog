@@ -49,7 +49,7 @@ class View extends PureComponent {
 
   render() {
     const { searchRefs, props, state } = this
-    const { loadingSearchResults, searchResults, sites, networks, variables, protocols, limit } = props
+    const { loadingSearchResults, searchResults, sites, networks, variables, protocols /*limit*/ } = props
     const { currentIndex } = state
     return (
       <div>
@@ -109,10 +109,11 @@ class View extends PureComponent {
                   key={i}
                   label={
                     <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>
+                      {console.log('result', result)}
                       {results?.length
-                        ? results.length % limit !== 0
-                          ? results.length + ' records'
-                          : results.length + '+ records'
+                        ? results.length % 100 === 0
+                          ? results.length + '+ records'
+                          : results.length + ' records'
                         : '0 records'}
                     </span>
                   }
