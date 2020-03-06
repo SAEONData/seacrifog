@@ -24,6 +24,7 @@ const Content = ({ children, style, className = '' }) => (
 
 const euFunding = partners[0]
 const sfFunding = partners[1]
+const sasccalPartner = partners[17]
 
 const mainPartnerStyle = {
   maxHeight: '60px',
@@ -98,14 +99,29 @@ export default () => {
           <Wrapper>
             <Content>
               <Grid>
-                <Cell phoneSize={4} tabletSize={4} size={6}>
+                <Cell phoneSize={4} tabletSize={8} size={4}>
                   <img style={mainPartnerStyle} src={euFunding.logo} alt={euFunding.alt} />
                   <p style={{ paddingTop: '10px' }}>
                     This project has received funding from the European Union&apos;s Horizon 2020 research and
                     innovation programme under grant agreement No 730995
                   </p>
                 </Cell>
-                <Cell phoneSize={4} tabletSize={4} size={6}>
+                <Cell phoneSize={4} tabletSize={8} size={4}>
+                  <img style={mainPartnerStyle} src={sasccalPartner.logo} alt={sasccalPartner.alt} />
+                  <p style={{ paddingTop: '10px' }}>
+                    The SEACRIFOG metadata search tool is based on previously existing work by{' '}
+                    <a className="link" href={sasccalPartner.href} target="_blank" rel="noopener noreferrer"></a>
+                    <a
+                      className="link"
+                      href="https://seacrifog-tool.sasscal.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      seacrifog-tool.sasscal.org/
+                    </a>
+                  </p>
+                </Cell>
+                <Cell phoneSize={4} tabletSize={8} size={4}>
                   <img style={mainPartnerStyle} src={sfFunding.logo} alt={sfFunding.alt} />
                   <p style={{ paddingTop: '10px' }}>
                     Supporting EU-African Cooperation on Research Infrastructures for Food Security and Greenhouse Gas
