@@ -12,7 +12,7 @@ const themeMap = {
 ;(async search => {
   const { variables, sites, networks, exeConfigs } = search
   const { offset, limit } = exeConfigs.filter(ec => ec.name === 'icos')[0] || {
-    offset: 1,
+    offset: 0,
     limit: 100
   }
   const { acronym } = networks

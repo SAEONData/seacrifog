@@ -136,7 +136,7 @@ export default class extends PureComponent {
                 height={selectedItems.length * 50 > 300 ? 300 : selectedItems.length * 50}
                 width={width}
                 itemCount={selectedItems.length}
-                itemSize={50}
+                itemSize={40}
               >
                 {({ index, style }) => {
                   return (

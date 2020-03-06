@@ -24,10 +24,11 @@ class State extends PureComponent {
     selectedProtocols: [],
     selectedDataproducts: [],
 
-    //metadata pagination restrictions
+    // Metadata pagination restrictions
+    // exeConfigs could be mapped from configuration.js exeKey instead to be less explicit
     exeConfigs: [
-      { offset: 1, limit: 300, name: 'icos' }, //execonfigs could be mapped from configuration.js exeKey instead to be less explicit
-      { offset: 1, limit: 300, name: 'saeon' }
+      { offset: 0, limit: 100, name: 'icos' },
+      { offset: 1, limit: 100, name: 'saeon' }
     ],
 
     // Single INDEX values. NOT IDs

@@ -75,11 +75,6 @@ export default class extends Component {
                   key={'EchartsKey' + title}
                   id={'EchartsId' + title}
                   theme={echartsTheme}
-                  onEvents={{
-                    click: () => {
-                      console.log('pie slice clicked!')
-                    }
-                  }}
                   option={{
                     tooltip: { show: true },
 
@@ -99,11 +94,6 @@ export default class extends Component {
                   key={'EchartsKey' + title}
                   id={'EchartsId' + title}
                   theme={echartsTheme}
-                  onEvents={{
-                    click: () => {
-                      console.log('bar clicked!')
-                    }
-                  }}
                   option={{
                     tooltip: { show: true },
 

@@ -107,7 +107,9 @@ class View extends PureComponent {
                   label={
                     <span style={{ color: 'rgba(1, 1, 1, 0.5)' }}>
                       {result_length && result_length !== 0
-                        ? result_length % 100 === 0 //This is an approximation to see if the final record has been loaded. A better method could be to flag when a dataquery returns the same result length after a limit increase
+                        ? result_length === 1
+                          ? '1 record'
+                          : result_length % 100 === 0
                           ? result_length + '+ records'
                           : result_length + ' records'
                         : '0 records'}
@@ -121,12 +123,19 @@ class View extends PureComponent {
                         {({ width }) => {
                           return (
                             <InfiniteLoader
-                              isItemLoaded={index => index < results.length - 10} //boolean test if item at index has loaded. this is a gimmicky approach to force a load when nearing the bottom. Ideally test would be {index < MaxPossibleResults.length}. This may be buggy for lengths between 1-10
-                              itemCount={results.length}
-                              loadMoreItems={() => {
-                                this.loadMoreItems(300, org)
+                              isItemLoaded={currentIndex => {
+                                // If there are less results than a single pagniation, then everything is loaded
+                                if (results.length < 100) return true
+                                // If the current item index is smaller than the result set, then current item is loaded
+                                if (currentIndex < results.length) {
+                                  return true
+                                } else {
+                                  return false
+                                }
                               }}
-                              threshold={200}
+                              itemCount={20000000}
+                              loadMoreItems={() => this.loadMoreItems(100, org)}
+                              threshold={1}
                             >
                               {({ onItemsRendered }) => (
                                 <FixedSizeList
