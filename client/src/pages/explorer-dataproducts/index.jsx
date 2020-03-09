@@ -98,6 +98,7 @@ export default props => {
                             ].join(',')}`
                           )}
                           clickEdit={() => history.push(`/dataproducts/${dataproduct.id}`)}
+                          editable={false}
                         >
                           {/* All Entity Attributes */}
                           <ExplorerSectionLayout

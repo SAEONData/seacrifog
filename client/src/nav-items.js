@@ -41,7 +41,6 @@ export default [
     to: '/protocols',
     avatar: { children: 'P', suffix: 'cyan', style: avatarStyle }
   },
-
   {
     keyval: 'nav-item-explorer-dataproducts',
     exact: false,

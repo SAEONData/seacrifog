@@ -31,7 +31,7 @@ export default class extends PureComponent {
 
   render() {
     const { updateSearchTerm, toggleItemSelect, state, props } = this
-    const { selectedItems, items, id, label, truncateLength, className } = props
+    const { selectedItems, items, id = Math.random(), label, truncateLength, className } = props // TODO - fix the Math.random() hack
     const { searchTerm, visible, listSize } = state
     const searchTermUpper = searchTerm.toUpperCase()
 
