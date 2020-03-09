@@ -3,7 +3,7 @@ import sift from 'sift'
 import { useHistory } from 'react-router-dom'
 import { Button, LinearProgress, Badge } from 'react-md'
 import { OlReact, SingleFeatureSelector } from '@saeon/ol-react'
-import { clusterLayer, openStreetMaps } from '../../modules/atlas/layers'
+import { clusterLayer, terrestrisBaseMap } from '../../modules/atlas/layers'
 import { clusterSource } from '../../modules/atlas/sources'
 import { clusterStyle1, clusterStyle2 } from '../../modules/atlas/styles'
 import { SideMenu, SideMenuFilter, GlobalStateContext } from '../../modules/shared-components'
@@ -70,7 +70,7 @@ class AtlasController extends PureComponent {
       id: 'sites',
       style: clusterStyle1
     })
-    this.layers = [openStreetMaps(), this.clusteredSitesLayer]
+    this.layers = [terrestrisBaseMap(), this.clusteredSitesLayer]
   }
 
   componentDidMount() {

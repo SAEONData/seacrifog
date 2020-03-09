@@ -2,7 +2,7 @@ import React from 'react'
 import DataQuery from '../../modules/data-query'
 import { SITES_MIN } from '../../graphql/queries'
 import { OlReact } from '@saeon/ol-react'
-import { openStreetMaps, geoJsonLayer } from '../../modules/atlas/layers'
+import { terrestrisBaseMap, geoJsonLayer } from '../../modules/atlas/layers'
 import { dotStyle1 } from '../../modules/atlas/styles'
 
 function resizeMap() {
@@ -23,7 +23,7 @@ export default () => (
             // I have found that it's better to add the layers asynchronously
             new Promise(res => {
               setTimeout(() => {
-                map.addLayer(openStreetMaps())
+                map.addLayer(terrestrisBaseMap())
                 return res()
               }, 0)
             }).then(() => {

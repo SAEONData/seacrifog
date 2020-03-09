@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { OlReact, SingleFeatureSelector } from '@saeon/ol-react'
-import { openStreetMaps, pointLayer } from '../../../modules/atlas/layers'
+import { terrestrisBaseMap, pointLayer } from '../../../modules/atlas/layers'
 import { pointSource } from '../../../modules/atlas/sources'
 import { dotStyle3, dotStyle4 } from '../../../modules/atlas/styles'
 import { Button, Grid, Cell, Card, CardText, Toolbar } from 'react-md'
@@ -68,7 +68,7 @@ export default class extends PureComponent {
                 }}
               />
 
-              <OlReact style={{ height: '500px', width: '100%' }} layers={[openStreetMaps(), layer]}>
+              <OlReact style={{ height: '500px', width: '100%' }} layers={[terrestrisBaseMap(), layer]}>
                 {({ map }) => (
                   <SingleFeatureSelector unselectedStyle={dotStyle3} selectedStyle={dotStyle4} map={map}>
                     {({ selectedFeature, unselectFeature }) => {
