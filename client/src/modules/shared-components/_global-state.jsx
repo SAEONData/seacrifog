@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import gql from 'graphql-tag'
 import { ApolloConsumer } from 'react-apollo'
+import orgs from '../../pages/search-results/configuration'
 
 const config = config =>
   config
@@ -25,11 +26,7 @@ class State extends PureComponent {
     selectedDataproducts: [],
 
     // Metadata pagination restrictions
-    // exeConfigs could be mapped from configuration.js exeKey instead to be less explicit
-    exeConfigs: [
-      { offset: 0, limit: 100, name: 'icos' },
-      { offset: 1, limit: 100, name: 'saeon' }
-    ],
+    exeConfigs: Object.entries(orgs).map(org => ({ offset: org[1].offset, limit: 100, name: org[1].exeKey })),
 
     // Single INDEX values. NOT IDs
     currentSite: 0,
@@ -78,7 +75,7 @@ class State extends PureComponent {
         selectedNetworks: byNetworks,
         selectedVariables: byVariables,
         selectedProtocols: byProtocols,
-        exeConfigs
+        exeConfigs: exeConfigs
       } = this.state
 
       this.setState({ loadingSearchResults: true }, async () => {
@@ -149,7 +146,6 @@ class State extends PureComponent {
 
   render() {
     const { updateGlobalState, state, props } = this
-
     return (
       <GlobalStateContext.Provider
         value={{

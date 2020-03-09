@@ -12,6 +12,7 @@ const formatDate = dt => {
 export default {
   'ICOS Metadata Results': {
     exeKey: 'icos',
+    offset: 0,
     logo: icosLogo,
     title: record =>
       `${record.spec.value} from ${record.stationName.value} (${record.stationId.value}), ${formatDate(
@@ -30,6 +31,7 @@ export default {
   },
   'SAEON CKAN: saeon-odp-4-2': {
     exeKey: 'saeon',
+    offset: 1,
     logo: saeonLogo,
     title: record => record?.metadata_json?.titles?.[0]?.title || 'NA',
     explorerUri: record =>
