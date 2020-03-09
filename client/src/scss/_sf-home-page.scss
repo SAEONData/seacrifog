@@ -5,6 +5,10 @@
     width: 100%;
   }
 }
+.homepage-text {
+  padding-right: 0px;
+  display: inline-block;
+}
 
 @media only screen and (min-width: $md-grid-tablet-breakpoint) {
   .homepage-map {

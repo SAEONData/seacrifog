@@ -56,6 +56,9 @@ export default () => {
         <Cell size={12} className="sf-container primary">
           <Wrapper>
             <Content>
+              <Button className="white homepage-text" flat disabled>
+                EXPLORE BY:
+              </Button>
               <Button
                 className="white link homepage-button"
                 onClick={() => history.push('/sites')}
@@ -63,7 +66,7 @@ export default () => {
                 swapTheming
                 iconChildren={<Icon symbol="S" suffix="lime" />}
               >
-                Explore Sites
+                Sites
               </Button>
               <Button
                 className="white link homepage-button"
@@ -72,7 +75,7 @@ export default () => {
                 swapTheming
                 iconChildren={<Icon symbol="N" suffix="teal" />}
               >
-                Explore Networks
+                Networks
               </Button>
               <Button
                 className="white link homepage-button"
@@ -81,7 +84,7 @@ export default () => {
                 swapTheming
                 iconChildren={<Icon symbol="V" suffix="light-blue" />}
               >
-                Explore Variables
+                Variables
               </Button>
               <Button
                 className="white link homepage-button"
@@ -90,7 +93,7 @@ export default () => {
                 swapTheming
                 iconChildren={<Icon symbol="P" suffix="cyan" />}
               >
-                Explore Protocols
+                Protocols
               </Button>
             </Content>
           </Wrapper>
