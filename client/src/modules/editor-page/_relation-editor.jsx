@@ -3,6 +3,7 @@ import { DropdownSelect } from '../../modules/shared-components'
 
 export default ({ label, items, updateForm, selectedItems, removeArray, addFieldName, removeFieldName }) => (
   <DropdownSelect
+    id={label}
     className="sf-editor-field"
     label={label}
     truncateLength={60}
