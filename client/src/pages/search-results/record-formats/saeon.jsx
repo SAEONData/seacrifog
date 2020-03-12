@@ -13,7 +13,7 @@ export default ({ content }) => (
       <p>
         {content.descriptions.map((d, i) => (
           <span key={i}>
-            <b>{d.descriptionType}: </b>
+            <b>{d.descriptionType.replace(/([a-z])([A-Z])/g, '$1 $2')}: </b>
             {d.description}
           </span>
         ))}
@@ -30,7 +30,7 @@ export default ({ content }) => (
     {content.contributors
       ? content.contributors.map((c, i) => (
           <p key={i}>
-            <b>{c.contributorType}: </b>
+            <b>{c.contributorType.replace(/([a-z])([A-Z])/g, '$1 $2')}: </b>
             {c.name}
           </p>
         ))
@@ -39,7 +39,7 @@ export default ({ content }) => (
     {content.dates
       ? content.dates.map((d, i) => (
           <p key={i}>
-            <b>{d.dateType}: </b>
+            <b>{d.dateType.replace(/([a-z])([A-Z])/g, '$1 $2')}: </b>
             {d.date}
           </p>
         ))
