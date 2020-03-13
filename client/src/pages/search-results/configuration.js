@@ -20,11 +20,11 @@ export default {
       )} - ${formatDate(record.to.value)}` || 'NA',
     explorerUri: record =>
       `https://data.icos-cp.eu/portal/#{%22route%22:%22metadata%22,%22id%22:%22${
-        record?.dobj?.value?.match(/(?<=objects\/).*/)?.[0]
+        record?.dobj?.value?.split('objects/')[1]
       }%22}`,
     previewUri: record =>
       `https://data.icos-cp.eu/portal/#%7B%22route%22%3A%22preview%22%2C%22preview%22%3A%5B%22${
-        record?.dobj?.value?.match(/(?<=objects\/).*/)?.[0]
+        record?.dobj?.value?.split('objects/')[1]
       }%22%5D%7D`,
     content: record => record,
     FormatContent: ({ content = null }) => <FormatIcosRecord content={content} />
