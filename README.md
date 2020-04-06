@@ -269,7 +269,7 @@ Intervals between runs of the ICOS integration logic (this is to get station inf
 # CLIENT DEVELOPER DOCUMENTATION
 
 ## Quickstart the client (local dev environment)
-First setup the API, then
+Once the API is setup, configure the client.
 
 #### Work in the context of the client package
 All the commands need to be run from the root of the client. Starting in the root of the seacrifog repository:
