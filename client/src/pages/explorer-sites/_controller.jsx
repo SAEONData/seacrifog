@@ -70,7 +70,7 @@ class AtlasController extends PureComponent {
       id: 'sites',
       style: clusterStyle1,
     })
-    this.layers = [terrestrisBaseMap(), this.clusteredSitesLayer]
+    this.layers = [this.clusteredSitesLayer, terrestrisBaseMap()]
   }
 
   componentDidMount() {

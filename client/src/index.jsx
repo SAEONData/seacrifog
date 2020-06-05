@@ -10,6 +10,7 @@ import { HttpLink } from 'apollo-link-http'
 import App from './app'
 import WebFontLoader from 'webfontloader'
 import './index.scss'
+import 'ol/ol.css'
 
 // Use with caution!!
 nativeExtensions()
