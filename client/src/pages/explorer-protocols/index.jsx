@@ -13,7 +13,7 @@ import {
   ScrollButton,
   variableIcon,
   iconLink,
-  ExplorerHeaderCharts
+  ExplorerHeaderCharts,
 } from '../../modules/explorer-page'
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
@@ -28,12 +28,12 @@ const protocolsDataDefinitions = {
   domain: { order: 3, show: true, label: 'Domain' },
   publisher: { order: 4, show: true, label: 'Publisher' },
   format: { order: 5, show: true, label: 'Format' },
-  __typename: { show: false }
+  __typename: { show: false },
 }
 
 const mappings = {}
 
-export default props => {
+export default (props) => {
   const history = useHistory()
   return (
     <DataQuery query={PROTOCOLS_MIN}>
@@ -52,7 +52,7 @@ export default props => {
                   query={EXPLORER_PROTOCOL_CHARTS}
                   chartDefinitions={protocolCharts}
                   variables={{
-                    ids: selectedProtocols.length > 0 ? selectedProtocols : protocols.map(n => n.id)
+                    ids: selectedProtocols.length > 0 ? selectedProtocols : protocols.map((n) => n.id),
                   }}
                 />
               </ChartState>
@@ -72,8 +72,8 @@ export default props => {
                       updateGlobalState(
                         {
                           selectedProtocols: selectedProtocols.includes(id)
-                            ? [...selectedProtocols].filter(pId => pId !== id)
-                            : [...new Set([...selectedProtocols, id])]
+                            ? [...selectedProtocols].filter((pId) => pId !== id)
+                            : [...new Set([...selectedProtocols, id])],
                         },
                         { currentIndex: 'currentProtocol', selectedIds: 'selectedProtocols' }
                       )
@@ -82,7 +82,7 @@ export default props => {
                 </ExplorerTableLayout>
                 <ExplorerTabsLayout
                   currentIndex={currentProtocol}
-                  updateCurrentIndex={i => updateGlobalState({ currentProtocol: i })}
+                  updateCurrentIndex={(i) => updateGlobalState({ currentProtocol: i })}
                   id="selected-protocols-tabs"
                   selectedIds={selectedProtocols}
                   {...props}
@@ -96,15 +96,14 @@ export default props => {
                           abstract={protocol.abstract}
                           clickClose={() =>
                             updateGlobalState(
-                              { selectedProtocols: selectedProtocols.filter(sId => sId !== protocol.id) },
+                              { selectedProtocols: selectedProtocols.filter((sId) => sId !== protocol.id) },
                               { currentIndex: 'currentProtocol', selectedIds: 'selectedProtocols' }
                             )
                           }
                           href={encodeURI(
-                            `${process.env.DOWNLOADS_ENDPOINT ||
-                              'https://api.seacrifog.saeon.ac.za/downloads'}/PROTOCOLS?filename=PROTOCOL-${new Date()}.json&ids=${[
-                              protocol.id
-                            ].join(',')}`
+                            `${
+                              process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
+                            }/PROTOCOLS?filename=PROTOCOL-${new Date()}.json&ids=${[protocol.id].join(',')}`
                           )}
                           clickEdit={() => history.push(`/protocols/${protocol.id}`)}
                         >
@@ -120,7 +119,7 @@ export default props => {
                                       ['abstract', '__typename'].includes(key) || typeof val === 'object' ? false : true
                                     )}
                                   />
-                                )
+                                ),
                               },
                               {
                                 title: 'Variables',
@@ -130,9 +129,9 @@ export default props => {
                                     <div>
                                       <List>
                                         {protocol.directly_related_variables
-                                          .map(v => mergeLeft({ relationship: 'direct' }, v))
+                                          .map((v) => mergeLeft({ relationship: 'direct' }, v))
                                           .concat(
-                                            protocol.indirectly_related_variables.map(v =>
+                                            protocol.indirectly_related_variables.map((v) =>
                                               mergeLeft({ relationship: 'indirect' }, v)
                                             )
                                           )
@@ -142,7 +141,9 @@ export default props => {
                                               onClick={() =>
                                                 updateGlobalState(
                                                   {
-                                                    selectedVariables: [...new Set([...selectedVariables, variable.id])]
+                                                    selectedVariables: [
+                                                      ...new Set([...selectedVariables, variable.id]),
+                                                    ],
                                                   },
                                                   {},
                                                   () => history.push('/variables')
@@ -159,8 +160,8 @@ export default props => {
                                     </div>
                                   ) : (
                                     <NoneMessage />
-                                  )
-                              }
+                                  ),
+                              },
                             ]}
                           />
                         </ExplorerEntityLayout>

@@ -13,7 +13,7 @@ const POSTGRES_USER = process.env.POSTGRES_USER || 'postgres'
 const POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD || 'password'
 const POSTGRES_PORT = parseInt(process.env.POSTGRES_PORT, 10) || 5432
 
-const sqlize = str => `'${str.replace(/'/g, "''")}'`
+const sqlize = (str) => `'${str.replace(/'/g, "''")}'`
 
 /**
  * Convert CSV contents into CREATE TABLE DDL
@@ -23,10 +23,10 @@ const sqlize = str => `'${str.replace(/'/g, "''")}'`
  */
 const makeSql = (tableName, headers, contents) => {
   const ddlDrop = `drop table if exists "${tableName}";`
-  const ddlMake = `create table ${tableName} (${headers.map(h => `"${h}" text`).join(',')});`
+  const ddlMake = `create table ${tableName} (${headers.map((h) => `"${h}" text`).join(',')});`
   const dmlInsert = `
-    insert into "${tableName}" (${headers.map(h => `"${h}"`)})
-    values ${contents.map(row => '(' + row.map(v => sqlize(v)).join(',') + ')').join(',')};`
+    insert into "${tableName}" (${headers.map((h) => `"${h}"`)})
+    values ${contents.map((row) => '(' + row.map((v) => sqlize(v)).join(',') + ')').join(',')};`
   return `${ddlDrop}${ddlMake}${dmlInsert}`
 }
 
@@ -62,7 +62,7 @@ export default () =>
         port: POSTGRES_PORT,
         max: 20,
         idleTimeoutMillis: 30000,
-        connectionTimeoutMillis: 2000
+        connectionTimeoutMillis: 2000,
       })
       await configDbPool.query(loadSqlFile('migration/db-setup/stop-db.sql', DB))
       await configDbPool.query(loadSqlFile('migration/db-setup/drop-db.sql', DB))
@@ -88,7 +88,7 @@ export default () =>
         'gtn_r',
         'sasscal_on',
         'sasscal_wn',
-        'tccon'
+        'tccon',
       ]
 
       for (const D of DIRECTORIES) {
@@ -96,7 +96,7 @@ export default () =>
 
         // Get the files in this directory
         const directoryPath = normalize(join(__dirname, `./csvs/${D}/`))
-        const relatedFiles = readdirSync(directoryPath).filter(fName => fName.indexOf('csv') >= 0)
+        const relatedFiles = readdirSync(directoryPath).filter((fName) => fName.indexOf('csv') >= 0)
         for (const F of relatedFiles) {
           const csvPath = normalize(join(directoryPath, F))
           const csvContents = await csvReader(csvPath)
@@ -137,7 +137,7 @@ export default () =>
 
       log("\nDev DB setup complete. If you don't see this message there was a problem")
     })()
-  ).catch(err => {
+  ).catch((err) => {
     logError('Error initializing DEV database', err)
     process.exit(1)
   })

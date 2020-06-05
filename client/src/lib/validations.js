@@ -1,5 +1,5 @@
 //Meaningless validation. Simply here for more aesthetic structure to the fieldDefinitions. Essentially the validation of Strings or Dates
-export const validate = val => {
+export const validate = (val) => {
   return [true, val]
 }
 
@@ -20,12 +20,7 @@ export const validateFloat = (val, precision) => {
   val = val.trim()
 
   //returning false if val falls outside the precision limitations, else continue
-  if (
-    parseFloat(val)
-      .toString()
-      .replace('0.', '')
-      .replace('.', '').length > precision
-  ) {
+  if (parseFloat(val).toString().replace('0.', '').replace('.', '').length > precision) {
     return [false, '-1']
   }
 

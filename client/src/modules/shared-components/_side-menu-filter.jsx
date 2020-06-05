@@ -13,11 +13,11 @@ export default ({ sites, networks, variables, protocols }) => (
           label={'Filter sites'}
           selectedItems={selectedSites}
           items={sites.map(({ id, name: value }) => ({ id, value }))}
-          onItemToggle={id =>
+          onItemToggle={(id) =>
             updateGlobalState({
               selectedSites: selectedSites.includes(id)
-                ? [...selectedSites].filter(sId => sId !== id)
-                : [...selectedSites, id]
+                ? [...selectedSites].filter((sId) => sId !== id)
+                : [...selectedSites, id],
             })
           }
         />
@@ -27,12 +27,12 @@ export default ({ sites, networks, variables, protocols }) => (
           label={'Filter networks'}
           selectedItems={selectedNetworks}
           items={networks.map(({ id, acronym: value }) => ({ id, value }))}
-          onItemToggle={id =>
+          onItemToggle={(id) =>
             updateGlobalState(
               {
                 selectedNetworks: selectedNetworks.includes(id)
-                  ? [...selectedNetworks].filter(nId => nId !== id)
-                  : [...selectedNetworks, id]
+                  ? [...selectedNetworks].filter((nId) => nId !== id)
+                  : [...selectedNetworks, id],
               },
               { currentIndex: 'currentNetwork', selectedIds: 'selectedNetworks' }
             )
@@ -44,12 +44,12 @@ export default ({ sites, networks, variables, protocols }) => (
           label={'Filter variables'}
           selectedItems={selectedVariables}
           items={variables.map(({ id, name: value }) => ({ id, value }))}
-          onItemToggle={id =>
+          onItemToggle={(id) =>
             updateGlobalState(
               {
                 selectedVariables: selectedVariables.includes(id)
-                  ? [...selectedVariables].filter(vId => vId !== id)
-                  : [...selectedVariables, id]
+                  ? [...selectedVariables].filter((vId) => vId !== id)
+                  : [...selectedVariables, id],
               },
               { currentIndex: 'currentVariable', selectedIds: 'selectedVariables' }
             )
@@ -61,12 +61,12 @@ export default ({ sites, networks, variables, protocols }) => (
           label={'Filter protocols'}
           selectedItems={selectedProtocols}
           items={protocols.map(({ id, title: value }) => ({ id, value }))}
-          onItemToggle={id =>
+          onItemToggle={(id) =>
             updateGlobalState(
               {
                 selectedProtocols: selectedProtocols.includes(id)
-                  ? [...selectedProtocols].filter(pId => pId !== id)
-                  : [...selectedProtocols, id]
+                  ? [...selectedProtocols].filter((pId) => pId !== id)
+                  : [...selectedProtocols, id],
               },
               { currentIndex: 'currentProtocol', selectedIds: 'selectedProtocols' }
             )

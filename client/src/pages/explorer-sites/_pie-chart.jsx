@@ -4,19 +4,19 @@ import echartsTheme from '../../lib/echarts-theme'
 
 class SitesChart extends PureComponent {
   state = {
-    filters: ['', '']
+    filters: ['', ''],
   }
 
-  onPieSelectChange = e => {
+  onPieSelectChange = (e) => {
     const { sets } = this.props
     const filters = [...this.state.filters]
-    const i = sets.map(s => s.name).indexOf(e.seriesId)
+    const i = sets.map((s) => s.name).indexOf(e.seriesId)
     const selectedName = e.name && e.selected[e.name] ? e.name : ''
     filters[i] = selectedName
     this.setState({ filters })
   }
 
-  filterDataset = i => {
+  filterDataset = (i) => {
     const { filters } = this.state
     const { data, sets } = this.props
 
@@ -57,7 +57,7 @@ class SitesChart extends PureComponent {
     return {
       tooltip: {
         trigger: 'item',
-        formatter: `{a}<br/>{b}<br />{c} ${this.props.a}`
+        formatter: `{a}<br/>{b}<br />{c} ${this.props.a}`,
       },
 
       legend: {
@@ -65,7 +65,7 @@ class SitesChart extends PureComponent {
         type: 'scroll',
         icon: 'circle',
         orient: 'vertical',
-        x: 'left'
+        x: 'left',
       },
 
       series: this.props.sets.map(({ name }, i) => ({
@@ -83,26 +83,26 @@ class SitesChart extends PureComponent {
           emphasis: {
             shadowBlur: 10,
             shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.2)'
-          }
+            shadowColor: 'rgba(0, 0, 0, 0.2)',
+          },
         },
         labelLine: {
           show: true,
           smooth: true,
           lineStyle: {
             type: 'dotted',
-            opacity: 0.5
-          }
+            opacity: 0.5,
+          },
         },
         label: {
           show: true,
           align: 'right',
           fontWeight: 'lighter',
           fontSize: 12,
-          fontFamily: 'monospace'
+          fontFamily: 'monospace',
         },
-        seriesLayoutBy: 'row'
-      }))
+        seriesLayoutBy: 'row',
+      })),
     }
   }
 
@@ -127,12 +127,12 @@ export default ({ sites }) => (
     sets={[
       {
         name: 'networks',
-        field: 'acronym'
+        field: 'acronym',
       },
       {
         name: 'variables',
-        field: 'name'
-      }
+        field: 'name',
+      },
     ]}
     data={sites}
   />

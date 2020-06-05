@@ -11,7 +11,7 @@ const Content = ({ children, style }) => (
 )
 
 const footerHeaderStyle = {
-  margin: '48px'
+  margin: '48px',
 }
 
 const Partner = ({ href, name }) => (

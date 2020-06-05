@@ -17,6 +17,6 @@ export const clusterSource = ({ data, locAttribute, distance }) =>
         const xyz = JSON.parse(datum[locAttribute])?.coordinates
         if (xyz) acc.push(new Feature({ ...datum, geometry: new Point([xyz[0], xyz[1]]) }))
         return acc
-      }, [])
-    })
+      }, []),
+    }),
   })

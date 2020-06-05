@@ -10,8 +10,8 @@ export const mundialisBaseMap = () =>
       url: '  http://ows.mundialis.de/services/service',
       params: {
         LAYERS: 'TOPO-WMS',
-        TILED: false
+        TILED: false,
       },
-      serverType: 'geoserver'
-    })
+      serverType: 'geoserver',
+    }),
   })

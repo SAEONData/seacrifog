@@ -15,7 +15,7 @@ import {
   protocolsIcon,
   iconLink,
   ExplorerCoverageMap,
-  ExplorerHeaderCharts
+  ExplorerHeaderCharts,
 } from '../../modules/explorer-page'
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem, DataTable, TableHeader, TableRow, TableColumn, TableBody } from 'react-md'
@@ -30,7 +30,7 @@ const mappings = {
   res_comment: 'Resolution comment',
   unc_val: 'uncertainty value',
   unc_unit: 'uncertainty unit',
-  unc_comment: 'Comments re. uncertainty'
+  unc_comment: 'Comments re. uncertainty',
 }
 
 const variablesDataDefinitions = {
@@ -41,15 +41,15 @@ const variablesDataDefinitions = {
   set: { show: true, order: 4, label: 'Set' },
   rftype: { show: true, order: 5, label: 'RF' },
   relevance: { show: true, order: 6, label: 'Relevance' },
-  __typename: { show: false }
+  __typename: { show: false },
 }
 
-const getGeoJson = dps => ({
+const getGeoJson = (dps) => ({
   type: 'GeometryCollection',
-  geometries: dps.map(dp => dp.coverage_spatial)
+  geometries: dps.map((dp) => dp.coverage_spatial),
 })
 
-export default props => {
+export default (props) => {
   const history = useHistory()
   return (
     <DataQuery query={VARIABLES_MIN}>
@@ -68,7 +68,7 @@ export default props => {
                   query={EXPLORER_VARIABLE_CHARTS}
                   chartDefinitions={variableCharts}
                   variables={{
-                    ids: selectedVariables.length > 0 ? selectedVariables : variables.map(n => n.id)
+                    ids: selectedVariables.length > 0 ? selectedVariables : variables.map((n) => n.id),
                   }}
                 />
               </ChartState>
@@ -88,8 +88,8 @@ export default props => {
                       updateGlobalState(
                         {
                           selectedVariables: selectedVariables.includes(id)
-                            ? [...selectedVariables].filter(vId => vId !== id)
-                            : [...new Set([...selectedVariables, id])]
+                            ? [...selectedVariables].filter((vId) => vId !== id)
+                            : [...new Set([...selectedVariables, id])],
                         },
                         { currentIndex: 'currentVariable', selectedIds: 'selectedVariables' }
                       )
@@ -98,7 +98,7 @@ export default props => {
                 </ExplorerTableLayout>
                 <ExplorerTabsLayout
                   currentIndex={currentVariable}
-                  updateCurrentIndex={i => updateGlobalState({ currentVariable: i })}
+                  updateCurrentIndex={(i) => updateGlobalState({ currentVariable: i })}
                   id="selected-variables-tabs"
                   selectedIds={selectedVariables}
                   {...props}
@@ -115,15 +115,14 @@ export default props => {
                             abstract={variable.description}
                             clickClose={() =>
                               updateGlobalState(
-                                { selectedVariables: selectedVariables.filter(sId => sId !== variable.id) },
+                                { selectedVariables: selectedVariables.filter((sId) => sId !== variable.id) },
                                 { currentIndex: 'currentVariable', selectedIds: 'selectedVariables' }
                               )
                             }
                             href={encodeURI(
-                              `${process.env.DOWNLOADS_ENDPOINT ||
-                                'https://api.seacrifog.saeon.ac.za/downloads'}/VARIABLES?filename=VARIABLE-${new Date()}.json&ids=${[
-                                variable.id
-                              ].join(',')}`
+                              `${
+                                process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
+                              }/VARIABLES?filename=VARIABLE-${new Date()}.json&ids=${[variable.id].join(',')}`
                             )}
                             clickEdit={() => history.push(`/variables/${variable.id}`)}
                           >
@@ -141,7 +140,7 @@ export default props => {
                                           : true
                                       )}
                                     />
-                                  )
+                                  ),
                                 },
 
                                 // Variable requirements
@@ -155,10 +154,10 @@ export default props => {
                                         'Spatial Resolution': `${variable.res_value} ${variable.res_unit} (${variable.res_comment})`,
                                         'Maximum Uncertainty': `${variable.unc_val} ${variable.unc_unit} (${variable.unc_comment})`,
                                         'Requirement defined by': `${variable.req_source}`,
-                                        'Further information': `${variable.req_uri}`
+                                        'Further information': `${variable.req_uri}`,
                                       }}
                                     />
-                                  )
+                                  ),
                                 },
 
                                 // Radiative forcing
@@ -179,10 +178,10 @@ export default props => {
                                           'Variable Type': variable.rftype,
                                           'Total RF best est. (Wm-2)': Math.max.apply(
                                             Math,
-                                            variable.rforcings.map(rf => rf.max)
+                                            variable.rforcings.map((rf) => rf.max)
                                           ),
                                           'Total RF uncertainty (absolute, Wm-2)': 'TODO - Get maths calc',
-                                          'Total RF uncertainty (relative, %)': 'TODO - Get maths calc'
+                                          'Total RF uncertainty (relative, %)': 'TODO - Get maths calc',
                                         }}
                                       />
 
@@ -197,7 +196,7 @@ export default props => {
                                           </TableRow>
                                         </TableHeader>
                                         <TableBody>
-                                          {variable.rforcings.map(rf => (
+                                          {variable.rforcings.map((rf) => (
                                             <TableRow key={rf.compound}>
                                               <TableColumn>{rf.category}</TableColumn>
                                               <TableColumn>{rf.compound}</TableColumn>
@@ -207,7 +206,7 @@ export default props => {
                                         </TableBody>
                                       </DataTable>
                                     </>
-                                  )
+                                  ),
                                 },
 
                                 // Related protocols
@@ -220,9 +219,9 @@ export default props => {
                                       <div>
                                         <List>
                                           {variable.directly_related_protocols
-                                            .map(v => mergeLeft({ relationship: 'direct' }, v))
+                                            .map((v) => mergeLeft({ relationship: 'direct' }, v))
                                             .concat(
-                                              variable.indirectly_related_protocols.map(v =>
+                                              variable.indirectly_related_protocols.map((v) =>
                                                 mergeLeft({ relationship: 'indirect' }, v)
                                               )
                                             )
@@ -233,8 +232,8 @@ export default props => {
                                                   updateGlobalState(
                                                     {
                                                       selectedProtocols: [
-                                                        ...new Set([...selectedProtocols, protocol.id])
-                                                      ]
+                                                        ...new Set([...selectedProtocols, protocol.id]),
+                                                      ],
                                                     },
                                                     {},
                                                     () => history.push('/protocols')
@@ -251,7 +250,7 @@ export default props => {
                                       </div>
                                     ) : (
                                       <NoneMessage />
-                                    )
+                                    ),
                                 },
 
                                 // Related Data Products
@@ -269,8 +268,8 @@ export default props => {
                                                 updateGlobalState(
                                                   {
                                                     selectedDataproducts: [
-                                                      ...new Set([...selectedDataproducts, dataproduct.id])
-                                                    ]
+                                                      ...new Set([...selectedDataproducts, dataproduct.id]),
+                                                    ],
                                                   },
                                                   {},
                                                   () => history.push('/dataproducts')
@@ -287,7 +286,7 @@ export default props => {
                                     </div>
                                   ) : (
                                     <NoneMessage />
-                                  )
+                                  ),
                                 },
 
                                 // Dataproduct bounding boxes
@@ -298,8 +297,8 @@ export default props => {
                                     <ExplorerCoverageMap geoJson={getGeoJson(variable.dataproducts)} />
                                   ) : (
                                     <NoneMessage />
-                                  )
-                                }
+                                  ),
+                                },
                               ]}
                             />
                           </ExplorerEntityLayout>

@@ -27,7 +27,7 @@ export default ({ content }) => (
           collectionTitle: 'Collection',
           projectNote: 'Note',
           projectName: 'Project',
-          collectionDescription: 'Collection Description'
+          collectionDescription: 'Collection Description',
         },
         ([key]) =>
           ['collectionTitle', 'projectNote', 'projectName', 'collectionDescription', 'spec', 'collectionDOI'].includes(
@@ -59,7 +59,7 @@ export default ({ content }) => (
           from: 'Data From',
           to: 'Data To',
           dataLevel: 'Data Level',
-          dataset: 'Dataset'
+          dataset: 'Dataset',
         },
         ([key]) =>
           [
@@ -73,7 +73,7 @@ export default ({ content }) => (
             'from',
             'to',
             'dataLevel',
-            'dataset'
+            'dataset',
           ].includes(key)
             ? true
             : false
@@ -96,7 +96,7 @@ export default ({ content }) => (
           stationElevation: 'Station Elevation',
           stationName: 'Station Name',
           stationId: 'Station ID',
-          stationCountryCode: 'Country Code'
+          stationCountryCode: 'Country Code',
         },
         ([key]) =>
           [
@@ -105,7 +105,7 @@ export default ({ content }) => (
             'stationElevation',
             'stationName',
             'stationId',
-            'stationCountryCode'
+            'stationCountryCode',
           ].includes(key)
             ? false
             : true

@@ -12,7 +12,7 @@ export default async (self, args, req) => {
     'id',
     'addDirectlyRelatedVariables',
     'addIndirectlyRelatedVariables',
-    'removeVariables'
+    'removeVariables',
   ]
 
   for (const input of inputs) {
@@ -26,7 +26,7 @@ export default async (self, args, req) => {
         text: `update public.protocols set ${keyVals
           .map(([attr], i) => `"${attr}" = $${i + 1}`)
           .join(',')} where id = $${keyVals.length + 1}`,
-        values: keyVals.map(([, val]) => val).concat(input.id)
+        values: keyVals.map(([, val]) => val).concat(input.id),
       })
     }
 
@@ -36,18 +36,18 @@ export default async (self, args, req) => {
       (addIndirectlyRelatedVariables && addIndirectlyRelatedVariables.length)
     ) {
       const updates = (addDirectlyRelatedVariables || [])
-        .map(id => [id, 'direct'])
-        .concat((addIndirectlyRelatedVariables || []).map(id => [id, 'indirect']))
+        .map((id) => [id, 'direct'])
+        .concat((addIndirectlyRelatedVariables || []).map((id) => [id, 'indirect']))
 
       await query({
         text: `insert into protocol_variable_xref (protocol_id, variable_id, relationship_type_id) values (${updates
           .map((u, i) => [
             '$1',
             `$${i + 2}`,
-            `(select id from public.relationship_types where "name" = '${u[1]}')`
+            `(select id from public.relationship_types where "name" = '${u[1]}')`,
           ])
           .join('),(')}) on conflict on constraint protocol_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(updates.map(u => u[0]))
+        values: [input.id].concat(updates.map((u) => u[0])),
       })
     }
 
@@ -57,7 +57,7 @@ export default async (self, args, req) => {
         text: `delete from public.protocol_variable_xref where protocol_id = $1 and variable_id in (${removeVariables
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeVariables.map(id => id))
+        values: [input.id].concat(removeVariables.map((id) => id)),
       })
   }
 

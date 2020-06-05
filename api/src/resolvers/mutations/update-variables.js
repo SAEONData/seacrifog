@@ -16,7 +16,7 @@ export default async (self, args, req) => {
     'addIndirectlyRelatedProtocols',
     'removeProtocols',
     'addRForcings',
-    'removeRForcings'
+    'removeRForcings',
   ]
 
   for (const input of inputs) {
@@ -27,7 +27,7 @@ export default async (self, args, req) => {
       addIndirectlyRelatedProtocols,
       removeProtocols,
       addRForcings,
-      removeRForcings
+      removeRForcings,
     } = input
 
     // Update the Variable entity
@@ -38,7 +38,7 @@ export default async (self, args, req) => {
         text: `update public.variables set ${keyVals
           .map(([attr], i) => `"${attr}" = $${i + 1}`)
           .join(',')} where id = $${keyVals.length + 1}`,
-        values: keyVals.map(([, val]) => val).concat(input.id)
+        values: keyVals.map(([, val]) => val).concat(input.id),
       })
     }
 
@@ -48,7 +48,7 @@ export default async (self, args, req) => {
         text: `delete from public.dataproduct_variable_xref where variable_id = $1 and dataproduct_id in (${removeDataproducts
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeDataproducts.map(id => id))
+        values: [input.id].concat(removeDataproducts.map((id) => id)),
       })
 
     // Add dataproducts
@@ -59,7 +59,7 @@ export default async (self, args, req) => {
           .join(
             '),('
           )}) on conflict on constraint dataproduct_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(addDataproducts.map(id => id))
+        values: [input.id].concat(addDataproducts.map((id) => id)),
       })
 
     // Remove RForcings
@@ -68,7 +68,7 @@ export default async (self, args, req) => {
         text: `delete from public.rforcing_variable_xref where variable_id = $1 and rforcing_id in (${removeRForcings
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeRForcings.map(id => id))
+        values: [input.id].concat(removeRForcings.map((id) => id)),
       })
 
     // Add RForcings
@@ -77,7 +77,7 @@ export default async (self, args, req) => {
         text: `insert into public.rforcing_variable_xref (variable_id, rforcing_id) values (${addRForcings
           .map((id, i) => ['$1', `$${i + 2}`])
           .join('),(')}) on conflict on constraint rforcings_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(addRForcings.map(id => id))
+        values: [input.id].concat(addRForcings.map((id) => id)),
       })
 
     // Remove protocols
@@ -86,7 +86,7 @@ export default async (self, args, req) => {
         text: `delete from public.protocol_variable_xref where variable_id = $1 and protocol_id in (${removeProtocols
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeProtocols.map(id => id))
+        values: [input.id].concat(removeProtocols.map((id) => id)),
       })
 
     // Add protocols
@@ -95,18 +95,18 @@ export default async (self, args, req) => {
       (addIndirectlyRelatedProtocols && addIndirectlyRelatedProtocols.length)
     ) {
       const updates = (addDirectlyRelatedProtocols || [])
-        .map(id => [id, 'direct'])
-        .concat((addIndirectlyRelatedProtocols || []).map(id => [id, 'indirect']))
+        .map((id) => [id, 'direct'])
+        .concat((addIndirectlyRelatedProtocols || []).map((id) => [id, 'indirect']))
 
       await query({
         text: `insert into protocol_variable_xref (protocol_id, variable_id, relationship_type_id) values (${updates
           .map((u, i) => [
             `$${i + 2}`,
             '$1',
-            `(select id from public.relationship_types where "name" = '${u[1]}')`
+            `(select id from public.relationship_types where "name" = '${u[1]}')`,
           ])
           .join('),(')}) on conflict on constraint protocol_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(updates.map(u => u[0]))
+        values: [input.id].concat(updates.map((u) => u[0])),
       })
     }
   }

@@ -6,5 +6,5 @@ export const clusterLayer = ({ source, id = null, style }) =>
     visible: true,
     id,
     source,
-    style
+    style,
   })

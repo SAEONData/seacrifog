@@ -79,7 +79,7 @@ export default {
     updateNetworks,
 
     // Integrations
-    integrateIcos
+    integrateIcos,
   },
 
   Query: {
@@ -117,7 +117,7 @@ export default {
     xrefProtocolsVariables,
     xrefDataproductsVariables,
     xrefSitesNetworks,
-    xrefNetworksVariables
+    xrefNetworksVariables,
   },
 
   // Types
@@ -150,5 +150,5 @@ export default {
   XrefProtocolVariable,
   XrefDataproductVariable,
   XrefSiteNetwork,
-  XrefNetworkVariable
+  XrefNetworkVariable,
 }

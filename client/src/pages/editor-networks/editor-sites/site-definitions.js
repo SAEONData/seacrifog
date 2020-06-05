@@ -4,13 +4,13 @@ export const fieldDefinitions = {
     editable: false,
     display: false,
     label: 'Site ID',
-    pristine: true
+    pristine: true,
   },
   name: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Name',
-    pristine: true
-  }
+    pristine: true,
+  },
 }

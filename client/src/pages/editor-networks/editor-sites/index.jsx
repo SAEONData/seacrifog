@@ -20,7 +20,7 @@ export default class extends PureComponent {
   state = {
     moveSiteActive: false,
     addSiteActive: false,
-    sites: [...this.props.network.sites]
+    sites: [...this.props.network.sites],
   }
 
   constructor(props) {
@@ -42,7 +42,7 @@ export default class extends PureComponent {
         {({ updateForm, selectedItems }) => {
           layer.setSource(
             pointSource({
-              points: selectedItems.length ? sites.filter(({ id }) => selectedItems.includes(id)) : sites
+              points: selectedItems.length ? sites.filter(({ id }) => selectedItems.includes(id)) : sites,
             })
           )
 
@@ -55,7 +55,7 @@ export default class extends PureComponent {
                 label={'Search site name...'}
                 selectedItems={selectedItems}
                 items={props.network.sites.map(({ id, name: value }) => ({ id, value }))}
-                onItemToggle={val => {
+                onItemToggle={(val) => {
                   const newItems = [...selectedItems]
                   if (newItems.indexOf(val) >= 0) {
                     newItems.splice(newItems.indexOf(val), 1)
@@ -63,7 +63,7 @@ export default class extends PureComponent {
                     newItems.push(val)
                   }
                   updateForm({
-                    selectedItems: newItems
+                    selectedItems: newItems,
                   })
                 }}
               />
@@ -107,7 +107,7 @@ export default class extends PureComponent {
                                                 onClick={() =>
                                                   unselectFeature(() => {
                                                     // Remove map interactions
-                                                    map.getInteractions().forEach(interaction => {
+                                                    map.getInteractions().forEach((interaction) => {
                                                       if (interaction instanceof Draw || interaction instanceof Modify)
                                                         map.removeInteraction(interaction)
                                                     })
@@ -115,7 +115,7 @@ export default class extends PureComponent {
                                                     this.setState({
                                                       sites: [...this.state.sites],
                                                       addSiteActive: false,
-                                                      moveSiteActive: false
+                                                      moveSiteActive: false,
                                                     })
                                                   })
                                                 }
@@ -127,7 +127,7 @@ export default class extends PureComponent {
                                               <EditorSaveButton
                                                 key={2}
                                                 saveEntity={() => alert('Should it be possible to update sites?')}
-                                              />
+                                              />,
                                             ]}
                                           />
                                         </Cell>
@@ -140,7 +140,7 @@ export default class extends PureComponent {
                                               paddingRight: '10px',
                                               marginRight: '-10px',
                                               maxHeight: '200px',
-                                              overflow: 'auto'
+                                              overflow: 'auto',
                                             }}
                                           >
                                             <EntityEditor
@@ -204,13 +204,13 @@ export default class extends PureComponent {
                                                         const sourceIds = layer
                                                           .getSource()
                                                           .getFeatures()
-                                                          .map(f => f.get('id'))
-                                                          .filter(id => id !== site.id)
+                                                          .map((f) => f.get('id'))
+                                                          .filter((id) => id !== site.id)
 
                                                         this.setState({
                                                           sites: this.state.sites.filter(({ id }) =>
                                                             sourceIds.includes(id)
-                                                          )
+                                                          ),
                                                         })
                                                       })
                                                     }
@@ -222,7 +222,7 @@ export default class extends PureComponent {
                                                   <EditorSaveButton
                                                     key={2}
                                                     saveEntity={() => alert('Should it be possible to update sites?')}
-                                                  />
+                                                  />,
                                                 ]}
                                               />
                                             </Cell>
@@ -235,7 +235,7 @@ export default class extends PureComponent {
                                                   paddingRight: '10px',
                                                   marginRight: '-10px',
                                                   maxHeight: '200px',
-                                                  overflow: 'auto'
+                                                  overflow: 'auto',
                                                 }}
                                               >
                                                 <EntityEditor
@@ -268,10 +268,10 @@ export default class extends PureComponent {
                                   this.setState(
                                     {
                                       moveSiteActive: !this.state.moveSiteActive,
-                                      addSiteActive: false
+                                      addSiteActive: false,
                                     },
                                     () => {
-                                      map.getInteractions().forEach(interaction => {
+                                      map.getInteractions().forEach((interaction) => {
                                         if (interaction instanceof Draw || interaction instanceof Modify)
                                           map.removeInteraction(interaction)
                                       })
@@ -285,7 +285,7 @@ export default class extends PureComponent {
                                             sites: layer
                                               .getSource()
                                               .getFeatures()
-                                              .map(f => f.getProperties())
+                                              .map((f) => f.getProperties()),
                                           })
                                         })
                                       }
@@ -304,16 +304,16 @@ export default class extends PureComponent {
                                   this.setState(
                                     {
                                       moveSiteActive: false,
-                                      addSiteActive: !this.state.addSiteActive
+                                      addSiteActive: !this.state.addSiteActive,
                                     },
                                     () => {
-                                      map.getInteractions().forEach(interaction => {
+                                      map.getInteractions().forEach((interaction) => {
                                         if (interaction instanceof Draw || interaction instanceof Modify)
                                           map.removeInteraction(interaction)
                                       })
                                       this.draw = new Draw({
                                         source: this.layer.getSource(),
-                                        type: 'Point'
+                                        type: 'Point',
                                       })
                                       if (this.state.addSiteActive) map.addInteraction(this.draw)
                                     }
@@ -323,7 +323,7 @@ export default class extends PureComponent {
                                 iconChildren={'add'}
                               >
                                 Add site
-                              </Button>
+                              </Button>,
                             ]}
                           />
                         </MountAnimation>

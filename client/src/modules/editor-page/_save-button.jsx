@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-md'
 
 const buttonStyle = {
-  float: 'right'
+  float: 'right',
 }
 
 export default ({ saveEntity }) => (

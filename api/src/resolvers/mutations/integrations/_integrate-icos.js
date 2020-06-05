@@ -33,7 +33,7 @@ export default async (self, args, req) => {
       insert into public.networks (title, acronym)
       values ($1, $2)
       on conflict on constraint networks_unique_cols do nothing;`,
-    values: ['Integrated Carbon Observation System', 'ICOS']
+    values: ['Integrated Carbon Observation System', 'ICOS'],
   })
 
   /**
@@ -46,7 +46,7 @@ export default async (self, args, req) => {
       headers: {
         'Content-Type': 'text/plain',
         Accept: 'application/json',
-        'Accept-Encoding': 'gzip, defalt, br'
+        'Accept-Encoding': 'gzip, defalt, br',
       },
       data: `
       PREFIX cpst: <http://meta.icos-cp.eu/ontologies/stationentry/>
@@ -88,11 +88,11 @@ export default async (self, args, req) => {
       
       ORDER BY
       ?themeShort
-      ?sName`
-    }).catch(error => console.error('ICOS integration error', error))
+      ?sName`,
+    }).catch((error) => console.error('ICOS integration error', error))
   )?.data?.results?.bindings?.map(({ Short_name: name, latstr: lat, lonstr: lng }) => ({
     name: name.value,
-    lngLat: [lng.value, lat.value]
+    lngLat: [lng.value, lat.value],
   }))
 
   const values = stations
@@ -119,7 +119,7 @@ export default async (self, args, req) => {
       on conflict on constraint sites_unique_cols do update set
       "name" = excluded."name",
       xyz    = excluded.xyz;`,
-    values
+    values,
   })
 
   /**
@@ -162,13 +162,13 @@ export default async (self, args, req) => {
       from _sites s
       join _networks n on 1 = 1
       on conflict on constraint site_network_xref_unique_cols do nothing;`,
-    values
+    values,
   })
 
   // Result: IntegrationResult
   return {
     name: 'ICOS Integration',
     success: true,
-    msg: `Successfully ran on ${new Date()}`
+    msg: `Successfully ran on ${new Date()}`,
   }
 }

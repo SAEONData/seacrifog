@@ -10,7 +10,7 @@ import {
   EntityEditor,
   RelationEditor,
   EditorHeader,
-  EditorContentWrapperInner
+  EditorContentWrapperInner,
 } from '../../modules/editor-page'
 import { PROTOCOL, VARIABLES_MIN } from '../../graphql/queries'
 import { UPDATE_PROTOCOLS } from '../../graphql/mutations'
@@ -43,8 +43,8 @@ export default ({ id, ...props }) => {
                         setDialogVisible(false)
                       },
                       primary: true,
-                      children: 'Okay'
-                    }
+                      children: 'Okay',
+                    },
                   ]}
                 >
                   <p>Please note that since this is a prototype, any changes made will be reset the next day</p>
@@ -89,13 +89,13 @@ export default ({ id, ...props }) => {
                                                 Object.entries(fields).filter(([key]) =>
                                                   fieldDefinitions[key] ? !fieldDefinitions[key].pristine : false
                                                 )
-                                              )
-                                            }
-                                          ]
-                                        }
+                                              ),
+                                            },
+                                          ],
+                                        },
                                       })
                                     }}
-                                  />
+                                  />,
                                 ]}
                               />
                             </Cell>

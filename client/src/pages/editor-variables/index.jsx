@@ -10,7 +10,7 @@ import {
   EntityEditor,
   RelationEditor,
   EditorHeader,
-  EditorContentWrapperInner
+  EditorContentWrapperInner,
 } from '../../modules/editor-page'
 import { VARIABLE, DATAPRODUCTS_MIN, PROTOCOLS_MIN, RFORCINGS_MIN } from '../../graphql/queries'
 import { UPDATE_VARIABLES } from '../../graphql/mutations'
@@ -48,8 +48,8 @@ export default ({ id, ...props }) => {
                                 setDialogVisible(false)
                               },
                               primary: true,
-                              children: 'Okay'
-                            }
+                              children: 'Okay',
+                            },
                           ]}
                           contentStyle={{ overflow: 'hidden' }}
                         >
@@ -109,13 +109,13 @@ export default ({ id, ...props }) => {
                                                             ? !fieldDefinitions[key].pristine
                                                             : false
                                                         )
-                                                      )
-                                                    }
-                                                  ]
-                                                }
+                                                      ),
+                                                    },
+                                                  ],
+                                                },
                                               })
                                             }}
-                                          />
+                                          />,
                                         ]}
                                       />
                                     </Cell>
@@ -181,7 +181,7 @@ export default ({ id, ...props }) => {
                                                 label="Radiative Forcings"
                                                 items={radiativeForcings.map(({ id, compound: value }) => ({
                                                   id,
-                                                  value
+                                                  value,
                                                 }))}
                                                 selectedItems={addRForcings}
                                                 updateForm={updateForm}

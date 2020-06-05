@@ -16,7 +16,7 @@ export default class extends PureComponent {
   render() {
     return this.props.children({
       updateForm: this.updateForm,
-      ...this.state
+      ...this.state,
     })
   }
 }

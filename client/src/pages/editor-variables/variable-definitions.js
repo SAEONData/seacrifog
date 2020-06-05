@@ -4,195 +4,195 @@ export const fieldDefinitions = {
     editable: false, //Whether or not the field is greyed out
     display: false, //Whether or not the field is actually rendered
     label: 'Variable ID', //The cleaner title of the editable field
-    pristine: true //whether or not the field is still untouched by the edit page. False means the field has been edited and will be passed to the mutation
+    pristine: true, //whether or not the field is still untouched by the edit page. False means the field has been edited and will be passed to the mutation
   },
   name: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Name',
-    pristine: true
+    pristine: true,
   },
   class: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Class',
-    pristine: true
+    pristine: true,
   },
   domain: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Domain',
-    pristine: true
+    pristine: true,
   },
   set: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Set',
-    pristine: true
+    pristine: true,
   },
   description: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Description',
-    pristine: true
+    pristine: true,
   },
   method: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Method',
-    pristine: true
+    pristine: true,
   },
   uri: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Uniform Resource Identifier (URI)',
-    pristine: true
+    pristine: true,
   },
   rftype: {
     type: 'String',
     editable: true,
     display: true,
     label: 'RF Type',
-    pristine: true
+    pristine: true,
   },
   score: {
     type: 'Integer',
     editable: true,
     display: true,
     label: 'Score',
-    pristine: true
+    pristine: true,
   },
   rating: {
     type: 'Integer',
     editable: true,
     display: true,
     label: 'Rating',
-    pristine: true
+    pristine: true,
   },
   relevance: {
     type: 'Float',
     editable: true,
     display: true,
     label: 'Relevance',
-    pristine: true
+    pristine: true,
   },
   feasibility: {
     type: 'Float',
     editable: true,
     display: true,
     label: 'Feasibility',
-    pristine: true
+    pristine: true,
   },
   cost: {
     type: 'Float',
     editable: true,
     display: true,
     label: 'Cost',
-    pristine: true
+    pristine: true,
   },
   updated_by: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Updated By',
-    pristine: true
+    pristine: true,
   },
   updated_at: {
     type: 'Date',
     editable: true,
     display: true,
     label: 'Updated At',
-    pristine: true
+    pristine: true,
   },
   frequency_value: {
     type: 'Float',
     editable: true,
     display: true,
     label: 'Frequency Value',
-    pristine: true
+    pristine: true,
   },
   frequency_unit: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Frequency Unit',
-    pristine: true
+    pristine: true,
   },
   frequency_comment: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Frequency Comment',
-    pristine: true
+    pristine: true,
   },
   res_value: {
     type: 'Float',
     editable: true,
     display: true,
     label: 'Resolution Value',
-    pristine: true
+    pristine: true,
   },
   res_unit: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Resolution Unit',
-    pristine: true
+    pristine: true,
   },
   res_comment: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Resolution Comment',
-    pristine: true
+    pristine: true,
   },
   unc_val: {
     type: 'Float',
     editable: true,
     display: true,
     label: 'Uncertainty Value',
-    pristine: true
+    pristine: true,
   },
   unc_unit: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Uncertainty Unit',
-    pristine: true
+    pristine: true,
   },
   unc_comment: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Uncertainty Comment',
-    pristine: true
+    pristine: true,
   },
   req_source: {
     type: 'String',
     editable: true,
     display: true,
     label: '***req=Request?*** Source',
-    pristine: true
+    pristine: true,
   },
   req_uri: {
     type: 'String',
     editable: true,
     display: true,
     label: '***req=Request?*** Uniform Resource Identifier (URI)',
-    pristine: true
+    pristine: true,
   },
   technology_type: {
     type: 'String',
     editable: true,
     display: true,
     label: 'Technology Type',
-    pristine: true
-  }
+    pristine: true,
+  },
 }

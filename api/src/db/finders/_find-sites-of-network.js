@@ -4,7 +4,7 @@ import sift from 'sift'
 
 export default () =>
   new DataLoader(
-    async keys => {
+    async (keys) => {
       const rows = (
         await query({
           text: `
@@ -16,14 +16,14 @@ export default () =>
             from public.site_network_xref snx
             join public.sites s on s.id = snx.site_id
             where network_id in (${keys.map((k, i) => `$${i + 1}`).join(',')});`,
-          values: keys.map(k => k)
+          values: keys.map((k) => k),
         })
       ).rows
-      return keys.map(key => rows.filter(sift({ network_id: key })) || [])
+      return keys.map((key) => rows.filter(sift({ network_id: key })) || [])
     },
     {
       batch: true,
       maxBatchSize: 250,
-      cache: true
+      cache: true,
     }
   )

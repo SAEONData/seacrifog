@@ -17,7 +17,7 @@ import axios from 'axios'
 //   ]
 // }
 
-const getTitles = search => {
+const getTitles = (search) => {
   const { title: networkTitle } = search.networks
   const { name: variableTitle } = search.variables
   const { title: protocolTitle } = search.protocols
@@ -26,14 +26,14 @@ const getTitles = search => {
 
 // const getIdentifiers = ({ protocols }) => protocols.doi.join(',')
 
-;(async search => {
+;(async (search) => {
   /**
    * Prepare the search
    */
 
-  const exeConfig = search.exeConfigs.filter(ec => ec.name === 'saeon')[0] || {
+  const exeConfig = search.exeConfigs.filter((ec) => ec.name === 'saeon')[0] || {
     offset: 1,
-    limit: 100
+    limit: 100,
   }
   const options = {
     baseURL: 'http://192.168.116.66:9210/search',
@@ -43,8 +43,8 @@ const getTitles = search => {
       index: 'saeon-odp-4-2',
       start: exeConfig.offset,
       size: exeConfig.limit,
-      fields: 'metadata_json,record_id,organization'
-    }
+      fields: 'metadata_json,record_id,organization',
+    },
   }
 
   // TODO
@@ -64,7 +64,7 @@ const getTitles = search => {
   // options.params['metadata_json.alternateIdentifiers.alternateIdentifier'] = identifiers
 
   const data = (
-    (await axios(options).catch(error => console.error('Error searching metadata', error))) || {}
+    (await axios(options).catch((error) => console.error('Error searching metadata', error))) || {}
   ).data
 
   if (data) {
@@ -73,7 +73,7 @@ const getTitles = search => {
     parentPort.postMessage({ error: 'SAEON catalogue search failed' })
   }
 })(workerData)
-  .catch(error => {
+  .catch((error) => {
     console.log('Unexpected error searching SAEON catalogue', error)
   })
   .finally(() => process.exit(0))

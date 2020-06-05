@@ -3,11 +3,11 @@ import gql from 'graphql-tag'
 import { ApolloConsumer } from 'react-apollo'
 import orgs from '../../pages/search-results/configuration'
 
-const config = config =>
+const config = (config) =>
   config
     ?.split(',')
-    ?.filter(_ => _)
-    ?.map(i => parseInt(i, 10)) || []
+    ?.filter((_) => _)
+    ?.map((i) => parseInt(i, 10)) || []
 
 const DEFAULT_SELECTED_SITES = config(process?.env?.DEFAULT_SELECTED_SITES)
 const DEFAULT_SELECTED_NETWORKS = config(process?.env?.DEFAULT_SELECTED_NETWORKS)
@@ -26,7 +26,7 @@ class State extends PureComponent {
     selectedDataproducts: [],
 
     // Metadata pagination restrictions
-    exeConfigs: Object.entries(orgs).map(org => ({ offset: org[1].offset, limit: 100, name: org[1].exeKey })),
+    exeConfigs: Object.entries(orgs).map((org) => ({ offset: org[1].offset, limit: 100, name: org[1].exeKey })),
 
     // Single INDEX values. NOT IDs
     currentSite: 0,
@@ -38,7 +38,7 @@ class State extends PureComponent {
     // Search results
     loadingSearchResults: false,
     searchResults: [],
-    searchErrors: []
+    searchErrors: [],
   }
 
   componentDidMount() {
@@ -46,7 +46,7 @@ class State extends PureComponent {
       selectedSites: DEFAULT_SELECTED_SITES,
       selectedNetworks: DEFAULT_SELECTED_NETWORKS,
       selectedVariables: DEFAULT_SELECTED_VARIABLES,
-      selectedProtocols: DEFAULT_SELECTED_PROTOCOLS
+      selectedProtocols: DEFAULT_SELECTED_PROTOCOLS,
     })
   }
 
@@ -75,7 +75,7 @@ class State extends PureComponent {
         selectedNetworks: byNetworks,
         selectedVariables: byVariables,
         selectedProtocols: byProtocols,
-        exeConfigs: exeConfigs
+        exeConfigs: exeConfigs,
       } = this.state
 
       this.setState({ loadingSearchResults: true }, async () => {
@@ -111,8 +111,8 @@ class State extends PureComponent {
               byNetworks,
               byVariables,
               byProtocols,
-              exeConfigs
-            }
+              exeConfigs,
+            },
           })
           data = ((response || {}).data || {}).searchMetadata || []
           errors = (response || {}).errors || []
@@ -122,7 +122,7 @@ class State extends PureComponent {
           this.setState({
             loadingSearchResults: false,
             searchResults: data || [],
-            searchErrors: errors || []
+            searchErrors: errors || [],
           })
         }
       })
@@ -134,7 +134,7 @@ class State extends PureComponent {
       if (currentIndex && selectedIds) {
         this.setState(
           {
-            [currentIndex]: this.state[selectedIds].length - 1 >= 0 ? this.state[selectedIds].length - 1 : 0
+            [currentIndex]: this.state[selectedIds].length - 1 >= 0 ? this.state[selectedIds].length - 1 : 0,
           },
           cb
         )
@@ -150,7 +150,7 @@ class State extends PureComponent {
       <GlobalStateContext.Provider
         value={{
           updateGlobalState,
-          ...state
+          ...state,
         }}
       >
         {props.children}
@@ -160,5 +160,5 @@ class State extends PureComponent {
 }
 
 export const GlobalState = ({ children }) => (
-  <ApolloConsumer>{client => <State client={client}>{children}</State>}</ApolloConsumer>
+  <ApolloConsumer>{(client) => <State client={client}>{children}</State>}</ApolloConsumer>
 )

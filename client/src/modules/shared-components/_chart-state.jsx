@@ -4,13 +4,13 @@ export const ShowChartsState = React.createContext()
 
 export class ChartState extends PureComponent {
   state = {
-    showCharts: false
+    showCharts: false,
   }
 
   toggleCharts = (cb = null) =>
     this.setState(
       {
-        showCharts: !this.state.showCharts
+        showCharts: !this.state.showCharts,
       },
       cb
     )
@@ -22,7 +22,7 @@ export class ChartState extends PureComponent {
       <ShowChartsState.Provider
         value={{
           toggleCharts,
-          ...state
+          ...state,
         }}
       >
         {props.children}

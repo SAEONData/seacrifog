@@ -2,7 +2,7 @@ import app from '../app'
 import http from 'http'
 import { log, logError } from '../lib/log'
 
-const normalizePort = val => {
+const normalizePort = (val) => {
   const port = parseInt(val, 10)
   if (isNaN(port)) return val
   if (port >= 0) return port
@@ -14,7 +14,7 @@ app.set('port', PORT)
 const server = http.createServer(app)
 server.listen(PORT)
 
-server.on('error', err => {
+server.on('error', (err) => {
   if (err.syscall !== 'listen') throw err
   var bind = typeof PORT === 'string' ? 'Pipe ' + PORT : 'Port ' + PORT
   switch (err.code) {

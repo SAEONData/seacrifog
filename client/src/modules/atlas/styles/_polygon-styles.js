@@ -5,9 +5,9 @@ export const polygonStyle = () =>
     stroke: new Stroke({
       color: 'rgba(243, 117, 31, 1)',
       lineDash: [0],
-      width: 1
+      width: 1,
     }),
     fill: new Fill({
-      color: 'rgba(243, 117, 31, 0.2)'
-    })
+      color: 'rgba(243, 117, 31, 0.2)',
+    }),
   })

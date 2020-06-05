@@ -14,7 +14,7 @@ import {
   iconLink,
   ExplorerCoverageMap,
   variableIcon,
-  ExplorerHeaderCharts
+  ExplorerHeaderCharts,
 } from '../../modules/explorer-page'
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
@@ -30,10 +30,10 @@ const networksDataDefinitions = {
   status: { show: true, order: 4, label: 'Status' },
   start_year: { show: true, order: 5, label: 'Start Year' },
   end_year: { show: true, order: 6, label: 'End Year' },
-  __typename: { show: false }
+  __typename: { show: false },
 }
 
-export default props => {
+export default (props) => {
   const history = useHistory()
   return (
     <DataQuery query={NETWORKS_MIN}>
@@ -54,7 +54,7 @@ export default props => {
                       query={EXPLORER_NETWORK_CHARTS}
                       chartDefinitions={networkCharts}
                       variables={{
-                        ids: selectedNetworks.length > 0 ? selectedNetworks : networks.map(n => n.id)
+                        ids: selectedNetworks.length > 0 ? selectedNetworks : networks.map((n) => n.id),
                       }}
                     />
                   </ChartState>
@@ -74,8 +74,8 @@ export default props => {
                           updateGlobalState(
                             {
                               selectedNetworks: selectedNetworks.includes(id)
-                                ? [...selectedNetworks].filter(vId => vId !== id)
-                                : [...new Set([...selectedNetworks, id])]
+                                ? [...selectedNetworks].filter((vId) => vId !== id)
+                                : [...new Set([...selectedNetworks, id])],
                             },
                             { currentIndex: 'currentNetwork', selectedIds: 'selectedNetworks' }
                           )
@@ -84,7 +84,7 @@ export default props => {
                     </ExplorerTableLayout>
                     <ExplorerTabsLayout
                       currentIndex={currentNetwork}
-                      updateCurrentIndex={i => updateGlobalState({ currentNetwork: i })}
+                      updateCurrentIndex={(i) => updateGlobalState({ currentNetwork: i })}
                       id="selected-variables-tabs"
                       selectedIds={selectedNetworks}
                       {...props}
@@ -98,15 +98,14 @@ export default props => {
                               abstract={network.abstract}
                               clickClose={() =>
                                 updateGlobalState(
-                                  { selectedNetworks: selectedNetworks.filter(sId => sId !== network.id) },
+                                  { selectedNetworks: selectedNetworks.filter((sId) => sId !== network.id) },
                                   { currentIndex: 'currentNetwork', selectedIds: 'selectedNetworks' }
                                 )
                               }
                               href={encodeURI(
-                                `${process.env.DOWNLOADS_ENDPOINT ||
-                                  'https://api.seacrifog.saeon.ac.za/downloads'}/NETWORKS?filename=NETWORK-${new Date()}.json&ids=${[
-                                  network.id
-                                ].join(',')}`
+                                `${
+                                  process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
+                                }/NETWORKS?filename=NETWORK-${new Date()}.json&ids=${[network.id].join(',')}`
                               )}
                               clickEdit={() => history.push(`/networks/${network.id}`)}
                             >
@@ -124,7 +123,7 @@ export default props => {
                                             : true
                                         )}
                                       />
-                                    )
+                                    ),
                                   },
 
                                   // Related variables
@@ -142,12 +141,12 @@ export default props => {
                                                   updateGlobalState(
                                                     {
                                                       selectedVariables: [
-                                                        ...new Set([...selectedVariables, variable.id])
-                                                      ]
+                                                        ...new Set([...selectedVariables, variable.id]),
+                                                      ],
                                                     },
                                                     {
                                                       currentIndex: 'currentVariable',
-                                                      selectedIds: 'selectedVariables'
+                                                      selectedIds: 'selectedVariables',
                                                     },
                                                     () => history.push('/variables')
                                                   )
@@ -163,7 +162,7 @@ export default props => {
                                       </div>
                                     ) : (
                                       <NoneMessage />
-                                    )
+                                    ),
                                   },
 
                                   // Coverage map
@@ -178,10 +177,10 @@ export default props => {
                                     style: { height: '500px' },
                                     grid: network.coverage_spatial
                                       ? {
-                                          size: 12
+                                          size: 12,
                                         }
-                                      : {}
-                                  }
+                                      : {},
+                                  },
                                 ]}
                               />
                             </ExplorerEntityLayout>

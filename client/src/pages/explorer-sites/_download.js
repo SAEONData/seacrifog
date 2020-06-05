@@ -6,9 +6,9 @@ export default async ({ ids }) => {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ filename: `SITES-${new Date()}.json`, ids: `${ids.join(',')}` })
+    body: JSON.stringify({ filename: `SITES-${new Date()}.json`, ids: `${ids.join(',')}` }),
   })
 
   const blob = await response.blob()

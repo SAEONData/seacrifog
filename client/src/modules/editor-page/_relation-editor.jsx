@@ -9,15 +9,15 @@ export default ({ label, items, updateForm, selectedItems, removeArray, addField
     truncateLength={60}
     items={items}
     selectedItems={selectedItems}
-    onItemToggle={id =>
+    onItemToggle={(id) =>
       selectedItems.includes(id)
         ? updateForm({
-            [addFieldName]: selectedItems.filter(i => i !== id),
-            [removeFieldName]: [...new Set([...removeArray, id])]
+            [addFieldName]: selectedItems.filter((i) => i !== id),
+            [removeFieldName]: [...new Set([...removeArray, id])],
           })
         : updateForm({
             [addFieldName]: [...new Set([...selectedItems, id])],
-            [removeFieldName]: removeArray.filter(i => i !== id)
+            [removeFieldName]: removeArray.filter((i) => i !== id),
           })
     }
   />

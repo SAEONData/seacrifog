@@ -4,7 +4,7 @@ import {
   VARIABLE_FRAGMENT,
   DATAPRODUCT_FRAGMENT,
   SITE_FRAGMENT,
-  NETWORK_FRAGMENT
+  NETWORK_FRAGMENT,
 } from './fragments'
 
 export const ENTIRE_GRAPH = gql`

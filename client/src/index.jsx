@@ -17,15 +17,15 @@ nativeExtensions()
 // Configure the Apollo Client
 const cache = new InMemoryCache()
 const link = new HttpLink({
-  uri: process.env.GQL_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/graphql'
+  uri: process.env.GQL_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/graphql',
 })
 const client = new ApolloClient({ cache, link })
 
 // Load the fonts
 WebFontLoader.load({
   google: {
-    families: ['Roboto:300,400,500,700', 'Material Icons', 'Open+Sans:400,600']
-  }
+    families: ['Roboto:300,400,500,700', 'Material Icons', 'Open+Sans:400,600'],
+  },
 })
 
 ReactDOM.render(

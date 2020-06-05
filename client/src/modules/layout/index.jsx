@@ -11,14 +11,14 @@ const seacrifogLogoStyle = {
   maxHeight: '100%',
   float: 'right',
   margin: 0,
-  padding: '8px 16px'
+  padding: '8px 16px',
 }
 
 const getCurrentPath = ({ location: { pathname } }) => {
   return pathname
     .substring(pathname.indexOf('/') + 1)
     .split('/')
-    .map(p => p.capitalize())
+    .map((p) => p.capitalize())
     .join('/')
 }
 
@@ -31,7 +31,7 @@ class Navigation extends PureComponent {
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      currentPath: getCurrentPath(nextProps)
+      currentPath: getCurrentPath(nextProps),
     }
   }
 
@@ -67,7 +67,7 @@ class Navigation extends PureComponent {
         }
         toolbarActions={[
           <img key={0} style={seacrifogLogoStyle} src={`/seacrifog-logo.png`} alt="SEACRIFOG logo" />,
-          <img key={1} style={seacrifogLogoStyle} src={`/eu-funding-acknowledgement.jpg`} alt="EU logo" />
+          <img key={1} style={seacrifogLogoStyle} src={`/eu-funding-acknowledgement.jpg`} alt="EU logo" />,
         ]}
         onVisibilityChange={debounce(() => window.dispatchEvent(new Event('resize-map')))}
         defaultVisible={false}

@@ -29,7 +29,7 @@ const sasccalPartner = partners[17]
 const mainPartnerStyle = {
   maxHeight: '60px',
   display: 'block',
-  margin: 'auto'
+  margin: 'auto',
 }
 
 export default () => {

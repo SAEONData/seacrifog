@@ -25,9 +25,9 @@ const listStyle = { paddingRight: '5px' }
 export default class extends PureComponent {
   state = { searchTerm: '', filteredItems: [], visible: false, listSize: 20 }
 
-  updateSearchTerm = searchTerm => this.setState({ searchTerm, visible: true })
+  updateSearchTerm = (searchTerm) => this.setState({ searchTerm, visible: true })
 
-  toggleItemSelect = item => this.props.onItemToggle(item.id)
+  toggleItemSelect = (item) => this.props.onItemToggle(item.id)
 
   render() {
     const { updateSearchTerm, toggleItemSelect, state, props } = this
@@ -36,7 +36,7 @@ export default class extends PureComponent {
     const searchTermUpper = searchTerm.toUpperCase()
 
     const filteredItems = (searchTerm
-      ? [...items].filter(item =>
+      ? [...items].filter((item) =>
           item.value.toUpperCase().indexOf(searchTermUpper) >= 0 || selectedItems.includes(item.id) ? true : false
         )
       : [...items]
@@ -55,7 +55,7 @@ export default class extends PureComponent {
         const bVal = b.value.toUpperCase()
         return aVal >= bVal ? 1 : -1
       })
-      .map(item => (
+      .map((item) => (
         <ListItem
           className={'filter-menu-selected-item add-on-hover'}
           // style={listItemStyle}
@@ -77,7 +77,7 @@ export default class extends PureComponent {
           onVisibilityChange={() => this.setState({ visible: !visible })}
           anchor={{
             x: DropdownMenu.HorizontalAnchors.INNER_LEFT,
-            y: DropdownMenu.VerticalAnchors.BOTTOM
+            y: DropdownMenu.VerticalAnchors.BOTTOM,
           }}
           position={DropdownMenu.Positions.BELOW}
           menuItems={(() => {
@@ -85,7 +85,7 @@ export default class extends PureComponent {
             A different component to DropdownMenu might be needed if FixedSizeList / InfiniteLoader are to be the child */
             const result =
               filteredItems.length > 0
-                ? filteredItems.map(item => (
+                ? filteredItems.map((item) => (
                     <ListItemControl
                       key={item.id}
                       className="add-on-hover"
@@ -122,7 +122,7 @@ export default class extends PureComponent {
             style={{ width: '100%' }}
             leftIcon={<FontIcon>search</FontIcon>}
             label={label}
-            onChange={debounce(val => updateSearchTerm(val))}
+            onChange={debounce((val) => updateSearchTerm(val))}
             fullWidth={true}
             value={searchTerm}
           />

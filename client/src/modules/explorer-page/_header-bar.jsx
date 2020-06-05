@@ -6,20 +6,20 @@ import { ENTIRE_GRAPH } from '../../graphql/queries'
 import { SideMenuFilter, GlobalStateContext, ShowChartsState } from '../shared-components'
 import { SideMenu } from '../shared-components/index'
 
-const getProgresStyle = loading => ({
+const getProgresStyle = (loading) => ({
   margin: 0,
   visibility: loading ? 'inherit' : 'hidden',
-  position: 'absolute'
+  position: 'absolute',
 })
 
 const mainMenuIconStyle = (disabled, toggled) => ({
   marginLeft: '10px',
   color: disabled ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,1)',
-  backgroundColor: toggled ? 'rgba(255,255,255,0.3)' : ''
+  backgroundColor: toggled ? 'rgba(255,255,255,0.3)' : '',
 })
 
-const badgeStyle = disabled => ({
-  color: disabled ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,1)'
+const badgeStyle = (disabled) => ({
+  color: disabled ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,1)',
 })
 
 export default ({ resetFn, selectedIds, ...props }) => {
@@ -33,7 +33,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
           {({ loadingSearchResults, searchResults, searchErrors }) => {
             const searchResultLength = searchErrors.length
               ? 0
-              : searchResults.map(r => r?.result?.result_length || 0).reduce((sum, val) => sum + val, 0)
+              : searchResults.map((r) => r?.result?.result_length || 0).reduce((sum, val) => sum + val, 0)
 
             return (
               <>
@@ -88,7 +88,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
                             key={51}
                             badgeStyle={badgeStyle(searchResultLength > 0 ? false : true)}
                             badgeContent={searchResults
-                              .map(r => r?.result?.result_length || 0)
+                              .map((r) => r?.result?.result_length || 0)
                               .reduce((sum, val) => sum + val, 0)}
                             badgeId={'search-results-notification'}
                           >
@@ -96,7 +96,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
                               tooltipLabel={`Organizations searched: ${
                                 searchResults.length
                               }. Records found: ${searchResults
-                                .map(r => r.result.result_length)
+                                .map((r) => r.result.result_length)
                                 .reduce((sum, val) => sum + val, 0)}`}
                               tooltipPosition="left"
                               disabled={searchResultLength > 0 ? false : true}
@@ -127,10 +127,9 @@ export default ({ resetFn, selectedIds, ...props }) => {
                             icon
                             download
                             href={encodeURI(
-                              `${process.env.DOWNLOADS_ENDPOINT ||
-                                'https://api.seacrifog.saeon.ac.za/downloads'}/${ctx}?filename=${ctx}-${new Date()}.json&ids=${selectedIds.join(
-                                ','
-                              )}`
+                              `${
+                                process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
+                              }/${ctx}?filename=${ctx}-${new Date()}.json&ids=${selectedIds.join(',')}`
                             )}
                           >
                             save_alt
@@ -176,7 +175,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
                               variables={variables}
                               protocols={protocols}
                             />
-                          </SideMenu>
+                          </SideMenu>,
                         ]}
                       />
                     </>

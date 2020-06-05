@@ -21,7 +21,7 @@ export default () => (
             window.addEventListener('resize-map', resizeMap.bind(map))
 
             // I have found that it's better to add the layers asynchronously
-            new Promise(res => {
+            new Promise((res) => {
               setTimeout(() => {
                 map.addLayer(terrestrisBaseMap())
                 return res()
@@ -35,9 +35,9 @@ export default () => (
                       geometries: sites.reduce(
                         (sites, site) => (site.xyz ? [...sites, JSON.parse(site.xyz)] : [...sites]),
                         []
-                      )
+                      ),
                     },
-                    style: dotStyle1()
+                    style: dotStyle1(),
                   })
                 )
               }, 0)

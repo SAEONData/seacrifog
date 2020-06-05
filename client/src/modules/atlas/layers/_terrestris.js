@@ -10,8 +10,8 @@ export const terrestrisBaseMap = () =>
       url: 'https://ows.terrestris.de/osm-gray/service?',
       params: {
         LAYERS: 'OSM-WMS',
-        TILED: false
+        TILED: false,
       },
-      serverType: 'geoserver'
-    })
+      serverType: 'geoserver',
+    }),
   })

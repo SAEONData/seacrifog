@@ -12,7 +12,7 @@ import {
   EntityEditor,
   RelationEditor,
   EditorHeader,
-  EditorContentWrapperInner
+  EditorContentWrapperInner,
 } from '../../modules/editor-page'
 import SiteEditor from './editor-sites'
 
@@ -42,8 +42,8 @@ export default ({ id, ...props }) => {
                       setDialogVisible(false)
                     },
                     primary: true,
-                    children: 'Okay'
-                  }
+                    children: 'Okay',
+                  },
                 ]}
                 contentStyle={{ overflow: 'hidden' }}
               >
@@ -84,10 +84,10 @@ export default ({ id, ...props }) => {
                                               Object.entries(fields).filter(([key]) =>
                                                 fieldDefinitions[key] ? !fieldDefinitions[key].pristine : false
                                               )
-                                            )
-                                          }
-                                        ]
-                                      }
+                                            ),
+                                          },
+                                        ],
+                                      },
                                     })
                                   }}
                                 />

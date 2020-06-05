@@ -22,7 +22,7 @@ export default ({ className = null, fieldDefinitions, updateForm, ...fields }) =
             label={label}
             disabled={!editable}
             value={fields[fieldName] || ''}
-            onChange={val => updateFormHelper({ fieldDefinitions, fieldName, val, updateForm })}
+            onChange={(val) => updateFormHelper({ fieldDefinitions, fieldName, val, updateForm })}
           />
         ) : type === 'Date' ? (
           <DatePicker
@@ -32,7 +32,7 @@ export default ({ className = null, fieldDefinitions, updateForm, ...fields }) =
             label={label}
             value={fields[fieldName] == null ? '' : fields[fieldName].substring(0, 10).replace(/-/g, '/')}
             disabled={!editable}
-            onChange={val => updateFormHelper({ fieldDefinitions, fieldName, val, updateForm })}
+            onChange={(val) => updateFormHelper({ fieldDefinitions, fieldName, val, updateForm })}
           />
         ) : type === 'Integer' ? (
           <TextField
@@ -44,7 +44,7 @@ export default ({ className = null, fieldDefinitions, updateForm, ...fields }) =
             label={label}
             disabled={!editable}
             value={fields[fieldName] || 0}
-            onChange={val => updateFormHelper({ fieldDefinitions, fieldName, val: parseInt(val), updateForm })}
+            onChange={(val) => updateFormHelper({ fieldDefinitions, fieldName, val: parseInt(val), updateForm })}
           />
         ) : type === 'Float' ? (
           <TextField
@@ -56,7 +56,7 @@ export default ({ className = null, fieldDefinitions, updateForm, ...fields }) =
             label={label}
             disabled={!editable}
             value={fields[fieldName] || 0}
-            onChange={val => updateFormHelper({ fieldDefinitions, fieldName, val: parseFloat(val), updateForm })}
+            onChange={(val) => updateFormHelper({ fieldDefinitions, fieldName, val: parseFloat(val), updateForm })}
           />
         ) : type === 'Relation mutation' ? (
           ''

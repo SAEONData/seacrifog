@@ -33,8 +33,8 @@ const typeDefs = readFileSync(typeDefsPath, { encoding: 'utf8' })
 const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 // Helper for allowing async / await with middleware
-const asyncHandler = fn => (req, res, next) =>
-  Promise.resolve(fn(req, res, next)).catch(error => {
+const asyncHandler = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch((error) => {
     logError('Top level application error', error)
     return next()
   })
@@ -77,9 +77,9 @@ app.use(express.static(join(__dirname, '../public')))
 const createCtx = () => ({
   db: {
     query,
-    dataLoaders: initializeLoaders()
+    dataLoaders: initializeLoaders(),
   },
-  schema
+  schema,
 })
 
 /**
@@ -101,7 +101,7 @@ app.use(
   '/graphiql',
   graphqlHTTP({
     schema,
-    graphiql: true
+    graphiql: true,
   })
 )
 
@@ -110,7 +110,7 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema,
-    graphiql: false
+    graphiql: false,
   })
 )
 

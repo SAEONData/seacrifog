@@ -10,7 +10,7 @@ export default class extends Component {
     super(props)
     this.state = { chartType: 'pie' }
   }
-  setChartType = chartType => {
+  setChartType = (chartType) => {
     this.setState({ chartType: chartType })
   }
 
@@ -48,7 +48,7 @@ export default class extends Component {
                       this.setChartType('pie')
                     }}
                     style={{
-                      backgroundColor: this.state.chartType === 'pie' ? enabledColor : ''
+                      backgroundColor: this.state.chartType === 'pie' ? enabledColor : '',
                     }}
                     icon
                   >
@@ -61,12 +61,12 @@ export default class extends Component {
                       this.setChartType('bar')
                     }}
                     style={{
-                      backgroundColor: this.state.chartType === 'bar' ? enabledColor : ''
+                      backgroundColor: this.state.chartType === 'bar' ? enabledColor : '',
                     }}
                     icon
                   >
                     bar_chart
-                  </Button>
+                  </Button>,
                 ]}
               />
               {/* PIE CHART */}
@@ -83,9 +83,9 @@ export default class extends Component {
                         minShowLabelAngle: 6,
                         center: ['50%', '57%'],
                         data: data,
-                        type: 'pie'
-                      }
-                    ]
+                        type: 'pie',
+                      },
+                    ],
                   }}
                 />
               ) : // BAR CHART
@@ -100,13 +100,13 @@ export default class extends Component {
                     yAxis: {
                       type: 'category',
                       data: data,
-                      axisLabel: { show: false }
+                      axisLabel: { show: false },
                     },
                     grid: {
                       top: '20',
                       bottom: '30',
                       right: '5%',
-                      left: '14%'
+                      left: '14%',
                     },
                     series: [
                       {
@@ -114,12 +114,12 @@ export default class extends Component {
                           show: data.length > 20 ? false : true, //bar charts with more than 20 rows start to overlap text. A better approach would be basing show on row height
                           position: 'insideLeft',
                           formatter: '{b}',
-                          color: 'black'
+                          color: 'black',
                         },
                         data: data,
-                        type: 'bar'
-                      }
-                    ]
+                        type: 'bar',
+                      },
+                    ],
                   }}
                 />
               ) : (

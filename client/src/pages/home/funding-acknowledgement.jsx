@@ -28,7 +28,7 @@ export default class extends PureComponent {
             width: 'auto',
             height: 'auto',
             padding: '0',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
           src={this.props.imgPath}
           alt={this.props.alt}
@@ -46,7 +46,7 @@ export default class extends PureComponent {
             style={{
               width: '100%',
               display: 'block',
-              margin: '20px auto'
+              margin: '20px auto',
             }}
             src={this.props.imgPath}
             alt={this.props.alt}

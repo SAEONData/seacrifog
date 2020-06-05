@@ -15,18 +15,18 @@ const scrolltoRecord = (index, ref) => ref?.current?.scrollToItem(index)
 
 const mainMenuIconStyle = (disabled, toggled) => ({
   color: disabled ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,1)',
-  backgroundColor: toggled ? 'rgba(255,255,255,0.3)' : ''
+  backgroundColor: toggled ? 'rgba(255,255,255,0.3)' : '',
 })
 
-const getProgresStyle = loading => ({
+const getProgresStyle = (loading) => ({
   margin: 0,
   visibility: loading ? 'inherit' : 'hidden',
-  position: 'absolute'
+  position: 'absolute',
 })
 
 class View extends PureComponent {
   state = {
-    currentIndex: 0
+    currentIndex: 0,
   }
 
   constructor(props) {
@@ -37,11 +37,11 @@ class View extends PureComponent {
   loadMoreItems = (increment, org) => {
     const { updateGlobalState, exeConfigs } = this.props
     updateGlobalState({
-      exeConfigs: exeConfigs.map(config => {
+      exeConfigs: exeConfigs.map((config) => {
         if (config.name === org.exeKey)
           return { offset: config.offset, limit: (config.limit || 0) + increment, name: org.exeKey }
         else return config
-      })
+      }),
     })
   }
 
@@ -91,12 +91,12 @@ class View extends PureComponent {
               )}
             >
               <SideMenuFilter sites={sites} networks={networks} variables={variables} protocols={protocols} />
-            </SideMenu>
+            </SideMenu>,
           ]}
         />
 
         {/* Tabs header (list of orgs) */}
-        <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>
+        <TabsContainer labelAndIcon onTabChange={(currentIndex) => this.setState({ currentIndex })}>
           <Tabs tabId="metadata-search-tabs">
             {searchResults.map(({ result, target }, i) => {
               const { results, result_length } = result
@@ -123,7 +123,7 @@ class View extends PureComponent {
                         {({ width }) => {
                           return (
                             <InfiniteLoader
-                              isItemLoaded={currentIndex => {
+                              isItemLoaded={(currentIndex) => {
                                 // If there are less results than a single pagniation, then everything is loaded
                                 if (results.length < 100) return true
                                 // If the current item index is smaller than the result set, then current item is loaded

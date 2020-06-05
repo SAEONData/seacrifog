@@ -8,7 +8,7 @@ import {
   TableColumn,
   Toolbar,
   TextField,
-  FontIcon
+  FontIcon,
 } from 'react-md'
 import debounce from '../../lib/debounce'
 import { mergeLeft } from 'ramda'
@@ -26,7 +26,7 @@ export default class extends PureComponent {
       search: '',
       paginationSlice: [0, this.defaultPaginationRows],
       headers: {},
-      filteredData: null
+      filteredData: null,
     }
 
     // Set stateful headers
@@ -45,9 +45,9 @@ export default class extends PureComponent {
    * NTOE the 'sortAscending' field is used
    * to indicate sort state in the table
    */
-  applySorting = field => {
+  applySorting = (field) => {
     const headers = { ...this.state.headers }
-    Object.keys(headers).forEach(key => (headers[key].sorted = false))
+    Object.keys(headers).forEach((key) => (headers[key].sorted = false))
     headers[field].sorted = true
     headers[field].sortAscending = !headers[field].sortAscending
     this.setState({ headers })
@@ -66,7 +66,7 @@ export default class extends PureComponent {
      */
     const selectedRows = []
     const searchTerm = search.toUpperCase()
-    let filteredData = data.filter(row => {
+    let filteredData = data.filter((row) => {
       if (selectedIds.includes(row.id)) {
         selectedRows.push(row)
         return false
@@ -106,7 +106,7 @@ export default class extends PureComponent {
               block={true}
               autoComplete={'off'}
               value={search}
-              onChange={search => this.setState({ search })}
+              onChange={(search) => this.setState({ search })}
               placeholder="Search by table fields..."
               leftIcon={<FontIcon>search</FontIcon>}
             />

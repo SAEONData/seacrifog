@@ -6,7 +6,7 @@ export default class extends Component {
 
   toggleCharts = () => {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     })
   }
   render() {

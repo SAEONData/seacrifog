@@ -5,11 +5,11 @@ import VectorSource from 'ol/source/Vector'
 export const pointSource = ({ points }) =>
   new VectorSource({
     features: points.map(
-      p =>
+      (p) =>
         new Feature({
           geometry: p.geometry ? p.geometry : new Point(JSON.parse(p.xyz).coordinates),
-          ...p
+          ...p,
         })
     ),
-    wrapX: false
+    wrapX: false,
   })

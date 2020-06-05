@@ -51,7 +51,7 @@ var colorPalette = [
   '#c19029',
   '#f8cb1a',
   '#ea7924',
-  '#a15e30'
+  '#a15e30',
 ]
 
 export default {
@@ -60,21 +60,21 @@ export default {
   title: {
     textStyle: {
       fontWeight: 'normal',
-      color: '#008acd'
-    }
+      color: '#008acd',
+    },
   },
 
   visualMap: {
     itemWidth: 15,
-    color: ['#5ab1ef', '#e0ffff']
+    color: ['#5ab1ef', '#e0ffff'],
   },
 
   toolbox: {
     iconStyle: {
       normal: {
-        borderColor: colorPalette[0]
-      }
-    }
+        borderColor: colorPalette[0],
+      },
+    },
   },
 
   tooltip: {
@@ -82,75 +82,75 @@ export default {
     axisPointer: {
       type: 'line',
       lineStyle: {
-        color: '#008acd'
+        color: '#008acd',
       },
       crossStyle: {
-        color: '#008acd'
+        color: '#008acd',
       },
       shadowStyle: {
-        color: 'rgba(200,200,200,0.2)'
-      }
-    }
+        color: 'rgba(200,200,200,0.2)',
+      },
+    },
   },
 
   dataZoom: {
     dataBackgroundColor: '#efefff',
     fillerColor: 'rgba(182,162,222,0.2)',
-    handleColor: '#008acd'
+    handleColor: '#008acd',
   },
 
   grid: {
-    borderColor: '#eee'
+    borderColor: '#eee',
   },
 
   categoryAxis: {
     axisLine: {
       lineStyle: {
-        color: '#008acd'
-      }
+        color: '#008acd',
+      },
     },
     splitLine: {
       lineStyle: {
-        color: ['#eee']
-      }
-    }
+        color: ['#eee'],
+      },
+    },
   },
 
   valueAxis: {
     axisLine: {
       lineStyle: {
-        color: '#008acd'
-      }
+        color: '#008acd',
+      },
     },
     splitArea: {
       show: true,
       areaStyle: {
-        color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
-      }
+        color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)'],
+      },
     },
     splitLine: {
       lineStyle: {
-        color: ['#eee']
-      }
-    }
+        color: ['#eee'],
+      },
+    },
   },
 
   timeline: {
     lineStyle: {
-      color: '#008acd'
+      color: '#008acd',
     },
     controlStyle: {
       normal: { color: '#008acd' },
-      emphasis: { color: '#008acd' }
+      emphasis: { color: '#008acd' },
     },
     symbol: 'emptyCircle',
-    symbolSize: 3
+    symbolSize: 3,
   },
 
   line: {
     smooth: true,
     symbol: 'emptyCircle',
-    symbolSize: 3
+    symbolSize: 3,
   },
 
   candlestick: {
@@ -160,38 +160,38 @@ export default {
         color0: '#2ec7c9',
         lineStyle: {
           color: '#d87a80',
-          color0: '#2ec7c9'
-        }
-      }
-    }
+          color0: '#2ec7c9',
+        },
+      },
+    },
   },
 
   scatter: {
     symbol: 'circle',
-    symbolSize: 4
+    symbolSize: 4,
   },
 
   map: {
     label: {
       normal: {
         textStyle: {
-          color: '#d87a80'
-        }
-      }
+          color: '#d87a80',
+        },
+      },
     },
     itemStyle: {
       normal: {
         borderColor: '#eee',
-        areaColor: '#ddd'
+        areaColor: '#ddd',
       },
       emphasis: {
-        areaColor: '#fe994e'
-      }
-    }
+        areaColor: '#fe994e',
+      },
+    },
   },
 
   graph: {
-    color: colorPalette
+    color: colorPalette,
   },
 
   gauge: {
@@ -200,26 +200,26 @@ export default {
         color: [
           [0.2, '#2ec7c9'],
           [0.8, '#5ab1ef'],
-          [1, '#d87a80']
+          [1, '#d87a80'],
         ],
-        width: 10
-      }
+        width: 10,
+      },
     },
     axisTick: {
       splitNumber: 10,
       length: 15,
       lineStyle: {
-        color: 'auto'
-      }
+        color: 'auto',
+      },
     },
     splitLine: {
       length: 22,
       lineStyle: {
-        color: 'auto'
-      }
+        color: 'auto',
+      },
     },
     pointer: {
-      width: 5
-    }
-  }
+      width: 5,
+    },
+  },
 }

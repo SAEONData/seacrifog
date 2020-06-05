@@ -5,7 +5,7 @@ export default ({ selectedIds, currentIndex, updateCurrentIndex, id, children, .
   <Grid noSpacing>
     <Cell size={12}>
       {selectedIds.length > 0 ? (
-        <TabsContainer activeTabIndex={currentIndex} onTabChange={newTabIndex => updateCurrentIndex(newTabIndex)}>
+        <TabsContainer activeTabIndex={currentIndex} onTabChange={(newTabIndex) => updateCurrentIndex(newTabIndex)}>
           <Tabs className="tabs-header" tabId={id}>
             {selectedIds.map((id, i) => (
               <Tab

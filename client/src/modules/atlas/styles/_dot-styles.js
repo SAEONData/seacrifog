@@ -5,8 +5,8 @@ export const dotStyle1 = () =>
     image: new CircleStyle({
       radius: 1,
       fill: new Fill({ color: '#212b61' }),
-      stroke: null
-    })
+      stroke: null,
+    }),
   })
 
 export const dotStyle2 = () =>
@@ -14,8 +14,8 @@ export const dotStyle2 = () =>
     image: new CircleStyle({
       radius: 2,
       fill: new Fill({ color: '#212b61' }),
-      stroke: null
-    })
+      stroke: null,
+    }),
   })
 
 export const dotStyle3 = () =>
@@ -24,9 +24,9 @@ export const dotStyle3 = () =>
       radius: 10,
       fill: new Fill({ color: `rgba(51, 153, 204, 0.4)` }),
       stroke: new Stroke({
-        color: `rgba(0, 0, 0, 0.4)`
-      })
-    })
+        color: `rgba(0, 0, 0, 0.4)`,
+      }),
+    }),
   })
 
 export const dotStyle4 = () =>
@@ -35,7 +35,7 @@ export const dotStyle4 = () =>
       radius: 10,
       fill: new Fill({ color: `rgba(165, 60, 60, 0.8)` }),
       stroke: new Stroke({
-        color: `rgba(0, 0, 0, 0.8)`
-      })
-    })
+        color: `rgba(0, 0, 0, 0.8)`,
+      }),
+    }),
   })

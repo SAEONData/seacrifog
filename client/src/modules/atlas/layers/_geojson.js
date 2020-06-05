@@ -5,7 +5,7 @@ import GeoJSON from 'ol/format/GeoJSON.js'
 export const geoJsonLayer = ({ style, geoJson }) =>
   new VectorLayer({
     source: new VectorSource({
-      features: new GeoJSON().readFeatures(geoJson)
+      features: new GeoJSON().readFeatures(geoJson),
     }),
-    style
+    style,
   })

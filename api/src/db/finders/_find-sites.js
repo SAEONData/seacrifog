@@ -4,7 +4,7 @@ import sift from 'sift'
 
 export default () =>
   new DataLoader(
-    async keys => {
+    async (keys) => {
       const rows = (
         await query({
           text: `
@@ -14,14 +14,14 @@ export default () =>
             ST_AsGeoJSON(st_transform(xyz, 4326)) xyz
             from public.sites
             where id in (${keys.map((k, i) => `$${i + 1}`).join(',')});`,
-          values: keys.map(k => k)
+          values: keys.map((k) => k),
         })
       ).rows
-      return keys.map(key => rows.filter(sift({ id: key })) || [])
+      return keys.map((key) => rows.filter(sift({ id: key })) || [])
     },
     {
       batch: true,
       maxBatchSize: 250,
-      cache: true
+      cache: true,
     }
   )

@@ -3,11 +3,11 @@ import { Grid, Cell, Button } from 'react-md'
 
 const itemMenuIconStyle = {
   float: 'right',
-  marginLeft: '10px'
+  marginLeft: '10px',
 }
 
 const titleBlockStyle = {
-  textAlign: 'center'
+  textAlign: 'center',
 }
 
 const abstractStyle = { fontStyle: 'bold', margin: '20px 0 15px' }

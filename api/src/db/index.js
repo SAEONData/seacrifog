@@ -13,7 +13,7 @@ import {
   _findDataproductsOfVariable,
   _findVariablesOfRforcing,
   _findVariablesOfProtocol,
-  _findVariablesOfDataproduct
+  _findVariablesOfDataproduct,
 } from './finders'
 import { default as _query } from './_query'
 export { default as setupDb } from './_setup-db'
@@ -41,20 +41,20 @@ export const initializeLoaders = () => {
   const findVariablesOfDataproduct = _findVariablesOfDataproduct()
 
   return {
-    findVariables: key => findVariables.load(key),
-    findSitesOfNetwork: key => findSitesOfNetwork.load(key),
-    findVariablesOfNetwork: key => findVariablesOfNetwork.load(key),
-    findVariablesOfProtocol: key => findVariablesOfProtocol.load(key),
-    findVariablesOfDataproduct: key => findVariablesOfDataproduct.load(key),
-    findVariablesOfRadiativeForcing: key => findVariablesOfRforcing.load(key),
-    findDataproducts: key => findDataproducts.load(key),
-    findDataproductsOfVariable: key => findDataproductsOfVariable.load(key),
-    findRForcingsOfVariable: key => findRForcingsOfVariable.load(key),
-    findNetworksOfSite: key => findNetworksOfSite.load(key),
-    findProtocols: key => findProtocols.load(key),
-    findProtocolsOfVariable: key => findProtocolsOfVariable.load(key),
-    findNetworks: key => findNetworks.load(key),
-    findSites: key => findSites.load(key),
+    findVariables: (key) => findVariables.load(key),
+    findSitesOfNetwork: (key) => findSitesOfNetwork.load(key),
+    findVariablesOfNetwork: (key) => findVariablesOfNetwork.load(key),
+    findVariablesOfProtocol: (key) => findVariablesOfProtocol.load(key),
+    findVariablesOfDataproduct: (key) => findVariablesOfDataproduct.load(key),
+    findVariablesOfRadiativeForcing: (key) => findVariablesOfRforcing.load(key),
+    findDataproducts: (key) => findDataproducts.load(key),
+    findDataproductsOfVariable: (key) => findDataproductsOfVariable.load(key),
+    findRForcingsOfVariable: (key) => findRForcingsOfVariable.load(key),
+    findNetworksOfSite: (key) => findNetworksOfSite.load(key),
+    findProtocols: (key) => findProtocols.load(key),
+    findProtocolsOfVariable: (key) => findProtocolsOfVariable.load(key),
+    findNetworks: (key) => findNetworks.load(key),
+    findSites: (key) => findSites.load(key),
 
     /**
      * These aren't dataloaders, but putting them here means they can use the dataloaders
@@ -115,7 +115,7 @@ export const initializeLoaders = () => {
             x.variable_id,
             r.name relationship_type
             from public.protocol_variable_xref x
-            join public.relationship_types r on r.id = x.relationship_type_id;`
+            join public.relationship_types r on r.id = x.relationship_type_id;`,
         })
       ).rows,
     xrefSitesNetworks: async () =>
@@ -126,7 +126,7 @@ export const initializeLoaders = () => {
       (await query({ text: 'select count(*) count from public.dataproducts;' })).rows,
 
     //Site Aggregation of Network set
-    sitesAggregation: async keys => {
+    sitesAggregation: async (keys) => {
       const sql = `
         SELECT 
         x.network_id,
@@ -142,7 +142,7 @@ export const initializeLoaders = () => {
     },
 
     //type Aggregation of Network set
-    networksTypes: async keys => {
+    networksTypes: async (keys) => {
       const sql = `
         SELECT 
         COUNT(networks.id) AS network_count,
@@ -157,7 +157,7 @@ export const initializeLoaders = () => {
     },
 
     //coverage aggregation of Protocol set
-    protocolsCoverages: async keys => {
+    protocolsCoverages: async (keys) => {
       const sql = `SELECT 
       covs."name" coverage,
       COUNT(xref.protocol_id) protocol_count
@@ -171,7 +171,7 @@ export const initializeLoaders = () => {
     },
 
     //domain aggregation of Protocol set
-    protocolsDomains: async keys => {
+    protocolsDomains: async (keys) => {
       const sql = `SELECT 
         "domain",
         COUNT(id) AS protocol_count
@@ -184,7 +184,7 @@ export const initializeLoaders = () => {
     },
 
     //Coverage Type aggregation of Protocol set
-    protocolsCoverageTypes: async keys => {
+    protocolsCoverageTypes: async (keys) => {
       const sql = `SELECT 
       coverage_type,
       COUNT(id) AS protocol_count
@@ -198,7 +198,7 @@ export const initializeLoaders = () => {
     },
 
     //domain aggregation of Variable set
-    variablesDomains: async keys => {
+    variablesDomains: async (keys) => {
       const sql = `SELECT 
           "domain",
           COUNT(id) AS variable_count
@@ -210,7 +210,7 @@ export const initializeLoaders = () => {
       return rows
     },
     //rftype aggregation of Variable set
-    variablesRfTypes: async keys => {
+    variablesRfTypes: async (keys) => {
       const sql = `SELECT 
                   rftype,
                   COUNT(id) AS variable_count
@@ -222,7 +222,7 @@ export const initializeLoaders = () => {
       return rows
     },
     //Radiative Forcing compound count aggregation of Variable set
-    variablesRforcingCompounds: async keys => {
+    variablesRforcingCompounds: async (keys) => {
       const sql = `SELECT
                     vars.id variable_id,
                     vars."name" variable_name,
@@ -237,7 +237,7 @@ export const initializeLoaders = () => {
       return rows
     },
     //Protocol aggregation of Variable set
-    variablesProtocols: async keys => {
+    variablesProtocols: async (keys) => {
       const sql = `SELECT
                   vars.id,
                   vars."name" variable_name,
@@ -252,7 +252,7 @@ export const initializeLoaders = () => {
       return rows
     },
     //Variable aggregation of Protocol set
-    protocolsVariables: async keys => {
+    protocolsVariables: async (keys) => {
       const sql = `SELECT
       prots.id protocol_id,
       prots.title protocol_title,
@@ -265,6 +265,6 @@ export const initializeLoaders = () => {
       ORDER BY variable_count DESC`
       const rows = (await query({ text: sql })).rows
       return rows
-    }
+    },
   }
 }

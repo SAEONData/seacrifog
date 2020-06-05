@@ -4,7 +4,7 @@ import ExplorerHeaderChart from './_header-chart'
 import { ShowChartsState } from '../shared-components'
 import { ApolloConsumer } from '@apollo/react-hooks'
 
-Number.prototype.mapFromInt = function(cb) {
+Number.prototype.mapFromInt = function (cb) {
   const result = []
   for (let i = 0; i < this; i++) {
     result.push(cb(i))
@@ -19,25 +19,25 @@ const tabStyleSelected = {
   backgroundColor: '#00796B',
   borderRight: '1px solid ' + 'rgba(255,255,255,0.3)',
   height: 'max-content',
-  padding: '7px'
+  padding: '7px',
 }
 const tabStyleNotSelected = {
   backgroundColor: '#00897B',
   borderRight: '1px solid ' + 'rgba(255,255,255,0.3)',
   height: 'max-content',
-  padding: '7px'
+  padding: '7px',
 }
 const tabLabelStyleSelected = {
   backgroundColor: '#00897B',
   border: '1px solid rgba(255,255,255,0.3)',
   margin: '0px',
-  color: 'white'
+  color: 'white',
 }
 const tabLabelStyleNotSelected = {
   backgroundColor: '#00796B',
   border: '1px solid rgba(255,255,255,0.3)',
   margin: '0px',
-  color: 'white'
+  color: 'white',
 }
 
 export class Charts extends PureComponent {
@@ -45,7 +45,7 @@ export class Charts extends PureComponent {
 
   state = {
     data: null,
-    selectedTabIndex: 1
+    selectedTabIndex: 1,
   }
 
   async componentDidMount() {
@@ -60,7 +60,7 @@ export class Charts extends PureComponent {
     const { client, query, variables } = this.props
     const { data } = await client.query({ query, variables })
     this.setState({
-      data
+      data,
     })
   }
 
@@ -76,10 +76,10 @@ export class Charts extends PureComponent {
             tabId="tabsId1"
             style={{
               backgroundColor: tabsBackgroundColor,
-              border: '1px solid ' + tabsBorderColor
+              border: '1px solid ' + tabsBorderColor,
             }}
           >
-            {Math.ceil(Object.keys(chartDefinitions).length / 4).mapFromInt(index => {
+            {Math.ceil(Object.keys(chartDefinitions).length / 4).mapFromInt((index) => {
               const tabIndex = index + 1
               return (
                 <Tab
@@ -112,9 +112,9 @@ export class Charts extends PureComponent {
                               id={'explorer-chart' + chartIndex}
                               key={'explorer-chart' + chartIndex}
                               title={title}
-                              data={dataFilter(data[datafield]).map(r => ({
+                              data={dataFilter(data[datafield]).map((r) => ({
                                 value: r[entryValue],
-                                name: r[entryName]
+                                name: r[entryName],
                               }))}
                             />
                           )
@@ -132,4 +132,4 @@ export class Charts extends PureComponent {
   }
 }
 
-export default props => <ApolloConsumer>{client => <Charts client={client} {...props} />}</ApolloConsumer>
+export default (props) => <ApolloConsumer>{(client) => <Charts client={client} {...props} />}</ApolloConsumer>
