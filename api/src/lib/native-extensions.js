@@ -12,7 +12,7 @@ export default () => {
 
   String.prototype.titleize = function () {
     return this.split(' ')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ')
   }
 }

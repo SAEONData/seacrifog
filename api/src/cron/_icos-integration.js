@@ -12,7 +12,7 @@ const mutation = gql`
   }
 `
 
-export default async (ctx) => {
+export default async ctx => {
   log('Starting ICOS integration job')
   const { schema } = ctx
   try {

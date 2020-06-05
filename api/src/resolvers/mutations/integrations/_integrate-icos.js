@@ -89,7 +89,7 @@ export default async (self, args, req) => {
       ORDER BY
       ?themeShort
       ?sName`,
-    }).catch((error) => console.error('ICOS integration error', error))
+    }).catch(error => console.error('ICOS integration error', error))
   )?.data?.results?.bindings?.map(({ Short_name: name, latstr: lat, lonstr: lng }) => ({
     name: name.value,
     lngLat: [lng.value, lat.value],

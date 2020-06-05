@@ -8,12 +8,12 @@ log('Scheduled task delay set', INITIAL_CRON_WAIT)
 const ICOS_INTEGRATION_SCHEDULE = process.env.ICOS_INTEGRATION_SCHEDULE || '*/10 * * * *'
 log('ICOS integration interval', ICOS_INTEGRATION_SCHEDULE)
 
-const handleAsync = (fn) => (...args) =>
-  Promise.resolve(fn(...args)).catch((error) => {
+const handleAsync = fn => (...args) =>
+  Promise.resolve(fn(...args)).catch(error => {
     logError('Error running scheduled tasks', error)
   })
 
-export default async (createCtx) =>
+export default async createCtx =>
   setTimeout(
     () =>
       [
@@ -26,6 +26,6 @@ export default async (createCtx) =>
           null,
           true // Runs the job on application start, and then according to the CRON timer
         ),
-      ].forEach((job) => job.start()),
+      ].forEach(job => job.start()),
     INITIAL_CRON_WAIT // Gives time for the app to settle on startup before running jobs
   )

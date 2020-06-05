@@ -1,5 +1,6 @@
 scalar Date
 scalar JSON
+scalar WKT_4326
 
 enum IntegrationName {
   icos
@@ -194,7 +195,7 @@ type Query {
   dataproductsSummary: DataproductsSummary!
 
   site(id: Int!): Site
-  sites(ids: [Int!]): [Site]!
+  sites(ids: [Int!], extent: WKT_4326): [Site]!
 
   # Aggregations
   sitesAggregation(ids: [Int!]): [SitesAggregation]!

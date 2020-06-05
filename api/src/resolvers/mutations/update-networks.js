@@ -37,7 +37,7 @@ export default async (self, args, req) => {
         text: `delete from public.network_variable_xref where network_id = $1 and variable_id in (${removeVariables
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeVariables.map((id) => id)),
+        values: [input.id].concat(removeVariables.map(id => id)),
       })
 
     // Add new variable mappings
@@ -46,7 +46,7 @@ export default async (self, args, req) => {
         text: `insert into public.network_variable_xref (network_id, variable_id) values (${addVariables
           .map((id, i) => ['$1', `$${i + 2}`])
           .join('),(')}) on conflict on constraint network_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(addVariables.map((id) => id)),
+        values: [input.id].concat(addVariables.map(id => id)),
       })
   }
   // Return the updated rows

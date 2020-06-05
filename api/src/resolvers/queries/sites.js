@@ -1,10 +1,12 @@
+import { DEFAULT_EXTENT_FILTER } from '../../config'
+
 export default async (self, args, req) => {
   const { findSites, allSites } = req.ctx.db.dataLoaders
-  const { ids } = args
+  const { ids, extent = DEFAULT_EXTENT_FILTER } = args
 
-  if (ids) {
-    return await Promise.all(ids.map(async (id) => (await Promise.resolve(findSites(id)))[0]))
-  } else {
-    return await allSites()
-  }
+  return ids
+    ? (
+        await Promise.all(ids.map(async id => (await Promise.resolve(findSites(id, extent)))[0]))
+      ).filter(_ => _)
+    : (await allSites(extent)).filter(_ => _)
 }

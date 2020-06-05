@@ -48,7 +48,7 @@ export default async (self, args, req) => {
         text: `delete from public.dataproduct_variable_xref where variable_id = $1 and dataproduct_id in (${removeDataproducts
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeDataproducts.map((id) => id)),
+        values: [input.id].concat(removeDataproducts.map(id => id)),
       })
 
     // Add dataproducts
@@ -59,7 +59,7 @@ export default async (self, args, req) => {
           .join(
             '),('
           )}) on conflict on constraint dataproduct_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(addDataproducts.map((id) => id)),
+        values: [input.id].concat(addDataproducts.map(id => id)),
       })
 
     // Remove RForcings
@@ -68,7 +68,7 @@ export default async (self, args, req) => {
         text: `delete from public.rforcing_variable_xref where variable_id = $1 and rforcing_id in (${removeRForcings
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeRForcings.map((id) => id)),
+        values: [input.id].concat(removeRForcings.map(id => id)),
       })
 
     // Add RForcings
@@ -77,7 +77,7 @@ export default async (self, args, req) => {
         text: `insert into public.rforcing_variable_xref (variable_id, rforcing_id) values (${addRForcings
           .map((id, i) => ['$1', `$${i + 2}`])
           .join('),(')}) on conflict on constraint rforcings_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(addRForcings.map((id) => id)),
+        values: [input.id].concat(addRForcings.map(id => id)),
       })
 
     // Remove protocols
@@ -86,7 +86,7 @@ export default async (self, args, req) => {
         text: `delete from public.protocol_variable_xref where variable_id = $1 and protocol_id in (${removeProtocols
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeProtocols.map((id) => id)),
+        values: [input.id].concat(removeProtocols.map(id => id)),
       })
 
     // Add protocols
@@ -95,8 +95,8 @@ export default async (self, args, req) => {
       (addIndirectlyRelatedProtocols && addIndirectlyRelatedProtocols.length)
     ) {
       const updates = (addDirectlyRelatedProtocols || [])
-        .map((id) => [id, 'direct'])
-        .concat((addIndirectlyRelatedProtocols || []).map((id) => [id, 'indirect']))
+        .map(id => [id, 'direct'])
+        .concat((addIndirectlyRelatedProtocols || []).map(id => [id, 'indirect']))
 
       await query({
         text: `insert into protocol_variable_xref (protocol_id, variable_id, relationship_type_id) values (${updates
@@ -106,7 +106,7 @@ export default async (self, args, req) => {
             `(select id from public.relationship_types where "name" = '${u[1]}')`,
           ])
           .join('),(')}) on conflict on constraint protocol_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(updates.map((u) => u[0])),
+        values: [input.id].concat(updates.map(u => u[0])),
       })
     }
   }

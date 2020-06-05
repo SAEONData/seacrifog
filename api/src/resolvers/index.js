@@ -1,5 +1,6 @@
 import GraphQLJSON from 'graphql-type-json'
 import Date from './types/date'
+import WKT_4326 from './types/wkt-4326'
 
 import Variable from './types/variable'
 import variable from './queries/variable'
@@ -123,6 +124,7 @@ export default {
   // Types
   JSON: GraphQLJSON,
   Date,
+  WKT_4326,
 
   Variable,
   Protocol,

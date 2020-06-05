@@ -33,7 +33,7 @@ export default async (self, args, req) => {
           .join(
             '),('
           )}) on conflict on constraint dataproduct_variable_xref_unique_cols do nothing;`,
-        values: [input.id].concat(addVariables.map((id) => id)),
+        values: [input.id].concat(addVariables.map(id => id)),
       })
 
     // Remove old variable mappings
@@ -42,7 +42,7 @@ export default async (self, args, req) => {
         text: `delete from public.dataproduct_variable_xref where dataproduct_id = $1 and variable_id in (${removeVariables
           .map((id, i) => `$${i + 2}`)
           .join(',')});`,
-        values: [input.id].concat(removeVariables.map((id) => id)),
+        values: [input.id].concat(removeVariables.map(id => id)),
       })
   }
 

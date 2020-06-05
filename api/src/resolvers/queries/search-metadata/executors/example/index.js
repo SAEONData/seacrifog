@@ -1,5 +1,5 @@
 import { parentPort, workerData } from 'worker_threads'
-;(async (search) => {
+;(async search => {
   console.log('search', search)
 
   // If search is successful
@@ -8,7 +8,7 @@ import { parentPort, workerData } from 'worker_threads'
   // If search results in error
   parentPort.postMessage({ error: 'Description of error' })
 })(workerData)
-  .catch((error) => {
+  .catch(error => {
     console.log('Unexpected error searching SAEON catalogue', error)
   })
   .finally(() => process.exit(0))

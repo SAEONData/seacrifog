@@ -9,14 +9,14 @@ const themeMap = {
   Oceanic: 'http://meta.icos-cp.eu/resources/themes/ocean',
 }
 
-;(async (search) => {
+;(async search => {
   const { variables, sites, networks, exeConfigs } = search
-  const { offset, limit } = exeConfigs.filter((ec) => ec.name === 'icos')[0] || {
+  const { offset, limit } = exeConfigs.filter(ec => ec.name === 'icos')[0] || {
     offset: 0,
     limit: 100,
   }
   const { acronym } = networks
-  const themeIris = variables.domain.map((v) => themeMap[v])
+  const themeIris = variables.domain.map(v => themeMap[v])
 
   const doSearch =
     acronym.indexOf('ICOS') >= 0
@@ -41,7 +41,7 @@ const themeMap = {
           'Accept-Encoding': 'gzip, deflate, br',
         },
         data: sparqlQuery({ themeIris, sites, limit, offset }),
-      }).catch((error) => console.error('Error searching metadata', error))) || {}
+      }).catch(error => console.error('Error searching metadata', error))) || {}
     )?.data
   }
 
@@ -57,7 +57,7 @@ const themeMap = {
     results: response?.results?.bindings || [],
   })
 })(workerData)
-  .catch((error) => {
+  .catch(error => {
     console.log('Unexpected error searching ICOS catalogue', error)
   })
   .finally(() => process.exit(0))

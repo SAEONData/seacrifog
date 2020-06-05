@@ -4,7 +4,7 @@ import sift from 'sift'
 
 export default () =>
   new DataLoader(
-    async (keys) => {
+    async keys => {
       const rows = (
         await query({
           text: `
@@ -43,10 +43,10 @@ export default () =>
             from public.dataproduct_variable_xref x
             join public.dataproducts d on d.id = x.dataproduct_id
             where x.variable_id in (${keys.map((k, i) => `$${i + 1}`).join(',')});`,
-          values: keys.map((k) => k),
+          values: keys.map(k => k),
         })
       ).rows
-      return keys.map((key) => rows.filter(sift({ variable_id: key })) || [])
+      return keys.map(key => rows.filter(sift({ variable_id: key })) || [])
     },
     {
       batch: true,
