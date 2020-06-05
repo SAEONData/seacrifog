@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Source code for the the SEACRIFOG component (Workpackage 5.4) deliverable by SAEON",
   "scripts": {
-    "install": "npm-run-all -p install-api install-client",
+    "install": "npm-run-all -s install-api install-client",
     "install-api": "npm --prefix api/ install",
     "install-client": "npm --prefix client/ install",
     "start": "npm-run-all -p start:api start:client",
@@ -32,7 +32,7 @@
   "author": "zach@saeon.ac.za",
   "license": "MIT",
   "devDependencies": {
-    "husky": "4.2.3",
+    "husky": "4.2.5",
     "npm-run-all": "4.1.5"
   }
 }
