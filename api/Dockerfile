@@ -1,8 +1,6 @@
-FROM node:13-alpine
+FROM node:14
 WORKDIR /app
 COPY . .
-RUN npm config set ignore-scripts true
-RUN npm ci
-RUN npm config set ignore-scripts false
+RUN npm ci --only=production
 EXPOSE 3000
 CMD [ "npm", "run", "start:prod" ]

@@ -1,26 +1,14 @@
 # CLIENT DEVELOPER DOCUMENTATION
 
 ## Quickstart the client (local dev environment)
-Once the API is setup, configure the client.
+Once the API is setup, configure the client. This needs to be don in the context of the client package, meaning all the commands need to be run from the root of the client. Starting in the root of the seacrifog repository. The following commands should be executed to setup the environment:
 
-#### Work in the context of the client package
-All the commands need to be run from the root of the client. Starting in the root of the seacrifog repository:
+1. `cd client`
+2. `npm install`
+3. `npm start`
 
-```sh
-cd client
-```
+**Some helpful Notes**
 
-#### Install client dependencies
-```sh
-npm install
-```
-
-#### Start the client developer server
-```sh
-npm start
-```
-
-#### Some helpful Notes
 1. Testing this on Windows (using `npm` via Powershell), I had to install `npm-run-all` globally. `npm install npm-run-all -g`
 2. Running `npm install`, some of the packages will install platform specific bindings. So if something isn't working try removing the `node_modules` directory and re-running `npm install`
 
@@ -29,7 +17,8 @@ npm start
 2. Generate the build: `npm run dist` (from the root of the client package)
 3. This will create a folder `client/dist` containing the client resources, with a typical `index.html` entry point. Serve via preferred HTTP server (Apache, Nginx, Node.js, etc.)
 
-#### Some helpful Notes
+**Some helpful Notes**
+
 The Dockerfile at `client/Dockerfile` encapsulates the above steps and should be usable in any deployment environment as is. Use the Dockerfile via the following commands:
 
 ```sh
@@ -57,4 +46,4 @@ DEFAULT_SELECTED_VARIABLES=
 DEFAULT_SELECTED_PROTOCOLS=
 ```
 
-The `DEFAULT_SELECTED_*` configuration options are helpful for development, as it allows to test the application in various search states on app start.
+The `DEFAULT_SELECTED_*` configuration options are helpful for development, as it allows to test the application in various search states on app start. Specify a default selection via a comma separated list of IDs - `DEFAULT_SELECTED_SITES=1,2,3,4,etc`. IDs are obviously relative to your local database, and this setting should **not** be pushed to the master branch (and therefore production).
