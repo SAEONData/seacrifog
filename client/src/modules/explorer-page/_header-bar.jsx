@@ -3,6 +3,7 @@ import { Toolbar, Button, LinearProgress, Badge } from 'react-md'
 import DataQuery from '../data-query'
 import { useHistory } from 'react-router-dom'
 import { ENTIRE_GRAPH } from '../../graphql/queries'
+import getExtent from '../../lib/get-sites-extent'
 import { SideMenuFilter, GlobalStateContext, ShowChartsState } from '../shared-components'
 import { SideMenu } from '../shared-components/index'
 import { DOWNLOADS_ENDPOINT } from '../../config'
@@ -31,7 +32,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
     <ShowChartsState.Consumer>
       {({ toggleCharts, showCharts }) => (
         <GlobalStateContext.Consumer>
-          {({ loadingSearchResults, searchResults, searchErrors }) => {
+          {({ africaOnly, loadingSearchResults, searchResults, searchErrors }) => {
             const searchResultLength = searchErrors.length
               ? 0
               : searchResults
@@ -51,7 +52,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
                     </>
                   }
                   query={ENTIRE_GRAPH}
-                  variables={{}}
+                  variables={{ extent: getExtent(africaOnly) }}
                 >
                   {({ sites, networks, variables, protocols }) => (
                     <>

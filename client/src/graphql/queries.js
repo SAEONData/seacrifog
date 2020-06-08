@@ -8,8 +8,8 @@ import {
 } from './fragments'
 
 export const ENTIRE_GRAPH = gql`
-  query entireGraph {
-    sites ${SITE_FRAGMENT}
+  query entireGraph($extent: WKT_4326) {
+    sites(extent: $extent) ${SITE_FRAGMENT}
     networks ${NETWORK_FRAGMENT}
     variables ${VARIABLE_FRAGMENT}
     protocols ${PROTOCOL_FRAGMENT}
@@ -39,7 +39,7 @@ export const ENTIRE_GRAPH = gql`
 `
 
 export const NETWORK = gql`
-  query network($id: Int!) {
+  query network($id: Int! $extent: WKT_4326) {
     network(id: $id) {
       id
       title
@@ -51,7 +51,7 @@ export const NETWORK = gql`
       abstract
       coverage_spatial
       variables ${VARIABLE_FRAGMENT}
-      sites ${SITE_FRAGMENT}
+      sites(extent: $extent) ${SITE_FRAGMENT}
     }
   }
 `
@@ -168,16 +168,16 @@ export const DATAPRODUCT = gql`
 `
 
 export const SITES_MIN = gql`
-  query sites {
-    sites {
+  query sites($extent: WKT_4326) {
+    sites(extent: $extent) {
       xyz
     }
   }
 `
 
 export const SITES = gql`
-  query sites($ids: [Int!]) {
-    sites(ids: $ids) {
+  query sites($ids: [Int!], $extent: WKT_4326) {
+    sites(ids: $ids, extent: $extent) {
       id
       name
       networks {

@@ -3,6 +3,7 @@ import { FixedSizeList } from 'react-window'
 import InfiniteLoader from 'react-window-infinite-loader'
 import { TabsContainer, Tabs, Tab, Button, Toolbar, Grid, Cell, LinearProgress } from 'react-md'
 import DataQuery from '../../modules/data-query'
+import getExtent from '../../lib/get-sites-extent'
 import { ENTIRE_GRAPH } from '../../graphql/queries'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { SideMenu, SideMenuFilter, GlobalStateContext } from '../../modules/shared-components'
@@ -194,9 +195,9 @@ class View extends PureComponent {
 
 export default () => (
   <GlobalStateContext.Consumer>
-    {({ searchResults, loadingSearchResults, updateGlobalState, exeConfigs }) =>
+    {({ africaOnly, searchResults, loadingSearchResults, updateGlobalState, exeConfigs }) =>
       searchResults.length ? (
-        <DataQuery query={ENTIRE_GRAPH} variables={{}}>
+        <DataQuery query={ENTIRE_GRAPH} variables={{ extent: getExtent(africaOnly) }}>
           {({ sites, networks, variables, protocols }) => (
             <View
               sites={sites}

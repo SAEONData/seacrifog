@@ -3,6 +3,8 @@ import { Card, Toolbar, CardText } from 'react-md'
 import DataQuery from '../../modules/data-query'
 import { SITES } from '../../graphql/queries'
 import PieChart from './_pie-chart'
+import getSitesExtent from '../../lib/get-sites-extent'
+import { GlobalStateContext } from '../../modules/shared-components'
 
 const FeaturePanel = ({ title, footerActions, toolbarActions, children }) => (
   <Card style={{ height: '100%', width: '100%' }} className="better-box-shadow">
@@ -13,15 +15,22 @@ const FeaturePanel = ({ title, footerActions, toolbarActions, children }) => (
 )
 
 export default ({ getFeatureIds, toolbarActions = [] }) => (
-  <DataQuery query={SITES} variables={{ ids: getFeatureIds() }}>
-    {({ sites }) => (
-      <FeaturePanel
-        title={getFeatureIds().length + ' Sites selected'}
-        footerActions={<div style={{ margin: 0, lineHeight: '24px' }}>Apache ECharts</div>}
-        toolbarActions={toolbarActions}
+  <GlobalStateContext.Consumer>
+    {({ africaOnly }) => (
+      <DataQuery
+        query={SITES}
+        variables={{ ids: getFeatureIds(), extent: getSitesExtent(africaOnly) }}
       >
-        <PieChart sites={sites} />
-      </FeaturePanel>
+        {({ sites }) => (
+          <FeaturePanel
+            title={getFeatureIds().length + ' Sites selected'}
+            footerActions={<div style={{ margin: 0, lineHeight: '24px' }}>Apache ECharts</div>}
+            toolbarActions={toolbarActions}
+          >
+            <PieChart sites={sites} />
+          </FeaturePanel>
+        )}
+      </DataQuery>
     )}
-  </DataQuery>
+  </GlobalStateContext.Consumer>
 )

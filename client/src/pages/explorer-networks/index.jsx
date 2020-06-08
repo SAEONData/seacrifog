@@ -26,6 +26,7 @@ import {
 } from '../../modules/shared-components'
 import { networkCharts } from './network-charts'
 import { DOWNLOADS_ENDPOINT } from '../../config'
+import getSitesExtent from '../../lib/get-sites-extent'
 
 const mappings = {}
 
@@ -47,7 +48,13 @@ export default props => {
       {({ networks }) => {
         return (
           <GlobalStateContext.Consumer>
-            {({ updateGlobalState, selectedNetworks, currentNetwork, selectedVariables }) => {
+            {({
+              africaOnly,
+              updateGlobalState,
+              selectedNetworks,
+              currentNetwork,
+              selectedVariables,
+            }) => {
               return (
                 <>
                   <ChartState>
@@ -103,7 +110,10 @@ export default props => {
                       {...props}
                     >
                       {({ id }) => (
-                        <DataQuery query={NETWORK} variables={{ id }}>
+                        <DataQuery
+                          query={NETWORK}
+                          variables={{ id, extent: getSitesExtent(africaOnly) }}
+                        >
                           {({ network }) => (
                             <ExplorerEntityLayout
                               title={network.title}
