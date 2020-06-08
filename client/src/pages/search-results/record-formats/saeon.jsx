@@ -5,7 +5,7 @@ export default ({ content }) => (
     {content.subject ? (
       <p>
         <b>Subjects: </b>
-        {content.subjects.map((s) => s.subject).join()}
+        {content.subjects.map(s => s.subject).join()}
       </p>
     ) : null}
 
@@ -23,7 +23,7 @@ export default ({ content }) => (
     {content.creators ? (
       <p>
         <b>Creators: </b>
-        {content.creators.map((c) => c.name).join()}
+        {content.creators.map(c => c.name).join()}
       </p>
     ) : null}
 

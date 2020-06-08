@@ -38,11 +38,15 @@ export default class extends PureComponent {
     const { sites } = state
 
     return (
-      <Form selectedItems={sites.length > 0 ? [] : sites.map(({ id, name: value }) => ({ id, value }))}>
+      <Form
+        selectedItems={sites.length > 0 ? [] : sites.map(({ id, name: value }) => ({ id, value }))}
+      >
         {({ updateForm, selectedItems }) => {
           layer.setSource(
             pointSource({
-              points: selectedItems.length ? sites.filter(({ id }) => selectedItems.includes(id)) : sites,
+              points: selectedItems.length
+                ? sites.filter(({ id }) => selectedItems.includes(id))
+                : sites,
             })
           )
 
@@ -55,7 +59,7 @@ export default class extends PureComponent {
                 label={'Search site name...'}
                 selectedItems={selectedItems}
                 items={props.network.sites.map(({ id, name: value }) => ({ id, value }))}
-                onItemToggle={(val) => {
+                onItemToggle={val => {
                   const newItems = [...selectedItems]
                   if (newItems.indexOf(val) >= 0) {
                     newItems.splice(newItems.indexOf(val), 1)
@@ -68,9 +72,16 @@ export default class extends PureComponent {
                 }}
               />
 
-              <OlReact style={{ height: '500px', width: '100%' }} layers={[terrestrisBaseMap(), layer]}>
+              <OlReact
+                style={{ height: '500px', width: '100%' }}
+                layers={[terrestrisBaseMap(), layer]}
+              >
                 {({ map }) => (
-                  <SingleFeatureSelector unselectedStyle={dotStyle3} selectedStyle={dotStyle4} map={map}>
+                  <SingleFeatureSelector
+                    unselectedStyle={dotStyle3}
+                    selectedStyle={dotStyle4}
+                    map={map}
+                  >
                     {({ selectedFeature, unselectFeature }) => {
                       return selectedFeature ? (
                         !selectedFeature.get('id') ? (
@@ -107,8 +118,11 @@ export default class extends PureComponent {
                                                 onClick={() =>
                                                   unselectFeature(() => {
                                                     // Remove map interactions
-                                                    map.getInteractions().forEach((interaction) => {
-                                                      if (interaction instanceof Draw || interaction instanceof Modify)
+                                                    map.getInteractions().forEach(interaction => {
+                                                      if (
+                                                        interaction instanceof Draw ||
+                                                        interaction instanceof Modify
+                                                      )
                                                         map.removeInteraction(interaction)
                                                     })
 
@@ -126,7 +140,9 @@ export default class extends PureComponent {
                                               </Button>,
                                               <EditorSaveButton
                                                 key={2}
-                                                saveEntity={() => alert('Should it be possible to update sites?')}
+                                                saveEntity={() =>
+                                                  alert('Should it be possible to update sites?')
+                                                }
                                               />,
                                             ]}
                                           />
@@ -204,8 +220,8 @@ export default class extends PureComponent {
                                                         const sourceIds = layer
                                                           .getSource()
                                                           .getFeatures()
-                                                          .map((f) => f.get('id'))
-                                                          .filter((id) => id !== site.id)
+                                                          .map(f => f.get('id'))
+                                                          .filter(id => id !== site.id)
 
                                                         this.setState({
                                                           sites: this.state.sites.filter(({ id }) =>
@@ -221,7 +237,11 @@ export default class extends PureComponent {
                                                   </Button>,
                                                   <EditorSaveButton
                                                     key={2}
-                                                    saveEntity={() => alert('Should it be possible to update sites?')}
+                                                    saveEntity={() =>
+                                                      alert(
+                                                        'Should it be possible to update sites?'
+                                                      )
+                                                    }
                                                   />,
                                                 ]}
                                               />
@@ -271,8 +291,11 @@ export default class extends PureComponent {
                                       addSiteActive: false,
                                     },
                                     () => {
-                                      map.getInteractions().forEach((interaction) => {
-                                        if (interaction instanceof Draw || interaction instanceof Modify)
+                                      map.getInteractions().forEach(interaction => {
+                                        if (
+                                          interaction instanceof Draw ||
+                                          interaction instanceof Modify
+                                        )
                                           map.removeInteraction(interaction)
                                       })
 
@@ -285,7 +308,7 @@ export default class extends PureComponent {
                                             sites: layer
                                               .getSource()
                                               .getFeatures()
-                                              .map((f) => f.getProperties()),
+                                              .map(f => f.getProperties()),
                                           })
                                         })
                                       }
@@ -307,8 +330,11 @@ export default class extends PureComponent {
                                       addSiteActive: !this.state.addSiteActive,
                                     },
                                     () => {
-                                      map.getInteractions().forEach((interaction) => {
-                                        if (interaction instanceof Draw || interaction instanceof Modify)
+                                      map.getInteractions().forEach(interaction => {
+                                        if (
+                                          interaction instanceof Draw ||
+                                          interaction instanceof Modify
+                                        )
                                           map.removeInteraction(interaction)
                                       })
                                       this.draw = new Draw({

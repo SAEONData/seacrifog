@@ -13,7 +13,8 @@ import {
 import debounce from '../../lib/debounce'
 import { mergeLeft } from 'ramda'
 
-const sortResult = (a, b, reverse = false) => (reverse ? (a > b ? -1 : a < b ? 1 : 0) : a > b ? 1 : a < b ? -1 : 0)
+const sortResult = (a, b, reverse = false) =>
+  reverse ? (a > b ? -1 : a < b ? 1 : 0) : a > b ? 1 : a < b ? -1 : 0
 
 export default class extends PureComponent {
   constructor(props) {
@@ -45,9 +46,9 @@ export default class extends PureComponent {
    * NTOE the 'sortAscending' field is used
    * to indicate sort state in the table
    */
-  applySorting = (field) => {
+  applySorting = field => {
     const headers = { ...this.state.headers }
-    Object.keys(headers).forEach((key) => (headers[key].sorted = false))
+    Object.keys(headers).forEach(key => (headers[key].sorted = false))
     headers[field].sorted = true
     headers[field].sortAscending = !headers[field].sortAscending
     this.setState({ headers })
@@ -66,7 +67,7 @@ export default class extends PureComponent {
      */
     const selectedRows = []
     const searchTerm = search.toUpperCase()
-    let filteredData = data.filter((row) => {
+    let filteredData = data.filter(row => {
       if (selectedIds.includes(row.id)) {
         selectedRows.push(row)
         return false
@@ -106,7 +107,7 @@ export default class extends PureComponent {
               block={true}
               autoComplete={'off'}
               value={search}
-              onChange={(search) => this.setState({ search })}
+              onChange={search => this.setState({ search })}
               placeholder="Search by table fields..."
               leftIcon={<FontIcon>search</FontIcon>}
             />
@@ -115,7 +116,13 @@ export default class extends PureComponent {
         ) : (
           ''
         )}
-        <DataTable className={className} baseId={baseId} style={{ fontSize: '12px' }} responsive={true} fullWidth>
+        <DataTable
+          className={className}
+          baseId={baseId}
+          style={{ fontSize: '12px' }}
+          responsive={true}
+          fullWidth
+        >
           <TableHeader>
             <TableRow>
               {Object.entries(headers)
@@ -149,7 +156,10 @@ export default class extends PureComponent {
                   {Object.entries(row)
                     .filter(([field]) => dataDefinitions[field] && dataDefinitions[field].show)
                     .sort(([fieldNameA], [fieldNameB]) =>
-                      sortResult(dataDefinitions[fieldNameA].order || -9, dataDefinitions[fieldNameB].order || -8)
+                      sortResult(
+                        dataDefinitions[fieldNameA].order || -9,
+                        dataDefinitions[fieldNameB].order || -8
+                      )
                     )
                     .map(([, value], i) => (
                       <TableColumn key={i} plain={true}>
@@ -165,7 +175,9 @@ export default class extends PureComponent {
             rowsPerPageItems={[5, 10, 25, 50]}
             rows={filteredData.length}
             rowsPerPageLabel={'Rows'}
-            onPagination={(start, rowsPerPage) => this.setState({ paginationSlice: [start, start + rowsPerPage] })}
+            onPagination={(start, rowsPerPage) =>
+              this.setState({ paginationSlice: [start, start + rowsPerPage] })
+            }
           />
         </DataTable>
       </>

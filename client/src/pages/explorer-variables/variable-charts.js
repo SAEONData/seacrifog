@@ -5,7 +5,7 @@ export const variableCharts = [
     datafield: 'variablesDomains',
     entryName: 'domain',
     entryValue: 'variable_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -15,7 +15,7 @@ export const variableCharts = [
     datafield: 'variablesRfTypes',
     entryName: 'rftype',
     entryValue: 'variable_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -25,7 +25,7 @@ export const variableCharts = [
     datafield: 'variablesProtocols',
     entryName: 'variable_name',
     entryValue: 'protocol_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -35,7 +35,7 @@ export const variableCharts = [
     datafield: 'variablesRforcingCompounds',
     entryName: 'variable_name',
     entryValue: 'rforcing_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },

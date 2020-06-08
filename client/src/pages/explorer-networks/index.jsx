@@ -18,8 +18,15 @@ import {
 } from '../../modules/explorer-page'
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
-import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
+import {
+  Table,
+  GlobalStateContext,
+  ChartState,
+  FormattedObject,
+} from '../../modules/shared-components'
 import { networkCharts } from './network-charts'
+import { DOWNLOADS_ENDPOINT } from '../../config'
+
 const mappings = {}
 
 const networksDataDefinitions = {
@@ -33,7 +40,7 @@ const networksDataDefinitions = {
   __typename: { show: false },
 }
 
-export default (props) => {
+export default props => {
   const history = useHistory()
   return (
     <DataQuery query={NETWORKS_MIN}>
@@ -54,7 +61,8 @@ export default (props) => {
                       query={EXPLORER_NETWORK_CHARTS}
                       chartDefinitions={networkCharts}
                       variables={{
-                        ids: selectedNetworks.length > 0 ? selectedNetworks : networks.map((n) => n.id),
+                        ids:
+                          selectedNetworks.length > 0 ? selectedNetworks : networks.map(n => n.id),
                       }}
                     />
                   </ChartState>
@@ -62,7 +70,12 @@ export default (props) => {
                   <ExplorerLayout>
                     <ExplorerTableLayout>
                       <Table
-                        actions={[<ScrollButton key={1} disabled={selectedNetworks.length > 0 ? false : true} />]}
+                        actions={[
+                          <ScrollButton
+                            key={1}
+                            disabled={selectedNetworks.length > 0 ? false : true}
+                          />,
+                        ]}
                         baseId={'networks-table'}
                         searchbar={true}
                         className={'fixed-table'}
@@ -74,7 +87,7 @@ export default (props) => {
                           updateGlobalState(
                             {
                               selectedNetworks: selectedNetworks.includes(id)
-                                ? [...selectedNetworks].filter((vId) => vId !== id)
+                                ? [...selectedNetworks].filter(vId => vId !== id)
                                 : [...new Set([...selectedNetworks, id])],
                             },
                             { currentIndex: 'currentNetwork', selectedIds: 'selectedNetworks' }
@@ -84,7 +97,7 @@ export default (props) => {
                     </ExplorerTableLayout>
                     <ExplorerTabsLayout
                       currentIndex={currentNetwork}
-                      updateCurrentIndex={(i) => updateGlobalState({ currentNetwork: i })}
+                      updateCurrentIndex={i => updateGlobalState({ currentNetwork: i })}
                       id="selected-variables-tabs"
                       selectedIds={selectedNetworks}
                       {...props}
@@ -98,14 +111,21 @@ export default (props) => {
                               abstract={network.abstract}
                               clickClose={() =>
                                 updateGlobalState(
-                                  { selectedNetworks: selectedNetworks.filter((sId) => sId !== network.id) },
-                                  { currentIndex: 'currentNetwork', selectedIds: 'selectedNetworks' }
+                                  {
+                                    selectedNetworks: selectedNetworks.filter(
+                                      sId => sId !== network.id
+                                    ),
+                                  },
+                                  {
+                                    currentIndex: 'currentNetwork',
+                                    selectedIds: 'selectedNetworks',
+                                  }
                                 )
                               }
                               href={encodeURI(
-                                `${
-                                  process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
-                                }/NETWORKS?filename=NETWORK-${new Date()}.json&ids=${[network.id].join(',')}`
+                                `${DOWNLOADS_ENDPOINT}/NETWORKS?filename=NETWORK-${new Date()}.json&ids=${[
+                                  network.id,
+                                ].join(',')}`
                               )}
                               clickEdit={() => history.push(`/networks/${network.id}`)}
                             >
@@ -117,10 +137,14 @@ export default (props) => {
                                     subTitle: 'All available fields',
                                     component: (
                                       <FormattedObject
-                                        object={formatAndFilterObjectKeys(network, mappings, ([key, val]) =>
-                                          ['abstract', '__typename'].includes(key) || typeof val === 'object'
-                                            ? false
-                                            : true
+                                        object={formatAndFilterObjectKeys(
+                                          network,
+                                          mappings,
+                                          ([key, val]) =>
+                                            ['abstract', '__typename'].includes(key) ||
+                                            typeof val === 'object'
+                                              ? false
+                                              : true
                                         )}
                                       />
                                     ),
@@ -134,14 +158,19 @@ export default (props) => {
                                       <div>
                                         <List>
                                           {network.variables
-                                            .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+                                            .sort((a, b) =>
+                                              a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                                            )
                                             .map((variable, i) => (
                                               <ListItem
                                                 onClick={() =>
                                                   updateGlobalState(
                                                     {
                                                       selectedVariables: [
-                                                        ...new Set([...selectedVariables, variable.id]),
+                                                        ...new Set([
+                                                          ...selectedVariables,
+                                                          variable.id,
+                                                        ]),
                                                       ],
                                                     },
                                                     {

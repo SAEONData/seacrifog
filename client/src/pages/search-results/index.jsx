@@ -18,7 +18,7 @@ const mainMenuIconStyle = (disabled, toggled) => ({
   backgroundColor: toggled ? 'rgba(255,255,255,0.3)' : '',
 })
 
-const getProgresStyle = (loading) => ({
+const getProgresStyle = loading => ({
   margin: 0,
   visibility: loading ? 'inherit' : 'hidden',
   position: 'absolute',
@@ -37,7 +37,7 @@ class View extends PureComponent {
   loadMoreItems = (increment, org) => {
     const { updateGlobalState, exeConfigs } = this.props
     updateGlobalState({
-      exeConfigs: exeConfigs.map((config) => {
+      exeConfigs: exeConfigs.map(config => {
         if (config.name === org.exeKey)
           return { offset: config.offset, limit: (config.limit || 0) + increment, name: org.exeKey }
         else return config
@@ -52,13 +52,24 @@ class View extends PureComponent {
     return (
       <div>
         {/* Toolbar */}
-        <LinearProgress id={'search-loading-progress-indicator'} style={getProgresStyle(loadingSearchResults)} />
+        <LinearProgress
+          id={'search-loading-progress-indicator'}
+          style={getProgresStyle(loadingSearchResults)}
+        />
         <Toolbar
           colored
           className={'sf-content-header'}
-          title={searchResults.reduce((sum, { result }) => sum + (result?.results?.length || 0), 0) + ' search results'}
+          title={
+            searchResults.reduce((sum, { result }) => sum + (result?.results?.length || 0), 0) +
+            ' search results'
+          }
           actions={[
-            <Button key={0} tooltipLabel="To top" onClick={() => scrolltoRecord(0, searchRefs[currentIndex])} icon>
+            <Button
+              key={0}
+              tooltipLabel="To top"
+              onClick={() => scrolltoRecord(0, searchRefs[currentIndex])}
+              icon
+            >
               arrow_upward
             </Button>,
             <Button
@@ -90,13 +101,18 @@ class View extends PureComponent {
                 </Button>
               )}
             >
-              <SideMenuFilter sites={sites} networks={networks} variables={variables} protocols={protocols} />
+              <SideMenuFilter
+                sites={sites}
+                networks={networks}
+                variables={variables}
+                protocols={protocols}
+              />
             </SideMenu>,
           ]}
         />
 
         {/* Tabs header (list of orgs) */}
-        <TabsContainer labelAndIcon onTabChange={(currentIndex) => this.setState({ currentIndex })}>
+        <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>
           <Tabs tabId="metadata-search-tabs">
             {searchResults.map(({ result, target }, i) => {
               const { results, result_length } = result
@@ -123,7 +139,7 @@ class View extends PureComponent {
                         {({ width }) => {
                           return (
                             <InfiniteLoader
-                              isItemLoaded={(currentIndex) => {
+                              isItemLoaded={currentIndex => {
                                 // If there are less results than a single pagniation, then everything is loaded
                                 if (results.length < 100) return true
                                 // If the current item index is smaller than the result set, then current item is loaded

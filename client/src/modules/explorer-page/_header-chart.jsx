@@ -10,7 +10,7 @@ export default class extends Component {
     super(props)
     this.state = { chartType: 'pie' }
   }
-  setChartType = (chartType) => {
+  setChartType = chartType => {
     this.setState({ chartType: chartType })
   }
 

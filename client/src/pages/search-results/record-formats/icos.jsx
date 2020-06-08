@@ -30,9 +30,14 @@ export default ({ content }) => (
           collectionDescription: 'Collection Description',
         },
         ([key]) =>
-          ['collectionTitle', 'projectNote', 'projectName', 'collectionDescription', 'spec', 'collectionDOI'].includes(
-            key
-          )
+          [
+            'collectionTitle',
+            'projectNote',
+            'projectName',
+            'collectionDescription',
+            'spec',
+            'collectionDOI',
+          ].includes(key)
             ? true
             : false
       )}

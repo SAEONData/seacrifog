@@ -1,8 +1,8 @@
-const api = process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
+import { DOWNLOADS_ENDPOINT } from '../../config'
 
 export default async ({ ids }) => {
   // First get the result
-  const response = await fetch(`${api}/SITES-DENORMALIZED`, {
+  const response = await fetch(`${DOWNLOADS_ENDPOINT}/SITES-DENORMALIZED`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

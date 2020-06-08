@@ -18,8 +18,14 @@ import {
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
 import { mergeLeft } from 'ramda'
-import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
+import {
+  Table,
+  GlobalStateContext,
+  ChartState,
+  FormattedObject,
+} from '../../modules/shared-components'
 import { protocolCharts } from './protocol-charts'
+import { DOWNLOADS_ENDPOINT } from '../../config'
 
 const protocolsDataDefinitions = {
   id: { order: 0, show: true, label: 'ID' },
@@ -33,7 +39,7 @@ const protocolsDataDefinitions = {
 
 const mappings = {}
 
-export default (props) => {
+export default props => {
   const history = useHistory()
   return (
     <DataQuery query={PROTOCOLS_MIN}>
@@ -52,7 +58,8 @@ export default (props) => {
                   query={EXPLORER_PROTOCOL_CHARTS}
                   chartDefinitions={protocolCharts}
                   variables={{
-                    ids: selectedProtocols.length > 0 ? selectedProtocols : protocols.map((n) => n.id),
+                    ids:
+                      selectedProtocols.length > 0 ? selectedProtocols : protocols.map(n => n.id),
                   }}
                 />
               </ChartState>
@@ -60,7 +67,12 @@ export default (props) => {
               <ExplorerLayout>
                 <ExplorerTableLayout>
                   <Table
-                    actions={[<ScrollButton key={1} disabled={selectedProtocols.length > 0 ? false : true} />]}
+                    actions={[
+                      <ScrollButton
+                        key={1}
+                        disabled={selectedProtocols.length > 0 ? false : true}
+                      />,
+                    ]}
                     baseId={'protocols-table'}
                     searchbar={true}
                     className={'fixed-table'}
@@ -72,7 +84,7 @@ export default (props) => {
                       updateGlobalState(
                         {
                           selectedProtocols: selectedProtocols.includes(id)
-                            ? [...selectedProtocols].filter((pId) => pId !== id)
+                            ? [...selectedProtocols].filter(pId => pId !== id)
                             : [...new Set([...selectedProtocols, id])],
                         },
                         { currentIndex: 'currentProtocol', selectedIds: 'selectedProtocols' }
@@ -82,7 +94,7 @@ export default (props) => {
                 </ExplorerTableLayout>
                 <ExplorerTabsLayout
                   currentIndex={currentProtocol}
-                  updateCurrentIndex={(i) => updateGlobalState({ currentProtocol: i })}
+                  updateCurrentIndex={i => updateGlobalState({ currentProtocol: i })}
                   id="selected-protocols-tabs"
                   selectedIds={selectedProtocols}
                   {...props}
@@ -96,14 +108,18 @@ export default (props) => {
                           abstract={protocol.abstract}
                           clickClose={() =>
                             updateGlobalState(
-                              { selectedProtocols: selectedProtocols.filter((sId) => sId !== protocol.id) },
+                              {
+                                selectedProtocols: selectedProtocols.filter(
+                                  sId => sId !== protocol.id
+                                ),
+                              },
                               { currentIndex: 'currentProtocol', selectedIds: 'selectedProtocols' }
                             )
                           }
                           href={encodeURI(
-                            `${
-                              process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
-                            }/PROTOCOLS?filename=PROTOCOL-${new Date()}.json&ids=${[protocol.id].join(',')}`
+                            `${DOWNLOADS_ENDPOINT}/PROTOCOLS?filename=PROTOCOL-${new Date()}.json&ids=${[
+                              protocol.id,
+                            ].join(',')}`
                           )}
                           clickEdit={() => history.push(`/protocols/${protocol.id}`)}
                         >
@@ -115,8 +131,14 @@ export default (props) => {
                                 subTitle: 'All Available Fields',
                                 component: (
                                   <FormattedObject
-                                    object={formatAndFilterObjectKeys(protocol, mappings, ([key, val]) =>
-                                      ['abstract', '__typename'].includes(key) || typeof val === 'object' ? false : true
+                                    object={formatAndFilterObjectKeys(
+                                      protocol,
+                                      mappings,
+                                      ([key, val]) =>
+                                        ['abstract', '__typename'].includes(key) ||
+                                        typeof val === 'object'
+                                          ? false
+                                          : true
                                     )}
                                   />
                                 ),
@@ -125,24 +147,30 @@ export default (props) => {
                                 title: 'Variables',
                                 subTitle: 'Measured by this protocol',
                                 component:
-                                  protocol.directly_related_variables[0] || protocol.indirectly_related_variables[0] ? (
+                                  protocol.directly_related_variables[0] ||
+                                  protocol.indirectly_related_variables[0] ? (
                                     <div>
                                       <List>
                                         {protocol.directly_related_variables
-                                          .map((v) => mergeLeft({ relationship: 'direct' }, v))
+                                          .map(v => mergeLeft({ relationship: 'direct' }, v))
                                           .concat(
-                                            protocol.indirectly_related_variables.map((v) =>
+                                            protocol.indirectly_related_variables.map(v =>
                                               mergeLeft({ relationship: 'indirect' }, v)
                                             )
                                           )
-                                          .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+                                          .sort((a, b) =>
+                                            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                                          )
                                           .map((variable, i) => (
                                             <ListItem
                                               onClick={() =>
                                                 updateGlobalState(
                                                   {
                                                     selectedVariables: [
-                                                      ...new Set([...selectedVariables, variable.id]),
+                                                      ...new Set([
+                                                        ...selectedVariables,
+                                                        variable.id,
+                                                      ]),
                                                     ],
                                                   },
                                                   {},
@@ -153,7 +181,9 @@ export default (props) => {
                                               key={i}
                                               rightIcon={variableIcon}
                                               leftIcon={iconLink}
-                                              primaryText={`${variable.relationship.toUpperCase()} - ${variable.name}`}
+                                              primaryText={`${variable.relationship.toUpperCase()} - ${
+                                                variable.name
+                                              }`}
                                             />
                                           ))}
                                       </List>

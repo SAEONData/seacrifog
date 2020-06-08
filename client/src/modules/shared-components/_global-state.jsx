@@ -2,22 +2,20 @@ import React, { PureComponent } from 'react'
 import gql from 'graphql-tag'
 import { ApolloConsumer } from 'react-apollo'
 import orgs from '../../pages/search-results/configuration'
-
-const config = (config) =>
-  config
-    ?.split(',')
-    ?.filter((_) => _)
-    ?.map((i) => parseInt(i, 10)) || []
-
-const DEFAULT_SELECTED_SITES = config(process?.env?.DEFAULT_SELECTED_SITES)
-const DEFAULT_SELECTED_NETWORKS = config(process?.env?.DEFAULT_SELECTED_NETWORKS)
-const DEFAULT_SELECTED_VARIABLES = config(process?.env?.DEFAULT_SELECTED_VARIABLES)
-const DEFAULT_SELECTED_PROTOCOLS = config(process?.env?.DEFAULT_SELECTED_PROTOCOLS)
+import {
+  DEFAULT_SELECTED_SITES,
+  DEFAULT_SELECTED_NETWORKS,
+  DEFAULT_SELECTED_VARIABLES,
+  DEFAULT_SELECTED_PROTOCOLS,
+} from '../../config'
 
 export const GlobalStateContext = React.createContext()
 
 class State extends PureComponent {
   state = {
+    // Allow for toggling Africa only data
+    africaOnly: true,
+
     // Lists of IDs
     selectedSites: [],
     selectedNetworks: [],
@@ -26,7 +24,11 @@ class State extends PureComponent {
     selectedDataproducts: [],
 
     // Metadata pagination restrictions
-    exeConfigs: Object.entries(orgs).map((org) => ({ offset: org[1].offset, limit: 100, name: org[1].exeKey })),
+    exeConfigs: Object.entries(orgs).map(org => ({
+      offset: org[1].offset,
+      limit: 100,
+      name: org[1].exeKey,
+    })),
 
     // Single INDEX values. NOT IDs
     currentSite: 0,
@@ -56,7 +58,13 @@ class State extends PureComponent {
    */
   async componentDidUpdate(prevProps, prevState) {
     const { client } = this.props
-    const searchFields = ['selectedSites', 'selectedNetworks', 'selectedVariables', 'selectedProtocols', 'exeConfigs']
+    const searchFields = [
+      'selectedSites',
+      'selectedNetworks',
+      'selectedVariables',
+      'selectedProtocols',
+      'exeConfigs',
+    ]
     let refresh = false
     for (const field of searchFields) {
       const oldF = prevState[field]
@@ -134,7 +142,8 @@ class State extends PureComponent {
       if (currentIndex && selectedIds) {
         this.setState(
           {
-            [currentIndex]: this.state[selectedIds].length - 1 >= 0 ? this.state[selectedIds].length - 1 : 0,
+            [currentIndex]:
+              this.state[selectedIds].length - 1 >= 0 ? this.state[selectedIds].length - 1 : 0,
           },
           cb
         )
@@ -160,5 +169,5 @@ class State extends PureComponent {
 }
 
 export const GlobalState = ({ children }) => (
-  <ApolloConsumer>{(client) => <State client={client}>{children}</State>}</ApolloConsumer>
+  <ApolloConsumer>{client => <State client={client}>{children}</State>}</ApolloConsumer>
 )

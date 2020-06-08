@@ -79,19 +79,25 @@ export class Charts extends PureComponent {
               border: '1px solid ' + tabsBorderColor,
             }}
           >
-            {Math.ceil(Object.keys(chartDefinitions).length / 4).mapFromInt((index) => {
+            {Math.ceil(Object.keys(chartDefinitions).length / 4).mapFromInt(index => {
               const tabIndex = index + 1
               return (
                 <Tab
                   // className={'thisismyclassname'}
                   id={'Tab' + tabIndex}
                   key={tabIndex}
-                  style={tabIndex === this.state.selectedTabIndex ? tabStyleSelected : tabStyleNotSelected}
+                  style={
+                    tabIndex === this.state.selectedTabIndex
+                      ? tabStyleSelected
+                      : tabStyleNotSelected
+                  }
                   icon={
                     <Avatar
                       key={tabIndex}
                       style={
-                        tabIndex === this.state.selectedTabIndex ? tabLabelStyleSelected : tabLabelStyleNotSelected
+                        tabIndex === this.state.selectedTabIndex
+                          ? tabLabelStyleSelected
+                          : tabLabelStyleNotSelected
                       }
                       contentStyle={{ fontSize: 20 }}
                       id={'tabAvatar' + tabIndex}
@@ -106,13 +112,16 @@ export class Charts extends PureComponent {
                   <Grid style={{ backgroundColor: '#EEEEEE' }}>
                     {Object.entries(chartDefinitions).map(
                       ([chartIndex, { title, datafield, entryName, entryValue, dataFilter }]) => {
-                        if (parseInt(chartIndex) + 1 > tabIndex * 4 - 4 && parseInt(chartIndex) + 1 <= tabIndex * 4)
+                        if (
+                          parseInt(chartIndex) + 1 > tabIndex * 4 - 4 &&
+                          parseInt(chartIndex) + 1 <= tabIndex * 4
+                        )
                           return (
                             <ExplorerHeaderChart
                               id={'explorer-chart' + chartIndex}
                               key={'explorer-chart' + chartIndex}
                               title={title}
-                              data={dataFilter(data[datafield]).map((r) => ({
+                              data={dataFilter(data[datafield]).map(r => ({
                                 value: r[entryValue],
                                 name: r[entryName],
                               }))}
@@ -132,4 +141,6 @@ export class Charts extends PureComponent {
   }
 }
 
-export default (props) => <ApolloConsumer>{(client) => <Charts client={client} {...props} />}</ApolloConsumer>
+export default props => (
+  <ApolloConsumer>{client => <Charts client={client} {...props} />}</ApolloConsumer>
+)

@@ -7,16 +7,16 @@ class SitesChart extends PureComponent {
     filters: ['', ''],
   }
 
-  onPieSelectChange = (e) => {
+  onPieSelectChange = e => {
     const { sets } = this.props
     const filters = [...this.state.filters]
-    const i = sets.map((s) => s.name).indexOf(e.seriesId)
+    const i = sets.map(s => s.name).indexOf(e.seriesId)
     const selectedName = e.name && e.selected[e.name] ? e.name : ''
     filters[i] = selectedName
     this.setState({ filters })
   }
 
-  filterDataset = (i) => {
+  filterDataset = i => {
     const { filters } = this.state
     const { data, sets } = this.props
 
@@ -48,7 +48,11 @@ class SitesChart extends PureComponent {
     }
 
     return Object.entries(series[i])
-      .map(([name, set]) => ({ name, value: set.size, selected: name === filters[i] ? true : false }))
+      .map(([name, set]) => ({
+        name,
+        value: set.size,
+        selected: name === filters[i] ? true : false,
+      }))
       .filter(({ value }) => value > 0)
       .sort((a, b) => (a.value >= b.value ? -1 : 1))
   }

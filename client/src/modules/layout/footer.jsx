@@ -15,7 +15,13 @@ const footerHeaderStyle = {
 }
 
 const Partner = ({ href, name }) => (
-  <a style={{ padding: '4px' }} rel="noopener noreferrer" target="_blank" className="white link" href={href}>
+  <a
+    style={{ padding: '4px' }}
+    rel="noopener noreferrer"
+    target="_blank"
+    className="white link"
+    href={href}
+  >
     {name || '??'}
   </a>
 )
@@ -95,7 +101,12 @@ export default () => (
                   CONTACT US
                 </h3>
                 <address style={{ fontStyle: 'normal' }}>
-                  <a className="white link" href="mailto:zach@saeon.ac.za" target="_blank" rel="noopener noreferrer">
+                  <a
+                    className="white link"
+                    href="mailto:zach@saeon.ac.za"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     SAEON Ulwazi
                   </a>
                   <p className="white">CURRENT MAINTAINER</p>

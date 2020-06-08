@@ -5,7 +5,7 @@ export const protocolCharts = [
     datafield: 'protocolsCoverages',
     entryName: 'coverage',
     entryValue: 'protocol_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -15,7 +15,7 @@ export const protocolCharts = [
     datafield: 'protocolsCoverageTypes',
     entryName: 'coverage_type',
     entryValue: 'protocol_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -25,7 +25,7 @@ export const protocolCharts = [
     datafield: 'protocolsDomains',
     entryName: 'domain',
     entryValue: 'protocol_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -35,7 +35,7 @@ export const protocolCharts = [
     datafield: 'protocolsVariables',
     entryName: 'protocol_title',
     entryValue: 'variable_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },

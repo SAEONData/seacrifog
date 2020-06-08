@@ -47,7 +47,10 @@ export default ({ id, ...props }) => {
                 ]}
                 contentStyle={{ overflow: 'hidden' }}
               >
-                <p>Please note that since this is a prototype, any changes made will be reset the next day</p>
+                <p>
+                  Please note that since this is a prototype, any changes made will be reset the
+                  next day
+                </p>
               </DialogContainer>
               <Form
                 addSites={network.sites.map(({ id }) => id)}
@@ -56,7 +59,14 @@ export default ({ id, ...props }) => {
                 removeVariables={[]}
                 {...network}
               >
-                {({ updateForm, addVariables, addSites, removeSites, removeVariables, ...fields }) => (
+                {({
+                  updateForm,
+                  addVariables,
+                  addSites,
+                  removeSites,
+                  removeVariables,
+                  ...fields
+                }) => (
                   <DataMutation mutation={UPDATE_NETWORKS}>
                     {/* eslint-disable-next-line no-unused-vars */}
                     {({ executeMutation, mutationLoading, mutationError }) => (
@@ -82,7 +92,9 @@ export default ({ id, ...props }) => {
                                             removeVariables,
                                             ...Object.fromEntries(
                                               Object.entries(fields).filter(([key]) =>
-                                                fieldDefinitions[key] ? !fieldDefinitions[key].pristine : false
+                                                fieldDefinitions[key]
+                                                  ? !fieldDefinitions[key].pristine
+                                                  : false
                                               )
                                             ),
                                           },
@@ -121,7 +133,10 @@ export default ({ id, ...props }) => {
                                     {/* RELATED VARIABLES */}
                                     <RelationEditor
                                       label="Related Variables"
-                                      items={variables.map(({ id, name: value }) => ({ id, value }))}
+                                      items={variables.map(({ id, name: value }) => ({
+                                        id,
+                                        value,
+                                      }))}
                                       selectedItems={addVariables}
                                       updateForm={updateForm}
                                       removeArray={removeVariables}

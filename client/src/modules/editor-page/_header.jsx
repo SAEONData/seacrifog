@@ -1,7 +1,7 @@
 import React from 'react'
 import { Toolbar, LinearProgress } from 'react-md'
 
-const getProgresStyle = (loading) => ({
+const getProgresStyle = loading => ({
   margin: 0,
   visibility: loading ? 'inherit' : 'hidden',
   position: 'absolute',

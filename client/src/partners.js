@@ -141,7 +141,8 @@ export default [
     id: 17,
     logo: `${PATH}/thuenen_web_logo_transparent.png`,
     alt: 'Thuenen logo',
-    content: 'The Thünen Institute - German Federal Research Institute for Rural Areas, Forestry and Fisheries',
+    content:
+      'The Thünen Institute - German Federal Research Institute for Rural Areas, Forestry and Fisheries',
     href: 'https://www.thuenen.de/en/ak/',
   },
   {

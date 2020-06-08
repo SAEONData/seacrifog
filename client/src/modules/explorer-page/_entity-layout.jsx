@@ -12,7 +12,16 @@ const titleBlockStyle = {
 
 const abstractStyle = { fontStyle: 'bold', margin: '20px 0 15px' }
 
-export default ({ clickClose, href, clickEdit, title, authors, abstract, children, editable = true }) => (
+export default ({
+  clickClose,
+  href,
+  clickEdit,
+  title,
+  authors,
+  abstract,
+  children,
+  editable = true,
+}) => (
   <Grid noSpacing>
     <Cell size={12}>
       {/* Menu icons */}

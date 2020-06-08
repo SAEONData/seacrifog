@@ -53,12 +53,19 @@ export default ({ id, ...props }) => {
                           ]}
                           contentStyle={{ overflow: 'hidden' }}
                         >
-                          <p>Please note that since this is a prototype, any changes made will be reset the next day</p>
+                          <p>
+                            Please note that since this is a prototype, any changes made will be
+                            reset the next day
+                          </p>
                         </DialogContainer>
                         <Form
                           {...variable}
-                          addDirectlyRelatedProtocols={[...variable.directly_related_protocols.map(({ id }) => id)]}
-                          addIndirectlyRelatedProtocols={[...variable.indirectly_related_protocols.map(({ id }) => id)]}
+                          addDirectlyRelatedProtocols={[
+                            ...variable.directly_related_protocols.map(({ id }) => id),
+                          ]}
+                          addIndirectlyRelatedProtocols={[
+                            ...variable.indirectly_related_protocols.map(({ id }) => id),
+                          ]}
                           addDataproducts={[...variable.dataproducts.map(({ id }) => id)]}
                           addRForcings={[...variable.rforcings.map(({ id }) => id)]}
                           removeProtocols={[]}
@@ -126,7 +133,9 @@ export default ({ id, ...props }) => {
                                     <Cell size={12}>
                                       <Card style={cardStyle}>
                                         <Grid
-                                          noSpacing={NavigationDrawer.getCurrentMedia().mobile ? true : false}
+                                          noSpacing={
+                                            NavigationDrawer.getCurrentMedia().mobile ? true : false
+                                          }
                                           className="sf-editor-wrapper"
                                         >
                                           {/* Attribute editor */}
@@ -146,7 +155,10 @@ export default ({ id, ...props }) => {
                                               {/* DIRECTLY RELATED PROTOCOLS */}
                                               <RelationEditor
                                                 label="Directly Related Protocols"
-                                                items={protocols.map(({ id, title: value }) => ({ id, value }))}
+                                                items={protocols.map(({ id, title: value }) => ({
+                                                  id,
+                                                  value,
+                                                }))}
                                                 selectedItems={addDirectlyRelatedProtocols}
                                                 updateForm={updateForm}
                                                 removeArray={removeProtocols}
@@ -157,7 +169,10 @@ export default ({ id, ...props }) => {
                                               {/* INDIRECTLY RELATED PROTOCOLS */}
                                               <RelationEditor
                                                 label="Indirectly Related Protocols"
-                                                items={protocols.map(({ id, title: value }) => ({ id, value }))}
+                                                items={protocols.map(({ id, title: value }) => ({
+                                                  id,
+                                                  value,
+                                                }))}
                                                 selectedItems={addIndirectlyRelatedProtocols}
                                                 updateForm={updateForm}
                                                 removeArray={removeProtocols}
@@ -168,7 +183,10 @@ export default ({ id, ...props }) => {
                                               {/* RELATED DATAPRODUCTS */}
                                               <RelationEditor
                                                 label="Dataproducts"
-                                                items={dataproducts.map(({ id, title: value }) => ({ id, value }))}
+                                                items={dataproducts.map(({ id, title: value }) => ({
+                                                  id,
+                                                  value,
+                                                }))}
                                                 selectedItems={addDataproducts}
                                                 updateForm={updateForm}
                                                 removeArray={removeDataproducts}
@@ -179,10 +197,12 @@ export default ({ id, ...props }) => {
                                               {/* RELATED RADIATIVE FORCINGS */}
                                               <RelationEditor
                                                 label="Radiative Forcings"
-                                                items={radiativeForcings.map(({ id, compound: value }) => ({
-                                                  id,
-                                                  value,
-                                                }))}
+                                                items={radiativeForcings.map(
+                                                  ({ id, compound: value }) => ({
+                                                    id,
+                                                    value,
+                                                  })
+                                                )}
                                                 selectedItems={addRForcings}
                                                 updateForm={updateForm}
                                                 removeArray={removeRForcings}

@@ -15,7 +15,7 @@ export default () => {
   // eslint-disable-next-line no-extend-native
   String.prototype.titleize = function () {
     return this.split(/_|\s/g)
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ')
   }
 }

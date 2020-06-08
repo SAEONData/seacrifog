@@ -47,12 +47,19 @@ export default ({ id, ...props }) => {
                     },
                   ]}
                 >
-                  <p>Please note that since this is a prototype, any changes made will be reset the next day</p>
+                  <p>
+                    Please note that since this is a prototype, any changes made will be reset the
+                    next day
+                  </p>
                 </DialogContainer>
                 <Form
                   {...protocol}
-                  addDirectlyRelatedVariables={[...protocol.directly_related_variables.map(({ id }) => id)]}
-                  addIndirectlyRelatedVariables={[...protocol.indirectly_related_variables.map(({ id }) => id)]}
+                  addDirectlyRelatedVariables={[
+                    ...protocol.directly_related_variables.map(({ id }) => id),
+                  ]}
+                  addIndirectlyRelatedVariables={[
+                    ...protocol.indirectly_related_variables.map(({ id }) => id),
+                  ]}
                   removeVariables={[]}
                 >
                   {({
@@ -87,7 +94,9 @@ export default ({ id, ...props }) => {
                                               removeVariables,
                                               ...Object.fromEntries(
                                                 Object.entries(fields).filter(([key]) =>
-                                                  fieldDefinitions[key] ? !fieldDefinitions[key].pristine : false
+                                                  fieldDefinitions[key]
+                                                    ? !fieldDefinitions[key].pristine
+                                                    : false
                                                 )
                                               ),
                                             },
@@ -106,7 +115,9 @@ export default ({ id, ...props }) => {
                             <Cell size={12}>
                               <Card style={cardStyle}>
                                 <Grid
-                                  noSpacing={NavigationDrawer.getCurrentMedia().mobile ? true : false}
+                                  noSpacing={
+                                    NavigationDrawer.getCurrentMedia().mobile ? true : false
+                                  }
                                   className="sf-editor-wrapper"
                                 >
                                   {/* Attribute editor */}
@@ -126,7 +137,10 @@ export default ({ id, ...props }) => {
                                       {/* DIRECTLY RELATED VARIABLES */}
                                       <RelationEditor
                                         label="Directly Related Variables"
-                                        items={variables.map(({ id, name: value }) => ({ id, value }))}
+                                        items={variables.map(({ id, name: value }) => ({
+                                          id,
+                                          value,
+                                        }))}
                                         selectedItems={addDirectlyRelatedVariables}
                                         updateForm={updateForm}
                                         removeArray={removeVariables}
@@ -137,7 +151,10 @@ export default ({ id, ...props }) => {
                                       {/* INDIRECTLY RELATED VARIABLES */}
                                       <RelationEditor
                                         label="Indirectly Related Variables"
-                                        items={variables.map(({ id, name: value }) => ({ id, value }))}
+                                        items={variables.map(({ id, name: value }) => ({
+                                          id,
+                                          value,
+                                        }))}
                                         selectedItems={addIndirectlyRelatedVariables}
                                         updateForm={updateForm}
                                         removeArray={removeVariables}

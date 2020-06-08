@@ -15,10 +15,15 @@ import {
   iconLink,
   ExplorerCoverageMap,
 } from '../../modules/explorer-page'
-
 import formatAndFilterObjectKeys from '../../lib/format-filter-obj-keys'
 import { List, ListItem } from 'react-md'
-import { Table, GlobalStateContext, ChartState, FormattedObject } from '../../modules/shared-components'
+import {
+  Table,
+  GlobalStateContext,
+  ChartState,
+  FormattedObject,
+} from '../../modules/shared-components'
+import { DOWNLOADS_ENDPOINT } from '../../config'
 
 const mappings = []
 const dataproductsDataDefinitions = {
@@ -31,7 +36,7 @@ const dataproductsDataDefinitions = {
   __typename: { show: false },
 }
 
-export default (props) => {
+export default props => {
   const history = useHistory()
   return (
     <DataQuery query={DATAPRODUCTS_MIN}>
@@ -49,7 +54,12 @@ export default (props) => {
               <ExplorerLayout>
                 <ExplorerTableLayout>
                   <Table
-                    actions={[<ScrollButton key={1} disabled={selectedDataproducts.length > 0 ? false : true} />]}
+                    actions={[
+                      <ScrollButton
+                        key={1}
+                        disabled={selectedDataproducts.length > 0 ? false : true}
+                      />,
+                    ]}
                     baseId={'dataproducts-table'}
                     searchbar={true}
                     className={'fixed-table'}
@@ -61,7 +71,7 @@ export default (props) => {
                       updateGlobalState(
                         {
                           selectedDataproducts: selectedDataproducts.includes(id)
-                            ? [...selectedDataproducts].filter((vId) => vId !== id)
+                            ? [...selectedDataproducts].filter(vId => vId !== id)
                             : [...new Set([...selectedDataproducts, id])],
                         },
                         { currentIndex: 'currentDataproduct', selectedIds: 'selectedDataproducts' }
@@ -72,7 +82,7 @@ export default (props) => {
                 <ExplorerTabsLayout
                   id="selected-dataproducts-tabs"
                   currentIndex={currentDataproduct}
-                  updateCurrentIndex={(i) => updateGlobalState({ currentDataproduct: i })}
+                  updateCurrentIndex={i => updateGlobalState({ currentDataproduct: i })}
                   selectedIds={selectedDataproducts}
                   {...props}
                 >
@@ -86,15 +96,20 @@ export default (props) => {
                           clickClose={() =>
                             updateGlobalState(
                               {
-                                selectedDataproducts: selectedDataproducts.filter((sId) => sId !== dataproduct.id),
+                                selectedDataproducts: selectedDataproducts.filter(
+                                  sId => sId !== dataproduct.id
+                                ),
                               },
-                              { currentIndex: 'currentDataproduct', selectedIds: 'selectedDataproducts' }
+                              {
+                                currentIndex: 'currentDataproduct',
+                                selectedIds: 'selectedDataproducts',
+                              }
                             )
                           }
                           href={encodeURI(
-                            `${
-                              process.env.DOWNLOADS_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/downloads'
-                            }/DATAPRODUCTS?filename=DATAPRODUCT-${new Date()}.json&ids=${[dataproduct.id].join(',')}`
+                            `${DOWNLOADS_ENDPOINT}/DATAPRODUCTS?filename=DATAPRODUCT-${new Date()}.json&ids=${[
+                              dataproduct.id,
+                            ].join(',')}`
                           )}
                           clickEdit={() => history.push(`/dataproducts/${dataproduct.id}`)}
                           editable={false}
@@ -107,8 +122,14 @@ export default (props) => {
                                 subTitle: 'All available fields',
                                 component: (
                                   <FormattedObject
-                                    object={formatAndFilterObjectKeys(dataproduct, mappings, ([key, val]) =>
-                                      ['abstract', '__typename'].includes(key) || typeof val === 'object' ? false : true
+                                    object={formatAndFilterObjectKeys(
+                                      dataproduct,
+                                      mappings,
+                                      ([key, val]) =>
+                                        ['abstract', '__typename'].includes(key) ||
+                                        typeof val === 'object'
+                                          ? false
+                                          : true
                                     )}
                                   />
                                 ),
@@ -120,15 +141,22 @@ export default (props) => {
                                   <div>
                                     <List>
                                       {dataproduct.variables
-                                        .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+                                        .sort((a, b) =>
+                                          a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                                        )
                                         .map((variable, i) => (
                                           <ListItem
                                             onClick={() =>
                                               updateGlobalState(
                                                 {
-                                                  selectedVariables: [...new Set([...selectedVariables, variable.id])],
+                                                  selectedVariables: [
+                                                    ...new Set([...selectedVariables, variable.id]),
+                                                  ],
                                                 },
-                                                { currentIndex: 'currentVariable', selectedIds: 'selectedVariables' },
+                                                {
+                                                  currentIndex: 'currentVariable',
+                                                  selectedIds: 'selectedVariables',
+                                                },
                                                 () => history.push('/variables')
                                               )
                                             }
@@ -148,7 +176,9 @@ export default (props) => {
                               {
                                 title: 'Spatial Coverage',
                                 subTitle: 'Of this data product',
-                                component: <ExplorerCoverageMap geoJson={dataproduct.coverage_spatial} />,
+                                component: (
+                                  <ExplorerCoverageMap geoJson={dataproduct.coverage_spatial} />
+                                ),
                                 style: { height: '500px' },
                                 grid: {
                                   size: 12,

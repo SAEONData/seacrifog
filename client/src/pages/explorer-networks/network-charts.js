@@ -5,7 +5,7 @@ export const networkCharts = [
     datafield: 'sitesAggregation',
     entryName: 'acronym',
     entryValue: 'site_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },
@@ -15,7 +15,7 @@ export const networkCharts = [
     datafield: 'networksTypes',
     entryName: 'type',
     entryValue: 'network_count',
-    dataFilter: (data) => {
+    dataFilter: data => {
       return data
     },
   },

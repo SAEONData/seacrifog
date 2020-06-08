@@ -42,7 +42,11 @@ export default () => {
             <Content>
               <h1 className="white">SEACRIFOG INVENTORY TOOL</h1>
               <Divider style={{ margin: '12px' }} />
-              <h3 className="white link" onClick={() => history.push('/sites')} style={{ margin: 0 }}>
+              <h3
+                className="white link"
+                onClick={() => history.push('/sites')}
+                style={{ margin: 0 }}
+              >
                 Explore Africa&apos;s carbon observation platform network
               </h3>
             </Content>
@@ -105,15 +109,24 @@ export default () => {
                 <Cell phoneSize={4} tabletSize={8} size={4}>
                   <img style={mainPartnerStyle} src={euFunding.logo} alt={euFunding.alt} />
                   <p style={{ paddingTop: '10px' }}>
-                    This project has received funding from the European Union&apos;s Horizon 2020 research and
-                    innovation programme under grant agreement No 730995
+                    This project has received funding from the European Union&apos;s Horizon 2020
+                    research and innovation programme under grant agreement No 730995
                   </p>
                 </Cell>
                 <Cell phoneSize={4} tabletSize={8} size={4}>
-                  <img style={mainPartnerStyle} src={sasccalPartner.logo} alt={sasccalPartner.alt} />
+                  <img
+                    style={mainPartnerStyle}
+                    src={sasccalPartner.logo}
+                    alt={sasccalPartner.alt}
+                  />
                   <p style={{ paddingTop: '10px' }}>
                     The SEACRIFOG metadata search tool is based on previously existing work by{' '}
-                    <a className="link" href={sasccalPartner.href} target="_blank" rel="noopener noreferrer"></a>
+                    <a
+                      className="link"
+                      href={sasccalPartner.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    ></a>
                     <a
                       className="link"
                       href="https://seacrifog-tool.sasscal.org/"
@@ -127,8 +140,8 @@ export default () => {
                 <Cell phoneSize={4} tabletSize={8} size={4}>
                   <img style={mainPartnerStyle} src={sfFunding.logo} alt={sfFunding.alt} />
                   <p style={{ paddingTop: '10px' }}>
-                    Supporting EU-African Cooperation on Research Infrastructures for Food Security and Greenhouse Gas
-                    Observations
+                    Supporting EU-African Cooperation on Research Infrastructures for Food Security
+                    and Greenhouse Gas Observations
                   </p>
                 </Cell>
               </Grid>
@@ -143,23 +156,31 @@ export default () => {
                   <h2 style={{ marginBottom: '36px' }}>Carbon Observation Platform Explorer</h2>
                   <p className={'justify'}>
                     {
-                      <a className="link" href="http://www.seacrifog.eu/" target="_blank" rel="noopener noreferrer">
+                      <a
+                        className="link"
+                        href="http://www.seacrifog.eu/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         SEACRIFOG
                       </a>
                     }{' '}
-                    aims to design a continental network of research infrastructures for the observation of climate
-                    change and other environmental changes linked to greenhouse gas emissions and food security across
-                    the African continent and the surrounding oceans.
+                    aims to design a continental network of research infrastructures for the
+                    observation of climate change and other environmental changes linked to
+                    greenhouse gas emissions and food security across the African continent and the
+                    surrounding oceans.
                   </p>
                   <p className={'justify'}>
-                    The SEACRIFOG Collaborative Inventory Tool serves to systematically capture information on relevant
-                    variables, observation infrastructures, existing data products and methodological protocols. The
-                    tool further serves as a public resource, informing about the state of environmental observation
-                    across the African continent and the surrounding oceans and supporting research infrastructure
-                    development.
+                    The SEACRIFOG Collaborative Inventory Tool serves to systematically capture
+                    information on relevant variables, observation infrastructures, existing data
+                    products and methodological protocols. The tool further serves as a public
+                    resource, informing about the state of environmental observation across the
+                    African continent and the surrounding oceans and supporting research
+                    infrastructure development.
                   </p>
                   <p className={'justify'}>
-                    For further reading on the SEACRIFOG project and its outcomes to date, please click{' '}
+                    For further reading on the SEACRIFOG project and its outcomes to date, please
+                    click{' '}
                     {
                       <a
                         className="link"
@@ -184,7 +205,12 @@ export default () => {
                             {item.content.split('\n').map((c, i) => (
                               <p key={i}>{c}</p>
                             ))}
-                            <a className="link" target="_blank" rel="noopener noreferrer" href={item.href}>
+                            <a
+                              className="link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={item.href}
+                            >
                               more information
                             </a>
                           </>

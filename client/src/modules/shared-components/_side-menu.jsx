@@ -8,7 +8,7 @@ export default class extends PureComponent {
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen })
   closeMenu = () => this.setState({ menuOpen: false })
-  onVizChange = (menuOpen) => this.setState({ menuOpen })
+  onVizChange = menuOpen => this.setState({ menuOpen })
 
   render() {
     const { menuOpen } = this.state

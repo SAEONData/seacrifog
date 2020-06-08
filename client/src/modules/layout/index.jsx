@@ -18,7 +18,7 @@ const getCurrentPath = ({ location: { pathname } }) => {
   return pathname
     .substring(pathname.indexOf('/') + 1)
     .split('/')
-    .map((p) => p.capitalize())
+    .map(p => p.capitalize())
     .join('/')
 }
 
@@ -43,7 +43,11 @@ class Navigation extends PureComponent {
         contentClassName={'page-content'}
         id="app-navigation-drawer"
         drawerTitle={'BETA 0.1'}
-        toolbarTitle={['/', '', '/home'].includes(location.pathname) ? '' : 'Carbon Observation Platform Explorer'}
+        toolbarTitle={
+          ['/', '', '/home'].includes(location.pathname)
+            ? ''
+            : 'Carbon Observation Platform Explorer'
+        }
         navItems={navItems.map(({ divider, subheader, ...navItem }) =>
           divider || subheader ? (
             { divider, subheader, ...navItem }
@@ -66,8 +70,18 @@ class Navigation extends PureComponent {
             : NavigationDrawer.DrawerTypes.PERSISTENT_MINI
         }
         toolbarActions={[
-          <img key={0} style={seacrifogLogoStyle} src={`/seacrifog-logo.png`} alt="SEACRIFOG logo" />,
-          <img key={1} style={seacrifogLogoStyle} src={`/eu-funding-acknowledgement.jpg`} alt="EU logo" />,
+          <img
+            key={0}
+            style={seacrifogLogoStyle}
+            src={`/seacrifog-logo.png`}
+            alt="SEACRIFOG logo"
+          />,
+          <img
+            key={1}
+            style={seacrifogLogoStyle}
+            src={`/eu-funding-acknowledgement.jpg`}
+            alt="EU logo"
+          />,
         ]}
         onVisibilityChange={debounce(() => window.dispatchEvent(new Event('resize-map')))}
         defaultVisible={false}

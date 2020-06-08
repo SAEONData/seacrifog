@@ -11,6 +11,7 @@ import App from './app'
 import WebFontLoader from 'webfontloader'
 import './index.scss'
 import 'ol/ol.css'
+import { GQL_ENDPOINT } from './config'
 
 // Use with caution!!
 nativeExtensions()
@@ -18,7 +19,7 @@ nativeExtensions()
 // Configure the Apollo Client
 const cache = new InMemoryCache()
 const link = new HttpLink({
-  uri: process.env.GQL_ENDPOINT || 'https://api.seacrifog.saeon.ac.za/graphql',
+  uri: GQL_ENDPOINT,
 })
 const client = new ApolloClient({ cache, link })
 
