@@ -50,7 +50,7 @@ curl -X POST https://api.seacrifog.saeon.ac.za/graphql -H "Content-Type: applica
 curl -X POST https://api.seacrifog.saeon.ac.za/graphql -H "Content-Type: application/json" -d '{ "query": "{ sites( extent: \"POLYGON((-180 -90, -180 90, 180 90, 180 -90, -180 -90))\") { id name xyz } } "}'
 ```
 
-For these example, he contract of the API is such that the extent argument accepts text that is valid WKT. This is validated. It's difficult to validate the projection used. So the contract is that projection 4326 is the correct projection. WKT of a different projection will give strange results.
+For these example, the contract of the API is such that the extent argument accepts text that is valid WKT. This is validated. It's difficult to validate the projection used. So the contract is that projection 4326 is the correct projection. WKT of a different projection will give strange results.
 
 #### [Integrations](api/src/resolvers/queries/search-metadata/)
 Integrations need to be specified by a user in two places. These are:
