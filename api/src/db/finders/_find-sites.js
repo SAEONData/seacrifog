@@ -3,13 +3,13 @@ import query from '../_query'
 import sift from 'sift'
 
 export default () => {
-  const self = {}
+  const _self = {}
 
   // Query configuration
   var _extent = null
 
   return Object.assign(
-    Object.defineProperties(self, {
+    Object.defineProperties(_self, {
       extent: {
         get: () => _extent,
         set: value => {
@@ -23,24 +23,24 @@ export default () => {
           const rows = (
             await query({
               text: `
-              select
-                id,
-                "name",
-                ST_AsGeoJSON(st_transform(xyz, 4326)) xyz
-              
-              from
-                public.sites
-              
-              where
-                id in (${keys.map((k, i) => `$${i + 1}`).join(',')})
-                ${
-                  _extent
-                    ? `and st_within(
-                        st_transform(xyz, 4326),
-                        ST_GeomFromText(${`$${keys.length + 1}`}, 4326)
-                      )`
-                    : ''
-                };`,
+                select
+                  id,
+                  "name",
+                  ST_AsGeoJSON(st_transform(xyz, 4326)) xyz
+                
+                from
+                  public.sites
+                
+                where
+                  id in (${keys.map((k, i) => `$${i + 1}`).join(',')})
+                  ${
+                    _extent
+                      ? `and ST_Within(
+                          ST_Transform(xyz, 4326),
+                          ST_GeomFromText(${`$${keys.length + 1}`}, 4326)
+                        )`
+                      : ''
+                  };`,
               values: [...keys.map(k => k), _extent].filter(_ => _),
             })
           ).rows

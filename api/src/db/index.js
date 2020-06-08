@@ -24,14 +24,17 @@ export const query = _query
  * DataLoader instances are created here
  */
 export const initializeLoaders = () => {
-  const siteFinderConfig = _findSites()
+  // Advanced configuration examples
+  const siteFinder = _findSites()
+  const sitesOfNetworkFinder = _findSitesOfNetwork()
+
+  // Simple examples
   const findNetworks = _findNetworks()
   const findVariables = _findVariables()
   const findProtocols = _findProtocols()
   const findRadiativeForcings = _findRadiativeForcings()
   const findDataproducts = _findDataproducts()
   const findNetworksOfSite = _findNetworksOfSite()
-  const findSitesOfNetwork = _findSitesOfNetwork()
   const findVariablesOfNetwork = _findVariablesOfNetwork()
   const findProtocolsOfVariable = _findProtocolsOfVariable()
   const findRForcingsOfVariable = _findRForcingsOfVariable()
@@ -41,8 +44,19 @@ export const initializeLoaders = () => {
   const findVariablesOfDataproduct = _findVariablesOfDataproduct()
 
   return {
+    // Advanced configuration example
+    findSites: (key, extent = null) => {
+      if (extent) siteFinder.extent = extent
+      return siteFinder.loader.load(key)
+    },
+    findSitesOfNetwork: (key, extent = null) => {
+      if (extent) sitesOfNetworkFinder.extent = extent
+      return sitesOfNetworkFinder.loader.load(key)
+    },
+
+    // Simple examples
     findVariables: key => findVariables.load(key),
-    findSitesOfNetwork: key => findSitesOfNetwork.load(key),
+    findNetworksOfSite: key => findNetworksOfSite.load(key),
     findVariablesOfNetwork: key => findVariablesOfNetwork.load(key),
     findVariablesOfProtocol: key => findVariablesOfProtocol.load(key),
     findVariablesOfDataproduct: key => findVariablesOfDataproduct.load(key),
@@ -50,14 +64,9 @@ export const initializeLoaders = () => {
     findDataproducts: key => findDataproducts.load(key),
     findDataproductsOfVariable: key => findDataproductsOfVariable.load(key),
     findRForcingsOfVariable: key => findRForcingsOfVariable.load(key),
-    findNetworksOfSite: key => findNetworksOfSite.load(key),
     findProtocols: key => findProtocols.load(key),
     findProtocolsOfVariable: key => findProtocolsOfVariable.load(key),
     findNetworks: key => findNetworks.load(key),
-    findSites: (key, extent = null) => {
-      if (extent) siteFinderConfig.extent = extent
-      return siteFinderConfig.loader.load(key)
-    },
 
     /**
      * These aren't dataloaders, but putting them here means they can use the dataloaders
@@ -67,8 +76,8 @@ export const initializeLoaders = () => {
     allSites: async extent =>
       Promise.all(
         (await query({ text: 'select id from public.sites;' })).rows.map(async ({ id }) => {
-          if (extent) siteFinderConfig.extent = extent
-          return (await siteFinderConfig.loader.load(id))[0]
+          if (extent) siteFinder.extent = extent
+          return (await siteFinder.loader.load(id))[0]
         })
       ),
     allNetworks: async () =>

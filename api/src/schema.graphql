@@ -285,7 +285,7 @@ type Network {
   modified_by: String
   modified_at: Date
   variables: [Variable]!
-  sites: [Site]!
+  sites(extent: WKT_4326): [Site]!
 }
 
 type Variable {
