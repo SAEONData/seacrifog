@@ -35,8 +35,8 @@ jobs:
     
     - name: Configure the server
       run: |
-        sudo /opt/copy-nginx-vhosts.sh
-        sudo /opt/reload-nginx.sh
+        sudo /opt/copy-nginx-server-blocks.sh # cp ./server-config/nginx/stable/server-blocks/* /etc/nginx/conf.d/
+        sudo /opt/reload-nginx.sh # service nginx reload
 
     - name: Deploy the API, client, and PostGIS
       run: |
