@@ -86,7 +86,9 @@ export default class SitesChart extends PureComponent {
         icon: 'circle',
         orient: 'vertical',
         x: 'left',
-        data: sets.map(({ name }) => name),
+        data: sets.map(({ name }) => ({
+          name,
+        })),
       },
 
       series: sets.map(({ name }, i) => ({
