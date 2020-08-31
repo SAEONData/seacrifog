@@ -5,6 +5,7 @@ import FundingAcknowledgement from './funding-acknowledgement'
 import { Button, Avatar } from 'react-md'
 import { useHistory } from 'react-router-dom'
 import SitesMap from './sites-map'
+import InfoChart from './info-charts'
 import Footer from '../../modules/layout/footer'
 
 const avatarStyle = { fontSize: '11px', fontFamily: 'Open Sans' }
@@ -37,6 +38,7 @@ export default () => {
   return (
     <>
       <Grid noSpacing>
+        {/* Page Title */}
         <Cell size={12} className="sf-container">
           <Wrapper>
             <Content>
@@ -52,11 +54,15 @@ export default () => {
             </Content>
           </Wrapper>
         </Cell>
+
+        {/* Atlas */}
         <Cell phoneHidden style={{ padding: 0 }} size={12} className="sf-container inverse">
           <Content className="homepage-map" style={{ margin: 0, padding: 0, textAlign: 'center' }}>
             <SitesMap />
           </Content>
         </Cell>
+
+        {/* Page Navigation links */}
         <Cell size={12} className="sf-container primary">
           <Wrapper>
             <Content>
@@ -102,6 +108,8 @@ export default () => {
             </Content>
           </Wrapper>
         </Cell>
+
+        {/* Main Partner Acknowledgements */}
         <Cell size={12} className="sf-container inverse">
           <Wrapper>
             <Content>
@@ -148,10 +156,13 @@ export default () => {
             </Content>
           </Wrapper>
         </Cell>
+
+        {/* Additional Partner Acknowledgements */}
         <Cell size={12} className="sf-container secondary">
           <Wrapper>
             <Content>
               <Grid>
+                {/* Info Text */}
                 <Cell phoneSize={4} tabletSize={8} size={6}>
                   <h2 style={{ marginBottom: '36px' }}>Carbon Observation Platform Explorer</h2>
                   <p className={'justify'}>
@@ -193,6 +204,8 @@ export default () => {
                     }
                   </p>
                 </Cell>
+
+                {/* Partner Logos */}
                 <Cell phoneSize={4} tabletSize={8} size={6}>
                   <Grid noSpacing>
                     {partners.slice(2, partners.length).map((item, i) => (
@@ -223,8 +236,20 @@ export default () => {
             </Content>
           </Wrapper>
         </Cell>
+
+        {/* Chart */}
+        <Cell phoneHidden style={{ padding: 0 }} size={12} className="sf-container inverse">
+          <Wrapper>
+            <Content
+              className="homepage-piechart"
+              style={{ margin: 0, padding: 0, textAlign: 'center' }}
+            >
+              <InfoChart />
+            </Content>
+          </Wrapper>
+        </Cell>
       </Grid>
-      <Footer />{' '}
+      <Footer />
     </>
   )
 }

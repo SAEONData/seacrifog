@@ -15,4 +15,9 @@
     height: 400px; /* this is for older browsers */
     height: calc(100vh - 538px);
   }
+
+  .homepage-piechart {
+    height: 800px; /* this is for older browsers */
+    height: calc(70vh);
+  }
 }
