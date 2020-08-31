@@ -3,25 +3,24 @@ import 'regenerator-runtime/runtime'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import nativeExtensions from './lib/native-extensions'
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import App from './app'
 import WebFontLoader from 'webfontloader'
 import './index.scss'
 import 'ol/ol.css'
 import { GQL_ENDPOINT } from './config'
 
-// Use with caution!!
+/**
+ * Extends some JavaScript constructors with useful functions
+ * such as String.prototype.truncate, etc.
+ **/
 nativeExtensions()
 
 // Configure the Apollo Client
-const cache = new InMemoryCache()
-const link = new HttpLink({
+const client = new ApolloClient({
   uri: GQL_ENDPOINT,
+  cache: new InMemoryCache(),
 })
-const client = new ApolloClient({ cache, link })
 
 // Load the fonts
 WebFontLoader.load({

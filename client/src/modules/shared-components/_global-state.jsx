@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import gql from 'graphql-tag'
-import { ApolloConsumer } from 'react-apollo'
+import { ApolloConsumer } from '@apollo/client'
 import orgs from '../../pages/search-results/configuration'
 import {
   DEFAULT_SELECTED_SITES,
