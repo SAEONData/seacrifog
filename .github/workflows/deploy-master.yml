@@ -32,6 +32,11 @@ jobs:
         echo "GQL_ENDPOINT=${{ secrets.GQL_ENDPOINT_DEV }}" > ./client/.env
         echo "HTTP_ENDPOINT=${{ secrets.HTTP_ENDPOINT_DEV }}" >> ./client/.env
         echo "DOWNLOADS_ENDPOINT=${{ secrets.DOWNLOADS_ENDPOINT_DEV }}" >> ./client/.env
+    
+    - name: Configure the server
+      run: |
+        sudo /opt/copy-nginx-server-blocks.sh # cp ./server-config/nginx/stable/server-blocks/* /etc/nginx/conf.d/
+        sudo /opt/reload-nginx.sh # service nginx reload
 
     - name: Deploy the API, client, and PostGIS
       run: |
