@@ -6,15 +6,15 @@ require('dotenv').config()
 const resolveConfig = mode =>
   mode === 'production'
     ? {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
       }
     : {
         extensions: ['.js', '.jsx'],
         symlinks: true,
         alias: {
           react: path.resolve('./node_modules/react'),
-          'react-dom': path.resolve('./node_modules/react-dom')
-        }
+          'react-dom': path.resolve('./node_modules/react-dom'),
+        },
       }
 
 module.exports = ({ mode }) => ({
@@ -22,7 +22,7 @@ module.exports = ({ mode }) => ({
   entry: './src/index.jsx',
   output: {
     publicPath: '/',
-    filename: 'index.js'
+    filename: 'index.[contenthash].js',
   },
   resolve: resolveConfig(mode),
   module: {
@@ -31,12 +31,12 @@ module.exports = ({ mode }) => ({
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.*css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -47,19 +47,19 @@ module.exports = ({ mode }) => ({
               fallback: 'file-loader',
               name: '[name][md5:hash].[ext]',
               outputPath: 'assets/',
-              publicPath: '/assets/'
-            }
-          }
-        ]
-      }
-    ]
+              publicPath: '/assets/',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new Dotenv(),
     new HtmlWebPackPlugin({
       template: './index.html',
-      PUBLIC_PATH: ''
-    })
+      PUBLIC_PATH: '',
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -68,7 +68,7 @@ module.exports = ({ mode }) => ({
     compress: true,
     allowedHosts: ['.localhost'],
     headers: {
-      'Access-Control-Allow-Headers': '*'
-    }
-  }
+      'Access-Control-Allow-Headers': '*',
+    },
+  },
 })
