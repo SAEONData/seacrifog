@@ -21,7 +21,7 @@ const tourConfig = [
       'Here is an overview of our data. The chart shows the variables measured across all of our sites',
     selector: {
       id: 'tour-stop-1',
-      options: { behavior: 'smooth', block: 'end' },
+      options: { behavior: 'smooth', block: 'start' },
     },
   },
   {
@@ -37,7 +37,7 @@ const tourConfig = [
       'The center pie chart shows an aggregation of sites by networks/organizations. Hover over a pie slice to see how many sites are associated with a particular network/organization',
     selector: {
       id: 'tour-stop-1',
-      options: { behavior: 'smooth', block: 'end' },
+      options: { behavior: 'smooth', block: 'start' },
     },
   },
   {
@@ -53,7 +53,7 @@ const tourConfig = [
       'The outer pie chart shows an aggregation of sites by the variables they measure. Hover over a pie slice to see how many sites a particular variable is measured at',
     selector: {
       id: 'tour-stop-1',
-      options: { behavior: 'smooth', block: 'end' },
+      options: { behavior: 'smooth', block: 'start' },
     },
   },
   {
@@ -69,7 +69,7 @@ const tourConfig = [
       "Click on a pie slice of the inner chart to see the variables that a network/organization meastures, aggregated by the network/organization's sites",
     selector: {
       id: 'tour-stop-1',
-      options: { behavior: 'smooth', block: 'end' },
+      options: { behavior: 'smooth', block: 'start' },
     },
   },
   {
@@ -85,7 +85,7 @@ const tourConfig = [
       'Deselect the inner pie. Then click on a pie slice of the outer chart to see which networks/organizations measure that variable, across all sites that measure that variable',
     selector: {
       id: 'tour-stop-1',
-      options: { behavior: 'smooth', block: 'end' },
+      options: { behavior: 'smooth', block: 'start' },
     },
   },
   {
@@ -93,7 +93,7 @@ const tourConfig = [
       'This tour is currently being extented to show how to navigate the rest of the webapp ...',
     selector: {
       id: 'tour-stop-2',
-      options: { behavior: 'smooth', block: 'end' },
+      options: { behavior: 'smooth', block: 'nearest' },
     },
   },
   // {
@@ -118,8 +118,9 @@ export default ({ history }) => {
     }
 
     if (selector) {
-      const el = document.getElementById(selector.id)
-      el.scrollIntoView(selector.options)
+      const el = document.getElementById(`${selector.id}`)
+      const anchor = document.getElementById(`${selector.id}-anchor`)
+      anchor.scrollIntoView(selector.options)
       el.classList.add('tour-active')
 
       return () => {

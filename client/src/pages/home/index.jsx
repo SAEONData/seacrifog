@@ -65,6 +65,7 @@ export default () => {
         {/* Page Navigation links */}
         <Cell id="tour-stop-2" size={12} className="sf-container primary">
           <Wrapper>
+            <div id="tour-stop-2-anchor" style={{ position: 'absolute', top: -250 }} />
             <Content>
               <Button className="white homepage-text" flat disabled>
                 EXPLORE BY:
@@ -246,6 +247,7 @@ export default () => {
           className="sf-container inverse"
         >
           <Wrapper>
+            <div id="tour-stop-1-anchor" style={{ position: 'absolute', top: -250 }} />
             <Content
               className="homepage-piechart"
               style={{ margin: 0, padding: 0, textAlign: 'center' }}
