@@ -17,8 +17,8 @@ const Icon = ({ symbol, suffix }) => (
 )
 
 const Wrapper = ({ children }) => <div className="sf-wrapper">{children}</div>
-const Content = ({ children, style, className = '' }) => (
-  <div className={'sf-content ' + className} style={style ? style : {}}>
+const Content = ({ children, style, className = '', ...other }) => (
+  <div {...other} className={'sf-content ' + className} style={style ? style : {}}>
     {children}
   </div>
 )
@@ -63,7 +63,7 @@ export default () => {
         </Cell>
 
         {/* Page Navigation links */}
-        <Cell size={12} className="sf-container primary">
+        <Cell id="tour-stop-2" size={12} className="sf-container primary">
           <Wrapper>
             <Content>
               <Button className="white homepage-text" flat disabled>
@@ -238,7 +238,13 @@ export default () => {
         </Cell>
 
         {/* Chart */}
-        <Cell phoneHidden style={{ padding: 0 }} size={12} className="sf-container inverse">
+        <Cell
+          id="tour-stop-1"
+          phoneHidden
+          style={{ padding: 0 }}
+          size={12}
+          className="sf-container inverse"
+        >
           <Wrapper>
             <Content
               className="homepage-piechart"

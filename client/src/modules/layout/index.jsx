@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react'
+import { render } from 'react-dom'
 import { NavigationDrawer, Button } from 'react-md'
 import { withRouter } from 'react-router'
-import { Switch, useHistory } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import NavItemLink from './nav-item-link'
 import debounce from '../../lib/debounce'
-import siteTour from '../site-tour'
+import SiteTour from '../site-tour'
+import { useHistory } from 'react-router-dom'
 
 const getCurrentPath = ({ pathname }) => {
   return pathname
@@ -15,8 +17,8 @@ const getCurrentPath = ({ pathname }) => {
 }
 
 const Navigation = ({ location, navItems, children }) => {
-  const currentPath = useMemo(() => getCurrentPath(location), [location])
   const history = useHistory()
+  const currentPath = useMemo(() => getCurrentPath(location), [location])
 
   return (
     <NavigationDrawer
@@ -62,7 +64,9 @@ const Navigation = ({ location, navItems, children }) => {
             alt="EU logo"
           />
           <Button
-            onClick={() => siteTour(history)}
+            onClick={() => {
+              render(<SiteTour history={history} />, document.getElementById('app-tour'))
+            }}
             tooltipLabel="Tour the site to find out what functionality exists"
             tooltipPosition="left"
             floating

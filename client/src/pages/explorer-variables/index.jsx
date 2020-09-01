@@ -250,8 +250,8 @@ export default props => {
                                   title: 'Protocols',
                                   subTitle: 'Used for this variable',
                                   component:
-                                    variable.directly_related_protocols[0] ||
-                                    variable.indirectly_related_protocols[0] ? (
+                                    variable.directly_related_protocols?.[0] ||
+                                    variable.indirectly_related_protocols?.[0] ? (
                                       <div>
                                         <List>
                                           {variable.directly_related_protocols
@@ -298,10 +298,10 @@ export default props => {
                                 {
                                   title: 'Data Products',
                                   subTitle: 'Using this variable',
-                                  component: variable.dataproducts[0] ? (
+                                  component: variable?.dataproducts?.[0] ? (
                                     <div>
                                       <List>
-                                        {variable.dataproducts
+                                        {[...variable.dataproducts]
                                           .sort((a, b) =>
                                             a.title > b.title ? 1 : b.title > a.title ? -1 : 0
                                           )
