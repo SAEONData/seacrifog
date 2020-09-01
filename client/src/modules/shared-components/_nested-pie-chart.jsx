@@ -57,21 +57,46 @@ export default class SitesChart extends PureComponent {
   }
 
   setOption = () => {
-    const { sets, subtext, title = null } = this.props
+    const { props, state } = this
+    const { sets, subtext, title = null } = props
+    const { filters } = state
+    const [networkFilter, variableFilter] = filters
+
+    let filterTxt = ''
+    if (networkFilter) {
+      filterTxt += 'by Network/Organization'
+      if (variableFilter) {
+        filterTxt += `\nby Variable`
+      }
+    } else if (variableFilter) {
+      filterTxt += 'by Variable'
+    }
+
     return {
-      title: {
-        subtext,
-        textStyle: {
-          color: '#000000',
+      title: [
+        {
+          text: 'FILTER CHART',
+          subtext: filterTxt,
+          top: subtext ? 150 : 130,
+          textStyle: {
+            color: '#000000',
+          },
+          padding: [25, 0, 0, 25],
         },
-        padding: [25, 0, 0, 25],
-        text:
-          title ||
-          sets
-            .map(({ name }) => name.toUpperCase())
-            .reverse()
-            .join(' BY '),
-      },
+        {
+          subtext,
+          textStyle: {
+            color: '#000000',
+          },
+          padding: [25, 0, 0, 25],
+          text:
+            title ||
+            sets
+              .map(({ name }) => name.toUpperCase())
+              .reverse()
+              .join(' BY '),
+        },
+      ],
       tooltip: {
         trigger: 'item',
         formatter: `{a}<br/>{b}<br />{c} ${this.props.a}`,

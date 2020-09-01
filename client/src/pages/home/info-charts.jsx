@@ -29,8 +29,8 @@ export default () => {
     <NestedPieChart
       a={'Sites'}
       theme={echartsTheme}
-      title={'Our Data'}
-      subtext={`Explore data collected across sites`}
+      title={'SITE DATA'}
+      subtext={'Explore the variables measured across sites'}
       sets={[
         {
           name: 'networks',
