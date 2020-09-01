@@ -125,7 +125,7 @@ export default class SitesChart extends PureComponent {
         roseType: 'area',
         minShowLabelAngle: 5,
         radius: [`${i * 60}%`, `${i * 60 + (2 - i) * 10}%`],
-        // center: ['65%', '50%'],
+        center: ['65%', '50%'],
         data: this.filterDataset(i),
         itemStyle: {
           emphasis: {
