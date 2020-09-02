@@ -48,8 +48,12 @@ class View extends PureComponent {
 
   render() {
     const { searchRefs, props, state } = this
-    const { loadingSearchResults, searchResults, sites, networks, variables, protocols } = props
+    const { loadingSearchResults, sites, networks, variables, protocols } = props
+    const searchResults = [...props.searchResults].sort((a, b) =>
+      a.result.result_length < b.result.result_length ? 1 : -1
+    )
     const { currentIndex } = state
+
     return (
       <div>
         {/* Toolbar */}
@@ -57,60 +61,63 @@ class View extends PureComponent {
           id={'search-loading-progress-indicator'}
           style={getProgresStyle(loadingSearchResults)}
         />
-        <Toolbar
-          colored
-          className={'sf-content-header'}
-          title={
-            searchResults.reduce((sum, { result }) => sum + (result?.results?.length || 0), 0) +
-            ' search results'
-          }
-          actions={[
-            <Button
-              key={0}
-              tooltipLabel="To top"
-              onClick={() => scrolltoRecord(0, searchRefs[currentIndex])}
-              icon
-            >
-              arrow_upward
-            </Button>,
-            <Button
-              key={1}
-              tooltipLabel="To bottom"
-              onClick={() =>
-                scrolltoRecord(
-                  searchResults.map(({ result }) => result?.results?.length || 0)[currentIndex] - 1,
-                  searchRefs[currentIndex]
-                )
-              }
-              icon
-            >
-              arrow_downward
-            </Button>,
-            <SideMenu
-              key={2}
-              toolbarActions={[]}
-              control={({ toggleMenu }) => (
-                <Button
-                  tooltipLabel={'View current filters'}
-                  tooltipPosition="left"
-                  className="md-btn--toolbar"
-                  style={mainMenuIconStyle()}
-                  onClick={toggleMenu}
-                  icon
-                >
-                  filter_list
-                </Button>
-              )}
-            >
-              <SideMenuFilter
-                sites={sites}
-                networks={networks}
-                variables={variables}
-                protocols={protocols}
-              />
-            </SideMenu>,
-          ]}
-        />
+        <div id="search-results-header">
+          <Toolbar
+            colored
+            className={'sf-content-header'}
+            title={
+              searchResults.reduce((sum, { result }) => sum + (result?.results?.length || 0), 0) +
+              ' search results'
+            }
+            actions={[
+              <Button
+                key={0}
+                tooltipLabel="To top"
+                onClick={() => scrolltoRecord(0, searchRefs[currentIndex])}
+                icon
+              >
+                arrow_upward
+              </Button>,
+              <Button
+                key={1}
+                tooltipLabel="To bottom"
+                onClick={() =>
+                  scrolltoRecord(
+                    searchResults.map(({ result }) => result?.results?.length || 0)[currentIndex] -
+                      1,
+                    searchRefs[currentIndex]
+                  )
+                }
+                icon
+              >
+                arrow_downward
+              </Button>,
+              <SideMenu
+                key={2}
+                toolbarActions={[]}
+                control={({ toggleMenu }) => (
+                  <Button
+                    tooltipLabel={'View current filters'}
+                    tooltipPosition="left"
+                    className="md-btn--toolbar"
+                    style={mainMenuIconStyle()}
+                    onClick={toggleMenu}
+                    icon
+                  >
+                    filter_list
+                  </Button>
+                )}
+              >
+                <SideMenuFilter
+                  sites={sites}
+                  networks={networks}
+                  variables={variables}
+                  protocols={protocols}
+                />
+              </SideMenu>,
+            ]}
+          />
+        </div>
 
         {/* Tabs header (list of orgs) */}
         <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>

@@ -71,7 +71,7 @@ export default () => {
                 EXPLORE BY:
               </Button>
               <Button
-                className="white link homepage-button"
+                className="white link homepage-button tour-stop-2-clickable tour-stop-2-clickable-sites"
                 onClick={() => history.push('/sites')}
                 flat
                 swapTheming
@@ -80,7 +80,7 @@ export default () => {
                 Sites
               </Button>
               <Button
-                className="white link homepage-button"
+                className="white link homepage-button tour-stop-2-clickable tour-stop-2-clickable-networks"
                 onClick={() => history.push('/networks')}
                 flat
                 swapTheming
@@ -89,7 +89,7 @@ export default () => {
                 Networks
               </Button>
               <Button
-                className="white link homepage-button"
+                className="white link homepage-button tour-stop-2-clickable tour-stop-2-clickable-variables"
                 onClick={() => history.push('/variables')}
                 flat
                 swapTheming
@@ -98,7 +98,7 @@ export default () => {
                 Variables
               </Button>
               <Button
-                className="white link homepage-button"
+                className="white link homepage-button tour-stop-2-clickable tour-stop-2-clickable-protocols"
                 onClick={() => history.push('/protocols')}
                 flat
                 swapTheming

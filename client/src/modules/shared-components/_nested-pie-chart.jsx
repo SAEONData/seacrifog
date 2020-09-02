@@ -89,12 +89,7 @@ export default class SitesChart extends PureComponent {
             color: '#000000',
           },
           padding: [25, 0, 0, 25],
-          text:
-            title ||
-            sets
-              .map(({ name }) => name.toUpperCase())
-              .reverse()
-              .join(' BY '),
+          text: title || 'SITES OVERVIEW',
         },
       ],
       tooltip: {

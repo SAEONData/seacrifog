@@ -57,6 +57,8 @@ export default props => {
             }) => {
               return (
                 <>
+                  {/* This div is used for the site tour */}
+                  <div id="networks-overview-anchor" style={{ position: 'absolute', top: 20 }} />
                   <ChartState>
                     <ExplorerHeaderBar
                       selectedIds={selectedNetworks}
@@ -75,7 +77,7 @@ export default props => {
                   </ChartState>
 
                   <ExplorerLayout>
-                    <ExplorerTableLayout>
+                    <ExplorerTableLayout id="networks-table">
                       <Table
                         actions={[
                           <ScrollButton
@@ -105,7 +107,7 @@ export default props => {
                     <ExplorerTabsLayout
                       currentIndex={currentNetwork}
                       updateCurrentIndex={i => updateGlobalState({ currentNetwork: i })}
-                      id="selected-variables-tabs"
+                      id="networks-overview"
                       selectedIds={selectedNetworks}
                       {...props}
                     >
