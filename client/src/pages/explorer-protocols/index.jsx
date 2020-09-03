@@ -47,6 +47,8 @@ export default props => {
         <GlobalStateContext.Consumer>
           {({ updateGlobalState, selectedProtocols, selectedVariables, currentProtocol }) => (
             <>
+              {/* This div is used for the site tour */}
+              <div id="protocols-overview-anchor" style={{ position: 'absolute', top: 20 }} />
               <ChartState>
                 <ExplorerHeaderBar
                   selectedIds={selectedProtocols}
@@ -65,7 +67,7 @@ export default props => {
               </ChartState>
 
               <ExplorerLayout>
-                <ExplorerTableLayout>
+                <ExplorerTableLayout id="protocols-table">
                   <Table
                     actions={[
                       <ScrollButton
@@ -95,7 +97,7 @@ export default props => {
                 <ExplorerTabsLayout
                   currentIndex={currentProtocol}
                   updateCurrentIndex={i => updateGlobalState({ currentProtocol: i })}
-                  id="selected-protocols-tabs"
+                  id="protocols-overview"
                   selectedIds={selectedProtocols}
                   {...props}
                 >

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Button, Drawer, Toolbar } from 'react-md'
 
-const drawerStyle = { minWidth: '400px', overflowY: 'auto', zIndex: 20 }
+const drawerStyle = { minWidth: '400px', overflowY: 'auto', zIndex: 22 }
 
 export default class extends PureComponent {
   state = { menuOpen: false }

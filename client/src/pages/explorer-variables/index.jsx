@@ -69,6 +69,8 @@ export default props => {
             selectedProtocols,
           }) => (
             <>
+              {/* This div is used for the site tour */}
+              <div id="variables-overview-anchor" style={{ position: 'absolute', top: 20 }} />
               <ChartState>
                 <ExplorerHeaderBar
                   selectedIds={selectedVariables}
@@ -87,7 +89,7 @@ export default props => {
               </ChartState>
 
               <ExplorerLayout>
-                <ExplorerTableLayout>
+                <ExplorerTableLayout id="variables-table">
                   <Table
                     actions={[
                       <ScrollButton
@@ -117,7 +119,7 @@ export default props => {
                 <ExplorerTabsLayout
                   currentIndex={currentVariable}
                   updateCurrentIndex={i => updateGlobalState({ currentVariable: i })}
-                  id="selected-variables-tabs"
+                  id="variables-overview"
                   selectedIds={selectedVariables}
                   {...props}
                 >

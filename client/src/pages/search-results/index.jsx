@@ -120,7 +120,11 @@ class View extends PureComponent {
         </div>
 
         {/* Tabs header (list of orgs) */}
-        <TabsContainer labelAndIcon onTabChange={currentIndex => this.setState({ currentIndex })}>
+        <TabsContainer
+          panelStyle={{ minHeight: 640 }}
+          labelAndIcon
+          onTabChange={currentIndex => this.setState({ currentIndex })}
+        >
           <Tabs tabId="metadata-search-tabs">
             {searchResults.map(({ result, target }, i) => {
               const { results, result_length } = result

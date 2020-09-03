@@ -12,8 +12,8 @@ export default [
     text: (
       <p>
         This table shows all networks / organizations that own and/or maintain sites. In the search
-        bar, search fo the SAEON organization, select that table row. While you at it, select a
-        couple other rows in the table. Then go to the next step in this tour
+        bar, search for &quot;Sea-borne&quot; networks, and select a couple networks (so that there
+        are search results). Then go to the next step in this tour
       </p>
     ),
     selector: {
@@ -31,8 +31,9 @@ export default [
     text: (
       <p>
         Having selected a couple networks, two things occur: <b>(1)</b> you can explore the details
-        of the networks that you have selected, as well as edit / download the description of the
-        network (the buttons in the top-right of the hightlighted area)
+        of the networks that you have selected (each network has its own tabbed view - try switching
+        tabs). The buttons in the top right of each tab allow users to edit / download the record
+        that describes the network entity
       </p>
     ),
     selector: {

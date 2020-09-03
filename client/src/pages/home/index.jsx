@@ -253,6 +253,7 @@ export default () => {
               style={{ margin: 0, padding: 0, textAlign: 'center' }}
             >
               <InfoChart />
+              <p style={{ position: 'absolute', right: 0, bottom: 0 }}>Apache ECharts</p>
             </Content>
           </Wrapper>
         </Cell>

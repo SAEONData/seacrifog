@@ -43,43 +43,75 @@ export default ({ history }) => {
     }
 
     if (selector) {
-      const { id, options, clickableElementsSelector, goto } = selector
+      const { className, id, options, clickableElementsSelector, goto } = selector
+      let clickHandler
 
-      const el = document.getElementById(id)
-      el.classList.add('tour-active')
-
-      const anchor = document.getElementById(`${id}-anchor`) || el
-      anchor.scrollIntoView(options)
-
-      const clickHandler = e => {
-        const button = e.target.closest(`.${clickableElementsSelector}`)
-        const classes = button.classList
-        destination = [...classes]
-          .filter(c => c.includes(clickableElementsSelector))
-          .map(c => c.replace(clickableElementsSelector, ''))
-          .filter(_ => _)[0]
-          .replace('-', '')
-
-        setIndex(goto ? tour.findIndex(({ id }) => id === goto) : index + 1)
+      // Elements specified by className are styled
+      if (className) {
+        document.getElementsByClassName(className).forEach(el => {
+          el.classList.add('tour-active')
+        })
       }
 
-      clickableElementsSelector &&
-        document.getElementsByClassName(clickableElementsSelector).forEach(el => {
-          el.addEventListener('click', clickHandler)
-        })
+      // Elements specified by id are styled AND scrolled to
+      if (id) {
+        const el = document.getElementById(id)
+        const anchor = document.getElementById(`${id}-anchor`) || el
+        el.classList.add('tour-active')
+        anchor.scrollIntoView(options)
 
-      return () => {
-        el.classList.remove('tour-active')
+        /**
+         * This is not a particularly generic way of implementing click handlers
+         * Basically the assumption is that it will always be a navigation button
+         * that is clicked
+         */
+        clickHandler = e => {
+          const button = e.target.closest(`.${clickableElementsSelector}`)
+          const classes = button.classList
+          destination = [...classes]
+            .filter(c => c.includes(clickableElementsSelector))
+            .map(c => c.replace(clickableElementsSelector, ''))
+            .filter(_ => _)[0]
+            .replace('-', '')
+          setIndex(goto ? tour.findIndex(({ id }) => id === goto) : index + 1)
+        }
 
+        // If a click handler is required, add to all elements
         clickableElementsSelector &&
           document.getElementsByClassName(clickableElementsSelector).forEach(el => {
-            el.removeEventListener('click', clickHandler)
+            el.addEventListener('click', clickHandler)
           })
+      }
+
+      return () => {
+        // Release class-selected elements
+        if (className) {
+          document.getElementsByClassName(className).forEach(el => {
+            el.classList.add('tour-active')
+          })
+        }
+
+        // Release individually selected elements
+        if (id) {
+          document.getElementById(id).classList.remove('tour-active')
+          clickableElementsSelector &&
+            document.getElementsByClassName(clickableElementsSelector).forEach(el => {
+              el.removeEventListener('click', clickHandler)
+            })
+        }
       }
     }
   }, [index])
 
-  const { dialogStyle, dialogProps, text, selector, goto = undefined, end = undefined } = thisStep
+  const {
+    title = 'Tour',
+    dialogStyle,
+    dialogProps,
+    text,
+    selector,
+    goto = undefined,
+    end = undefined,
+  } = thisStep
 
   return (
     <DialogContainer
@@ -90,7 +122,7 @@ export default ({ history }) => {
       visible={true}
       onHide={exit}
       modal
-      title="Site Tour"
+      title={title}
       actions={[
         <Button
           key="next"

@@ -34,7 +34,7 @@ function resizeMap() {
 const badgeContainer = {
   position: 'absolute',
   right: 0,
-  zIndex: 1,
+  zIndex: 21,
   borderRadius: '100%',
   margin: `10px 10px`,
   padding: '5px',
@@ -175,6 +175,7 @@ class AtlasController extends PureComponent {
                       ]}
                       control={({ toggleMenu }) => (
                         <Button
+                          className="sf-side-menu"
                           tooltipLabel="Filter"
                           tooltipPosition="left"
                           style={{
@@ -182,7 +183,7 @@ class AtlasController extends PureComponent {
                             top: 0,
                             right: 0,
                             margin: '10px',
-                            zIndex: 1,
+                            zIndex: 21,
                           }}
                           swapTheming
                           primary
@@ -215,7 +216,7 @@ class AtlasController extends PureComponent {
                             top: 50,
                             right: 0,
                             margin: '10px',
-                            zIndex: 1,
+                            zIndex: 21,
                           }}
                           icon
                           onClick={toggleMenu}
@@ -250,7 +251,7 @@ class AtlasController extends PureComponent {
                               color: 'black',
                               opacity: 0.4,
                             },
-                        { position: 'absolute', top: 100, right: 0, margin: '10px', zIndex: 1 }
+                        { position: 'absolute', top: 100, right: 0, margin: '10px', zIndex: 21 }
                       )}
                       swapTheming
                       primary
