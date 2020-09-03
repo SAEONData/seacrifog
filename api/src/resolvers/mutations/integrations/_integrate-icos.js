@@ -5,7 +5,7 @@ import axios from 'axios'
  * This integration is a POC only. There are several problems:
  *
  * (1) The ICOS network row insert is a stub - ideally ICOS information
- * should be fetchec from ICOS and udpated
+ * should be fetched from ICOS and udpated
  *
  * (2) Stations are identified by name and not an ID. This means that
  * if a station name is changed there will be 2 rows in SEACRIFOG

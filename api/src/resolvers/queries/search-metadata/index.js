@@ -19,6 +19,20 @@ const targets = {
   icos: 'ICOS Metadata Results',
 }
 
+/**
+ * NOTE
+ *
+ * exeConfigs is an array of search contexts
+ * One context for each organization searched
+ * that allows for pagination of a particular
+ * search
+ *
+ * i.e.
+ * [
+ *  { limit: 100, offset: 1, name: 'saeon' },
+ *  { limit: 100, offset: 0, name: 'icos' }
+ * ]
+ */
 export default async (self, args, req) => {
   const { findNetworks, findVariables, findProtocols, findSites } = req.ctx.db.dataLoaders
   const {
@@ -115,18 +129,14 @@ export default async (self, args, req) => {
   search.exeConfigs = exeConfigs
 
   log(
-    'Searching metadata',
+    '\n\nSearching metadata:',
     `${activeExecutors.length} endpoints registererd for ${JSON.stringify(activeExecutors)}`,
-    JSON.stringify(search)
+    '\n',
+    JSON.stringify(search, null, 2),
+    '\n\n'
   )
 
-  // return []
-
-  /**
-   * An array or results that correspond to each executor
-   * [executor1Results, executor2Results, etc]
-   */
-  const searchResults = await Promise.all(
+  const searchResults = await Promise.allSettled(
     executors.map(
       dir =>
         new Promise((resolve, reject) => {
@@ -145,7 +155,10 @@ export default async (self, args, req) => {
   return executors.map((executor, i) => ({
     i,
     target: targets[executor] || executor,
-    result: searchResults[i]?.error || searchResults[i] || null,
-    error: searchResults[i]?.error || null,
+    result: searchResults[i]?.status === 'fulfilled' ? searchResults[i].value : undefined,
+    error:
+      searchResults[i]?.status === 'fulfilled'
+        ? undefined
+        : 'Search process resulted in a rejected promise',
   }))
 }
