@@ -203,7 +203,7 @@ export default [
         width: 600,
       },
       dialogStyle: {
-        transform: 'translate(50%, 65%)',
+        transform: 'translate(30%, 65%)',
       },
       destination: 'networks',
       pathname: '/networks',

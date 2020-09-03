@@ -6,7 +6,7 @@ export default [
       width: 600,
     },
     dialogStyle: {
-      transform: 'translate(50%, 65%)',
+      transform: 'translate(30%, 65%)',
     },
     id: 'variables-tour',
     title: 'Search by Variables',

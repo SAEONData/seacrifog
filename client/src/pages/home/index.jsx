@@ -65,7 +65,7 @@ export default () => {
         {/* Page Navigation links */}
         <Cell id="tour-stop-2" size={12} className="sf-container primary">
           <Wrapper>
-            <div id="tour-stop-2-anchor" style={{ position: 'absolute', top: -250 }} />
+            <div id="tour-stop-2-anchor" style={{ position: 'absolute', top: -100 }} />
             <Content>
               <Button className="white homepage-text" flat disabled>
                 EXPLORE BY:
