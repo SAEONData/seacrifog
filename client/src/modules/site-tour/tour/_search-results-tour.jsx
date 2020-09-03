@@ -6,6 +6,7 @@ export default [
     dialogProps: {
       width: 600,
     },
+    title: 'Search Results',
     text: (
       <p>
         And, <b>(2)</b>, the search parameters for metadata records has been further constrained to
@@ -24,6 +25,7 @@ export default [
     dialogProps: {
       width: 600,
     },
+    title: 'Search Results',
     text: (
       <p>
         The funnel-shaped filter icon - the right-most icon - shows the current application filter
@@ -43,6 +45,7 @@ export default [
     dialogProps: {
       width: 600,
     },
+    title: 'Search Results',
     text: (
       <p>Click the icon with the number badge to see the search results and continue the tour</p>
     ),

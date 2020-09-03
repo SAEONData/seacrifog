@@ -9,6 +9,7 @@ export default [
       transform: 'translate(50%, 65%)',
     },
     id: 'variables-tour',
+    title: 'Search by Variables',
     text: (
       <p>
         This table shows all variables measured across sites. In the search bar, search for
@@ -28,6 +29,7 @@ export default [
     dialogStyle: {
       transform: 'translate(-50%, -150%)',
     },
+    title: 'Search by Variables',
     text: (
       <p>
         Having selected a couple variables, two things occur: <b>(1)</b> you can explore the details

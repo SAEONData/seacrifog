@@ -4,6 +4,7 @@ export default [
   {
     id: 'site-tour',
     pathname: '/sites',
+    title: 'Search by Sites',
     text: (
       <p>
         There are 4 icons on the map (right side). The top funnel-shaped icon shows the the current

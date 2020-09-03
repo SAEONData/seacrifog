@@ -9,6 +9,7 @@ export default [
       transform: 'translate(50%, 65%)',
     },
     id: 'protocols-tour',
+    title: 'Search by Protocols',
     text: (
       <p>
         This table shows all protocols used at collection sites. Sort the table by &quot;id&quot;,
@@ -28,6 +29,7 @@ export default [
     dialogStyle: {
       transform: 'translate(-50%, -150%)',
     },
+    title: 'Search by Protocols',
     text: (
       <p>
         Having selected a couple protocols, two things occur: <b>(1)</b> you can explore the details

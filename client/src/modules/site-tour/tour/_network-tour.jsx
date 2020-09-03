@@ -9,6 +9,7 @@ export default [
       transform: 'translate(50%, 65%)',
     },
     id: 'networks-tour',
+    title: 'Search by Variables',
     text: (
       <p>
         This table shows all networks / organizations that own and/or maintain sites. In the search
@@ -28,6 +29,7 @@ export default [
     dialogStyle: {
       transform: 'translate(-50%, -150%)',
     },
+    title: 'Search by Variables',
     text: (
       <p>
         Having selected a couple networks, two things occur: <b>(1)</b> you can explore the details

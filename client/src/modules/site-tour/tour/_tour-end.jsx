@@ -6,6 +6,7 @@ export default [
     dialogProps: {
       width: 500,
     },
+    title: 'Tour Complete',
     text: (
       <p>
         Thank you for taking the SEACRIFOG inventory search site-tour. Please{' '}
