@@ -23,7 +23,7 @@
     "lint": "eslint \"./src/**/*.{js,jsx}\""
   },
   "dependencies": {
-    "@apollo/client": "^3.1.4",
+    "@apollo/client": "3.1.4",
     "@babel/core": "7.11.5",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-transform-runtime": "7.11.5",
