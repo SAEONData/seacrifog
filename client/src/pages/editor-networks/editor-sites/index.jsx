@@ -74,7 +74,7 @@ export default class extends PureComponent {
 
               <OlReact
                 style={{ height: '500px', width: '100%' }}
-                layers={[terrestrisBaseMap(), layer]}
+                layers={[layer, terrestrisBaseMap()]}
               >
                 {({ map }) => (
                   <SingleFeatureSelector
