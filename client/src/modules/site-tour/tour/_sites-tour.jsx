@@ -18,6 +18,20 @@ export default [
         (enabled when there is 1+ results)
       </p>
     ),
+  },
+  {
+    dialogProps: {
+      width: 600,
+    },
+    pathname: '/sites',
+    title: 'Search by Sites',
+    text: (
+      <p>
+        Currently metadata records aren&apos;t associated with individual sites except indirectly
+        via the variables measured. As such, at this point filtering by sites does NOT result in
+        positive search matches
+      </p>
+    ),
     goto: 'the-end',
   },
 ]
