@@ -27,10 +27,9 @@ export default [
     title: 'Search by Sites',
     text: (
       <p>
-        Currently metadata records are not associated with individual sites except indirectly via
-        the variables measured at sites, and the networks / organizations that own or maintain
-        sites. For this reason, filtering metadata records by sites in this prototype tool does NOT
-        result in positive search matches
+        Metadata records do not always contain site-level information. For this reason, filtering
+        metadata records by sites in this prototype tool does not always result in positive search
+        matches
       </p>
     ),
     goto: 'the-end',
