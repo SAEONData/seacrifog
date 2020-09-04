@@ -15,7 +15,7 @@ export default [
         map (as apposed to clicking a cluster, which shows data for selected sites). You can remove
         search parameters by clicking the reset button (enabled when search parameters have been
         applied). The button in the bottom right shows results that match the current search context
-        (enabled when there is 1+ results)
+        (enabled when there are 1 or more results)
       </p>
     ),
   },
@@ -27,9 +27,10 @@ export default [
     title: 'Search by Sites',
     text: (
       <p>
-        Currently metadata records aren&apos;t associated with individual sites except indirectly
-        via the variables measured. As such, at this point filtering by sites does NOT result in
-        positive search matches
+        Currently metadata records are not associated with individual sites except indirectly via
+        the variables measured at sites, and the networks / organizations that own or maintain
+        sites. For this reason, filtering metadata records by sites in this prototype tool does NOT
+        result in positive search matches
       </p>
     ),
     goto: 'the-end',
