@@ -1,4 +1,3 @@
-import { parentPort, workerData } from 'worker_threads'
 import axios from 'axios'
 import sparqlQuery from './sparql/sparql-query'
 
@@ -9,7 +8,7 @@ const themeMap = {
   Oceanic: 'http://meta.icos-cp.eu/resources/themes/ocean',
 }
 
-;(async search => {
+export default async search => {
   const { variables, sites, networks, exeConfigs } = search
   const { offset, limit } = exeConfigs.filter(ec => ec.name === 'icos')[0] || {
     offset: 0,
@@ -29,35 +28,37 @@ const themeMap = {
           return doSearch
         }, false)
 
-  let response
+  let data
+  console.log('ICOS SEARCH?', doSearch)
   if (doSearch) {
-    response = (
-      (await axios({
-        baseURL: 'https://meta.icos-cp.eu/sparql',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain',
-          Accept: 'application/json',
-          'Accept-Encoding': 'gzip, deflate, br',
-        },
-        data: sparqlQuery({ themeIris, sites, limit, offset }),
-      }).catch(error => console.error('Error searching metadata', error))) || {}
-    )?.data
+    const searchQuery = sparqlQuery({ themeIris, sites, limit, offset })
+    console.log('QUERY:', searchQuery, '\n')
+
+    const response = await axios({
+      baseURL: 'https://meta.icos-cp.eu/sparql',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+        Accept: 'application/json',
+        'Accept-Encoding': 'gzip, deflate, br',
+      },
+      data: searchQuery,
+    }).catch(error => {
+      throw new Error('ICOS search error. ' + error.message)
+    })
+
+    data = response.data
   }
 
-  response = response || {
+  data = data || {
     results: {
       bindings: [],
     },
   }
 
-  parentPort.postMessage({
+  return {
     success: true,
-    result_length: response?.results?.bindings?.length || 0,
-    results: response?.results?.bindings || [],
-  })
-})(workerData)
-  .catch(error => {
-    console.log('Unexpected error searching ICOS catalogue', error)
-  })
-  .finally(() => process.exit(0))
+    result_length: data?.results?.bindings?.length || 0,
+    results: data?.results?.bindings || [],
+  }
+}

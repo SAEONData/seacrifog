@@ -32,7 +32,7 @@ class View extends PureComponent {
 
   constructor(props) {
     super(props)
-    this.searchRefs = props.searchResults.map(() => React.createRef())
+    this.searchRefs = props.searchResults?.map(() => React.createRef())
   }
 
   loadMoreItems = (increment, org) => {
@@ -83,7 +83,7 @@ class View extends PureComponent {
                 tooltipLabel="To bottom"
                 onClick={() =>
                   scrolltoRecord(
-                    searchResults.map(({ result }) => result?.results?.length || 0)[currentIndex] -
+                    searchResults?.map(({ result }) => result?.results?.length || 0)[currentIndex] -
                       1,
                     searchRefs[currentIndex]
                   )
@@ -126,7 +126,7 @@ class View extends PureComponent {
           onTabChange={currentIndex => this.setState({ currentIndex })}
         >
           <Tabs tabId="metadata-search-tabs">
-            {searchResults.map(({ result, target }, i) => {
+            {searchResults?.map(({ result, target }, i) => {
               const { results, result_length } = result
               const org = orgs[target]
               return (
@@ -207,7 +207,7 @@ class View extends PureComponent {
 export default () => (
   <GlobalStateContext.Consumer>
     {({ africaOnly, searchResults, loadingSearchResults, updateGlobalState, exeConfigs }) =>
-      searchResults.length ? (
+      searchResults?.length ? (
         <DataQuery query={ENTIRE_GRAPH} variables={{ extent: getExtent(africaOnly) }}>
           {({ sites, networks, variables, protocols }) => (
             <View

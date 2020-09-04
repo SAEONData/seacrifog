@@ -1,5 +1,5 @@
-import React from 'react'
-import { Toolbar, Button, LinearProgress, Badge } from 'react-md'
+import React, { useState } from 'react'
+import { Toolbar, Button, LinearProgress, Badge, DialogContainer } from 'react-md'
 import DataQuery from '../data-query'
 import { useHistory } from 'react-router-dom'
 import { ENTIRE_GRAPH } from '../../graphql/queries'
@@ -25,6 +25,7 @@ const badgeStyle = disabled => ({
 })
 
 export default ({ resetFn, selectedIds, ...props }) => {
+  const [errorDialogueOpen, setErrorDialogueOpen] = useState(false)
   const history = useHistory()
   const ctx = props.location.pathname.replace('/', '').toUpperCase()
 
@@ -33,14 +34,36 @@ export default ({ resetFn, selectedIds, ...props }) => {
       {({ toggleCharts, showCharts }) => (
         <GlobalStateContext.Consumer>
           {({ africaOnly, loadingSearchResults, searchResults, searchErrors }) => {
-            const searchResultLength = searchErrors.length
-              ? 0
-              : searchResults
-                  .map(r => r?.result?.result_length || 0)
-                  .reduce((sum, val) => sum + val, 0)
+            const searchResultLength = searchResults
+              ?.map(r => r?.result?.result_length || 0)
+              ?.reduce((sum, val) => sum + val, 0)
 
             return (
               <>
+                {/* ERROR DIALOGUE */}
+                <DialogContainer
+                  id="search-error-dialgoue"
+                  focusOnMount={false}
+                  width={800}
+                  visible={errorDialogueOpen}
+                  onHide={() => setErrorDialogueOpen(false)}
+                  title={'Search errors occurred'}
+                >
+                  <p>
+                    We apologise that search errors are occuring. Please{' '}
+                    <a href="mailto:zach@saeon.ac.za" className="link">
+                      CONTACT
+                    </a>{' '}
+                    the site developers to inform them
+                  </p>
+                  {searchErrors?.map((error, i) => (
+                    <p key={i}>
+                      <i>{JSON.stringify(error)}</i>
+                    </p>
+                  ))}
+                </DialogContainer>
+
+                {/* PAGE */}
                 <DataQuery
                   loadingComponent={
                     <>
@@ -67,23 +90,22 @@ export default ({ resetFn, selectedIds, ...props }) => {
                           className={'sf-content-header'}
                           actions={[
                             <Badge
-                              style={searchErrors.length > 0 ? {} : { display: 'none' }}
                               key={0}
-                              badgeStyle={badgeStyle(searchErrors.length > 0 ? false : true)}
+                              badgeStyle={badgeStyle(
+                                searchErrors.length > 0 && !loadingSearchResults ? false : true
+                              )}
                               badgeContent={searchErrors.length}
                               badgeId={'search-results-errors'}
                             >
                               <Button
-                                style={mainMenuIconStyle(searchErrors.length ? false : true)}
-                                disabled={searchErrors.length ? false : true}
-                                tooltipLabel={`${searchErrors.length} error${
-                                  searchErrors.length === 1 ? '' : 's'
-                                } occured searching metadata`}
-                                onClick={() =>
-                                  alert(
-                                    'Please alert SEACRIFOG administrators that search errors are occuring'
-                                  )
+                                style={mainMenuIconStyle(
+                                  searchErrors.length && !loadingSearchResults ? false : true
+                                )}
+                                disabled={
+                                  searchErrors.length && !loadingSearchResults ? false : true
                                 }
+                                tooltipLabel={'Errors occurred. Click for more details'}
+                                onClick={() => setErrorDialogueOpen(true)}
                                 icon
                               >
                                 error
@@ -91,9 +113,10 @@ export default ({ resetFn, selectedIds, ...props }) => {
                             </Badge>,
 
                             <Badge
-                              style={searchErrors.length < 1 ? {} : { display: 'none' }}
                               key={51}
-                              badgeStyle={badgeStyle(searchResultLength > 0 ? false : true)}
+                              badgeStyle={badgeStyle(
+                                searchResultLength > 0 && !loadingSearchResults ? false : true
+                              )}
                               badgeContent={searchResults
                                 .map(r => r?.result?.result_length || 0)
                                 .reduce((sum, val) => sum + val, 0)}
@@ -102,13 +125,17 @@ export default ({ resetFn, selectedIds, ...props }) => {
                               <Button
                                 className="search-results-tour-clickable search-results-tour-clickable-search-results"
                                 tooltipLabel={`Organizations searched: ${
-                                  searchResults.length
+                                  searchResults?.length
                                 }. Records found: ${searchResults
                                   .map(r => r.result.result_length)
                                   .reduce((sum, val) => sum + val, 0)}`}
                                 tooltipPosition="left"
-                                disabled={searchResultLength > 0 ? false : true}
-                                style={mainMenuIconStyle(searchResultLength > 0 ? false : true)}
+                                disabled={
+                                  searchResultLength > 0 && !loadingSearchResults ? false : true
+                                }
+                                style={mainMenuIconStyle(
+                                  searchResultLength > 0 && !loadingSearchResults ? false : true
+                                )}
                                 onClick={() => history.push(`/search-results`)}
                                 icon
                               >

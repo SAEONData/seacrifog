@@ -77,7 +77,10 @@ export default class extends Component {
                   theme={echartsTheme}
                   option={{
                     tooltip: { show: true },
-
+                    xAxis: { show: false },
+                    yAxis: {
+                      show: false,
+                    },
                     series: [
                       {
                         minShowLabelAngle: 6,
@@ -96,8 +99,9 @@ export default class extends Component {
                   theme={echartsTheme}
                   option={{
                     tooltip: { show: true },
-                    xAxis: { name: '' },
+                    xAxis: { show: true, name: '' },
                     yAxis: {
+                      show: true,
                       type: 'category',
                       data: data,
                       axisLabel: { show: false },

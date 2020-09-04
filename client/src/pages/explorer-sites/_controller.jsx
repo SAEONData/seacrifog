@@ -318,7 +318,7 @@ class AtlasController extends PureComponent {
                       >
                         <Button
                           tooltipLabel={`Organizations searched: ${
-                            searchResults.length
+                            searchResults?.length
                           }. Records found: ${searchResults
                             .map(r => r.result.result_length)
                             .reduce((sum, val) => sum + val, 0)}`}

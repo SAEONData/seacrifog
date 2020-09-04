@@ -1,4 +1,3 @@
-import { Worker } from 'worker_threads'
 import { readdirSync } from 'fs'
 import { log } from '../../../lib/log'
 import { config } from 'dotenv'
@@ -137,28 +136,20 @@ export default async (self, args, req) => {
   )
 
   const searchResults = await Promise.allSettled(
-    executors.map(
-      dir =>
-        new Promise((resolve, reject) => {
-          const worker = new Worker(`${__dirname}/executors/${dir}/index.js`, {
-            workerData: search,
-          })
-          worker.on('message', resolve)
-          worker.on('error', reject)
-          worker.on('exit', code => {
-            if (code !== 0) reject(new Error(`Worker stopped with exit code ${code}`))
-          })
-        })
+    executors.map(dir =>
+      import(`${__dirname}/executors/${dir}/index.js`).then(({ default: fn }) => fn(search))
     )
   )
+
+  console.log('searchResults', searchResults)
 
   return executors.map((executor, i) => ({
     i,
     target: targets[executor] || executor,
-    result: searchResults[i]?.status === 'fulfilled' ? searchResults[i].value : undefined,
-    error:
+    result:
       searchResults[i]?.status === 'fulfilled'
-        ? undefined
-        : 'Search process resulted in a rejected promise',
+        ? searchResults[i].value
+        : { success: false, result_length: 0, results: [] },
+    error: searchResults[i]?.status === 'rejected' ? searchResults[i]?.reason : undefined,
   }))
 }

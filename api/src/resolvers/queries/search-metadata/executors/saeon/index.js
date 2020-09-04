@@ -1,4 +1,3 @@
-import { parentPort, workerData } from 'worker_threads'
 import axios from 'axios'
 
 // const getSubjects = search => {
@@ -26,11 +25,10 @@ const getTitles = search => {
 
 // const getIdentifiers = ({ protocols }) => protocols.doi.join(',')
 
-;(async search => {
+export default async search => {
   /**
-   * Prepare the search
+   * Look for the exeConfig for SAEON, and use that to determine pagination
    */
-
   const exeConfig = search.exeConfigs.filter(ec => ec.name === 'saeon')[0] || {
     offset: 1,
     limit: 100,
@@ -63,17 +61,11 @@ const getTitles = search => {
   // if (identifiers)
   // options.params['metadata_json.alternateIdentifiers.alternateIdentifier'] = identifiers
 
-  const data = (
-    (await axios(options).catch(error => console.error('Error searching metadata', error))) || {}
-  ).data
+  const data = await axios(options)
+    .then(res => res.data)
+    .catch(error => {
+      throw new Error('SAEON catalogue search failed. ' + error.message)
+    })
 
-  if (data) {
-    parentPort.postMessage(data)
-  } else {
-    parentPort.postMessage({ error: 'SAEON catalogue search failed' })
-  }
-})(workerData)
-  .catch(error => {
-    console.log('Unexpected error searching SAEON catalogue', error)
-  })
-  .finally(() => process.exit(0))
+  return data
+}

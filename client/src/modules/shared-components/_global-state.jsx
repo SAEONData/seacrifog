@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { ApolloConsumer } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import orgs from '../../pages/search-results/configuration'
 import {
   DEFAULT_SELECTED_SITES,
@@ -11,16 +11,16 @@ import {
 
 export const GlobalStateContext = React.createContext()
 
-class State extends PureComponent {
-  state = {
+export const GlobalState = ({ children }) => {
+  const [state, setState] = useState({
     // Allow for toggling Africa only data
     africaOnly: true,
 
     // Lists of IDs
-    selectedSites: [],
-    selectedNetworks: [],
-    selectedVariables: [],
-    selectedProtocols: [],
+    selectedSites: DEFAULT_SELECTED_SITES || [],
+    selectedNetworks: DEFAULT_SELECTED_NETWORKS || [],
+    selectedVariables: DEFAULT_SELECTED_VARIABLES || [],
+    selectedProtocols: DEFAULT_SELECTED_PROTOCOLS || [],
     selectedDataproducts: [],
 
     // Metadata pagination restrictions
@@ -36,138 +36,72 @@ class State extends PureComponent {
     currentVariable: 0,
     currentProtocol: 0,
     currentDataproduct: 0,
+  })
 
-    // Search results
-    loadingSearchResults: false,
-    searchResults: [],
-    searchErrors: [],
-  }
-
-  componentDidMount() {
-    this.updateGlobalState({
-      selectedSites: DEFAULT_SELECTED_SITES,
-      selectedNetworks: DEFAULT_SELECTED_NETWORKS,
-      selectedVariables: DEFAULT_SELECTED_VARIABLES,
-      selectedProtocols: DEFAULT_SELECTED_PROTOCOLS,
-    })
-  }
-
-  /**
-   * If any selected* lists were changed,
-   * update the metadata search in the background
-   */
-  async componentDidUpdate(prevProps, prevState) {
-    const { client } = this.props
-    const searchFields = [
-      'selectedSites',
-      'selectedNetworks',
-      'selectedVariables',
-      'selectedProtocols',
-      'exeConfigs',
-    ]
-    let refresh = false
-    for (const field of searchFields) {
-      const oldF = prevState[field]
-      const newF = this.state[field]
-      if (oldF !== newF) {
-        refresh = true
-        break
-      }
-    }
-
-    if (!refresh) {
-      return
-    } else {
-      const {
-        selectedSites: bySites,
-        selectedNetworks: byNetworks,
-        selectedVariables: byVariables,
-        selectedProtocols: byProtocols,
-        exeConfigs: exeConfigs,
-      } = this.state
-
-      this.setState({ loadingSearchResults: true }, async () => {
-        let data
-        let errors
-        try {
-          const response = await client.query({
-            query: gql`
-              query search(
-                $bySites: [Int!]
-                $byNetworks: [Int!]
-                $byProtocols: [Int!]
-                $byVariables: [Int!]
-                $exeConfigs: [ExeConfig!]
-              ) {
-                searchMetadata(
-                  bySites: $bySites
-                  byNetworks: $byNetworks
-                  byVariables: $byVariables
-                  byProtocols: $byProtocols
-                  exeConfigs: $exeConfigs
-                ) {
-                  i
-                  target
-                  result
-                  error
-                }
-              }
-            `,
-            fetchPolicy: 'network-only',
-            variables: {
-              bySites,
-              byNetworks,
-              byVariables,
-              byProtocols,
-              exeConfigs,
-            },
-          })
-          data = ((response || {}).data || {}).searchMetadata || []
-          errors = (response || {}).errors || []
-        } catch (error) {
-          errors = [error].flat()
-        } finally {
-          this.setState({
-            loadingSearchResults: false,
-            searchResults: data || [],
-            searchErrors: errors || [],
-          })
+  const { data, error, loading } = useQuery(
+    gql`
+      query search(
+        $bySites: [Int!]
+        $byNetworks: [Int!]
+        $byProtocols: [Int!]
+        $byVariables: [Int!]
+        $exeConfigs: [ExeConfig!]
+      ) {
+        searchMetadata(
+          bySites: $bySites
+          byNetworks: $byNetworks
+          byVariables: $byVariables
+          byProtocols: $byProtocols
+          exeConfigs: $exeConfigs
+        ) {
+          i
+          target
+          result
+          error
         }
+      }
+    `,
+    {
+      fetchPolicy: 'network-only',
+      variables: {
+        bySites: state.selectedSites,
+        byNetworks: state.selectedNetworks,
+        byVariables: state.selectedVariables,
+        byProtocols: state.selectedProtocols,
+        exeConfigs: state.exeConfigs,
+      },
+    }
+  )
+
+  const updateGlobalState = (obj, { currentIndex = null, selectedIds = null } = {}, cb = null) => {
+    let o = {}
+    if (currentIndex && selectedIds) {
+      o = Object.assign({
+        [currentIndex]: state[selectedIds]?.length - 1 >= 0 ? state[selectedIds]?.length - 1 : 0,
       })
     }
+    setState(Object.assign({ ...state }, obj, o))
   }
 
-  updateGlobalState = (obj, { currentIndex = null, selectedIds = null } = {}, cb = null) => {
-    this.setState(obj, () => {
-      if (currentIndex && selectedIds) {
-        this.setState(
-          {
-            [currentIndex]:
-              this.state[selectedIds].length - 1 >= 0 ? this.state[selectedIds].length - 1 : 0,
-          },
-          cb
-        )
-      } else {
-        if (cb) cb()
-      }
-    })
-  }
-
-  render() {
-    const { updateGlobalState, state, props } = this
-    return (
-      <GlobalStateContext.Provider
-        value={{
-          updateGlobalState,
-          ...state,
-        }}
-      >
-        {props.children}
-      </GlobalStateContext.Provider>
-    )
-  }
+  return (
+    <GlobalStateContext.Provider
+      value={{
+        updateGlobalState,
+        ...state,
+        loadingSearchResults: loading,
+        searchResults: data?.searchMetadata.filter(({ error }) => !error),
+        searchErrors: error
+          ? [
+              {
+                target: 'NA',
+                error: JSON.stringify(error),
+                result: { success: false, result_length: 0, results: [] },
+              },
+            ]
+          : data?.searchMetadata.map(({ error }) => error).filter(_ => _),
+      }}
+    >
+      {children}
+    </GlobalStateContext.Provider>
+  )
 }
-
-export const GlobalState = ({ children }) => (
-  <ApolloConsumer>{client => <State client={client}>{children}</State>}</ApolloConsumer>
-)
