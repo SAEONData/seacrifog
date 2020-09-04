@@ -141,8 +141,6 @@ export default async (self, args, req) => {
     )
   )
 
-  console.log('searchResults', searchResults)
-
   return executors.map((executor, i) => ({
     i,
     target: targets[executor] || executor,
