@@ -97,7 +97,7 @@ export default [
     title: 'Data Overview',
     text: (
       <p>
-        Deselect the inner pie. The outer pie chart shows variables measured across all of the
+        Deselect the inner pie by clicking it again. The outer pie chart shows variables measured across all of the
         sites. Hover over an outer pie slice to see how many sites a particular variable is measured
         at
       </p>
