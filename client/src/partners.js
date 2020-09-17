@@ -153,4 +153,13 @@ export default [
     content: 'South African Science Service Center for Climate Change and Adaptive Land Management',
     href: 'http://www.sasscal.org/',
   },
+  {
+    name: 'MAZINGIRA',
+    id: 19,
+    logo: `${PATH}/mazingira-logo.png`,
+    alt: 'MAZINGIRA logo',
+    content:
+      'The Mazingira nvironmental research and education centre is part of the Sustainable Livestock Systems (SLS) Program, focusing on agricultural production systems – in particular mixed crop-livestock systems – in the developing world',
+    href: 'https://mazingira.ilri.org/',
+  },
 ]
