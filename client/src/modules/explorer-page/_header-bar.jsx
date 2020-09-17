@@ -118,7 +118,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
                                 searchResultLength > 0 && !loadingSearchResults ? false : true
                               )}
                               badgeContent={searchResults
-                                .map(r => r?.result?.result_length || 0)
+                                ?.map(r => r?.result?.result_length || 0)
                                 .reduce((sum, val) => sum + val, 0)}
                               badgeId={'search-results-notification'}
                             >
@@ -127,7 +127,7 @@ export default ({ resetFn, selectedIds, ...props }) => {
                                 tooltipLabel={`Organizations searched: ${
                                   searchResults?.length
                                 }. Records found: ${searchResults
-                                  .map(r => r.result.result_length)
+                                  ?.map(r => r.result.result_length)
                                   .reduce((sum, val) => sum + val, 0)}`}
                                 tooltipPosition="left"
                                 disabled={
