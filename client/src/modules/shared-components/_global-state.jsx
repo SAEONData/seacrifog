@@ -73,7 +73,7 @@ export const GlobalState = ({ children }) => {
     }
   )
 
-  const updateGlobalState = (obj, { currentIndex = null, selectedIds = null } = {}, cb = null) => {
+  const updateGlobalState = (obj, { currentIndex = null, selectedIds = null } = {}) => {
     let o = {}
     if (currentIndex && selectedIds) {
       o = Object.assign({
